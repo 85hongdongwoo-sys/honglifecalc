@@ -22,6 +22,7 @@ jobs:
         run: |
           mkdir -p _site
           cat pkg/site.tar.gz.part* | tar -xzf - -C _site
+          if ls ogpkg/og.tar.gz.part* >/dev/null 2>&1; then cat ogpkg/og.tar.gz.part* | tar -xzf - -C _site; fi
           echo "files: $(find _site -type f | wc -l)"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
