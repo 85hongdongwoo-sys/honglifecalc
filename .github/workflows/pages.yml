@@ -24,6 +24,7 @@ jobs:
           cat pkg/site.tar.gz.part* | tar -xzf - -C _site
           if ls ogpkg/og.tar.gz.part* >/dev/null 2>&1; then cat ogpkg/og.tar.gz.part* | tar -xzf - -C _site; fi
           echo "files: $(find _site -type f | wc -l)"
+          if [ -d overlay ]; then cp -r overlay/. _site/; echo "overlay: $(find overlay -type f | wc -l)"; fi
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
       - name: Trim sitemaps (Korean pages with no Google impressions)
