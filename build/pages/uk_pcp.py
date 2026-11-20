@@ -1,6 +1,7 @@
 import sys; sys.path.insert(0,'/home/claude/honglifecalc/build')
 from enrich_lib import build, table, faq_html
 FAQ=[
+("How do I calculate a PCP early settlement figure?","It is roughly the outstanding balance on the agreement — the amount financed plus interest so far, minus payments made, including the balloon still to come. In our £25,000, 8.9% APR example with an £11,000 balloon, that is about £18,595 after 24 of 48 payments. The lender must give you a settlement statement on request."),
 ("How is a PCP monthly payment calculated?","The lender finances the car price minus your deposit, but you only repay the part that is not deferred to the end: monthly payment = (amount financed − present value of the final payment) × i ÷ (1 − (1 + i)<sup>−n</sup>), where i is the monthly rate from the APR and n the number of months. Interest is still charged on the whole balance, including the deferred final payment."),
 ("PCP or hire purchase — which is cheaper?","Hire purchase is usually cheaper if you want to keep the car, because you pay interest on a balance that falls faster. In our £28,000 example over 4 years, buying the car through PCP costs about £34,346 in total against £32,610 on HP. PCP is cheaper month to month and suits drivers who will hand the car back or change it every few years."),
 ("What is the GMFV or balloon payment?","The guaranteed minimum future value is the lender's estimate of what the car will be worth at the end, based on age and your agreed mileage. You can pay it and keep the car, hand the car back and owe nothing more (if within mileage and in fair condition), or part-exchange it."),
@@ -18,6 +19,10 @@ art='''<h2>How PCP finance works</h2>
 <p class="note">Totals include the deposit. PCP costs more if you buy the car at the end because the balloon keeps earning interest for the whole term.</p>
 <h3>Your three options at the end</h3>
 '''+table(['Option','What happens','Watch out for'],[['Pay the balloon','You own the car','Compare with the car’s market value — paying a balloon above it loses money'],['Hand it back','Nothing more to pay','A per-mile charge over your mileage allowance, and damage beyond fair wear and tear'],['Part-exchange','Any equity goes towards the next car','Dealers may fold old negative equity into the new deal']])+'''
+<h3>Early settlement — paying off a PCP early</h3>
+<p>You have a legal right to repay a consumer credit agreement early, in full or in part (Consumer Credit Act 1974, section 94). Ask the lender for a <b>settlement figure</b>: it is the balance still owed — including the deferred balloon — less a rebate of interest you no longer need to pay. On many agreements the lender may add compensation of up to 1% of the amount repaid early (0.5% if less than a year is left).</p>
+'''+table(['Months paid (of 48)','Approximate balance to settle'],[['12','£21,934'],['24','£18,595'],['36','£14,960']])+'''
+<p class="note">For the first example (£25,000 financed at 8.9% APR with an £11,000 balloon), before any early-settlement charge. Your lender’s figure is the one that counts.</p>
 <h3>Voluntary termination (the "half-way" rule)</h3>
 <p>The Consumer Credit Act 1974, section 99, lets you end a hire-purchase or PCP agreement early once you have paid <b>half of the total amount payable</b> — deposit, monthly payments, final payment and fees. In the first example the total is about £34,346, so you need to have paid about £17,173: the £3,000 deposit plus about 34 monthly payments. You return the car and pay nothing more unless it has excess damage.</p>
 <h3>Mileage and the balloon</h3>

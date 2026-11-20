@@ -1,6 +1,7 @@
 import sys; sys.path.insert(0,'/home/claude/honglifecalc/build')
 from enrich_lib import build, table, faq_html
 FAQ=[
+("How much is PMI on a $300,000 loan?","Typically $75–$250 a month (0.3%–1.0% a year), and about $150 a month at 0.6%. Freddie Mac’s rule of thumb of $30–$70 per $100,000 borrowed gives $90–$210 a month."),
 ("How much is PMI per month?","Freddie Mac puts typical PMI at about $30–$70 a month for every $100,000 borrowed (roughly 0.36%–0.84% a year). Your quote depends mainly on credit score, down payment and loan type. On a $360,000 loan at 0.6% a year, PMI is $180 a month."),
 ("When does PMI go away?","You can ask your servicer in writing to cancel it once the balance is scheduled to reach 80% of the home's original value, if you are current and have a good payment history. It ends automatically when the balance is scheduled to reach 78%, and no later than the midpoint of the loan term (month 181 of a 30-year loan) if you are current."),
 ("How long will I pay PMI with 10% down?","At 6.4% on a 30-year loan, about 7 years 10 months until you can request removal (80%) and 9 years until automatic removal (78%). Extra principal payments shorten this."),

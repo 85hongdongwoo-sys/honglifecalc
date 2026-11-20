@@ -6,6 +6,7 @@ inc=[30000,40000,50000,60000,70000,80000,100000]
 rows=[[f'£{x:,}',f'£{int(x*4):,}',f'£{int(x*4.5):,}',f'£{int(x*5):,}',f'£{int(x*5.5):,}'] for x in inc]
 pr=[[f'£{L:,}',f'£{pay(L,4.4):,.2f}',f'£{pay(L,4.4,360):,.2f}',f'£{pay(L,7.4):,.2f}'] for L in (150000,200000,250000,315000,400000)]
 FAQ=[
+("How much mortgage can I get for £900 a month?","About £163,600 over 25 years at 4.4%, or about £179,700 over 30 years. At 5% over 25 years it is about £154,000. Your income and debts must also support the loan under the lender’s affordability rules."),
 ("How much can I borrow on a £70,000 salary?","Most lenders cap lending at about 4–4.5 times income, so roughly £280,000–£315,000 with no other debts. Some lenders go to 5–5.5 times for higher earners or certain professions, which would be £350,000–£385,000. Loans, car finance and credit card balances reduce the figure."),
 ("How much can I borrow on a £50,000 salary?","About £200,000 at 4 times income and £225,000 at 4.5 times. At 4.4% over 25 years, a £225,000 mortgage costs about £1,238 a month."),
 ("Do lenders use joint income?","Yes. For a joint application most lenders add both gross incomes and apply the multiple to the total, then reduce it for each applicant's committed spending such as loans, childcare and credit cards."),
@@ -20,6 +21,9 @@ art='''<h2>How much can you borrow? The two tests lenders use</h2>
 <p class="note">Before deducting debts. Not every lender offers 5× or 5.5×; most applicants get 4–4.5×.</p>
 <h3>Monthly repayment on common loan sizes (capital and interest)</h3>
 '''+table(['Mortgage','4.4% over 25 years','4.4% over 30 years','Stress test: 7.4% over 25 years'],pr)+'''
+<h3>How much mortgage for a monthly budget?</h3>
+'''+table(['Monthly payment','4.4% over 25 years','4.4% over 30 years','5.0% over 25 years'],[['£700','£127,233','£139,787','£119,742'],['£900','£163,585','£179,726','£153,954'],['£1,000','£181,761','£199,696','£171,060'],['£1,200','£218,114','£239,635','£205,272'],['£1,500','£272,642','£299,544','£256,590'],['£2,000','£363,523','£399,392','£342,120']])+'''
+<p class="note">Capital and interest repayment. Lenders still apply their income multiple and affordability checks, so the payment you can afford is only one side of it.</p>
 <h3>Worked example</h3>
 <p>Household income £70,000, £200 a month of loan payments, £40,000 deposit, 4.5× income, 4.4% rate:</p>
 <ul><li>Income × 4.5 = £315,000.</li><li>Commitments: £200 × 24 = £4,800, so borrowing ≈ <b>£310,200</b>.</li><li>Property up to £350,200, loan-to-value 89% (a 90% LTV mortgage).</li><li>Repayment over 25 years ≈ <b>£1,706.63</b> a month; at 7.4% it would be about £2,272.21.</li></ul>
