@@ -1,0 +1,687 @@
+{
+ "queue": [
+  {
+   "path": "/tw/labor-pension/labor-pension-account-projection.html",
+   "chars": 1379,
+   "impr28": 64
+  },
+  {
+   "path": "/uk/net-worth-calculator.html",
+   "chars": 583,
+   "impr28": 46
+  },
+  {
+   "path": "/br/calculadora-nota-enem-sisu.html",
+   "chars": 794,
+   "impr28": 34
+  },
+  {
+   "path": "/uk/emergency-fund-calculator.html",
+   "chars": 659,
+   "impr28": 34
+  },
+  {
+   "path": "/es/calculadora-consumo-electrico.html",
+   "chars": 560,
+   "impr28": 31
+  },
+  {
+   "path": "/us/benefits/free-school-meals.html",
+   "chars": 1203,
+   "impr28": 30
+  },
+  {
+   "path": "/au/hourly-to-salary-calculator.html",
+   "chars": 1116,
+   "impr28": 29
+  },
+  {
+   "path": "/es/calculadora-nota-pau.html",
+   "chars": 1137,
+   "impr28": 29
+  },
+  {
+   "path": "/uk/bonus-tax-calculator.html",
+   "chars": 553,
+   "impr28": 29
+  },
+  {
+   "path": "/es/calculadora-finiquito.html",
+   "chars": 964,
+   "impr28": 28
+  },
+  {
+   "path": "/ca/cmhc-insurance-calculator.html",
+   "chars": 1227,
+   "impr28": 28
+  },
+  {
+   "path": "/en/korea-salary-calculator.html",
+   "chars": 880,
+   "impr28": 26
+  },
+  {
+   "path": "/uk/fuel-cost-calculator.html",
+   "chars": 580,
+   "impr28": 26
+  },
+  {
+   "path": "/uk/electricity-cost-calculator.html",
+   "chars": 604,
+   "impr28": 25
+  },
+  {
+   "path": "/uk/ltt-calculator.html",
+   "chars": 633,
+   "impr28": 24
+  },
+  {
+   "path": "/uk/overtime-calculator.html",
+   "chars": 618,
+   "impr28": 24
+  },
+  {
+   "path": "/uk/shared-ownership-calculator.html",
+   "chars": 741,
+   "impr28": 24
+  },
+  {
+   "path": "/be/salaire-brut-net.html",
+   "chars": 940,
+   "impr28": 23
+  },
+  {
+   "path": "/au/term-deposit-calculator.html",
+   "chars": 694,
+   "impr28": 22
+  },
+  {
+   "path": "/br/calculadora-consumo-energia.html",
+   "chars": 552,
+   "impr28": 22
+  },
+  {
+   "path": "/au/long-service-leave-calculator.html",
+   "chars": 1278,
+   "impr28": 21
+  },
+  {
+   "path": "/au/savings-goal-calculator.html",
+   "chars": 622,
+   "impr28": 21
+  },
+  {
+   "path": "/fr/calcul-consommation-electrique.html",
+   "chars": 615,
+   "impr28": 21
+  },
+  {
+   "path": "/fr/smic-2026.html",
+   "chars": 846,
+   "impr28": 21
+  },
+  {
+   "path": "/uk/isa-calculator.html",
+   "chars": 746,
+   "impr28": 21
+  },
+  {
+   "path": "/us/benefits/earned-income-tax-credit-guide.html",
+   "chars": 1224,
+   "impr28": 21
+  },
+  {
+   "path": "/ar/bmi-calculator.html",
+   "chars": 615,
+   "impr28": 20
+  },
+  {
+   "path": "/au/bonus-tax-calculator.html",
+   "chars": 757,
+   "impr28": 20
+  },
+  {
+   "path": "/ie/savings-goal-calculator.html",
+   "chars": 622,
+   "impr28": 19
+  },
+  {
+   "path": "/uk/50-30-20-budget-calculator.html",
+   "chars": 548,
+   "impr28": 19
+  },
+  {
+   "path": "/uk/rent-affordability-calculator.html",
+   "chars": 452,
+   "impr28": 19
+  },
+  {
+   "path": "/uk/savings-goal-calculator.html",
+   "chars": 622,
+   "impr28": 19
+  },
+  {
+   "path": "/uk/tax-free-childcare-calculator.html",
+   "chars": 586,
+   "impr28": 19
+  },
+  {
+   "path": "/ca/fhsa-calculator.html",
+   "chars": 1133,
+   "impr28": 17
+  },
+  {
+   "path": "/ca/gic-calculator.html",
+   "chars": 1026,
+   "impr28": 17
+  },
+  {
+   "path": "/uk/child-benefit-calculator.html",
+   "chars": 757,
+   "impr28": 17
+  },
+  {
+   "path": "/au/fhss-calculator.html",
+   "chars": 1058,
+   "impr28": 16
+  },
+  {
+   "path": "/es/root-exponent-calculator.html",
+   "chars": 581,
+   "impr28": 16
+  },
+  {
+   "path": "/uk/savings-interest-tax-calculator.html",
+   "chars": 718,
+   "impr28": 16
+  },
+  {
+   "path": "/us/benefits/head-start.html",
+   "chars": 1303,
+   "impr28": 16
+  },
+  {
+   "path": "/us/benefits/lifeline-phone-internet.html",
+   "chars": 1132,
+   "impr28": 16
+  },
+  {
+   "path": "/au/atar-selection-rank-calculator.html",
+   "chars": 1075,
+   "impr28": 15
+  },
+  {
+   "path": "/au/super-co-contribution-calculator.html",
+   "chars": 1133,
+   "impr28": 15
+  },
+  {
+   "path": "/nl/spaardoel-berekenen.html",
+   "chars": 499,
+   "impr28": 15
+  },
+  {
+   "path": "/us/benefits/section-8-housing-voucher.html",
+   "chars": 1436,
+   "impr28": 15
+  },
+  {
+   "path": "/au/net-worth-calculator.html",
+   "chars": 583,
+   "impr28": 14
+  },
+  {
+   "path": "/us/benefits/wic.html",
+   "chars": 1260,
+   "impr28": 14
+  },
+  {
+   "path": "/co/calculadora-gasto-gasolina.html",
+   "chars": 533,
+   "impr28": 13
+  },
+  {
+   "path": "/de/zinseszins-rechner.html",
+   "chars": 446,
+   "impr28": 13
+  },
+  {
+   "path": "/fr/calcul-objectif-epargne.html",
+   "chars": 647,
+   "impr28": 13
+  },
+  {
+   "path": "/it/calcolo-giorni-tra-date.html",
+   "chars": 482,
+   "impr28": 13
+  },
+  {
+   "path": "/nl/root-exponent-calculator.html",
+   "chars": 612,
+   "impr28": 13
+  },
+  {
+   "path": "/tw/labor-pension/less-than-15-years-lump-sum.html",
+   "chars": 1248,
+   "impr28": 12
+  },
+  {
+   "path": "/ca/self-employed-tax-calculator.html",
+   "chars": 1387,
+   "impr28": 12
+  },
+  {
+   "path": "/de/abiturnote-rechner.html",
+   "chars": 1003,
+   "impr28": 12
+  },
+  {
+   "path": "/de/teilzeit-rechner.html",
+   "chars": 507,
+   "impr28": 12
+  },
+  {
+   "path": "/ru/usn-ip.html",
+   "chars": 812,
+   "impr28": 12
+  },
+  {
+   "path": "/nz/fuel-cost-calculator.html",
+   "chars": 580,
+   "impr28": 11
+  },
+  {
+   "path": "/ru/transportnyj-nalog.html",
+   "chars": 744,
+   "impr28": 11
+  },
+  {
+   "path": "/ru/bmi-calculator.html",
+   "chars": 684,
+   "impr28": 10
+  },
+  {
+   "path": "/tw/labor-pension/labor-insurance-pension-formula.html",
+   "chars": 1431,
+   "impr28": 10
+  },
+  {
+   "path": "/it/calcolo-costo-carburante.html",
+   "chars": 578,
+   "impr28": 10
+  },
+  {
+   "path": "/nl/stroomverbruik-berekenen.html",
+   "chars": 533,
+   "impr28": 10
+  },
+  {
+   "path": "/sg/retirement-savings-calculator.html",
+   "chars": 783,
+   "impr28": 10
+  },
+  {
+   "path": "/uk/pay-rise-calculator.html",
+   "chars": 605,
+   "impr28": 10
+  },
+  {
+   "path": "/jp/nisa-simulator.html",
+   "chars": 403,
+   "impr28": 9
+  },
+  {
+   "path": "/au/super-guarantee-calculator.html",
+   "chars": 954,
+   "impr28": 9
+  },
+  {
+   "path": "/de/festgeld-rechner.html",
+   "chars": 610,
+   "impr28": 9
+  },
+  {
+   "path": "/fr/calcul-cout-carburant.html",
+   "chars": 542,
+   "impr28": 9
+  },
+  {
+   "path": "/us/quarterly-estimated-tax-calculator.html",
+   "chars": 718,
+   "impr28": 9
+  },
+  {
+   "path": "/es/calculadora-porcentaje.html",
+   "chars": 408,
+   "impr28": 8
+  },
+  {
+   "path": "/ar/loan-calculator.html",
+   "chars": 971,
+   "impr28": 8
+  },
+  {
+   "path": "/ca/debt-payoff-calculator.html",
+   "chars": 637,
+   "impr28": 8
+  },
+  {
+   "path": "/ca/overtime-pay-calculator.html",
+   "chars": 1449,
+   "impr28": 8
+  },
+  {
+   "path": "/ca/rrif-minimum-withdrawal-calculator.html",
+   "chars": 1006,
+   "impr28": 8
+  },
+  {
+   "path": "/de/kindergeld-rechner.html",
+   "chars": 793,
+   "impr28": 8
+  },
+  {
+   "path": "/fr/allocation-chomage.html",
+   "chars": 974,
+   "impr28": 8
+  },
+  {
+   "path": "/jp/hyotei-heikin.html",
+   "chars": 1103,
+   "impr28": 8
+  },
+  {
+   "path": "/uk/buy-to-let-mortgage-calculator.html",
+   "chars": 627,
+   "impr28": 8
+  },
+  {
+   "path": "/ar/fuel-cost-calculator.html",
+   "chars": 452,
+   "impr28": 7
+  },
+  {
+   "path": "/ca/medical-expense-tax-credit-calculator.html",
+   "chars": 811,
+   "impr28": 7
+  },
+  {
+   "path": "/de/tage-rechner.html",
+   "chars": 426,
+   "impr28": 7
+  },
+  {
+   "path": "/fr/allocations-familiales.html",
+   "chars": 955,
+   "impr28": 7
+  },
+  {
+   "path": "/nz/emergency-fund-calculator.html",
+   "chars": 659,
+   "impr28": 7
+  },
+  {
+   "path": "/pl/percentage-calculator.html",
+   "chars": 557,
+   "impr28": 7
+  },
+  {
+   "path": "/pt/root-exponent-calculator.html",
+   "chars": 556,
+   "impr28": 7
+  },
+  {
+   "path": "/uk/rental-income-tax-calculator.html",
+   "chars": 643,
+   "impr28": 7
+  },
+  {
+   "path": "/us/child-tax-credit-calculator.html",
+   "chars": 981,
+   "impr28": 7
+  },
+  {
+   "path": "/us/dependent-care-fsa-calculator.html",
+   "chars": 718,
+   "impr28": 7
+  },
+  {
+   "path": "/hi/age-calculator.html",
+   "chars": 632,
+   "impr28": 6
+  },
+  {
+   "path": "/au/electricity-cost-calculator.html",
+   "chars": 604,
+   "impr28": 6
+  },
+  {
+   "path": "/au/salary-sacrifice-calculator.html",
+   "chars": 924,
+   "impr28": 6
+  },
+  {
+   "path": "/ca/donation-tax-credit-calculator.html",
+   "chars": 821,
+   "impr28": 6
+  },
+  {
+   "path": "/co/calculadora-pago-de-deudas.html",
+   "chars": 548,
+   "impr28": 6
+  },
+  {
+   "path": "/de/gewerbesteuer-rechner.html",
+   "chars": 785,
+   "impr28": 6
+  },
+  {
+   "path": "/de/root-exponent-calculator.html",
+   "chars": 596,
+   "impr28": 6
+  },
+  {
+   "path": "/es/calculadora-presupuesto-50-30-20.html",
+   "chars": 503,
+   "impr28": 6
+  },
+  {
+   "path": "/it/calcolo-inflazione.html",
+   "chars": 570,
+   "impr28": 6
+  },
+  {
+   "path": "/pl/fraction-calculator.html",
+   "chars": 471,
+   "impr28": 6
+  },
+  {
+   "path": "/se/salary-after-tax-calculator.html",
+   "chars": 909,
+   "impr28": 6
+  },
+  {
+   "path": "/tw/salary-take-home/voluntary-pension-contribution-6-percent.html",
+   "chars": 1352,
+   "impr28": 5
+  },
+  {
+   "path": "/au/spouse-super-contribution-calculator.html",
+   "chars": 744,
+   "impr28": 5
+  },
+  {
+   "path": "/be/calcul-remboursement-dette.html",
+   "chars": 615,
+   "impr28": 5
+  },
+  {
+   "path": "/de/gehaltserhoehung-rechner.html",
+   "chars": 535,
+   "impr28": 5
+  },
+  {
+   "path": "/de/mutterschaftsgeld-rechner.html",
+   "chars": 703,
+   "impr28": 5
+  },
+  {
+   "path": "/it/pregnancy-due-date-calculator.html",
+   "chars": 744,
+   "impr28": 5
+  },
+  {
+   "path": "/mx/calculadora-consumo-electrico.html",
+   "chars": 560,
+   "impr28": 5
+  },
+  {
+   "path": "/pl/kalkulator-dni-miedzy-datami.html",
+   "chars": 450,
+   "impr28": 5
+  },
+  {
+   "path": "/ru/edinoe-posobie.html",
+   "chars": 1302,
+   "impr28": 5
+  },
+  {
+   "path": "/ru/kalkulyator-ndfl.html",
+   "chars": 778,
+   "impr28": 5
+  },
+  {
+   "path": "/tw/savings-goal-calculator.html",
+   "chars": 198,
+   "impr28": 5
+  },
+  {
+   "path": "/uk/loan-calculator.html",
+   "chars": 479,
+   "impr28": 5
+  },
+  {
+   "path": "/uk/national-insurance-calculator.html",
+   "chars": 838,
+   "impr28": 5
+  },
+  {
+   "path": "/uk/self-employed-tax-calculator.html",
+   "chars": 674,
+   "impr28": 5
+  },
+  {
+   "path": "/uk/student-loan-repayment-calculator.html",
+   "chars": 673,
+   "impr28": 5
+  },
+  {
+   "path": "/en/korea-pension-refund-calculator.html",
+   "chars": 810,
+   "impr28": 4
+  },
+  {
+   "path": "/tw/year-end-bonus/bonus-300k-take-home.html",
+   "chars": 1338,
+   "impr28": 4
+  },
+  {
+   "path": "/br/calculadora-gasto-combustivel.html",
+   "chars": 568,
+   "impr28": 4
+  },
+  {
+   "path": "/eg/fuel-cost-calculator.html",
+   "chars": 453,
+   "impr28": 4
+  },
+  {
+   "path": "/fr/calcul-nombre-de-jours.html",
+   "chars": 506,
+   "impr28": 4
+  },
+  {
+   "path": "/fr/credit-impot-garde-enfant.html",
+   "chars": 739,
+   "impr28": 4
+  },
+  {
+   "path": "/id/kalkulator-biaya-listrik.html",
+   "chars": 484,
+   "impr28": 4
+  },
+  {
+   "path": "/ie/debt-payoff-calculator.html",
+   "chars": 637,
+   "impr28": 4
+  },
+  {
+   "path": "/jp/kyotsu-test-tokuten.html",
+   "chars": 1245,
+   "impr28": 4
+  },
+  {
+   "path": "/nl/calculator.html",
+   "chars": 578,
+   "impr28": 4
+  },
+  {
+   "path": "/pl/root-exponent-calculator.html",
+   "chars": 614,
+   "impr28": 4
+  },
+  {
+   "path": "/ru/programma-dolgosrochnyh-sberezhenij.html",
+   "chars": 1206,
+   "impr28": 4
+  },
+  {
+   "path": "/sg/compound-interest-calculator.html",
+   "chars": 670,
+   "impr28": 4
+  },
+  {
+   "path": "/tr/net-salary-calculator.html",
+   "chars": 1045,
+   "impr28": 4
+  },
+  {
+   "path": "/tw/root-exponent-calculator.html",
+   "chars": 254,
+   "impr28": 4
+  },
+  {
+   "path": "/uk/redundancy-pay-calculator.html",
+   "chars": 750,
+   "impr28": 4
+  },
+  {
+   "path": "/uk/rent-vs-buy-calculator.html",
+   "chars": 849,
+   "impr28": 4
+  },
+  {
+   "path": "/ru/nalog-s-prodazhi-kvartiry.html",
+   "chars": 963,
+   "impr28": 1
+  }
+ ],
+ "done": [
+  "/au/fuel-cost-calculator.html",
+  "/ca/capital-gains-tax-calculator.html",
+  "/ca/salary-after-tax-calculator.html",
+  "/es/calculadora-gasto-gasolina.html",
+  "/es/pensiones/subida-pensiones-2027.html",
+  "/uk/credit-card-repayment-calculator.html",
+  "/uk/mortgage-affordability-calculator.html",
+  "/uk/pcp-car-finance-calculator.html",
+  "/uk/pension-tax-relief-calculator.html",
+  "/uk/pro-rata-salary-calculator.html",
+  "/uk/salary-to-hourly-calculator.html",
+  "/us/benefits/ssi-benefit.html",
+  "/us/bonus-tax-calculator.html",
+  "/us/fire-calculator.html",
+  "/us/pmi-calculator.html",
+  "/zh/savings-goal-calculator.html"
+ ]
+}

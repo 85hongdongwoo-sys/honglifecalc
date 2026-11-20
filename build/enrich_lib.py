@@ -1,7 +1,7 @@
 """Helper used to write enriched copies of pages into overlay/ (not run at deploy)."""
 import json, os, re
 
-ORIG = '/tmp/claude-0/orig'
+ORIG = os.environ.get('HL_ORIG', '/tmp/claude-0/orig')
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'overlay')
 TBL_CSS = ('<style>nav.tabs{flex-wrap:wrap;overflow:visible;white-space:normal}.help .tbl th,.help .tbl td{text-align:left;font-family:inherit;vertical-align:top}'
            '.help h3{margin-top:20px}.help ul{padding-left:20px}.help li{margin:4px 0}'
