@@ -26,6 +26,8 @@ jobs:
           echo "files: $(find _site -type f | wc -l)"
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
+      - name: Trim sitemaps (Korean pages with no Google impressions)
+        run: python3 build/patch_sitemap.py _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
