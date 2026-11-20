@@ -3,7 +3,7 @@ import json, os, re
 
 ORIG = '/tmp/claude-0/orig'
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'overlay')
-TBL_CSS = ('<style>.help .tbl th,.help .tbl td{text-align:left;font-family:inherit;vertical-align:top}'
+TBL_CSS = ('<style>nav.tabs{flex-wrap:wrap;overflow:visible;white-space:normal}.help .tbl th,.help .tbl td{text-align:left;font-family:inherit;vertical-align:top}'
            '.help h3{margin-top:20px}.help ul{padding-left:20px}.help li{margin:4px 0}'
            '@media(max-width:640px){.help .tbl thead{display:none}.help .tbl,.help .tbl tbody,.help .tbl tr{display:block;width:100%}'
            '.help .tbl tr{border-bottom:1px solid var(--line,#E3E7EE);padding:6px 0}'
