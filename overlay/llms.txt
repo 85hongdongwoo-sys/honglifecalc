@@ -1,0 +1,71 @@
+# Hong Life Calculators
+
+> honglifecalc.com offers free, no-sign-up calculators for tax, salary, mortgage, loans, benefits and everyday math, organised by country in each country's own language, plus general calculators in English. Calculations run in the browser; inputs are not sent to a server.
+
+Each country page states the tax year and links its official sources (tax authority, statistics office, regulator) with a last-checked date. Results are estimates, not tax, legal or financial advice. About: https://honglifecalc.com/about.html · Privacy: https://honglifecalc.com/privacy.html
+
+## Calculators by country
+- [Japan (日本)](https://honglifecalc.com/jp/): Take-home pay, year-end adjustment, furusato nozei, NISA
+- [China (中国)](https://honglifecalc.com/zh/): After-tax salary, individual income tax, year-end bonus, mortgage
+- [Taiwan (台灣)](https://honglifecalc.com/tw/): Take-home pay, income tax, labor insurance, mortgage
+- [India (Hindi)](https://honglifecalc.com/hi/): Income tax, in-hand salary, EMI, SIP, GST
+- [India (English)](https://honglifecalc.com/in/): Income tax, EMI, gratuity, EPF, NPS, SIP
+- [Indonesia](https://honglifecalc.com/id/): Gaji bersih, PPh 21, THR, PPN, lembur
+- [Philippines](https://honglifecalc.com/ph/): Take-home pay, 13th month, Pag-IBIG loan, VAT, overtime
+- [Vietnam](https://honglifecalc.com/vn/): Lương Gross–Net, thuế TNCN, vay mua nhà, thai sản
+- [Malaysia](https://honglifecalc.com/my/): Income tax, EPF, SOCSO, STR
+- [Singapore](https://honglifecalc.com/sg/): Income tax, CPF, Baby Bonus, HDB grants
+- [Australia](https://honglifecalc.com/au/): Pay, stamp duty, tax refund, HECS, GST, redundancy
+- [New Zealand](https://honglifecalc.com/nz/): PAYE, ACC levy, KiwiSaver, Working for Families
+- [United States](https://honglifecalc.com/us/): Paycheck, mortgage, PMI, bonus tax, tax refund, SSI, RMD, FIRE
+- [Canada](https://honglifecalc.com/ca/): Salary after tax by province, EI, CPP/QPP, capital gains, CCB, RRSP, TFSA
+- [México](https://honglifecalc.com/mx/): Aguinaldo, ISR, finiquito, IVA, CETES
+- [Brasil](https://honglifecalc.com/br/): Salário líquido, 13º, férias, rescisão, hora extra
+- [Argentina](https://honglifecalc.com/arg/): Sueldo neto, aportes, AUH
+- [Colombia](https://honglifecalc.com/co/): Salario neto, retención en la fuente, UVT
+- [Chile](https://honglifecalc.com/cl/): Sueldo líquido, AFP, impuesto único, PGU
+- [United Kingdom](https://honglifecalc.com/uk/): Take-home pay, mortgage affordability, PCP car finance, pension tax relief, stamp duty, salary to hourly
+- [Ireland](https://honglifecalc.com/ie/): Take-home pay, USC, PRSI, Child Benefit
+- [Deutschland](https://honglifecalc.com/de/): Brutto-Netto, Einkommensteuer, Kfz-Steuer, Elterngeld
+- [Österreich](https://honglifecalc.com/at/): Brutto-Netto, 13./14. Gehalt, Familienbeihilfe
+- [Schweiz](https://honglifecalc.com/ch/): Brutto-Netto, AHV, BVG
+- [France](https://honglifecalc.com/fr/): Impôt, frais de notaire, succession, TVA
+- [Belgique](https://honglifecalc.com/be/): Salaire brut-net, ONSS, allocations familiales
+- [España](https://honglifecalc.com/es/): Sueldo neto, despido, autónomos, IVA, subida de pensiones
+- [Portugal](https://honglifecalc.com/pt/): Salário líquido, IMT, IMI, crédito habitação
+- [Nederland](https://honglifecalc.com/nl/): Bruto-netto, WW, bijtelling, vakantiegeld
+- [Polska](https://honglifecalc.com/pl/): Wynagrodzenie netto, chorobowe, kredyt
+- [Sweden](https://honglifecalc.com/se/): Salary after tax, jobbskatteavdrag, barnbidrag
+- [Norway](https://honglifecalc.com/no/): Salary after tax, trinnskatt, foreldrepenger
+- [Denmark](https://honglifecalc.com/dk/): Salary after tax, AM-bidrag
+- [Россия](https://honglifecalc.com/ru/): Зарплата, НДФЛ, пособия, вычеты, ипотека
+- [Türkiye](https://honglifecalc.com/tr/): Gross to net salary, SGK, minimum wage
+- [Saudi Arabia (العربية)](https://honglifecalc.com/ar/): GOSI, end of service, zakat
+- [UAE](https://honglifecalc.com/ae/): Gratuity, unemployment insurance
+- [Egypt (مصر)](https://honglifecalc.com/eg/): Salary tax, social insurance
+- [Nigeria](https://honglifecalc.com/ng/): PAYE under the 2026 Tax Act, rent relief, pension
+- [South Africa](https://honglifecalc.com/za/): SARS PAYE 2026/27, UIF, SASSA grants
+- [Korea (한국어)](https://honglifecalc.com/ko/): 연봉 실수령액, 연말정산, 공무원 월급·연금, 자동차세
+
+## General calculators (English)
+- [Money & finance](https://honglifecalc.com/en/money/)
+- [Health & fitness](https://honglifecalc.com/en/health/)
+- [Math](https://honglifecalc.com/en/math/)
+- [Science & engineering](https://honglifecalc.com/en/science/)
+- [Unit converters](https://honglifecalc.com/en/convert/)
+- [Home & everyday](https://honglifecalc.com/en/home/)
+- [Business](https://honglifecalc.com/en/biz/)
+- [Tech](https://honglifecalc.com/en/tech/)
+
+## Popular pages
+- [2027 Federal Tax Brackets Calculator](https://honglifecalc.com/us/2027-tax-brackets.html)
+- [Bonus Tax Calculator 2026 (US)](https://honglifecalc.com/us/bonus-tax-calculator.html)
+- [PMI Calculator (US)](https://honglifecalc.com/us/pmi-calculator.html)
+- [SSI Payment 2027 (US)](https://honglifecalc.com/us/benefits/ssi-benefit.html)
+- [Mortgage Affordability Calculator UK](https://honglifecalc.com/uk/mortgage-affordability-calculator.html)
+- [Pension Tax Relief Calculator UK](https://honglifecalc.com/uk/pension-tax-relief-calculator.html)
+- [Salary After Tax Calculator Canada](https://honglifecalc.com/ca/salary-after-tax-calculator.html)
+- [Slope Calculator](https://honglifecalc.com/en/math/slope-calculator.html)
+
+## Full list
+- [Sitemap](https://honglifecalc.com/sitemap.xml)
