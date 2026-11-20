@@ -28,6 +28,8 @@ jobs:
         run: python3 build/patch_hreflang.py _site
       - name: Trim sitemaps (Korean pages with no Google impressions)
         run: python3 build/patch_sitemap.py _site
+      - name: Spread related links evenly (nearest siblings ring)
+        run: python3 build/patch_related.py _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
