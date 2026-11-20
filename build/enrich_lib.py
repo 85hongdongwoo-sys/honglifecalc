@@ -42,7 +42,13 @@ def build(path, title, desc, article, faq, form=None, calc=None, lang_note=None)
     if calc:
         old = re.search(r'function calc\(\)\{.*?\n\n', s, re.S).group(0)
         s = s.replace(old, calc.rstrip('\n') + '\n\n', 1)
-    art = '<article class="card help">' + TBL_CSS + article + '</article>'
+    sm = {}
+    try:
+        sm = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'summaries.json'), encoding='utf-8'))
+    except Exception:
+        pass
+    box = (f'<p class="hl-ans" style="background:#F3F8FF;border:1px solid #D6E6FD;border-radius:12px;padding:12px 14px;margin:0 0 14px;line-height:1.6">{sm[path]}</p>' if path in sm else '')
+    art = '<article class="card help">' + TBL_CSS + box + article + '</article>'
     if re.search(r'<article class="card help">', s):
         s = re.sub(r'<article class="card help">.*?</article>', lambda m: art, s, count=1, flags=re.S)
     else:
