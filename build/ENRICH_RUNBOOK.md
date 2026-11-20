@@ -37,7 +37,8 @@ calculator or checked today against an official / primary source that you cite o
 8. Re-read the page text once for wrong numbers, wrong year, wrong currency, and language mistakes.
 
 ## Finish
-- Move finished paths from "queue" to "done" in `build/enrich_queue.json`.
+- Move finished paths from "queue" to "done" in `build/enrich_queue.json`, and set each finished path to today's date (YYYY-MM-DD) in `build/lastmod.json` (sitemap lastmod + schema dateModified).
+- Put a 2–3 sentence answer-first summary at the very top of the article (the key number or rule people search for, with the year), before the explanation.
 - Commit `overlay/`, `build/pages/`, `build/enrich_queue.json` and push to main (message ends with the
   Co-Authored-By line). Wait for the "Deploy site" workflow to succeed and spot-check one live page.
 - Add the finished URLs to the front of `com.queue` in `gsc_queue.json` of repo
