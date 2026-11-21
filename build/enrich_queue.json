@@ -1,46 +1,6 @@
 {
  "queue": [
   {
-   "path": "/tw/labor-pension/labor-pension-account-projection.html",
-   "chars": 1379,
-   "impr28": 64
-  },
-  {
-   "path": "/uk/net-worth-calculator.html",
-   "chars": 583,
-   "impr28": 46
-  },
-  {
-   "path": "/br/calculadora-nota-enem-sisu.html",
-   "chars": 794,
-   "impr28": 34
-  },
-  {
-   "path": "/uk/emergency-fund-calculator.html",
-   "chars": 659,
-   "impr28": 34
-  },
-  {
-   "path": "/es/calculadora-consumo-electrico.html",
-   "chars": 560,
-   "impr28": 31
-  },
-  {
-   "path": "/us/benefits/free-school-meals.html",
-   "chars": 1203,
-   "impr28": 30
-  },
-  {
-   "path": "/au/hourly-to-salary-calculator.html",
-   "chars": 1116,
-   "impr28": 29
-  },
-  {
-   "path": "/es/calculadora-nota-pau.html",
-   "chars": 1137,
-   "impr28": 29
-  },
-  {
    "path": "/uk/bonus-tax-calculator.html",
    "chars": 553,
    "impr28": 29
@@ -682,6 +642,14 @@
   "/us/bonus-tax-calculator.html",
   "/us/fire-calculator.html",
   "/us/pmi-calculator.html",
-  "/zh/savings-goal-calculator.html"
+  "/zh/savings-goal-calculator.html",
+  "/tw/labor-pension/labor-pension-account-projection.html",
+  "/uk/net-worth-calculator.html",
+  "/br/calculadora-nota-enem-sisu.html",
+  "/uk/emergency-fund-calculator.html",
+  "/es/calculadora-consumo-electrico.html",
+  "/us/benefits/free-school-meals.html",
+  "/au/hourly-to-salary-calculator.html",
+  "/es/calculadora-nota-pau.html"
  ]
 }
