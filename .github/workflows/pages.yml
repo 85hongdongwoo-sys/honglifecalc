@@ -51,8 +51,9 @@ jobs:
         run: python3 build/patch_deep.py _site
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
-      - name: Noindex pages with no Google impressions (build/noindex_list.txt)
-        run: python3 build/patch_noindex.py _site
+      # Noindex step paused 2026-11-22: the list was built from the Search Console top-1,000 rows (row cap), so it may include pages that did get impressions.
+      # - name: Noindex pages with no Google impressions (build/noindex_list.txt)
+      #   run: python3 build/patch_noindex.py _site
       - name: Trim sitemaps (Korean pages with no Google impressions)
         run: python3 build/patch_sitemap.py _site
       - name: Spread related links evenly (nearest siblings ring)
