@@ -12,15 +12,15 @@ P = {
    label='Ladesäulen-Karte & Ladekosten-Rechner',
    title='Ladesäulen in der Nähe – Karte mit Ladekosten-Rechner (Bundesnetzagentur-Daten)',
    desc='Öffentliche Ladesäulen in Ihrer Nähe auf der Karte: Ladeleistung (kW), Stecker (CCS, Typ 2, CHAdeMO), Betreiber und Route. Dazu Ladekosten und Ladedauer in Euro berechnen – mit den offiziellen Daten des Ladesäulenregisters der Bundesnetzagentur.',
-   h1='<b>Ladesäulen</b> in der Nähe', sub='Karte nach offiziellem Ladesäulenregister + Ladekosten in Euro.',
-   loc='📍 Meinen Standort verwenden', all='Alle', plugAll='Alle Stecker',
+   h1='<b>Ladesäulen</b> in der Nähe', sub='Nächste Ladesäule finden, Ladedauer und Kosten für Ihr Auto sehen, mit einem Tipp losnavigieren.',
+   loc='📍 Meinen Standort verwenden', fast='⚡ Nächster Schnelllader', all='Alle', plugAll='Alle Stecker',
    calcH='Ladekosten & Ladedauer berechnen', f=['Akkukapazität (kWh)', 'Ladestand von (%)', 'Laden bis (%)', 'Ladeleistung der Säule (kW)', 'Max. Ladeleistung des Autos (kW)', 'Ladeverluste (%)', 'Strompreis (€/kWh)', 'Verbrauch E-Auto (kWh/100 km)', 'Vergleich Verbrenner (l/100 km)', 'Spritpreis (€/l)'],
    v=['60', '20', '80', '50', '100', '10', '0,38', '17', '6,5', '1,75'], priceNote='Beispielwerte – tragen Sie den Preis Ihres Ladetarifs ein.',
    t=dict(domestic='Schuko', energy='Strom aus dem Netz', inBattery='Davon im Akku', time='Ladedauer (ca.)', power='Wirksame Leistung', range='Reichweite dazu (ca.)', per100='Kosten pro 100 km',
           fuelSame='Sprit für dieselbe Strecke', save='Ersparnis gegenüber Verbrenner', more='Mehrkosten gegenüber Verbrenner', cost='Ladekosten', check='Bitte Akkukapazität, Ladestand und Leistung prüfen.',
           calcNote='Dauer vereinfacht: Oberhalb von ca. 80 % laden Schnelllader deutlich langsamer.', points='Ladepunkte', route='Route', call='Anrufen', useKw='Leistung im Rechner nutzen',
           zoomIn='Zum Anzeigen der Ladesäulen bitte näher heranzoomen.', inView='{n} Ladesäulen im Kartenausschnitt', nearest='die nächsten zuerst', none='Keine Ladesäule im Ausschnitt – Karte verschieben oder Filter ändern.',
-          stat='{s} Standorte mit {p} Ladepunkten, davon {f} Schnelllader (ab 50 kW). Quelle:', loadErr='Daten konnten nicht geladen werden.', noGeo='Standort nicht verfügbar', locating='Standort wird gesucht…', locDone='📍 Standort gefunden', you='Ihr Standort'),
+          stat='{s} Standorte mit {p} Ladepunkten, davon {f} Schnelllader (ab 50 kW). Quelle:', loadErr='Daten konnten nicht geladen werden.', noGeo='Standort nicht verfügbar', locating='Standort wird gesucht…', locDone='📍 Standort gefunden', you='Ihr Standort', free='kostenlos', noFast='Kein Schnelllader in der Nähe gefunden'),
    faq=[('Woher stammen die Ladesäulen-Daten?', 'Aus dem Ladesäulenregister der Bundesnetzagentur. Betreiber öffentlich zugänglicher Ladepunkte müssen diese dort anzeigen. Die Daten stehen unter der Lizenz CC BY 4.0 und werden hier wöchentlich aktualisiert. Nicht jede Ladesäule ist erfasst, weil nur abgeschlossene Anzeigen veröffentlicht werden.'),
         ('Wie berechne ich die Ladekosten?', 'Ladekosten = Akkukapazität × (Ziel-Ladestand − Start-Ladestand) ÷ (1 − Ladeverluste) × Strompreis. Beispiel: 60 kWh von 20 % auf 80 % sind 36 kWh im Akku, mit 10 % Verlust rund 40 kWh aus dem Netz.'),
         ('Wird mein Standort gespeichert?', 'Nein. Ihr Standort wird nur in Ihrem Browser verwendet, um die nächsten Ladesäulen zu sortieren, und nicht an unseren Server gesendet.')],
@@ -29,15 +29,15 @@ P = {
    label='Carte des bornes de recharge & coût de recharge',
    title='Bornes de recharge près de moi – carte et calcul du coût de recharge (données IRVE officielles)',
    desc='Les bornes de recharge publiques autour de vous sur une carte : puissance (kW), prises (Type 2, CCS, CHAdeMO), opérateur, téléphone et itinéraire. Calculez aussi le coût et la durée de recharge en euros, avec la base nationale officielle des IRVE (data.gouv.fr).',
-   h1='<b>Bornes de recharge</b> près de moi', sub='Carte de la base nationale IRVE + coût de recharge en euros.',
-   loc='📍 Utiliser ma position', all='Toutes', plugAll='Toutes les prises',
+   h1='<b>Bornes de recharge</b> près de moi', sub='Trouvez la borne la plus proche, voyez la durée et le coût pour votre voiture, lancez l’itinéraire en un geste.',
+   loc='📍 Utiliser ma position', fast='⚡ Borne rapide la plus proche', all='Toutes', plugAll='Toutes les prises',
    calcH='Calculer le coût et la durée de recharge', f=['Capacité de la batterie (kWh)', 'Charge de départ (%)', 'Charger jusqu’à (%)', 'Puissance de la borne (kW)', 'Puissance max. du véhicule (kW)', 'Pertes de recharge (%)', 'Prix de l’électricité (€/kWh)', 'Consommation VE (kWh/100 km)', 'Comparaison thermique (L/100 km)', 'Prix du carburant (€/L)'],
    v=['60', '20', '80', '50', '100', '10', '0,25', '17', '7', '1,75'], priceNote='Valeurs d’exemple – saisissez le prix de votre offre ou de la borne.',
    t=dict(domestic='Prise E/F', energy='Électricité soutirée', inBattery='Dont dans la batterie', time='Durée (env.)', power='Puissance effective', range='Autonomie ajoutée (env.)', per100='Coût aux 100 km',
           fuelSame='Carburant pour la même distance', save='Économie vs thermique', more='Surcoût vs thermique', cost='Coût de recharge', check='Vérifiez la capacité, la charge et la puissance.',
           calcNote='Durée simplifiée : au-delà d’environ 80 %, la recharge rapide ralentit nettement.', points='points de charge', route='Itinéraire', call='Appeler', useKw='Utiliser cette puissance',
           zoomIn='Zoomez pour afficher les bornes.', inView='{n} stations dans la zone affichée', nearest='les plus proches d’abord', none='Aucune borne dans la zone – déplacez la carte ou changez les filtres.',
-          stat='{s} stations, {p} points de charge, dont {f} rapides (50 kW et plus). Source :', loadErr='Impossible de charger les données.', noGeo='Position indisponible', locating='Recherche de la position…', locDone='📍 Position trouvée', you='Votre position'),
+          stat='{s} stations, {p} points de charge, dont {f} rapides (50 kW et plus). Source :', loadErr='Impossible de charger les données.', noGeo='Position indisponible', locating='Recherche de la position…', locDone='📍 Position trouvée', you='Votre position', free='gratuit', noFast='Aucune borne rapide trouvée à proximité'),
    faq=[('D’où viennent les données des bornes ?', 'De la base nationale des IRVE consolidée par data.gouv.fr à partir des déclarations des aménageurs, sous Licence Ouverte 2.0. Elle est mise à jour ici chaque semaine. Certaines bornes peuvent manquer ou être incomplètes.'),
         ('Comment calculer le coût d’une recharge ?', 'Coût = capacité × (charge visée − charge de départ) ÷ (1 − pertes) × prix du kWh. Exemple : 60 kWh de 20 % à 80 % font 36 kWh dans la batterie, soit environ 40 kWh soutirés avec 10 % de pertes.'),
         ('Ma position est-elle enregistrée ?', 'Non. Votre position sert uniquement dans votre navigateur à trier les bornes les plus proches ; elle n’est pas envoyée à notre serveur.')],
@@ -53,7 +53,8 @@ CSS = ('<style id="ev-css">#ev-map{height:420px;border-radius:14px;border:1px so
        '.ev-r{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex:none}.ev-r em{font-style:normal;font-size:12.5px;color:#12305C;font-weight:700}.ev-r a{font-size:13px;font-weight:700}'
        '.ev-kw{display:inline-block;color:#fff;font-weight:800;font-size:12px;padding:2px 7px;border-radius:999px;white-space:nowrap}'
        '.ev-pop{font-size:13px;line-height:1.5;max-width:240px}.ev-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.ev-btns a,.ev-btns button{font:inherit;font-size:12.5px;padding:5px 8px;border-radius:8px;border:1px solid #CBD3DF;background:#F7F8FB;color:#12305C;text-decoration:none;cursor:pointer}'
-       '.ev-warn{color:#B42318}.ev-legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:#5B6B82}.ev-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}</style>')
+       '.ev-warn{color:#B42318}.ev-b{display:inline-block;font-size:11px;font-weight:800;padding:1px 6px;border-radius:6px;background:#E6F4EA;color:#1E6B34;margin-left:4px;vertical-align:1px}.ev-free{background:#FFF4E5;color:#9A4B00}'
+       '.ev-est{color:#12305C!important;font-weight:700;margin-top:3px}.ev-ol .ev-btns{margin-top:6px}.ev-ol .ev-btns a{padding:7px 10px;font-weight:700}.ev-tools #ev-fast{background:#D9480F;color:#fff;border-color:#D9480F;font-weight:700}.ev-legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:#5B6B82}.ev-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}</style>')
 
 
 def esc(s):
@@ -83,7 +84,7 @@ def build(cc, c):
     t = c['t']
     body = (f'<header class="hero"><div class="in"><span class="year">{"🇩🇪" if cc == "de" else "🇫🇷"} 2026</span><h1>{c["h1"]}</h1><p>{esc(c["sub"])}</p></div></header>\n'
             '<main class="wrap">\n'
-            f'<section class="card"><div class="ev-tools"><button type="button" id="ev-loc">{esc(c["loc"])}</button>'
+            f'<section class="card"><div class="ev-tools"><button type="button" id="ev-loc">{esc(c["loc"])}</button><button type="button" id="ev-fast">{esc(c["fast"])}</button>'
             f'<button type="button" data-minkw="0" aria-pressed="true">{esc(c["all"])}</button><button type="button" data-minkw="50" aria-pressed="false">≥ 50 kW</button><button type="button" data-minkw="150" aria-pressed="false">≥ 150 kW</button>'
             f'<select id="ev-plug" aria-label="{esc(c["plugAll"])}"><option value="0">{esc(c["plugAll"])}</option><option value="2">CCS</option><option value="1">Type 2</option><option value="4">CHAdeMO</option></select></div>'
             '<div id="ev-map" role="region" aria-label="map"></div>'

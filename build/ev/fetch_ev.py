@@ -67,6 +67,7 @@ def de():
             continue
         plugs = ' '.join(r.get(f'Steckertypen{i}', '') or '' for i in range(1, 7))
         bits = (1 if 'Typ 2' in plugs else 0) | (2 if 'CCS' in plugs or 'Combo' in plugs else 0) | (4 if 'CHAdeMO' in plugs else 0) | (8 if 'Schuko' in plugs or 'CEE' in plugs else 0) | (16 if 'Tesla' in plugs else 0)
+        if (r.get('Öffnungszeiten') or '').strip() in ('247', '24/7', 'rund um die Uhr'): bits |= 64
         kw = fnum(r.get('Nennleistung Ladeeinrichtung [kW]')) or 0
         addr = ' '.join(x for x in [(r.get('Straße') or '').strip(), (r.get('Hausnummer') or '').strip()] if x)
         addr = f'{addr}, {(r.get("Postleitzahl") or "").strip()} {(r.get("Ort") or "").strip()}'.strip(', ')
@@ -107,6 +108,8 @@ def fr():
         s['n'] += 1
         s['kw'] = max(s['kw'], round(kw))
         s['plug'] |= bits
+        if '24/7' in (r.get('horaires') or '') or '00:00-23:59' in (r.get('horaires') or ''): s['plug'] |= 64
+        if yes('gratuit'): s['plug'] |= 128
     write('fr', list(st.values()), {'src': 'data.gouv.fr – Base nationale des IRVE', 'src_url': 'https://www.data.gouv.fr/fr/datasets/base-nationale-des-irve-infrastructures-de-recharge-pour-vehicules-electriques/',
                                      'license': 'Licence Ouverte 2.0', 'stand': stand.group(1) if stand else ''})
 
