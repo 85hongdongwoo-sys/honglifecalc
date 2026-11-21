@@ -39,6 +39,9 @@ jobs:
           git fetch -q --depth 1 origin data-geo && git archive FETCH_HEAD geo | tar -x -C _site
           python3 build/geo/gen_quake.py _site || true
           [ -f build/geo/gen_aurora.py ] && python3 build/geo/gen_aurora.py _site || true
+      - name: Korean hub (square tiles + collapsible list)
+        continue-on-error: true
+        run: python3 build/patch_ko_hub.py _site
       - name: New pages (sitemap + hub links)
         run: python3 build/patch_newpages.py _site
       - name: Add hreflang cluster for country hubs
