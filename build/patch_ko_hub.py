@@ -20,6 +20,8 @@ html body .hl-home .hlh-tiles .hlh-tile img{width:42px!important;height:42px!imp
 html body .hl-home .hlh-tiles .hlh-tile b{font-size:13px!important;line-height:1.25!important;text-align:center!important;word-break:keep-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:100%;align-self:center!important}
 html body .hl-home .hlh-tiles .hlh-tile span{font-size:11.5px!important;align-self:center!important}
 @media (max-width:420px){html body .hl-home .hlh-tiles{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+/* 최근 쓴 계산기 상자 숨김 */
+#hlhRecentBox{display:none!important}
 /* 2) 전체 목록: 접고 펴는 목차 */
 .ci-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:22px 0 10px}
 .ci-tools input{flex:1 1 220px;min-width:0;font:inherit;font-size:15px;padding:11px 14px;border-radius:12px;border:1px solid #E3D7B8;background:#FFFDF6}
