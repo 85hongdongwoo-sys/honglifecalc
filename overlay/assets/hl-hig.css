@@ -1,0 +1,70 @@
+/* 홍라이프 계산기 — Apple Human Interface Guidelines 느낌으로 안쪽 페이지 정리 (풀밭 배경은 그대로)
+   원칙: 시스템 서체·명확한 글자 위계, 넉넉한 44px 터치 영역, 회색 채움 입력칸, 세그먼트 컨트롤, 묶음 목록(inset grouped), 장식 줄이기 */
+:root{--hig-tint:#2F6B2A;--hig-tint-d:#24561F;--hig-label:#1D1D1F;--hig-sec:#6E6E73;--hig-ter:#8E8E93;--hig-fill:#F2F2F7;--hig-fill2:#E9E9EE;--hig-sep:rgba(60,60,67,.14);--hig-card:#FFFFFF;--hig-r:16px;--hig-r-s:12px;
+  --hig-font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro KR","Apple SD Gothic Neo","Pretendard Variable",Pretendard,"Segoe UI","Malgun Gothic",system-ui,sans-serif;
+  --hig-num:-apple-system,BlinkMacSystemFont,"SF Pro Display","Pretendard Variable",Pretendard,system-ui,sans-serif}
+html body{font-family:var(--hig-font)!important;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+
+/* 카드: 흰 바탕, 큰 둥근 모서리, 아주 옅은 그림자, 테두리 없음 */
+html body main .card,html body .wrap>.card,html body .wrap>form.card,html body .wrap>section.card{background:var(--hig-card)!important;border:0!important;border-radius:var(--hig-r)!important;box-shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.06)!important;padding:20px!important}
+html body .card h2{font-family:var(--hig-font)!important;font-size:22px!important;font-weight:700!important;letter-spacing:-.02em!important;color:var(--hig-label)!important;margin:0 0 14px!important;line-height:1.25!important}
+html body .card h3{font-family:var(--hig-font)!important;font-size:17px!important;font-weight:600!important;color:var(--hig-label)!important;letter-spacing:-.01em}
+html body .card p,html body .card li{font-size:16px;line-height:1.6;color:#3A3A3C}
+html body .card small,html body .f small,html body .card .note{font-size:13px!important;line-height:1.5!important;color:var(--hig-sec)!important}
+
+/* 제목 영역 (풀밭 위) — 큰 제목 */
+html body header.top h1,html body header.hero h1{font-family:var(--hig-font)!important;font-weight:800!important;letter-spacing:-.03em!important;line-height:1.15!important}
+html body header.top p,html body header.hero p{font-size:15.5px!important;line-height:1.55!important}
+
+/* 입력 라벨 */
+html body .f>label,html body .f>.lb,html body label.f>span{display:block;font-size:15px!important;font-weight:600!important;color:var(--hig-label)!important;margin:0 0 7px!important;letter-spacing:-.01em}
+html body .card .f,html body .card label.f{margin-bottom:18px!important}
+
+/* 입력칸·선택칸: 회색 채움, 테두리 없음, 44px 이상 */
+html body .card input[type=text],html body .card input[type=number],html body .card input[type=search],html body .card input[type=date],html body .card input[type=email],html body .card input[type=tel],html body .card input:not([type]),html body .card select,html body .card textarea{
+  font-family:var(--hig-font)!important;font-size:17px!important;font-weight:500;color:var(--hig-label)!important;background:var(--hig-fill)!important;border:0!important;border-radius:var(--hig-r-s)!important;
+  min-height:48px!important;padding:12px 14px!important;box-shadow:none!important;box-sizing:border-box;width:100%;transition:box-shadow .15s,background .15s;-webkit-appearance:none;appearance:none}
+html body .card select{padding-right:38px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238E8E93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 14px center!important}
+html body .card input:focus,html body .card select:focus,html body .card textarea:focus{outline:none!important;background:#fff!important;box-shadow:0 0 0 3px rgba(47,107,42,.35)!important}
+html body .card .unit{position:relative}
+html body .card .unit em{font-style:normal!important;color:var(--hig-sec)!important;font-size:15px!important}
+
+/* 빠른 값 칩: 캡슐 */
+html body .card .chips{gap:8px!important;margin-top:10px!important}
+html body .card .chips button{font-family:var(--hig-font)!important;font-size:14px!important;font-weight:600!important;min-height:36px;padding:7px 14px!important;border-radius:999px!important;border:0!important;background:var(--hig-fill)!important;color:var(--hig-label)!important;box-shadow:none!important}
+html body .card .chips button:hover{background:var(--hig-fill2)!important}
+
+/* 세그먼트 컨트롤 (iOS 방식) */
+html body .card .seg{display:flex!important;gap:2px!important;padding:2px!important;background:var(--hig-fill2)!important;border-radius:10px!important;border:0!important}
+html body .card .seg label{flex:1;margin:0!important}
+html body .card .seg label span{display:flex!important;align-items:center;justify-content:center;min-height:36px;border-radius:8px!important;border:0!important;background:transparent!important;color:var(--hig-label)!important;font-size:14.5px!important;font-weight:600!important;box-shadow:none!important}
+html body .card .seg input:checked+span{background:#fff!important;box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.04)!important}
+
+/* 주 버튼: 가득 찬 둥근 버튼, 50px */
+html body .card .btn,html body .card .btns button[type=submit],html body .card button.primary{font-family:var(--hig-font)!important;font-size:17px!important;font-weight:600!important;min-height:50px!important;padding:13px 22px!important;border-radius:var(--hig-r-s)!important;border:0!important;background:var(--hig-tint)!important;color:#fff!important;box-shadow:none!important;width:100%;display:flex!important;align-items:center;justify-content:center;text-align:center!important}
+html body .card .btn:hover{background:var(--hig-tint-d)!important}
+html body .card .btn:active{transform:scale(.985)}
+
+/* 접는 상세 설정 */
+html body .card details.opt{border-top:.5px solid var(--hig-sep)!important;margin-top:6px}
+html body .card details.opt summary{font-size:15px!important;font-weight:600!important;color:var(--hig-tint)!important;min-height:44px;display:flex;align-items:center}
+
+/* 결과: 큰 숫자는 시스템 서체 + 고정폭 숫자 */
+html body .big b,html body .hero-res .big,html body #out .big b{font-family:var(--hig-num)!important;font-variant-numeric:tabular-nums;letter-spacing:-.02em!important;font-weight:800!important}
+html body .card .big{border-radius:var(--hig-r)!important}
+html body .card .hero-res{border-radius:var(--hig-r)!important}
+
+/* 묶음 목록: 줄 사이 얇은 구분선, 라벨 왼쪽·값 오른쪽 */
+html body .card .kv>div{font-family:var(--hig-font)!important;font-size:15.5px!important;padding:12px 0!important;border-bottom:.5px solid var(--hig-sep)!important}
+html body .card .kv>div:nth-child(even){font-family:var(--hig-num)!important;font-variant-numeric:tabular-nums;font-weight:600!important;color:var(--hig-label)!important}
+html body .card table td,html body .card table th{font-family:var(--hig-font)!important;border-color:var(--hig-sep)!important}
+html body .card table td:last-child{font-variant-numeric:tabular-nums}
+
+/* 링크 카드·바로가기: 장식 줄이기 */
+html body a.hl-dlink{border-left:0!important;border-radius:var(--hig-r-s)!important;background:rgba(18,48,92,.92)!important;font-family:var(--hig-font)!important;font-weight:600!important;min-height:50px;display:flex!important;align-items:center}
+html body .card a{text-underline-offset:2px}
+
+/* 터치 영역 */
+html body .card button,html body .card summary{min-height:44px}
+@media (max-width:640px){html body main .card,html body .wrap>.card,html body .wrap>form.card,html body .wrap>section.card{padding:18px 16px!important;border-radius:14px!important}html body .card h2{font-size:20px!important}}
+@media (prefers-reduced-motion:reduce){html body .card .btn:active{transform:none}}
