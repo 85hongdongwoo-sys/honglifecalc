@@ -1,0 +1,26 @@
+name: FX reference rates (ECB)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 15 * * 1-5'   # ECB publishes ~16:00 CET → 00:23 KST next day
+permissions:
+  contents: write
+  actions: write
+jobs:
+  fx:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: build}
+      - run: python3 build/fx/fetch_fx.py out
+      - name: Publish to data-fx branch and redeploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd out
+          git init -q -b data-fx
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "FX $(date +%F)"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data-fx
+          gh workflow run pages.yml --ref main -R "$GITHUB_REPOSITORY" || true

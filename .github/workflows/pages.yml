@@ -29,6 +29,10 @@ jobs:
         continue-on-error: true
         run: |
           git fetch -q --depth 1 origin data-ev && git archive FETCH_HEAD ev | tar -x -C _site && echo "ev: $(find _site/ev -type f | wc -l)"
+      - name: FX data + currency converter pages (data-fx branch)
+        continue-on-error: true
+        run: |
+          git fetch -q --depth 1 origin data-fx && git archive FETCH_HEAD fx | tar -x -C _site && python3 build/fx/gen_fx_pages.py _site
       - name: New pages (sitemap + hub links)
         run: python3 build/patch_newpages.py _site
       - name: Add hreflang cluster for country hubs
