@@ -48,7 +48,7 @@
       j.g.forEach(function (c) { cells[c[0] + ',' + c[1]] = c[2]; });
       var BC = ['#2B8A3E', '#94D82D', '#F08C00', '#E03131'], BO = [.35, .5, .65, .75];
       (j.r || []).forEach(function (r) {
-        L.rectangle([[r[0] - .5, r[1] - .5], [r[0] + .5, r[2] + .5]], { stroke: false, fillColor: BC[r[3]], fillOpacity: BO[r[3]], interactive: false }).addTo(map);
+        L.rectangle([[r[0] - .52, r[1] - .52], [r[0] + .52, r[2] + .52]], { stroke: false, fillColor: BC[r[3]], fillOpacity: BO[r[3]], interactive: false }).addTo(map);
       });
       check();
     });
