@@ -47,6 +47,8 @@ jobs:
         run: python3 build/patch_ko_hub.py _site
       - name: New pages (sitemap + hub links)
         run: python3 build/patch_newpages.py _site
+      - name: Deepen top pages (TOC, tables, examples, FAQ)
+        run: python3 build/patch_deep.py _site
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
       - name: Noindex pages with no Google impressions (build/noindex_list.txt)
