@@ -1,0 +1,14 @@
+[
+ {
+  "url": "/de/ladesaeulen-karte.html",
+  "hub": "/de/index.html",
+  "after": "/de/spritkosten-rechner.html",
+  "label": "Ladesäulen-Karte & Ladekosten-Rechner"
+ },
+ {
+  "url": "/fr/carte-bornes-recharge.html",
+  "hub": "/fr/index.html",
+  "after": "/fr/calcul-cout-carburant.html",
+  "label": "Carte des bornes de recharge & coût de recharge"
+ }
+]

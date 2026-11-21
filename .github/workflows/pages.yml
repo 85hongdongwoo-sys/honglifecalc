@@ -29,6 +29,8 @@ jobs:
         continue-on-error: true
         run: |
           git fetch -q --depth 1 origin data-ev && git archive FETCH_HEAD ev | tar -x -C _site && echo "ev: $(find _site/ev -type f | wc -l)"
+      - name: New pages (sitemap + hub links)
+        run: python3 build/patch_newpages.py _site
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
       - name: Noindex pages with no Google impressions (build/noindex_list.txt)
