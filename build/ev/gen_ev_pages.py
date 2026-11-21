@@ -91,7 +91,7 @@ def build(cc, c):
             '<div class="ev-legend"><span><i style="background:#1971C2"></i>&lt; 50 kW</span><span><i style="background:#D9480F"></i>50–149 kW</span><span><i style="background:#7C3AED"></i>≥ 150 kW</span></div>'
             '<p class="ev-stat" id="ev-stat">…</p><div id="ev-list"></div></section>\n'
             f'<section class="app" id="ev-calc"><form class="card" onsubmit="return false"><h2>{esc(c["calcH"])}</h2>{fields}<p class="ev-note">{esc(c["priceNote"])}</p></form>'
-            '<section class="card" id="ev-out" aria-live="polite"></section></section>\n'
+            '<section class="card" id="ev-out" role="status"></section></section>\n'
             '<article class="card help"><h2>FAQ</h2>' + ''.join(f'<h3>{esc(q)}</h3><p>{esc(a)}</p>' for q, a in c['faq']) +
             f'<p class="note">{esc(c["src_line"])}</p></article>\n</main>\n')
     h = re.sub(r'(?s)<header class="hero">.*?(?=<footer>)', lambda m: body, h, count=1)
