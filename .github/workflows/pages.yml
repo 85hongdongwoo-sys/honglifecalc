@@ -27,6 +27,8 @@ jobs:
           if [ -d overlay ]; then cp -r overlay/. _site/; echo "overlay: $(find overlay -type f | wc -l)"; fi
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
+      - name: Noindex pages with no Google impressions (build/noindex_list.txt)
+        run: python3 build/patch_noindex.py _site
       - name: Trim sitemaps (Korean pages with no Google impressions)
         run: python3 build/patch_sitemap.py _site
       - name: Spread related links evenly (nearest siblings ring)
