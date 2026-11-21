@@ -25,6 +25,10 @@ jobs:
           if ls ogpkg/og.tar.gz.part* >/dev/null 2>&1; then cat ogpkg/og.tar.gz.part* | tar -xzf - -C _site; fi
           echo "files: $(find _site -type f | wc -l)"
           if [ -d overlay ]; then cp -r overlay/. _site/; echo "overlay: $(find overlay -type f | wc -l)"; fi
+      - name: EV charger data (data-ev branch)
+        continue-on-error: true
+        run: |
+          git fetch -q --depth 1 origin data-ev && git archive FETCH_HEAD ev | tar -x -C _site && echo "ev: $(find _site/ev -type f | wc -l)"
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
       - name: Noindex pages with no Google impressions (build/noindex_list.txt)
