@@ -132,6 +132,7 @@ PAGES = {
         "before": '<section class="card help" id="brackets">',
         "after_body": '<article class="card help" id="how">',
         "faq_anchor": "<h3>Sources</h3>",
+        "views": ("#out", "en"),
     },
 }
 
@@ -169,6 +170,9 @@ def patch(path, cfg):
                              "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in cfg["faq"]]
         t = t[:m.start(2)] + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + t[m.end(2):]
     t = t.replace("</head>", CSS + "</head>", 1)
+    v = cfg.get("views")
+    if v:
+        t = t.replace("</body>", f'<script src="/assets/hl-views.js?v=1" defer data-target="{v[0]}" data-lang="{v[1]}"></script></body>', 1)
     path.write_text(t, encoding="utf-8")
     return True
 

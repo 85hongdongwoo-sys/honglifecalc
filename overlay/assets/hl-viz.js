@@ -257,7 +257,7 @@
     var out = [], sp = bg.querySelector('span,.k'), bb = bg.querySelector('b,strong');
     if (bb && sp) out.push({ l: sp.textContent.trim().replace(/[:=]$/, ''), t: bb.textContent.trim() });
     var em = bg.querySelector('em,.sub'); if (em) em.textContent.split(/\s[·•|]\s|;\s/).forEach(function (part) {
-      var m = part.trim().match(/^(.*?[^\d\s.,−\-])\s*[:=]?\s*([−\-]?[^\d\s]{0,4}\s?\d[\d.,\s ]*\s?[^\d\s.,]{0,4})$/); if (m && m[1].length < 40) out.push({ l: m[1].trim(), t: m[2].trim() }); });
+      var m = part.trim().match(/^(.*[^\d\s.,−\-])\s*[:=]?\s*([−\-]?[^\d\s]{0,4}\s?\d[\d.,\s ]*\s?[^\d\s.,]{0,4})$/); if (m && m[1].length < 40) out.push({ l: m[1].trim(), t: m[2].trim() }); });
     return out;
   }
   function listRows(host) {
