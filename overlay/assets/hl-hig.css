@@ -23,8 +23,8 @@ html body .card .f,html body .card label.f{margin-bottom:18px!important}
 /* 입력칸·선택칸: 회색 채움, 테두리 없음, 44px 이상 */
 html body .card input[type=text],html body .card input[type=number],html body .card input[type=search],html body .card input[type=date],html body .card input[type=email],html body .card input[type=tel],html body .card input:not([type]),html body .card select,html body .card textarea{
   font-family:var(--hig-font)!important;font-size:17px!important;font-weight:500;color:var(--hig-label)!important;background:var(--hig-fill)!important;border:0!important;border-radius:var(--hig-r-s)!important;
-  min-height:48px!important;padding:12px 14px!important;box-shadow:none!important;box-sizing:border-box;width:100%;transition:box-shadow .15s,background .15s;-webkit-appearance:none;appearance:none}
-html body .card select{padding-right:38px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238E8E93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 14px center!important}
+  min-height:48px!important;padding-top:12px!important;padding-bottom:12px!important;box-shadow:none!important;box-sizing:border-box;width:100%;transition:box-shadow .15s,background .15s;-webkit-appearance:none;appearance:none}
+html body .card select{font-size:16px!important;padding-left:12px;padding-right:34px!important;text-overflow:ellipsis;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238E8E93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 14px center!important}
 html body .card input:focus,html body .card select:focus,html body .card textarea:focus{outline:none!important;background:#fff!important;box-shadow:0 0 0 3px rgba(47,107,42,.35)!important}
 html body .card .unit{position:relative}
 html body .card .unit em{font-style:normal!important;color:var(--hig-sec)!important;font-size:15px!important}
@@ -68,3 +68,4 @@ html body .card a{text-underline-offset:2px}
 html body .card button,html body .card summary{min-height:44px}
 @media (max-width:640px){html body main .card,html body .wrap>.card,html body .wrap>form.card,html body .wrap>section.card{padding:18px 16px!important;border-radius:14px!important}html body .card h2{font-size:20px!important}}
 @media (prefers-reduced-motion:reduce){html body .card .btn:active{transform:none}}
+
