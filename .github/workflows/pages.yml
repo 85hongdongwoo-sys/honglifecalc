@@ -33,6 +33,12 @@ jobs:
         continue-on-error: true
         run: |
           git fetch -q --depth 1 origin data-fx && git archive FETCH_HEAD fx | tar -x -C _site && python3 build/fx/gen_fx_pages.py _site
+      - name: Quake & aurora pages (data-geo branch)
+        continue-on-error: true
+        run: |
+          git fetch -q --depth 1 origin data-geo && git archive FETCH_HEAD geo | tar -x -C _site
+          python3 build/geo/gen_quake.py _site || true
+          [ -f build/geo/gen_aurora.py ] && python3 build/geo/gen_aurora.py _site || true
       - name: New pages (sitemap + hub links)
         run: python3 build/patch_newpages.py _site
       - name: Add hreflang cluster for country hubs

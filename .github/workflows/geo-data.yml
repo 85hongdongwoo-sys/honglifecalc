@@ -1,0 +1,26 @@
+name: Geo data (USGS quakes, NOAA aurora)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '41 */3 * * *'
+permissions:
+  contents: write
+  actions: write
+jobs:
+  geo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: build}
+      - run: python3 build/geo/fetch_geo.py out
+      - name: Publish to data-geo branch and redeploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd out
+          git init -q -b data-geo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "geo $(date -u +%FT%H)"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data-geo
+          gh workflow run pages.yml --ref main -R "$GITHUB_REPOSITORY" || true
