@@ -120,6 +120,69 @@ TAX_TOC = [("brackets", "2027 vs 2026 brackets & standard deduction"),
            ("how", "How the brackets work & OBBBA changes"),
            ("faq", "FAQ & sources")]
 
+
+SLOPE_FAQ = [
+    ("How do you find the slope from two points?",
+     "Subtract the y-values and divide by the difference of the x-values in the same order: m = (y2 - y1) / (x2 - x1). "
+     "For (1, 2) and (5, 10): (10 - 2) / (5 - 1) = 8 / 4 = 2."),
+    ("What is a 1:2 slope?",
+     "Read as rise:run, a 1:2 slope rises 1 unit for every 2 units across: slope 0.5, a 50% grade, about 26.57 degrees. "
+     "In earthwork and embankment drawings the same notation is often written run:rise (horizontal:vertical), "
+     "so a 2:1 side slope there also means 26.57 degrees. Check which order the drawing uses."),
+    ("What is a 3:12 roof pitch in degrees?",
+     "A 3:12 (3-in-12) pitch rises 3 inches per 12 inches of run: slope 0.25, a 25% grade, about 14.0 degrees. "
+     "A 6:12 pitch is about 26.6 degrees and 12:12 is 45 degrees."),
+    ("What is a 5% slope in degrees?",
+     "About 2.86 degrees. Convert a grade to an angle with angle = arctan(grade / 100). A 10% grade is 5.71 degrees and a 100% grade is 45 degrees."),
+    ("What is the maximum slope for a wheelchair ramp?",
+     "Under the 2010 ADA Standards (section 405.2) a ramp's running slope may not be steeper than 1:12, "
+     "which is 8.33% or about 4.76 degrees: 1 inch of rise needs at least 12 inches of run. Local codes can be stricter."),
+    ("What is an undefined slope?",
+     "A vertical line has an undefined slope because the run (x2 - x1) is zero and you cannot divide by zero. "
+     "A horizontal line is different: its slope is 0."),
+    ("Is slope the same as gradient or grade?",
+     "Yes, they describe the same ratio of rise to run. Gradient is common in math and British English; "
+     "grade usually means the slope written as a percent (slope x 100), as on road signs."),
+]
+
+def _slope_tables():
+    ratio = [("1:1","1","100%","45°"),("1:2","0.5","50%","26.57°"),("1:3","0.333","33.33%","18.43°"),
+             ("1:4","0.25","25%","14.04°"),("1:8","0.125","12.5%","7.13°"),("1:10","0.1","10%","5.71°"),
+             ("1:12","0.0833","8.33%","4.76°"),("1:20","0.05","5%","2.86°"),("1:48","0.0208","2.08%","1.19°"),
+             ("1:100","0.01","1%","0.57°"),("2:1","2","200%","63.43°"),("3:1","3","300%","71.57°")]
+    pitch = [(1,"8.3%","4.8°"),(2,"16.7%","9.5°"),(3,"25%","14.0°"),(4,"33.3%","18.4°"),(5,"41.7%","22.6°"),
+             (6,"50%","26.6°"),(7,"58.3%","30.3°"),(8,"66.7%","33.7°"),(9,"75%","36.9°"),(10,"83.3%","39.8°"),(12,"100%","45°")]
+    grade = [("1%","0.57°"),("2%","1.15°"),("5%","2.86°"),("8.33%","4.76°"),("10%","5.71°"),("15%","8.53°"),
+             ("25%","14.04°"),("50%","26.57°"),("100%","45°")]
+    h = ('<section class="card help" id="conv"><h2>Slope conversion table: ratio, percent and degrees</h2>'
+         '<p>Ratios are written rise:run. Slope = rise ÷ run, grade = slope × 100, angle = arctan(slope).</p>'
+         '<div class="tblwrap"><table class="tbl"><thead><tr><th>Ratio (rise:run)</th><th>Slope</th><th>Grade</th><th>Angle</th></tr></thead><tbody>'
+         + "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>" for a,b,c,d in ratio)
+         + '</tbody></table></div>'
+         '<h3 id="grade">Percent grade to degrees</h3><div class="tblwrap"><table class="tbl"><thead><tr><th>Grade</th><th>Angle</th></tr></thead><tbody>'
+         + "".join(f"<tr><td>{a}</td><td>{b}</td></tr>" for a,b in grade) + '</tbody></table></div></section>'
+         '<section class="card help" id="roof"><h2>Roof pitch to degrees and percent</h2>'
+         '<p>Roof pitch is rise in inches per 12 inches of run, so a pitch of x:12 is a slope of x ÷ 12.</p>'
+         '<div class="tblwrap"><table class="tbl"><thead><tr><th>Pitch</th><th>Grade</th><th>Angle</th></tr></thead><tbody>'
+         + "".join(f"<tr><td>{p}:12</td><td>{g}</td><td>{d}</td></tr>" for p,g,d in pitch) + '</tbody></table></div></section>')
+    return h
+
+SLOPE_BODY = _slope_tables() + """
+<section class="card help" id="uses"><h2>Slope in real life: ramps, drains, roads</h2>
+<ul>
+<li><b>Wheelchair ramps</b> — the 2010 ADA Standards (405.2) cap the running slope at <b>1:12</b> (8.33%, 4.76°). A 24-inch rise needs at least 24 ft of ramp run.</li>
+<li><b>Drain pipes</b> — small horizontal drains are commonly laid at <b>1/4 inch per foot</b>, a slope of 1:48 (about 2.08%, 1.19°). Check your local plumbing code for the pipe size.</li>
+<li><b>Roads</b> — road signs show grade in percent. A 6% grade drops 6 ft for every 100 ft of road, about 3.4°.</li>
+<li><b>Graphs and data</b> — slope is the rate of change: dollars per month, km per hour, degrees per day.</li>
+</ul></section>
+<section class="card help" id="examples"><h2>More worked examples</h2>
+<div class="hl-ex"><p><b>Negative slope: (−2, 7) and (4, −5)</b></p><p>m = (−5 − 7) ÷ (4 − (−2)) = −12 ÷ 6 = <b>−2</b>. b = 7 − (−2)(−2) = 3, so y = −2x + 3. The line falls 2 units for each unit to the right.</p></div>
+<div class="hl-ex"><p><b>Fraction slope: (0, 1) and (6, 4)</b></p><p>m = 3 ÷ 6 = <b>1/2 = 0.5</b>, a 1:2 slope, 50% grade, 26.57°. Equation y = 0.5x + 1.</p></div>
+<div class="hl-ex"><p><b>Horizontal line: (2, 5) and (9, 5)</b></p><p>Rise = 0, so m = 0 ÷ 7 = <b>0</b>. Equation y = 5.</p></div>
+<div class="hl-ex"><p><b>Ramp check: 30-inch rise over 30 ft</b></p><p>30 ft = 360 in, so slope = 30 ÷ 360 = 1:12 = 8.33% — exactly at the ADA limit.</p></div>
+</section>
+"""
+
 PAGES = {
     "us/2027-tax-brackets.html": {
         "byline": ("Hong Life Calculators", "November 10, 2026",
@@ -133,6 +196,19 @@ PAGES = {
         "after_body": '<article class="card help" id="how">',
         "faq_anchor": "<h3>Sources</h3>",
         "views": ("#out", "en"),
+    },
+    "en/math/slope-calculator.html": {
+        "byline": ("Hong Life Calculators", "November 22, 2026",
+                   "OpenStax College Algebra 2e §4.1; 2010 ADA Standards §405.2"),
+        "toc": [("hl-explain", "How slope is calculated"), ("conv", "Ratio, percent & degrees table"),
+                ("roof", "Roof pitch table"), ("uses", "Ramps, drains & roads"),
+                ("examples", "More worked examples"), ("faq", "FAQ")],
+        "body": SLOPE_BODY, "faq": SLOPE_FAQ, "faq_fmt": "h4",
+        "ids": [("<h3>Frequently asked questions</h3>", '<h3 id="faq">Frequently asked questions</h3>')],
+        "before": '<section class="app">',
+        "after_body": '<article class="card help"><p class="note">Checked',
+        "faq_anchor": '<p class="src">Sources:',
+        "views": ("#conv,#roof", "en", "last"),
     },
 }
 
@@ -160,19 +236,26 @@ def patch(path, cfg):
     app = '<section class="app">'
     t = t.replace(app, top + app, 1) if app in t else t.replace(cfg["before"], top + cfg["before"], 1)
     t = t.replace(cfg["after_body"], cfg["body"] + cfg["after_body"], 1)
-    faq_html = "".join(f"<h3>{esc(q)}</h3><p>{esc(a)}</p>" for q, a in cfg["faq"])
+    if cfg.get("faq_fmt") == "h4":
+        faq_html = "".join(f'<h4 class="q">{esc(q)}</h4><p class="a">{esc(a)}</p>' for q, a in cfg["faq"])
+    else:
+        faq_html = "".join(f"<h3>{esc(q)}</h3><p>{esc(a)}</p>" for q, a in cfg["faq"])
     t = t.replace(cfg["faq_anchor"], faq_html + cfg["faq_anchor"], 1)
     # extend FAQPage JSON-LD
-    m = re.search(r'(<script type="application/ld\+json">)(\{"@context":"https://schema.org","@type":"FAQPage".*?)(</script>)', t, re.S)
-    if m:
-        d = json.loads(m.group(2))
-        d["mainEntity"] += [{"@type": "Question", "name": q,
-                             "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in cfg["faq"]]
-        t = t[:m.start(2)] + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + t[m.end(2):]
+    for m in re.finditer(r'(<script type="application/ld\+json">)(.*?)(</script>)', t, re.S):
+        try:
+            d = json.loads(m.group(2))
+        except Exception:
+            continue
+        if isinstance(d, dict) and d.get("@type") == "FAQPage":
+            d["mainEntity"] += [{"@type": "Question", "name": q,
+                                 "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in cfg["faq"]]
+            t = t[:m.start(2)] + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + t[m.end(2):]
+            break
     t = t.replace("</head>", CSS + "</head>", 1)
     v = cfg.get("views")
     if v:
-        t = t.replace("</body>", f'<script src="/assets/hl-views.js?v=1" defer data-target="{v[0]}" data-lang="{v[1]}"></script></body>', 1)
+        t = t.replace("</body>", f'<script src="/assets/hl-views.js?v=2" defer data-target="{v[0]}" data-lang="{v[1]}"{' data-series="last"' if len(v) > 2 and v[2] == 'last' else ''}></script></body>', 1)
     path.write_text(t, encoding="utf-8")
     return True
 

@@ -12,6 +12,7 @@
     de: ['Tabelle', 'Balkendiagramm'], fr: ['Tableau', 'Graphique à barres'], ja: ['表', '棒グラフ'],
     pt: ['Tabela', 'Gráfico de barras'], it: ['Tabella', 'Grafico a barre']
   }[LANG] || ['Table', 'Bar chart'];
+  var LAST = me && me.getAttribute('data-series') === 'last';
   var KEY = 'hlView';
   var COLORS = ['#a1a1a6', '#1f7a3a', '#0a84ff', '#ff9f0a'];
 
@@ -41,7 +42,7 @@
     }
     if (!num.length) return null;
     // one money column = one series; for "Income | Tax" style tables use the last money column
-    var series = num.length > 1 && heads.length ? num : [num[num.length - 1]];
+    var series = !LAST && num.length > 1 && heads.length ? num : [num[num.length - 1]];
     var other = [];
     for (c = 1; c < ncol; c++) if (series.indexOf(c) < 0) other.push(c);
     var data = rows.map(function (r) {
@@ -63,7 +64,7 @@
       d.vals.forEach(function (x, k) {
         var w = x.v ? Math.max(1.5, x.v / max * 100) : 0;
         var col = series.length > 1 ? COLORS[k % 4] : COLORS[1];
-        h += '<div class="hlsw-line"><span class="hlsw-trk"><span class="hlsw-bar" style="width:' + w.toFixed(1) + '%;background:' + col + '"></span></span><em>' + (x.t || '—') + '</em></div>';
+        h += '<div class="hlsw-line"><span class="hlsw-trk"><span class="hlsw-bar" style="width:' + w.toFixed(1) + '%;background:' + col + '"></span></span><span class="hlsw-val">' + (x.t || '—') + '</span></div>';
       });
       h += '</div>';
     });
@@ -72,10 +73,10 @@
 
   var busy = false;
   function apply() {
-    var root = document.querySelector(SEL);
-    if (!root) return;
+    var roots = document.querySelectorAll(SEL);
+    if (!roots.length) return;
     busy = true;
-    Array.prototype.forEach.call(root.querySelectorAll('table'), function (t) {
+    Array.prototype.forEach.call(roots, function (root) { Array.prototype.forEach.call(root.querySelectorAll('table'), function (t) {
       if (t.getAttribute('data-hlsw')) return;
       t.setAttribute('data-hlsw', '1');
       var chart = build(t);
@@ -85,8 +86,10 @@
       box.innerHTML = '<div class="hlsw-sw" role="group">' +
         '<button type="button" data-v="table">' + TXT[0] + '</button>' +
         '<button type="button" data-v="bars">' + TXT[1] + '</button></div><div class="hlsw-chart"></div>';
-      t.parentNode.insertBefore(box, t);
-      box.appendChild(t);
+      var wrap = t.parentNode && t.parentNode.classList && t.parentNode.classList.contains('tblwrap') ? t.parentNode : t;
+      wrap.parentNode.insertBefore(box, wrap);
+      box.appendChild(wrap);
+      box._tab = wrap;
       box.querySelector('.hlsw-chart').innerHTML = chart;
       show(box, pref());
       box.querySelector('.hlsw-sw').addEventListener('click', function (e) {
@@ -95,12 +98,12 @@
         setPref(v);
         Array.prototype.forEach.call(document.querySelectorAll('.hlsw'), function (b) { show(b, v); });
       });
-    });
+    }); });
     busy = false;
   }
   function show(box, v) {
-    box.querySelector('table').hidden = v === 'bars';
-    box.querySelector('.hlsw-chart').hidden = v !== 'bars';
+    (box._tab || box.querySelector('table')).style.display = v === 'bars' ? 'none' : '';
+    box.querySelector('.hlsw-chart').style.display = v === 'bars' ? '' : 'none';
     Array.prototype.forEach.call(box.querySelectorAll('.hlsw-sw button'), function (b) {
       b.setAttribute('aria-pressed', b.getAttribute('data-v') === v ? 'true' : 'false');
     });
@@ -108,32 +111,32 @@
 
   var css = document.createElement('style');
   css.textContent =
-    '.hlsw{margin:10px 0}' +
+    '.hlsw{margin:10px 0;width:100%;max-width:100%;min-width:0}' +
     '.hlsw-sw{display:inline-flex;background:#ececf0;border-radius:9px;padding:2px;margin:0 0 8px}' +
     '.hlsw-sw button{border:0;background:transparent;font:inherit;font-size:13px;padding:6px 14px;border-radius:7px;color:#3a3a3c;cursor:pointer;min-height:32px}' +
     '.hlsw-sw button[aria-pressed=true]{background:#fff;color:#1d1d1f;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12)}' +
-    '.hlsw-bars{display:grid;gap:12px;padding:4px 0}' +
+    '.hlsw-bars{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding:4px 0;width:100%}.hlsw-row{min-width:0}' +
     '.hlsw-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:#6e6e73}' +
     '.hlsw-leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}' +
     '.hlsw-lab{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;font-size:14px;margin-bottom:4px}' +
     '.hlsw-lab small{color:#6e6e73;font-size:12px}' +
-    '.hlsw-line{display:flex;align-items:center;gap:8px;margin:3px 0}' +
+    '.hlsw-line{display:flex!important;flex-wrap:nowrap;align-items:center;gap:8px;margin:3px 0}' +
     '.hlsw-trk{flex:1;min-width:0;height:14px;background:#f2f2f5;border-radius:7px;overflow:hidden}' +
     '.hlsw-bar{display:block;height:100%;border-radius:7px;transition:width .3s}' +
-    '.hlsw-line em{font-style:normal;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:64px;text-align:right}' +
+    '.hlsw-line .hlsw-val{display:inline-block!important;flex:none;margin:0!important;font-style:normal;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:64px;text-align:right}' +
     '@media (prefers-reduced-motion:reduce){.hlsw-bar{transition:none}}';
   document.head.appendChild(css);
 
   function start() {
     apply();
-    var root = document.querySelector(SEL);
-    if (!root || !window.MutationObserver) return;
+    if (!window.MutationObserver) return;
     var timer;
-    new MutationObserver(function () {
+    var mo = new MutationObserver(function () {
       if (busy) return;
       clearTimeout(timer);
       timer = setTimeout(apply, 30);
-    }).observe(root, { childList: true, subtree: true });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(SEL), function (root) { mo.observe(root, { childList: true, subtree: true }); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
