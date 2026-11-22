@@ -15,9 +15,9 @@ ICON = {'정부 지원금': 'benefit', '대출·투자·은퇴': 'money', '사�
 CSS = '''<style id="hl-ko-hub2">
 /* 1) 분야 타일: 정사각형 앱 아이콘 */
 html body .hl-home .hlh-tiles{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(92px,1fr))!important;gap:8px!important}
-html body .hl-home .hlh-tiles .hlh-tile{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;aspect-ratio:1/1;min-height:0!important;padding:8px 4px!important;text-align:center!important;box-sizing:border-box}
+html body .hl-home .hlh-tiles .hlh-tile{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;min-height:104px!important;padding:10px 4px!important;text-align:center!important;box-sizing:border-box}
 html body .hl-home .hlh-tiles .hlh-tile img{width:42px!important;height:42px!important;margin:0 0 2px!important;grid-row:auto!important}
-html body .hl-home .hlh-tiles .hlh-tile b{font-size:13px!important;line-height:1.25!important;text-align:center!important;word-break:keep-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:100%;align-self:center!important}
+html body .hl-home .hlh-tiles .hlh-tile b{font-size:13px!important;line-height:1.45!important;padding:1px 0 2px;text-align:center!important;word-break:keep-all;overflow-wrap:anywhere;display:block;overflow:visible;max-width:100%;align-self:center!important}
 html body .hl-home .hlh-tiles .hlh-tile span{font-size:11.5px!important;align-self:center!important}
 @media (max-width:420px){html body .hl-home .hlh-tiles{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 /* 최근 쓴 계산기 상자 숨김 */
