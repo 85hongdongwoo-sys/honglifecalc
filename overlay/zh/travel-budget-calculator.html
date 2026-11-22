@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<!--hl:tr src=/en/travel-budget-calculator.html-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N2FHDE6TGQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N2FHDE6TGQ');</script>
+<!--hl:early--><script>!function(){if(/[?&]embed=1(&|$)/.test(location.search)){document.documentElement.classList.add("hl-embed");try{(window.adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=1}catch(e){}}}()</script><!--/hl:early--><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3029906673973335" crossorigin="anonymous"></script>
+
+<meta charset="utf-8"><!--hl:pre--><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin><!--/hl:pre--><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="only light">
+<title>旅游预算计算器：按目的地和旅行方式估算旅费 | Hong Life</title>
+<meta name="description" content="免费旅游预算计算器：从东京、首尔、曼谷、巴黎、伦敦、纽约等13个城市中选择目的地，再选旅行风格，即可自动填入机票、酒店、餐饮和交通费用，帮你估算出游花费。">
+<link rel="canonical" href="https://honglifecalc.com/zh/travel-budget-calculator.html"><meta property="og:type" content="website"><meta property="og:locale" content="zh_Hans"><meta property="og:title" content="旅行预算计算器：按目的地和旅行风格估算旅费"><meta property="og:description" content="免费旅游预算计算器：从东京、首尔、曼谷、巴黎、伦敦、纽约等13个城市中选择目的地，再选旅行风格，即可自动填入机票、酒店、餐饮和交通费用，帮你估算出游花费。"><meta property="og:url" content="https://honglifecalc.com/zh/travel-budget-calculator.html">
+<meta name="theme-color" content="#244419"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/g.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "去东京每天需要多少钱？", "acceptedAnswer": {"@type": "Answer", "text": "按中等预设，不含酒店和机票，餐饮、市内交通和观光每人每天约70–80美元。经济型旅行者约40美元即可。"}}, {"@type": "Question", "name": "旅行预算计算器使用哪些汇率？", "acceptedAnswer": {"@type": "Answer", "text": "使用2026年10月30日的快照：韩亚银行（Hana Bank）的美元、日元和欧元兑韩元基准汇率，GBP、CAD、AUD 和 INR 由同日欧洲央行参考汇率推算。您可以在汇率栏中改为当天汇率。"}}, {"@type": "Question", "name": "为什么旅行预算要加备用金？", "acceptedAnswer": {"@type": "Answer", "text": "航班会延误，价格会变动，汇率也会波动。在估算基础上加10%备用金，可以应对大多数意外，不必提前结束旅程。"}}]}</script>
+<style>
+.tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:20px}
+.tools button{font:600 14px var(--f);padding:8px 14px;border-radius:4px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#DCE4F2;cursor:pointer}
+.tools button[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#0B1F3F}
+.btn{font:700 14.5px var(--f);padding:10px 16px;border-radius:4px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;min-height:42px}
+.btn.ghost{background:#fff;color:var(--accent)}
+.btn.gold{background:var(--gold-d);border-color:var(--gold-d);color:#fff}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{font:600 13px var(--f);padding:6px 10px;border-radius:99px;border:1px solid #C9D1DC;background:#F6F8FB;color:var(--accent);cursor:pointer}
+.chips button:hover{border-color:var(--accent)}
+.field input[type=date],.field input[type=time]{min-height:44px}
+
+.cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;margin-top:20px;align-items:start}
+@media (max-width:860px){.cols{grid-template-columns:minmax(0,1fr)}}
+.cols .stack{display:grid;gap:16px;min-width:0}
+.card h2{margin:0 0 12px;font-size:17px;color:var(--accent)}
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px 14px}
+.field small{font-size:12px;color:var(--muted);line-height:1.45}
+.asof{display:inline-block;margin-top:10px;font:600 12.5px var(--f);background:var(--gold-d);color:#fff;border-radius:4px;padding:3px 8px}
+.seg{display:flex;border:1px solid #C9D1DC;border-radius:4px;overflow:hidden}
+.seg label{flex:1;text-align:center;cursor:pointer;position:relative}
+.seg input{position:absolute;left:0;top:0;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
+.seg span{display:block;padding:10px 4px;font-size:14px;font-weight:600;color:var(--accent)}
+.seg input:checked+span{background:var(--accent);color:#fff}
+.seg input:focus-visible+span{outline:2px solid var(--gold-d);outline-offset:-2px}
+.notes{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:13px;color:#3A4659}
+.notes li{background:#F6F8FB;border-left:3px solid var(--gold-d);padding:6px 10px;border-radius:0 4px 4px 0}
+.notes b{color:var(--accent)}
+.res .big{font-size:clamp(26px,5vw,36px)}
+.kv4{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.kv4 div{background:#F6F8FB;border-radius:6px;padding:8px 10px}
+.kv4 span{display:block;font-size:12px;color:var(--muted)}
+.kv4 b{font:600 15px var(--mono);color:var(--ink);word-break:break-word}
+.bar{display:flex;height:12px;border-radius:99px;overflow:hidden;margin:14px 0 6px;background:var(--soft)}
+.bar i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--muted)}
+.legend b{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:0}
+tr.grp td{font-weight:700;color:var(--accent);padding-top:14px;border-bottom:1px solid var(--line)}
+tr.sum td{font-weight:700}
+.rates{width:100%;font-size:13.5px}
+.rates td{padding:6px 0}
+</style>
+
+<!--hl:head-->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta property="og:image" content="https://honglifecalc.com/assets/og/en-travel-budget-calculator.png"><meta property="og:image:type" content="image/png"><!--hl:img--><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ImageObject", "contentUrl": "https://honglifecalc.com/assets/og/en-travel-budget-calculator.png", "url": "https://honglifecalc.com/assets/og/en-travel-budget-calculator.png", "width": 1200, "height": 630, "encodingFormat": "image/png", "caption": "Travel Budget Calculator", "license": "https://creativecommons.org/licenses/by/4.0/", "acquireLicensePage": "https://honglifecalc.com/about.html#image-license", "creditText": "Hong Life Calculators", "creator": {"@type": "Organization", "name": "Hong Life 计算器", "url": "https://honglifecalc.com/zh/"}, "copyrightNotice": "Hong Life Calculators"}</script><!--/hl:img-->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="旅游预算计算器">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://honglifecalc.com/assets/og/en-travel-budget-calculator.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "旅游预算计算器", "url": "https://honglifecalc.com/zh/travel-budget-calculator.html", "description": "估算去东京、首尔、曼谷、巴黎、伦敦、纽约等地的旅行费用：机票、酒店、餐饮、交通、活动、手续费和备用金，支持 USD、EUR、GBP 等多种货币。", "inLanguage": "zh-Hans", "applicationCategory": "TravelApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Hong Life", "url": "https://honglifecalc.com/zh/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hong Life", "item": "https://honglifecalc.com/zh/"}, {"@type": "ListItem", "position": 2, "name": "免费在线计算器与测试", "item": "https://honglifecalc.com/zh/"}, {"@type": "ListItem", "position": 3, "name": "旅游预算计算器", "item": "https://honglifecalc.com/zh/travel-budget-calculator.html"}]}</script>
+<style id="hl-sw-css">.hl-rel{box-sizing:border-box;margin:28px 0 0;padding:18px 18px 16px;background:#fff;border:1px solid #E3E7EE;border-top:3px solid #B8862B;border-radius:14px;color:#12305C;text-align:start;max-width:100%;overflow:hidden;clear:both;font-family:inherit}body>.hl-rel{width:min(1080px,calc(100% - 32px));margin:28px auto 0}.hl-rel *{box-sizing:border-box}.hl-rel .hl-rel-t{margin:0 0 12px;padding:0;border:0;background:none;font-size:17px;line-height:1.35;font-weight:800;color:#12305C;letter-spacing:-.01em;text-transform:none;display:flex;align-items:center;gap:8px;font-family:inherit}.hl-rel .hl-rel-t:before{content:"";width:8px;height:8px;border-radius:50%;background:#B8862B;flex:none}.hl-rel ul.hl-rel-l{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:8px}.hl-rel ul.hl-rel-l li{margin:0;padding:0;border:0;min-width:0;display:block}.hl-rel ul.hl-rel-l li:before{content:none}.hl-rel a.hl-rel-a{display:block;height:100%;padding:11px 13px;border-radius:10px;background:#F7F8FB;border:1px solid #E3E7EE;text-decoration:none;color:#12305C;transition:border-color .15s,background-color .15s}.hl-rel a.hl-rel-a:hover{border-color:#B8862B;background:#FBF7EE}.hl-rel a.hl-rel-a:focus-visible{outline:3px solid #B8862B;outline-offset:2px}.hl-rel a.hl-rel-a b{display:block;font-size:15px;font-weight:800;line-height:1.35;color:#12305C;overflow-wrap:anywhere;word-break:keep-all}.hl-rel a.hl-rel-a b:after{content:" \2192";color:#B8862B;font-weight:700}html[dir=rtl] .hl-rel a.hl-rel-a b:after{content:" \2190"}.hl-rel a.hl-rel-a span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:4px;font-size:13px;line-height:1.45;color:#5B6B82;font-weight:500}@media (max-width:640px){.hl-rel{padding:14px 12px 12px;margin-top:22px}}@media print{.hl-rel{display:none!important}}html.hl-embed ins.adsbygoogle,html.hl-embed .adsbygoogle,html.hl-embed .google-auto-placed,html.hl-embed [id^="aswift"],html.hl-embed [id^="google_ads"],html.hl-embed .ad-slot,html.hl-embed [data-ad],html.hl-embed div.ad,html.hl-embed #adCoupang,html.hl-embed nav.calc-index,html.hl-embed .hl-rel,html.hl-embed .hl-share,html.hl-embed .hl-share-fab,html.hl-embed .hl-chip,html.hl-embed .hl-embed-row,html.hl-embed footer,html.hl-embed .brandbar,html.hl-embed .crumb{display:none!important}html.hl-embed body{padding-bottom:0!important}</style>
+<script src="/assets/app.js" defer></script>
+<!--/hl:head--><!--hl:theme--><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&amp;display=swap"><link rel="stylesheet" href="/assets/hl-theme.css"><link rel="stylesheet" href="/assets/hl-theme-g.css"><script src="/assets/hl-extras-g.js" defer></script><!--/hl:theme--><!--hl:unify--><link rel="stylesheet" href="/assets/hl-unify.css?v=469813"><!--/hl:unify--><!--hl:brand--><link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"><style>a.logo img.hl-mark{width:28px;height:28px;flex:none;display:inline-block;vertical-align:middle;border-radius:6.5px;box-shadow:0 0 0 1px rgba(201,162,78,.55);background:#1C3518}</style><!--/hl:brand--><!--hl:alt--><link rel="alternate" hreflang="en" href="https://honglifecalc.com/en/travel-budget-calculator.html"><link rel="alternate" hreflang="ko" href="https://honglifecalc.com/ko/travel.html"><link rel="alternate" hreflang="zh-Hans" href="https://honglifecalc.com/zh/travel-budget-calculator.html"><link rel="alternate" hreflang="x-default" href="https://honglifecalc.com/en/travel-budget-calculator.html"><!--/hl:alt-->
+</head>
+<body>
+<div class="brandbar"><div class="in"><a class="logo" href="/zh/"><img class="hl-mark" src="/assets/brand/symbol-small.svg" width="28" height="28" alt="">Hong Life 计算器</a><nav class="langs"><a href="/en/travel-budget-calculator.html" hreflang="en">English</a><a href="/ko/travel.html" hreflang="ko">한국어</a><a href="/jp/travel-budget-calculator.html" hreflang="ja">日本語</a><a href="/zh/travel-budget-calculator.html" hreflang="zh-Hans" aria-current="true">中文</a><a href="/tw/travel-budget-calculator.html" hreflang="zh-Hant">繁體中文</a><a href="/de/reisebudget-berechnen.html" hreflang="de">Deutsch</a><a href="/fr/calcul-budget-voyage.html" hreflang="fr">Français</a><a href="/es/calculadora-presupuesto-viaje.html" hreflang="es">Español</a><a href="/br/calculadora-orcamento-viagem.html" hreflang="pt-BR">Português</a><a href="/it/calcolo-budget-viaggio.html" hreflang="it">Italiano</a><a href="/nl/reisbudget-berekenen.html" hreflang="nl">Nederlands</a><a href="/pl/kalkulator-kosztow-podrozy.html" hreflang="pl">Polski</a><a href="/ru/travel-budget-calculator.html" hreflang="ru">Русский</a><a href="/vn/tinh-chi-phi-du-lich.html" hreflang="vi">Tiếng Việt</a><a href="/id/kalkulator-budget-liburan.html" hreflang="id">Indonesia</a><a href="/hi/travel-budget-calculator.html" hreflang="hi">हिन्दी</a><a href="/ar/travel-budget-calculator.html" hreflang="ar">العربية</a><a href="/dk/rejsebudget-beregner.html" hreflang="da">Dansk</a><a href="/se/resebudget-kalkylator.html" hreflang="sv">Svenska</a><a href="/no/reisebudsjett-kalkulator.html" hreflang="nb">Norsk</a><a href="/tr/seyahat-butcesi-hesaplama.html" hreflang="tr">Türkçe</a><a href="/my/kalkulator-bajet-percutian.html" hreflang="ms">Bahasa Melayu</a></nav></div></div>
+<div class="wrap">
+<header class="top"><h1>旅游预算<b>计算器</b></h1><p class="sub">选好目的地和旅行方式，页面会自动填入常见费用。你可以逐项调整，用自己的货币做出符合实际的旅行预算。</p></header>
+<nav class="tabs"><div class="row"><a href="/en/korea-salary-calculator.html">韩国工资</a><a href="/en/korea-severance-pay-calculator.html">韩国离职金</a><a href="/en/korea-pension-refund-calculator.html">养老金退还</a><a href="/zh/loan-calculator.html">贷款</a><a href="/zh/compound-interest-calculator.html">复利</a><a href="/zh/percentage-calculator.html">百分比</a><a href="/zh/age-calculator.html">年龄</a><a href="/zh/bmi-calculator.html">BMI</a><a href="/zh/date-calculator.html">日期</a><a href="/zh/travel-budget-calculator.html" aria-current="page">旅行预算</a><a href="/zh/electricity-cost-calculator.html">电费</a><a href="/zh/stopwatch.html">秒表</a></div></nav>
+<p class="asof">汇率截至 2026-10-30</p>
+<div class="cols">
+<div class="stack" id="form">
+<section class="card">
+ <h2>1. 行程基本信息</h2>
+ <div class="fg">
+  <div class="field"><label for="base">您的货币</label><select id="base"><option value="USD" selected>美元（USD）</option><option value="EUR">欧元（EUR）</option><option value="GBP">英镑（GBP）</option><option value="CAD">加元（CAD）</option><option value="AUD">澳元（AUD）</option><option value="INR">印度卢比（INR）</option><option value="JPY">日元（JPY）</option><option value="KRW">韩元（KRW）</option></select></div>
+  <div class="field"><label for="dest">目的地</label><select id="dest">
+   <optgroup label="日本"><option value="tokyo" selected>东京</option><option value="osaka">大阪</option><option value="kyoto">京都（经关西机场）</option><option value="fukuoka">福冈</option></optgroup>
+   <optgroup label="韩国"><option value="seoul">首尔</option><option value="jeju">济州岛</option></optgroup>
+   <optgroup label="东南亚和台湾"><option value="bangkok">曼谷</option><option value="danang">岘港</option><option value="taipei">台北</option><option value="singapore">新加坡</option></optgroup>
+   <optgroup label="欧洲和美国"><option value="paris">巴黎</option><option value="london">伦敦</option><option value="newyork">纽约</option></optgroup>
+  </select></div>
+  <div class="field"><span style="font-size:13px;font-weight:600;color:#3A4659">旅行风格</span>
+   <div class="seg" role="radiogroup" aria-label="旅行风格"><label><input type="radio" name="style" value="a"><span>经济</span></label><label><input type="radio" name="style" value="m" checked><span>中等</span></label><label><input type="radio" name="style" value="h"><span>舒适</span></label></div></div>
+  <div class="field"><label for="persons">旅行人数</label><input id="persons" type="number" inputmode="numeric" min="1" max="10" value="2"></div>
+  <div class="field"><label for="nights">晚数</label><input id="nights" type="number" inputmode="numeric" min="0" max="30" value="4"></div>
+  <div class="field"><label for="days">当地天数</label><input id="days" type="number" inputmode="numeric" min="1" max="31" value="5"><small>用于计算餐饮、交通、活动和保险。默认：晚数 + 1。</small></div>
+  <div class="field"><label for="rooms">客房数</label><input id="rooms" type="number" inputmode="numeric" min="1" max="10" value="1"><small>默认：每两人一间。</small></div>
+ </div>
+ <p style="margin:12px 0 0"><button class="btn ghost" type="button" id="reset">重新载入预设费用</button></p>
+ <ul class="notes" id="notes"></ul>
+</section>
+
+<section class="card">
+ <h2>2. 出发前预订</h2>
+ <div class="fg">
+  <div class="field"><label for="flight">机票（每人，往返）</label><input id="flight" type="number" inputmode="decimal" min="0"><small>票价取决于出发地——请输入含税报价。</small></div>
+  <div class="field"><label for="bag">行李、选座、餐食（每人）</label><input id="bag" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="hotelRoom">每间每晚房价</label><input id="hotelRoom" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="hotelTaxPct">酒店税费与服务费（%）</label><input id="hotelTaxPct" type="number" inputmode="decimal" min="0" max="40" step="0.05"><small>仅在所示房价未包含时填写。</small></div>
+  <div class="field"><label for="hotelExtra">每间每晚额外费用</label><input id="hotelExtra" type="number" inputmode="decimal" min="0"><small>度假村费、设施费或清洁费。</small></div>
+  <div class="field"><label for="lodgeTax">城市税 / 住宿税（每人每晚）</label><input id="lodgeTax" type="number" inputmode="decimal" min="0">
+   <label class="check" style="margin-top:6px;font-size:13px"><input type="checkbox" id="lodgeAuto"><span>按房价计算（日本）<small id="lodgeInfo" style="display:block"></small></span></label></div>
+  <div class="field"><label for="ins">旅行保险（每人每天）</label><input id="ins" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="esim">eSIM / 漫游（每人）</label><input id="esim" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="entry">签证 / 旅行许可（每人）</label><input id="entry" type="number" inputmode="decimal" min="0"><small>如 ESTA、ETIAS、K-ETA——参见说明。</small></div>
+  <div class="field"><label for="domestic">往返出发地机场（每人）</label><input id="domestic" type="number" inputmode="decimal" min="0"><small>往返，含停车费。</small></div>
+  <div class="field"><label for="gear">装备及其他准备（合计）</label><input id="gear" type="number" inputmode="decimal" min="0"><small>转换插头、行李箱、药品……</small></div>
+ </div>
+</section>
+
+<section class="card">
+ <h2>3. 旅途中花费</h2>
+ <div class="fg">
+  <div class="field"><label for="food">餐饮（每人每天）</label><input id="food" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="tip">餐饮小费 / 服务费（%）</label><input id="tip" type="number" inputmode="decimal" min="0" max="40"></div>
+  <div class="field"><label for="transit">公共交通（每人每天）</label><input id="transit" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="team">出租车 / 租车（全体每天）</label><input id="team" type="number" inputmode="decimal" min="0"><small>租车请包含保险、油费和停车费。</small></div>
+  <div class="field"><label for="airport">机场 ↔ 酒店（每人，往返）</label><input id="airport" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="attr">景点与活动（每人每天）</label><input id="attr" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="shop">购物与纪念品（每人）</label><input id="shop" type="number" inputmode="decimal" min="0"></div>
+  <div class="field"><label for="refund">退税（占购物额的%）</label><input id="refund" type="number" inputmode="decimal" min="0" max="20" step="0.5"><small>扣除手续费后实际退回的金额。</small></div>
+  <div class="field"><label for="etc">其他花费（合计）</label><input id="etc" type="number" inputmode="decimal" min="0"><small>洗衣、行李寄存、按摩……</small></div>
+ </div>
+</section>
+
+<section class="card">
+ <h2>4. 汇率、手续费与缓冲</h2>
+ <div class="fg">
+  <div class="field"><label for="rate" id="rateLabel">汇率</label><input id="rate" type="number" inputmode="decimal" min="0" step="any"><small id="rateHint"></small></div>
+  <div class="field"><label for="feePct">刷卡 / 换汇手续费（%）</label><input id="feePct" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="1"><small>适用于旅途花费。使用免境外手续费的卡则填0。</small></div>
+  <div class="field"><label for="fxPct">汇率缓冲（%）</label><input id="fxPct" type="number" inputmode="decimal" min="0" max="20" step="0.5" value="3"></div>
+  <div class="field"><label for="reservePct">备用金（%）</label><input id="reservePct" type="number" inputmode="decimal" min="0" max="50" value="10"><small>延误、医疗费用、意外情况。</small></div>
+ </div>
+</section>
+</div>
+
+<div class="card res" id="result" aria-live="polite"></div>
+</div>
+
+<section class="card help" id="ratesCard"><h2>所用汇率（2026-10-30）</h2><p class="hint" id="ratesNote"></p><div style="overflow-x:auto"><table class="rates" id="ratesTbl"></table></div></section>
+<section class="card help"><h2>旅行预算的计算方法</h2>
+<p>选择目的地和旅行风格后，计算器会填入常见费用并换算为您的货币。所有数字均可修改——一旦拿到预订网站的实际报价，请替换预设值。</p>
+<p><b>酒店</b> = 房价 × 房间数 × 晚数，再加税费和每间房的费用。<b>餐饮</b> = 每人每日金额 × 天数 × 人数 × (1 + 小费 %)。<b>交通和活动</b> = 每人每日金额 × 天数 × 人数。刷卡手续费和汇率缓冲仅计入旅途花费；备用金计入全部费用。</p>
+<p>日本住宿税按每人每晚房价，依各城市的档位计算（东京：低于¥10,000为¥0，低于¥15,000为¥100，以上为¥200；京都自2026年3月1日起：¥200–¥10,000；大阪¥0–¥500，最高档为估算；福冈¥200为估算）。</p>
+<p><b>汇率和预设。</b>汇率为2026-10-30的单一快照：韩亚银行（Hana Bank）韩元基准汇率（USD 1,334.30，JPY 100 = 846.96，EUR 1,493.08），GBP、CAD、AUD 和 INR 通过同日欧洲央行欧元参考汇率推算，THB、VND、TWD 和 SGD 由美元汇率近似换算。交叉汇率（如 USD→JPY）据此计算。酒店、餐饮和交通预设为基于常见价格的估算，并非报价。</p><h3>常见问题</h3><dl><div><dt>去东京每天需要多少钱？</dt><dd>按中等预设，不含酒店和机票，餐饮、市内交通和观光每人每天约70–80美元。经济型旅行者约40美元即可。</dd></div><div><dt>旅行预算计算器使用哪些汇率？</dt><dd>使用2026年10月30日的快照：韩亚银行（Hana Bank）的美元、日元和欧元兑韩元基准汇率，GBP、CAD、AUD 和 INR 由同日欧洲央行参考汇率推算。您可以在汇率栏中改为当天汇率。</dd></div><div><dt>为什么旅行预算要加备用金？</dt><dd>航班会延误，价格会变动，汇率也会波动。在估算基础上加10%备用金，可以应对大多数意外，不必提前结束旅程。</dd></div></dl></section>
+
+<!--hl:related--><section class="hl-rel" aria-labelledby="hl-rel-t"><h2 class="hl-rel-t" id="hl-rel-t">您可能还喜欢</h2><ul class="hl-rel-l"><li><a class="hl-rel-a" href="/zh/electricity-cost-calculator.html"><b>电费计算器</b><span>算算家用电器的运行费用：瓦数 × 小时 × 天数换算为 kWh，再算出每日费用、…</span></a></li><li><a class="hl-rel-a" href="/zh/date-calculator.html"><b>日期计算器</b><span>计算两个日期之间的天数，加减天、周或月，倒数任意……</span></a></li><li><a class="hl-rel-a" href="/zh/percentage-calculator.html"><b>百分比计算器</b><span>快速计算某数的X%、一个数占另一个数的百分比、百分比变化以及折扣……</span></a></li><li><a class="hl-rel-a" href="/en/korea-salary-calculator.html"><b>2027年韩国工资计算器</b><span>计算在韩国扣除国民年金、健康保险……后的每月实发工资</span></a></li></ul></section><!--/hl:related--><footer><nav><a href="/zh/">全部计算器</a> · <a href="/about.html">关于我们</a> · <a href="/privacy.html">隐私政策</a> · <a href="mailto:85hongdongwoo@gmail.com">联系我们</a></nav><div>计算结果仅为估算，仅供参考，不构成财务、税务或法律建议。</div><div class="hl-trust" style="margin-top:6px;font-size:13px"><a href="/about.html">关于我们</a> · <a href="/editorial-policy.html">编辑方针</a> · <a href="/report-error.html">报告错误</a></div></footer>
+</div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+/* KRW per 1 unit, snapshot 2026-10-30.
+   Hana Bank base rates: USD 1334.30, JPY 846.96/100, EUR 1493.08.
+   GBP/CAD/AUD/INR: EUR 1493.08 / ECB reference rate (GBP 0.8338, CAD 1.5606, AUD 1.5904, INR 106.084).
+   THB/VND/TWD/SGD: approximations from the USD rate, as on the Korean page. */
+const KRW={KRW:1,USD:1334.30,JPY:8.4696,EUR:1493.08,GBP:1493.08/0.8338,CAD:1493.08/1.5606,AUD:1493.08/1.5904,INR:1493.08/106.084,THB:39.5,VND:0.051,TWD:43.5,SGD:1035};
+const CNAME={KRW:'韩元',USD:'美元',JPY:'日元',EUR:'欧元',GBP:'英镑',CAD:'加元',AUD:'澳元',INR:'印度卢比',THB:'泰铢',VND:'越南盾',TWD:'新台币',SGD:'新加坡元'};
+const BASES=['USD','EUR','GBP','CAD','AUD','INR','JPY','KRW'];
+const cross=(from,to)=>KRW[from]/KRW[to]; // 1 from = x to
+const ZERO={KRW:1,JPY:1,VND:1,INR:1};
+const fmtC=(n,c,d)=>{const dd=d!=null?d:(ZERO[c]?0:(Math.abs(n)>=1000?0:2));try{return new Intl.NumberFormat('zh-CN',{style:'currency',currency:c,minimumFractionDigits:dd,maximumFractionDigits:dd}).format(n)}catch(e){return c+' '+n.toFixed(dd)}};
+/* Presets. pc = preset currency. Korean-page presets are in KRW (converted for display); London is in GBP. */
+const D=o=>Object.assign({pc:'KRW',bag:0,tip:0,team:0,hotelTaxPct:0,hotelExtra:0,lodgeTax:0,taxMode:'none',ins:4000,entry:0,domestic:20000,gear:0,airport:0,esim:12000,country:''},o);
+const DEST={
+ tokyo:D({name:'东京',country:'jp',cur:'JPY',taxMode:'tokyo',hotel:{a:100000,m:170000,h:300000},food:{a:35000,m:60000,h:100000},transit:{a:8000,m:10000,h:14000},attr:{a:10000,m:25000,h:50000},airport:50000}),
+ osaka:D({name:'大阪',country:'jp',cur:'JPY',taxMode:'osaka',hotel:{a:80000,m:140000,h:250000},food:{a:35000,m:55000,h:95000},transit:{a:7000,m:9000,h:13000},attr:{a:10000,m:25000,h:50000},airport:25000}),
+ kyoto:D({name:'京都',country:'jp',cur:'JPY',taxMode:'kyoto',hotel:{a:90000,m:160000,h:300000},food:{a:35000,m:55000,h:95000},transit:{a:7000,m:8000,h:12000},attr:{a:10000,m:25000,h:50000},airport:55000}),
+ fukuoka:D({name:'福冈',country:'jp',cur:'JPY',taxMode:'fukuoka',hotel:{a:70000,m:120000,h:220000},food:{a:30000,m:50000,h:85000},transit:{a:5000,m:6000,h:9000},attr:{a:8000,m:20000,h:40000},airport:5000}),
+ seoul:D({name:'首尔',country:'kr',cur:'KRW',hotel:{a:70000,m:130000,h:260000},food:{a:30000,m:50000,h:90000},transit:{a:6000,m:8000,h:12000},attr:{a:10000,m:25000,h:50000},airport:20000,shop:{a:50000,m:100000,h:300000}}),
+ jeju:D({name:'济州岛',country:'kr',cur:'KRW',hotel:{a:60000,m:120000,h:250000},food:{a:30000,m:50000,h:90000},transit:{a:0,m:0,h:0},team:60000,attr:{a:10000,m:25000,h:50000},airport:0,shop:{a:30000,m:60000,h:150000}}),
+ bangkok:D({name:'曼谷',cur:'THB',tip:5,hotel:{a:60000,m:120000,h:250000},food:{a:20000,m:40000,h:80000},transit:{a:8000,m:10000,h:15000},attr:{a:15000,m:30000,h:60000},airport:25000,esim:10000}),
+ danang:D({name:'岘港',cur:'VND',hotel:{a:70000,m:130000,h:280000},food:{a:20000,m:40000,h:80000},transit:{a:8000,m:12000,h:18000},attr:{a:15000,m:30000,h:60000},airport:12000,esim:10000}),
+ taipei:D({name:'台北',cur:'TWD',tip:3,hotel:{a:90000,m:150000,h:280000},food:{a:30000,m:50000,h:90000},transit:{a:7000,m:9000,h:14000},attr:{a:15000,m:25000,h:50000},airport:15000,esim:10000}),
+ singapore:D({name:'新加坡',cur:'SGD',tip:10,hotel:{a:150000,m:270000,h:500000},food:{a:35000,m:60000,h:110000},transit:{a:10000,m:13000,h:20000},attr:{a:30000,m:50000,h:90000},airport:6000}),
+ paris:D({name:'巴黎',cur:'EUR',lodgeTax:5000,hotel:{a:180000,m:300000,h:600000},food:{a:45000,m:80000,h:150000},transit:{a:10000,m:13000,h:20000},attr:{a:25000,m:45000,h:90000},airport:45000,esim:18000}),
+ london:D({name:'伦敦',pc:'GBP',cur:'GBP',ins:3,domestic:15,esim:10,hotel:{a:90,m:170,h:350},food:{a:35,m:60,h:110},transit:{a:9,m:12,h:20},attr:{a:15,m:35,h:70},airport:28,shop:{a:40,m:80,h:220}}),
+ newyork:D({name:'纽约',cur:'USD',tip:20,hotelTaxPct:14.75,hotelExtra:5000,hotel:{a:250000,m:400000,h:800000},food:{a:60000,m:100000,h:180000},transit:{a:12000,m:16000,h:25000},attr:{a:30000,m:60000,h:120000},airport:60000,esim:25000})
+};
+const SHOP={a:50000,m:100000,h:300000};
+const NOTES={
+ common:[['汇率','汇率为2026年10月30日的快照。出发前请在银行卡App中查看汇率。'],['预设','酒店、餐饮和交通预设为估算值，并非报价。请替换为实际价格。']],
+ jp:[['须知','自2026年7月1日起出票的机票，日本出境税上调至¥3,000，通常已包含在机票价格中。'],['须知','自2026年11月1日起，日本免税购物改为退税模式：在店内先支付10%消费税，离境时在机场申请退还。请输入您预计的退税比例。'],['须知','住宿税在入住时收取。勾选“按房价计算”即可按该城市档位计算。大阪府计划自2027年4月起统一按3%征收。']],
+ kr:[['请核实','许多国籍的旅客需要办理 K-ETA（韩国电子旅行许可）或签证；部分国籍暂时免除。请在预订前确认。'],['小贴士','在参与退税的商店购物满₩15,000，通常可在店内直接扣除税款。']],
+ bangkok:[['待定','泰国计划征收的旅游入境费（航空入境约300泰铢）尚未开始实施；请在出发前确认。']],
+ danang:[['请核实','越南免签停留时长取决于国籍；电子签证最长可停留90天。']],
+ taipei:[['小贴士','夜市和本地小吃店让台北花费很低；酒店餐厅可能使餐饮预算翻倍。']],
+ singapore:[['小贴士','标有“++”的餐厅价格需另加10%服务费和消费税（GST）——预设已为此计入10%。']],
+ paris:[['请核实','欧盟 ETIAS 旅行许可（€20）预计于2026年底对免签旅客实施。如适用，请在“签证”一栏中添加。'],['估计值','巴黎城市税取决于酒店等级；预设约为每人每晚€3.30。']],
+ london:[['请核实','许多旅客需要办理英国 ETA（电子旅行许可）。如适用，请在“签证”一栏中填写费用。'],['小贴士','伦敦地铁非接触式按次付费设有每日封顶，因此交通预设很少更高。']],
+ newyork:[['须知','免签计划旅客的 ESTA 费用为40美元（自2025年9月30日起）。如需办理，请在“签证”一栏中添加。'],['估计值','纽约酒店需加收约14.75%的税费及每间房固定费用；餐厅小费通常为18–20%，因此预设采用20%。']]
+};
+const style=()=>document.querySelector('input[name=style]:checked').value;
+let touched={days:false,rooms:false},userRate=false;
+const base=()=>$('base').value;
+function roundTo(v,c){const s=c==='KRW'?1000:(c==='JPY'||c==='INR')?10:1;const r=Math.round(v/s)*s;return v>0&&r===0?s:r}
+function conv(v,pc){return roundTo(v*cross(pc,base()),base())}
+function setStep(){const s=base()==='KRW'?1000:(base()==='JPY'||base()==='INR')?100:1;document.querySelectorAll('#form input[type=number]').forEach(el=>{if(['人','晚','天','间','hotelTaxPct','tip','退税','feePct','fxPct','reservePct'].includes(el.id))return;el.step=s})}
+function applyPreset(){
+  const k=$('dest').value,d=DEST[k],s=style(),pc=d.pc;
+  const set=(id,v)=>{$(id).value=v};
+  set('flight',0);set('bag',conv(d.bag,pc));set('hotelRoom',conv(d.hotel[s],pc));set('hotelTaxPct',d.hotelTaxPct);set('hotelExtra',conv(d.hotelExtra,pc));
+  set('lodgeTax',conv(d.lodgeTax,pc));$('lodgeAuto').checked=d.taxMode!=='none';$('lodgeAuto').disabled=d.taxMode==='none';
+  set('ins',conv(d.ins,pc));set('esim',conv(d.esim,pc));set('entry',conv(d.entry,pc));set('domestic',conv(d.domestic,pc));set('gear',0);
+  set('food',conv(d.food[s],pc));set('tip',d.tip);set('transit',conv(d.transit[s],pc));set('team',conv(d.team,pc));set('airport',conv(d.airport,pc));set('attr',conv(d.attr[s],pc));
+  set('shop',conv((d.shop||SHOP)[s],d.shop?pc:'KRW'));set('refund',0);set('etc',0);
+  userRate=false;setRate();setStep();renderNotes();
+}
+function setRate(){const d=DEST[$('dest').value],b=base();const r=cross(b,d.cur);
+  if(!userRate)$('rate').value=+r.toPrecision(6);
+  $('rateLabel').textContent='汇率：1 '+b+' = ? '+d.cur;
+  $('rate').disabled=b===d.cur;
+  $('rateHint').textContent=b===d.cur?'货币相同——无需换算。':'2026-10-30 快照：1 '+b+' = '+(+r.toPrecision(6)).toLocaleString('zh-CN')+' '+d.cur+'。如有需要，可改为当天汇率。';}
+function renderNotes(){const k=$('dest').value,d=DEST[k];let l=NOTES.common.slice();if(d.country&&NOTES[d.country])l=l.concat(NOTES[d.country]);if(NOTES[k])l=l.concat(NOTES[k]);
+  $('notes').innerHTML=l.map(n=>'<li><b>'+n[0]+':</b> '+n[1]+'</li>').join('')}
+function jpTax(mode,p){if(mode==='tokyo')return p<10000?0:p<15000?100:200;if(mode==='kyoto')return p<6000?200:p<20000?400:p<50000?1000:p<100000?4000:10000;if(mode==='osaka')return p<5000?0:p<15000?200:p<20000?400:500;if(mode==='fukuoka')return 200;return 0}
+const num=(id,lo,hi,dv)=>{let v=parseFloat($(id).value);if(isNaN(v))v=dv;return Math.min(Math.max(v,lo),hi)};
+function read(){const k=$('dest').value,nights=Math.round(num('nights',0,30,0));return{dest:k,persons:Math.round(num('persons',1,10,1)),nights,days:Math.round(num('days',1,31,nights+1)),rooms:Math.round(num('rooms',1,10,1)),
+  rate:$('rate').disabled?1:num('rate',1e-9,1e9,cross(base(),DEST[k].cur)),
+  flight:num('flight',0,1e10,0),bag:num('bag',0,1e10,0),hotelRoom:num('hotelRoom',0,1e10,0),hotelTaxPct:num('hotelTaxPct',0,40,0),hotelExtra:num('hotelExtra',0,1e10,0),
+  lodgeTax:num('lodgeTax',0,1e10,0),lodgeAuto:$('lodgeAuto').checked&&!$('lodgeAuto').disabled,ins:num('ins',0,1e10,0),esim:num('esim',0,1e10,0),entry:num('entry',0,1e10,0),domestic:num('domestic',0,1e10,0),gear:num('gear',0,1e10,0),
+  food:num('food',0,1e10,0),tip:num('tip',0,40,0),transit:num('transit',0,1e10,0),team:num('team',0,1e10,0),airport:num('airport',0,1e10,0),attr:num('attr',0,1e10,0),shop:num('shop',0,1e10,0),refund:num('refund',0,20,0),etc:num('etc',0,1e10,0),
+  feePct:num('feePct',0,10,1),fxPct:num('fxPct',0,20,3),reservePct:num('reservePct',0,50,10)}}
+function calc(o){const d=DEST[o.dest],n=o.persons,r={};
+  r.flight=o.flight*n;r.bag=o.bag*n;r.hotel=o.hotelRoom*o.rooms*o.nights;r.hotelTax=r.hotel*o.hotelTaxPct/100;r.hotelExtra=o.hotelExtra*o.rooms*o.nights;
+  let lp=o.lodgeTax;r.auto=null;
+  if(o.lodgeAuto&&d.taxMode!=='none'){const toJPY=cross(base(),'JPY'),ppJ=o.hotelRoom*o.rooms/n*toJPY,t=jpTax(d.taxMode,ppJ);lp=t/toJPY;r.auto={pp:Math.round(ppJ),tax:t}}
+  r.lodgeTax=lp*n*o.nights;r.ins=o.ins*o.days*n;r.esim=o.esim*n;r.entry=o.entry*n;r.domestic=o.domestic*n;r.gear=o.gear;
+  r.pre=r.flight+r.bag+r.hotel+r.hotelTax+r.hotelExtra+r.lodgeTax+r.ins+r.esim+r.entry+r.domestic+r.gear;
+  r.food=o.food*o.days*n*(1+o.tip/100);r.transit=o.transit*o.days*n;r.team=o.team*o.days;r.airport=o.airport*n;r.attr=o.attr*o.days*n;r.shop=o.shop*n;r.refund=-r.shop*o.refund/100;r.etc=o.etc;
+  r.local=r.food+r.transit+r.team+r.airport+r.attr+r.shop+r.refund+r.etc;
+  r.fee=r.local*o.feePct/100;r.fx=r.local*o.fxPct/100;const sub=r.pre+r.local+r.fee+r.fx;r.reserve=sub*o.reservePct/100;r.total=sub+r.reserve;
+  r.pp=r.total/n;r.ppd=r.total/n/o.days;r.localCur=r.local*o.rate;return r}
+function render(){
+  const o=read(),d=DEST[o.dest],r=calc(o),b=base(),M=v=>fmtC(v,b),ML=v=>fmtC(v,d.cur);
+  $('lodgeTax').disabled=o.lodgeAuto;
+  $('lodgeInfo').textContent=r.auto?'每人房价 ≈ ¥'+r.auto.pp.toLocaleString('zh-CN')+' → 税 ¥'+r.auto.tax+' 每晚':(d.taxMode==='none'?'此目的地不适用。':'');
+  const row=(l,c,v)=>'<tr><td>'+l+(c?'<span class="c">'+c+'</span>':'')+'</td><td class="n">'+M(v)+'</td></tr>';
+  let t='<table><tr class="grp"><td colspan="2">出发前</td></tr>';
+  t+=row('机票',o.flight?M(o.flight)+' × '+o.persons:'未填写',r.flight);
+  if(r.bag)t+=row('行李、选座、餐食',M(o.bag)+' × '+o.persons,r.bag);
+  t+=row('酒店',M(o.hotelRoom)+' × '+o.rooms+' 间'+(o.rooms>1?'s':'')+' × '+o.nights+' 晚'+(o.nights===1?'':'s'),r.hotel);
+  if(r.hotelTax)t+=row('酒店税费与服务费',o.hotelTaxPct+'%',r.hotelTax);
+  if(r.hotelExtra)t+=row('酒店杂费',M(o.hotelExtra)+' 每间每晚',r.hotelExtra);
+  if(r.lodgeTax)t+=row('住宿税 / 城市税',o.lodgeAuto?'自动（日本档位）':M(o.lodgeTax)+' 每人每晚',r.lodgeTax);
+  if(r.ins)t+=row('旅行保险',M(o.ins)+' × '+o.days+' 天 × '+o.persons,r.ins);
+  if(r.esim)t+=row('eSIM / 漫游',M(o.esim)+' × '+o.persons,r.esim);
+  if(r.entry)t+=row('签证 / 旅行许可',M(o.entry)+' × '+o.persons,r.entry);
+  if(r.domestic)t+=row('往返出发地机场',M(o.domestic)+' × '+o.persons,r.domestic);
+  if(r.gear)t+=row('装备与准备','',r.gear);
+  t+='<tr class="sum"><td>出发前小计</td><td class="n">'+M(r.pre)+'</td></tr><tr class="grp"><td colspan="2">旅途中</td></tr>';
+  t+=row('餐饮',M(o.food)+' × '+o.days+' 天 × '+o.persons+(o.tip?' + '+o.tip+'% 小费':''),r.food);
+  if(r.transit)t+=row('公共交通',M(o.transit)+' 每人每天',r.transit);
+  if(r.team)t+=row('出租车 / 租车',M(o.team)+' × '+o.days+' 天',r.team);
+  if(r.airport)t+=row('机场 ↔ 酒店',M(o.airport)+' × '+o.persons,r.airport);
+  t+=row('景点与活动',M(o.attr)+' 每人每天',r.attr);
+  if(r.shop)t+=row('购物',M(o.shop)+' × '+o.persons,r.shop);
+  if(r.refund)t+=row('退税',o.refund+'% 购物额',r.refund);
+  if(r.etc)t+=row('其他花费','',r.etc);
+  t+='<tr class="sum"><td>旅途中小计</td><td class="n">'+M(r.local)+'</td></tr><tr class="grp"><td colspan="2">手续费与缓冲</td></tr>';
+  t+=row('刷卡 / 换汇手续费',o.feePct+'% 旅途花费',r.fee)+row('汇率缓冲',o.fxPct+'% 旅途花费',r.fx)+row('备用金',o.reservePct+'% 全部费用',r.reserve);
+  t+='<tr class="t"><td>预计总额</td><td class="n">'+M(r.total)+'</td></tr></table>';
+  const seg=[['机票与交通',r.flight+r.bag+r.domestic+r.transit+r.team+r.airport,'#12305C'],['酒店',r.hotel+r.hotelTax+r.hotelExtra+r.lodgeTax,'#4F7DB8'],['餐饮',r.food,'#B8862B'],['活动与购物',r.attr+r.shop+r.refund+r.etc,'#8B6BB8'],['保险、手续费与缓冲',r.ins+r.esim+r.entry+r.gear+r.fee+r.fx+r.reserve,'#8A96A8']];
+  let bar='',leg='';seg.forEach(s=>{if(s[1]<=0||r.total<=0)return;const w=s[1]/r.total*100;bar+='<i style="width:'+w.toFixed(2)+'%;background:'+s[2]+'" title="'+s[0]+'"></i>';leg+='<span><b style="background:'+s[2]+'"></b>'+s[0]+' '+w.toFixed(0)+'%</span>'});
+  const st={a:'经济',m:'中等',h:'舒适'}[style()];
+  $('result').innerHTML='<p class="kicker">'+d.name+' · '+o.persons+' 位旅客'+(o.persons>1?'s':'')+' · '+o.nights+' 晚 / '+o.days+' 天 · '+st+'</p><p class="big" id="total">'+M(r.total)+'</p><p class="bigsub">预计旅行总费用'+(o.flight?'':' ——尚未包含机票')+'</p>'+
+   '<div class="bar" role="img" aria-label="Cost breakdown">'+bar+'</div><p class="legend">'+leg+'</p>'+
+   '<div class="kv4"><div><span>人均</span><b id="pp">'+M(r.pp)+'</b></div><div><span>每人每天</span><b id="ppd">'+M(r.ppd)+'</b></div><div><span>出发前支付</span><b>'+M(r.pre)+'</b></div><div><span>旅途中花费</span><b>'+M(r.local)+'</b></div></div>'+
+   (d.cur!==b?'<p class="note">旅途花费（当地货币）： <b>'+ML(r.localCur)+'</b> 按 1 '+b+' = '+(+o.rate.toPrecision(6)).toLocaleString('zh-CN')+' '+d.cur+'。可据此规划现金和刷卡额度。</p>':'')+t+
+   '<p class="note">仅为估算。实际价格取决于季节、预订时间和汇率。</p>';
+}
+function renderRates(){const b=base(),list=['USD','EUR','GBP','JPY','KRW','CAD','AUD','INR','THB','VND','TWD','SGD'].filter(c=>c!==b);
+  $('ratesTbl').innerHTML='<tr><td><b>1 '+b+' =</b></td><td class="n"></td></tr>'+list.map(c=>'<tr><td>'+CNAME[c]+' ('+c+')</td><td class="n">'+(+cross(b,c).toPrecision(6)).toLocaleString('zh-CN',{maximumFractionDigits:4})+' '+c+'</td></tr>').join('');
+  $('ratesNote').textContent='来源：2026-10-30 韩亚银行（Hana Bank）美元、日元和欧元的韩元基准汇率；GBP、CAD、AUD 和 INR 通过同日欧洲央行欧元参考汇率推算；THB、VND、TWD 和 SGD 由美元汇率近似换算。交叉汇率均由这一快照推算，可能与实时市场汇率略有差异。'}
+function autoDR(){if(!touched.days)$('days').value=Math.round(num('nights',0,30,0))+1;if(!touched.rooms)$('rooms').value=Math.ceil(Math.round(num('persons',1,10,1))/2)}
+function full(){touched={days:false,rooms:false};applyPreset();autoDR();render()}
+$('dest').addEventListener('change',full);$('reset').addEventListener('click',full);
+document.querySelectorAll('input[name=style]').forEach(el=>el.addEventListener('change',()=>{applyPreset();render()}));
+$('base').addEventListener('change',()=>{applyPreset();renderRates();render()});
+$('days').addEventListener('input',()=>{touched.days=true;render()});$('rooms').addEventListener('input',()=>{touched.rooms=true;render()});
+['nights','persons'].forEach(id=>$(id).addEventListener('input',()=>{autoDR();render()}));
+$('rate').addEventListener('input',()=>{userRate=true;render()});
+['flight','bag','hotelRoom','hotelTaxPct','hotelExtra','lodgeTax','lodgeAuto','ins','esim','entry','domestic','gear','food','tip','transit','team','airport','attr','shop','refund','etc','feePct','fxPct','reservePct'].forEach(id=>{$(id).addEventListener('input',render);$(id).addEventListener('change',render)});
+try{const s=localStorage.getItem('hl_travel_base');if(s&&BASES.includes(s))$('base').value=s}catch(e){}
+$('base').addEventListener('change',()=>{try{localStorage.setItem('hl_travel_base',base())}catch(e){}});
+applyPreset();autoDR();renderRates();render();
+window.__trip=()=>calc(read());
+})();
+</script>
+<script src="/assets/share.js" defer></script>
+<script src="/assets/hl-viz.js" defer></script>
+</body>
+</html>

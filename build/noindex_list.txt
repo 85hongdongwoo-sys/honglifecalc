@@ -3273,7 +3273,6 @@
 /en/iq/iq-150.html
 /en/iq/iq-155.html
 /en/iq/iq-160.html
-/en/iq/iq-70.html
 /en/iq/iq-75.html
 /en/iq/iq-80.html
 /en/iq/iq-90.html

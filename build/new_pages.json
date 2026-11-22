@@ -10,5 +10,17 @@
   "hub": "/fr/index.html",
   "after": "/fr/calcul-cout-carburant.html",
   "label": "Carte des bornes de recharge & coût de recharge"
+ },
+ {
+  "url": "/zh/travel-budget-calculator.html",
+  "hub": "/zh/index.html",
+  "after": "/zh/loan-calculator.html",
+  "label": "旅游预算计算器"
+ },
+ {
+  "url": "/pl/iq/iq-70-co-oznacza.html",
+  "hub": "/pl/iq/index.html",
+  "after": "/pl/iq/iq-75-co-oznacza.html",
+  "label": "IQ 70 – co oznacza?"
  }
 ]
