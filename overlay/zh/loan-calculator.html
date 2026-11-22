@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N2FHDE6TGQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N2FHDE6TGQ');</script>
+<!--hl:early--><script>!function(){if(/[?&]embed=1(&|$)/.test(location.search)){document.documentElement.classList.add("hl-embed");try{(window.adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=1}catch(e){}}}()</script><!--/hl:early--><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3029906673973335" crossorigin="anonymous"></script>
+
+<meta charset="utf-8"><!--hl:pre--><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin><!--/hl:pre--><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="only light">
+<title>贷款计算器 — 等额本息、等额本金月供与利息总额计算</title>
+<meta name="description" content="计算房贷、车贷和消费贷的每月还款额、利息总额和剩余本金，支持等额本息和等额本金两种还款方式，默认以人民币（元）计。">
+<link rel="canonical" href="https://honglifecalc.com/zh/loan-calculator.html"><meta property="og:type" content="website"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="贷款计算器 — 等额本息、等额本金月供与利息总额计算"><meta property="og:description" content="计算房贷、车贷和消费贷的每月还款额、利息总额和剩余本金，支持等额本息和等额本金两种还款方式，默认以人民币（元）计。"><meta property="og:url" content="https://honglifecalc.com/zh/loan-calculator.html">
+<meta name="theme-color" content="#244419"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../g.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "每月还款额是怎么算出来的？", "acceptedAnswer": {"@type": "Answer", "text": "先把年利率除以 12 得到月利率，再把贷款金额和还款月数代入等额本息公式。例如贷款 100 万元、年利率 3.5%、期限 30 年，每月约还 4,490 元。"}}, {"@type": "Question", "name": "怎样才能少付利息？", "acceptedAnswer": {"@type": "Answer", "text": "选择更短的期限、提前偿还部分本金，或在利率下调时办理转贷。"}}, {"@type": "Question", "name": "计算结果包含税费和保险吗？", "acceptedAnswer": {"@type": "Answer", "text": "不包含。房产相关税费、保险和手续费需另外计算。"}}, {"@type": "Question", "name": "等额本金的利息怎么计算？", "acceptedAnswer": {"@type": "Answer", "text": "每月利息 = 剩余本金 × 月利率，利息总额 = 贷款金额 × 月利率 × （还款月数 + 1）÷ 2。例如 100 万元、年利率 3.5%、30 年，利息总额为 526,458.33 元，首月还 5,694.44 元，之后每月减少约 8.10 元。"}}, {"@type": "Question", "name": "等额本息和等额本金哪个更划算？", "acceptedAnswer": {"@type": "Answer", "text": "同样 100 万元、3.5%、30 年：等额本息每月固定 4,490.45 元，利息总额 616,560.88 元；等额本金利息总额 526,458.33 元，少约 9 万元，但前期月供更高（首月 5,694.44 元）。"}}, {"@type": "Question", "name": "每月还的本金怎么算？", "acceptedAnswer": {"@type": "Answer", "text": "等额本金每月本金固定 = 贷款金额 ÷ 还款月数，100 万元 30 年（360 个月）即每月 2,777.78 元；等额本息前期本金少、利息多，可在上方选择还款方式查看各年末剩余本金。"}}]}</script>
+<style>
+:root{--f:"Pretendard Variable",Pretendard,"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,"Segoe UI",Roboto,sans-serif}
+.brandbar .in{flex-wrap:wrap}.langs{flex-wrap:wrap;row-gap:4px}
+</style>
+
+<!--hl:head-->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta property="og:image" content="https://honglifecalc.com/assets/og/zh-loan-calculator.png"><meta property="og:image:type" content="image/png"><!--hl:img--><script type="application/ld+json">{"@context":"https://schema.org","@type":"ImageObject","contentUrl":"https://honglifecalc.com/assets/og/zh-loan-calculator.png","url":"https://honglifecalc.com/assets/og/zh-loan-calculator.png","width":1200,"height":630,"encodingFormat":"image/png","caption":"贷款 还款计算器","license":"https://creativecommons.org/licenses/by/4.0/","acquireLicensePage":"https://honglifecalc.com/about.html#image-license","creditText":"Hong Life Calculators","creator":{"@type":"Organization","name":"Hong Life Calculators","url":"https://honglifecalc.com/"},"copyrightNotice":"Hong Life Calculators"}</script><!--/hl:img-->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="贷款 还款计算器">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://honglifecalc.com/assets/og/zh-loan-calculator.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"贷款 还款计算器","alternateName":"贷款计算器","url":"https://honglifecalc.com/zh/loan-calculator.html","description":"计算房贷、车贷和个人消费贷的每月还款额、利息总额和各年末剩余本金，默认以人民币（元）计。","inLanguage":"zh-Hans","applicationCategory":"FinanceApplication","operatingSystem":"All","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"publisher":{"@type":"Organization","name":"Hong Life (홍라이프)","url":"https://honglifecalc.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Hong Life","item":"https://honglifecalc.com/"},{"@type":"ListItem","position":2,"name":"免费在线计算器与测试","item":"https://honglifecalc.com/zh/"},{"@type":"ListItem","position":3,"name":"贷款计算器","item":"https://honglifecalc.com/zh/loan-calculator.html"}]}</script>
+<style id="hl-sw-css">.hl-rel{box-sizing:border-box;margin:28px 0 0;padding:18px 18px 16px;background:#fff;border:1px solid #E3E7EE;border-top:3px solid #B8862B;border-radius:14px;color:#12305C;text-align:start;max-width:100%;overflow:hidden;clear:both;font-family:inherit}body>.hl-rel{width:min(1080px,calc(100% - 32px));margin:28px auto 0}.hl-rel *{box-sizing:border-box}.hl-rel .hl-rel-t{margin:0 0 12px;padding:0;border:0;background:none;font-size:17px;line-height:1.35;font-weight:800;color:#12305C;letter-spacing:-.01em;text-transform:none;display:flex;align-items:center;gap:8px;font-family:inherit}.hl-rel .hl-rel-t:before{content:"";width:8px;height:8px;border-radius:50%;background:#B8862B;flex:none}.hl-rel ul.hl-rel-l{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:8px}.hl-rel ul.hl-rel-l li{margin:0;padding:0;border:0;min-width:0;display:block}.hl-rel ul.hl-rel-l li:before{content:none}.hl-rel a.hl-rel-a{display:block;height:100%;padding:11px 13px;border-radius:10px;background:#F7F8FB;border:1px solid #E3E7EE;text-decoration:none;color:#12305C;transition:border-color .15s,background-color .15s}.hl-rel a.hl-rel-a:hover{border-color:#B8862B;background:#FBF7EE}.hl-rel a.hl-rel-a:focus-visible{outline:3px solid #B8862B;outline-offset:2px}.hl-rel a.hl-rel-a b{display:block;font-size:15px;font-weight:800;line-height:1.35;color:#12305C;overflow-wrap:anywhere;word-break:keep-all}.hl-rel a.hl-rel-a b:after{content:" \2192";color:#B8862B;font-weight:700}html[dir=rtl] .hl-rel a.hl-rel-a b:after{content:" \2190"}.hl-rel a.hl-rel-a span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:4px;font-size:13px;line-height:1.45;color:#5B6B82;font-weight:500}@media (max-width:640px){.hl-rel{padding:14px 12px 12px;margin-top:22px}}@media print{.hl-rel{display:none!important}}html.hl-embed ins.adsbygoogle,html.hl-embed .adsbygoogle,html.hl-embed .google-auto-placed,html.hl-embed [id^="aswift"],html.hl-embed [id^="google_ads"],html.hl-embed .ad-slot,html.hl-embed [data-ad],html.hl-embed div.ad,html.hl-embed #adCoupang,html.hl-embed nav.calc-index,html.hl-embed .hl-rel,html.hl-embed .hl-share,html.hl-embed .hl-share-fab,html.hl-embed .hl-chip,html.hl-embed .hl-embed-row,html.hl-embed footer,html.hl-embed .brandbar,html.hl-embed .crumb{display:none!important}html.hl-embed body{padding-bottom:0!important}</style>
+<script src="/assets/app.js" defer></script>
+<!--/hl:head--><!--hl:theme--><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&amp;display=swap"><link rel="stylesheet" href="/assets/hl-theme.css"><link rel="stylesheet" href="/assets/hl-theme-g.css"><script src="/assets/hl-extras-g.js" defer></script><!--/hl:theme--><!--hl:unify--><link rel="stylesheet" href="/assets/hl-unify.css?v=469813"><!--/hl:unify--><!--hl:brand--><link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"><style>a.logo img.hl-mark{width:28px;height:28px;flex:none;display:inline-block;vertical-align:middle;border-radius:6.5px;box-shadow:0 0 0 1px rgba(201,162,78,.55);background:#1C3518}</style><!--/hl:brand--><!--hl:alt--><link rel="alternate" hreflang="en" href="https://honglifecalc.com/en/loan-calculator.html"><link rel="alternate" hreflang="zh-Hans" href="https://honglifecalc.com/zh/loan-calculator.html"><link rel="alternate" hreflang="fr" href="https://honglifecalc.com/fr/loan-calculator.html"><link rel="alternate" hreflang="es" href="https://honglifecalc.com/es/calculadora-prestamos.html"><link rel="alternate" hreflang="pt-BR" href="https://honglifecalc.com/pt/loan-calculator.html"><link rel="alternate" hreflang="ru" href="https://honglifecalc.com/ru/loan-calculator.html"><link rel="alternate" hreflang="id" href="https://honglifecalc.com/id/kalkulator-kredit.html"><link rel="alternate" hreflang="hi" href="https://honglifecalc.com/hi/loan-calculator.html"><link rel="alternate" hreflang="ar" href="https://honglifecalc.com/ar/loan-calculator.html"><link rel="alternate" hreflang="x-default" href="https://honglifecalc.com/en/loan-calculator.html"><!--/hl:alt-->
+<style id="kwt-css">.kwt{width:100%;border-collapse:collapse}.kwt th,.kwt td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line,#E3E7EE)}@media(max-width:640px){.kwt thead{display:none}.kwt,.kwt tbody,.kwt tr{display:block;width:100%}.kwt tr{padding:6px 0;border-bottom:1px solid var(--line,#E3E7EE)}.kwt td{display:flex;justify-content:space-between;gap:12px;border:0;padding:3px 2px;text-align:right}.kwt td::before{content:attr(data-l);font-weight:700;color:var(--muted,#5B6B82);text-align:left;flex:0 0 44%}}</style></head>
+<body>
+<div class="brandbar"><div class="in"><a class="logo" href="./"><img class="hl-mark" src="/assets/brand/symbol-small.svg" width="28" height="28" alt="">Hong Life Calculators</a><nav class="langs" aria-label="语言"><a href="../en/loan-calculator.html" hreflang="en">English</a><a href="../es/" hreflang="es">Español</a><a href="../id/" hreflang="id">Indonesia</a><a href="loan-calculator.html" hreflang="zh-Hans" aria-current="true">中文</a><a href="../hi/loan-calculator.html" hreflang="hi">हिन्दी</a><a href="../ar/loan-calculator.html" hreflang="ar">العربية</a><a href="../fr/loan-calculator.html" hreflang="fr">Français</a><a href="../pt/loan-calculator.html" hreflang="pt">Português</a><a href="../ru/loan-calculator.html" hreflang="ru">Русский</a><a href="https://honglifecalc.com/" hreflang="ko">한국어</a></nav></div></div>
+<div class="wrap">
+<header class="top"><h1>贷款 <b>还款计算器</b></h1><p class="sub">输入贷款金额、年利率和期限，查看每月要还多少钱、总共要付多少利息。</p></header>
+<nav class="tabs"><div class="row"><a href="iq-test.html">IQ测试</a><a href="personality-test.html">性格测试</a><a href="mbti-compatibility.html">MBTI配对</a><a href="korean-saju-calculator.html">韩国八字</a><a href="korean-name-generator.html">韩文名字</a><a href="bmi-calculator.html">BMI</a><a href="age-calculator.html">年龄</a><a href="pregnancy-due-date-calculator.html">预产期</a><a href="loan-calculator.html" aria-current="page">贷款</a><a href="percentage-calculator.html">百分比</a><a href="./">全部工具</a></div></nav>
+<section class="panel" data-calc="loan"><div class="card form" id="form"></div><div class="card res" id="out" aria-live="polite"></div></section>
+<section class="card help"><h2>计算方法</h2><p>等额本息（每月还款额固定）的公式是 P × r ÷ （1 − （1 + r）^−n），其中 r 为月利率，n 为还款月数。前期还款中利息占大头，越往后本金占比越高。</p><p>固定费率（按本金计息）贷款在整个期限内都按最初的本金收取利息，因此实际年化利率大约是表面费率的两倍。部分信用卡分期和消费贷采用这种算法，签约前务必问清楚年化利率（APR）。</p><!--kw1122--><h3>等额本息与等额本金对比（贷款 100 万元）</h3><div class="tw" style="overflow-x:auto;max-width:100%"><table class="tbl kwt"><thead><tr><th>条件</th><th>等额本息</th><th>等额本金</th></tr></thead><tbody><tr><td data-l="条件">3.5%，30 年</td><td data-l="等额本息">月供 4,490.45 元<br>利息总额 616,560.88 元</td><td data-l="等额本金">首月 5,694.44 元 → 末月 2,785.88 元<br>利息总额 526,458.33 元</td></tr><tr><td data-l="条件">3.5%，20 年</td><td data-l="等额本息">月供 5,799.60 元<br>利息总额 391,903.32 元</td><td data-l="等额本金">首月 7,083.33 元 → 末月 4,178.82 元<br>利息总额 351,458.33 元</td></tr><tr><td data-l="条件">3.0%，30 年</td><td data-l="等额本息">月供 4,216.04 元<br>利息总额 517,774.52 元</td><td data-l="等额本金">首月 5,277.78 元 → 末月 2,784.72 元<br>利息总额 451,250.00 元</td></tr></tbody></table></div><p>等额本金：每月本金 = 贷款金额 ÷ 还款月数；每月利息 = 剩余本金 × 月利率；利息总额 = 贷款金额 × 月利率 × （月数 + 1）÷ 2。</p><h3>常见问题</h3><dl><div><dt>每月还款额是怎么算出来的？</dt><dd>先把年利率除以 12 得到月利率，再把贷款金额和还款月数代入等额本息公式。例如贷款 100 万元、年利率 3.5%、期限 30 年，每月约还 4,490 元。</dd></div><div><dt>怎样才能少付利息？</dt><dd>选择更短的期限、提前偿还部分本金，或在利率下调时办理转贷。</dd></div><div><dt>计算结果包含税费和保险吗？</dt><dd>不包含。房产相关税费、保险和手续费需另外计算。</dd></div><div><dt>等额本金的利息怎么计算？</dt><dd>每月利息 = 剩余本金 × 月利率，利息总额 = 贷款金额 × 月利率 × （还款月数 + 1）÷ 2。例如 100 万元、年利率 3.5%、30 年，利息总额为 526,458.33 元，首月还 5,694.44 元，之后每月减少约 8.10 元。</dd></div><div><dt>等额本息和等额本金哪个更划算？</dt><dd>同样 100 万元、3.5%、30 年：等额本息每月固定 4,490.45 元，利息总额 616,560.88 元；等额本金利息总额 526,458.33 元，少约 9 万元，但前期月供更高（首月 5,694.44 元）。</dd></div><div><dt>每月还的本金怎么算？</dt><dd>等额本金每月本金固定 = 贷款金额 ÷ 还款月数，100 万元 30 年（360 个月）即每月 2,777.78 元；等额本息前期本金少、利息多，可在上方选择还款方式查看各年末剩余本金。</dd></div></dl></section>
+
+<!--hl:related--><section class="hl-rel" aria-labelledby="hl-rel-t"><h2 class="hl-rel-t" id="hl-rel-t">你可能还喜欢</h2><ul class="hl-rel-l"><li><a class="hl-rel-a" href="percentage-calculator.html"><b>百分比计算器</b><span>快速计算一个数的百分之几、一个数占另一个数的百分比、增长率/下降率以及打折后的价格。</span></a></li><li><a class="hl-rel-a" href="age-calculator.html"><b>年龄计算器</b><span>输入出生日期，精确计算你现在几周岁几个月几天，已经活了多少天，以及距离下次生日还有几天。</span></a></li><li><a class="hl-rel-a" href="./"><b>免费在线计算器与测试</b><span>免费、快速的在线工具：IQ 测试、16 型人格测试、MBTI 配对、韩国四柱八字、韩文名字生成器、BMI、年龄、预产期、贷款和百分比计算器。</span></a></li><li><a class="hl-rel-a" href="iq-test.html"><b>免费 IQ 测试（120 题）— 图形矩阵、数字推理、言语与逻辑</b><span>免费 120 题智商测试，包含图形矩阵、数字推理、中文言语类比以及数学与逻辑题。限时 60 分钟，按部分计分，给出估算 IQ 和百分位。适合娱乐和健脑。</span></a></li></ul></section><!--/hl:related--><footer><nav><a href="./">全部计算器</a> · <a href="/about.html">关于我们</a> · <a href="/privacy.html">隐私政策</a> · <a href="mailto:85hongdongwoo@gmail.com">联系我们</a></nav><div>计算结果仅为估算，供参考，不构成财务、税务或法律建议。</div><div class="hl-trust" style="margin-top:6px;font-size:13px">最后审核：2026年11月 · <a href="/about.html">关于我们</a> · <a href="/editorial-policy.html">编辑方针</a> · <a href="/report-error.html">报告错误</a></div></footer>
+</div>
+<script>
+/* 홍라이프 计算器 — 简体中文版（逻辑与 ../g.js 相同） */
+(function(){
+'use strict';
+const LOC='zh-CN', CUR='¥';
+const fmt=(n,d=0)=>(isFinite(n)?n:0).toLocaleString(LOC,{minimumFractionDigits:d,maximumFractionDigits:d});
+const money=(n,d)=>(n<0?'-':'')+CUR+fmt(Math.abs(n),d??2);
+const pct=(n,d=2)=>fmt(n,d)+'%';
+const $=id=>document.getElementById(id);
+const C={};
+C.loan={
+  f:[['amt','贷款金额（元）','money',1000000],
+     ['rate','年利率（%）','num',3.5],
+     ['yrs','贷款期限（年）','num',30],
+     ['type','还款方式','select',[['ann','等额本息（每月还款额固定）'],['eqp','等额本金（每月本金固定，月供逐月递减）'],['flat','固定费率（按本金计息）']]]],
+  run(v){
+    const n=v.yrs*12,r=v.rate/100/12;let pay,total;
+    if(v.type==='flat'){pay=v.amt/n+v.amt*v.rate/100/12;total=pay*n;}
+    else if(v.type==='eqp'){const pp=v.amt/n;let bal2=v.amt,tot2=0;const rows2=[];const ys=[1,2,3,5,10,15,20,25,30].filter(y=>y<=v.yrs);for(let m=1;m<=n;m++){tot2+=pp+bal2*r;bal2-=pp;if(ys.includes(m/12))rows2.push(['第 '+(m/12)+' 年末剩余本金','',money(Math.max(bal2,0))]);}const first=pp+v.amt*r,last=pp+pp*r,int2=tot2-v.amt;return{k:'首月还款额（等额本金）',big:money(first),sub:'每月本金 '+money(pp)+' · 每月递减 '+money(pp*r)+' · 末月 '+money(last),rows:[['贷款本金','',money(v.amt)],['利息总额','',money(int2)],['__t','还款总额',money(tot2)],...rows2],note:'等额本金每月偿还相同的本金，利息按剩余本金计算，所以月供逐月减少，利息总额比等额本息少。'};}
+    else{pay=r?v.amt*r/(1-Math.pow(1+r,-n)):v.amt/n;total=pay*n;}
+    const int=total-v.amt,rows=[];
+    let bal=v.amt;const yearsToShow=[1,2,3,5,10,15,20,25,30].filter(y=>y<=v.yrs);
+    for(let m=1;m<=n;m++){const i=v.type==='flat'?v.amt*v.rate/100/12:bal*r;bal-=(pay-i);if(yearsToShow.includes(m/12))rows.push(['第 '+(m/12)+' 年末剩余本金','',money(Math.max(bal,0))]);}
+    return{k:'每月还款额',big:money(pay),sub:'利息总额 '+money(int)+' · 还款总额 '+money(total),
+      rows:[['贷款本金','',money(v.amt)],['利息总额','',money(int)],['__t','还款总额',money(total)],...rows],
+      note:v.type==='flat'?'固定费率贷款每月都按最初的本金计息，实际年化利率远高于表面费率（大约是表面费率的两倍）。':''};
+  }
+};
+function build(id){
+  const spec=C[id],form=$('form'),out=$('out');
+  const today=new Date().toISOString().slice(0,10);
+  form.innerHTML=spec.f.map(([key,L,type,a,b])=>{
+    if(type==='select'){const def=b||a[0][0];return `<div class="field"><label for="f_${key}">${L}</label><select id="f_${key}">${a.map(([v,l])=>`<option value="${v}"${v===def?' selected':''}>${l}</option>`).join('')}</select></div>`;}
+    if(type==='check'){return `<label class="check"><input type="checkbox" id="f_${key}"${a?' checked':''}><span>${L}</span></label>`;}
+    if(type==='date'){return `<div class="field"><label for="f_${key}">${L}</label><input type="date" id="f_${key}" value="${a==='today'?today:a}"></div>`;}
+    const shown=type==='money'?fmt(a):Number(a).toLocaleString(LOC,{useGrouping:false,maximumFractionDigits:4});return `<div class="field"><label for="f_${key}">${L}</label><input id="f_${key}" inputmode="decimal" value="${shown}"></div>`;
+  }).join('');
+  const read=()=>{const v={};spec.f.forEach(([key,,type])=>{const el=$('f_'+key);
+    if(type==='check')v[key]=el.checked;else if(type==='select'||type==='date')v[key]=el.value;
+    else{const raw=String(el.value).replace(/\s/g,'');v[key]=parseFloat(raw.replace(/[,，]/g,''))||0;}});return v;};
+  const render=()=>{const r=spec.run(read());
+    out.innerHTML=`<p class="kicker">${r.k||''}</p><p class="big">${r.big}</p><p class="bigsub">${r.sub||''}</p>`+
+      (r.rows&&r.rows.length?`<table>${r.rows.map(x=>x[0]==='__t'?`<tr class="t"><td>${x[1]}</td><td class="n">${x[2]}</td></tr>`:`<tr${String(x[2]).startsWith('−')?' class="m"':''}><td>${x[0]}${x[1]?`<span class="c">${x[1]}</span>`:''}</td><td class="n">${x[2]}</td></tr>`).join('')}</table>`:'')+
+      (r.note?`<p class="note">${r.note}</p>`:'');};
+  form.addEventListener('input',render);form.addEventListener('change',render);
+  form.addEventListener('focusout',e=>{const el=e.target;if(el.tagName!=='INPUT'||el.type!=='text'&&el.type!=='')return;const key=el.id.slice(2);const f=spec.f.find(x=>x[0]===key);if(f&&f[2]==='money'){const v=read()[key];el.value=fmt(v);}});
+  render();
+}
+document.addEventListener('DOMContentLoaded',()=>{const app=document.querySelector('[data-calc]');if(app)build(app.dataset.calc);});
+})();
+</script>
+<script src="/assets/share.js" defer></script>
+<script src="/assets/hl-viz.js" defer></script>
+</body>
+</html>
