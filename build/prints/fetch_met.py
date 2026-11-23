@@ -58,12 +58,21 @@ def main():
     os.makedirs(data_dir, exist_ok=True); os.makedirs(img_dir, exist_ok=True)
     items, colls, seen = [], [], set()
     for slug, title, q, dept in COLL:
-        qs = {'q': q, 'hasImages': 'true', 'isPublicDomain': 'true'}
+        # v1 /search was retired on 2026-10-01; v1.1 is paginated and ignores isPublicDomain,
+        # so public-domain status is checked on every object record below.
+        qs = {'q': q, 'hasImages': 'true', 'limit': 500, 'offset': 0}
         if dept:
             qs['departmentId'] = dept
-        ids = json.loads(get(API + '/search?' + urllib.parse.urlencode(qs))).get('objectIDs') or []
+        try:
+            r = json.loads(get(API.replace('/v1', '/v1.1') + '/search?' + urllib.parse.urlencode(qs)))
+        except Exception as e:
+            print(slug, 'search failed:', e); colls.append({'slug': slug, 'title': title, 'count': 0}); continue
+        ids = r.get('objectIDs') or [x.get('objectID') if isinstance(x, dict) else x for x in (r.get('objects') or r.get('data') or [])]
+        ids = [x for x in ids if x]
+        if not ids:
+            print(slug, 'no ids; response keys:', list(r)[:10])
         got = []
-        for oid in ids:
+        for oid in ids[:PER * 8]:
             if len(got) >= PER:
                 break
             if oid in seen:
