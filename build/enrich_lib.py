@@ -57,3 +57,28 @@ def build(path, title, desc, article, faq, form=None, calc=None, lang_note=None)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, 'w', encoding='utf-8').write(s)
     return out
+
+
+TOP_CSS = ('<style id="hl-deep-css">.hl-by{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:#6e6e73;margin:6px 2px 12px}'
+           '.hl-by b{color:#1d1d1f;font-weight:600}.hl-toc{padding:14px 18px}.hl-toc summary{font-weight:600;cursor:pointer;font-size:15px}'
+           '.hl-toc ol{margin:10px 0 2px;padding-left:20px;columns:2;column-gap:28px}.hl-toc li{margin:3px 0;break-inside:avoid;font-size:14px}'
+           '.hl-toc a{text-decoration:none}@media (max-width:560px){.hl-toc ol{columns:1}}</style>')
+
+
+def add_top(out, by, toc, toc_title='On this page', views=None):
+    """Byline + table of contents above the calculator (same markup/CSS as build/patch_deep.py),
+    optional table/bar switch (/assets/hl-views.js). by = list of (label, value) pairs;
+    toc = list of (id, text); views = (css selector, lang)."""
+    s = open(out, encoding='utf-8').read()
+    if '<!--hl:deep-->' in s:
+        return out
+    top = ('<!--hl:deep--><div class="hl-by">' + ''.join(f'<span>{a} <b>{b}</b></span>' for a, b in by) + '</div>'
+           f'<details class="card hl-toc" open><summary>{toc_title}</summary><ol>'
+           + ''.join(f'<li><a href="#{i}">{n}</a></li>' for i, n in toc) + '</ol></details>')
+    s = s.replace('<section class="app">', top + '<section class="app">', 1)
+    if 'id="hl-deep-css"' not in s:
+        s = s.replace('</head>', TOP_CSS + '</head>', 1)
+    if views:
+        s = s.replace('</body>', f'<script src="/assets/hl-views.js?v=2" defer data-target="{views[0]}" data-lang="{views[1]}"></script></body>', 1)
+    open(out, 'w', encoding='utf-8').write(s)
+    return out

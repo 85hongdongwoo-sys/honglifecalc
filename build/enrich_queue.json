@@ -1,46 +1,6 @@
 {
  "queue": [
   {
-   "path": "/uk/shared-ownership-calculator.html",
-   "chars": 741,
-   "impr28": 24
-  },
-  {
-   "path": "/be/salaire-brut-net.html",
-   "chars": 940,
-   "impr28": 23
-  },
-  {
-   "path": "/au/term-deposit-calculator.html",
-   "chars": 694,
-   "impr28": 22
-  },
-  {
-   "path": "/br/calculadora-consumo-energia.html",
-   "chars": 552,
-   "impr28": 22
-  },
-  {
-   "path": "/au/long-service-leave-calculator.html",
-   "chars": 1278,
-   "impr28": 21
-  },
-  {
-   "path": "/au/savings-goal-calculator.html",
-   "chars": 622,
-   "impr28": 21
-  },
-  {
-   "path": "/fr/calcul-consommation-electrique.html",
-   "chars": 615,
-   "impr28": 21
-  },
-  {
-   "path": "/fr/smic-2026.html",
-   "chars": 846,
-   "impr28": 21
-  },
-  {
    "path": "/uk/isa-calculator.html",
    "chars": 746,
    "impr28": 21
@@ -618,6 +578,14 @@
   "/uk/fuel-cost-calculator.html",
   "/uk/electricity-cost-calculator.html",
   "/uk/ltt-calculator.html",
-  "/uk/overtime-calculator.html"
+  "/uk/overtime-calculator.html",
+  "/uk/shared-ownership-calculator.html",
+  "/be/salaire-brut-net.html",
+  "/au/term-deposit-calculator.html",
+  "/br/calculadora-consumo-energia.html",
+  "/au/long-service-leave-calculator.html",
+  "/au/savings-goal-calculator.html",
+  "/fr/calcul-consommation-electrique.html",
+  "/fr/smic-2026.html"
  ]
 }
