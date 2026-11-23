@@ -34,5 +34,11 @@
   "hub": "/ko/index.html",
   "after": "/ko/science/",
   "label": "달까지 거리 실시간"
+ },
+ {
+  "url": "/uk/ev-charging-carbon-calculator.html",
+  "hub": "/uk/index.html",
+  "after": "/uk/electricity-cost-calculator.html",
+  "label": "Best Time to Charge an EV (live grid carbon)"
  }
 ]
