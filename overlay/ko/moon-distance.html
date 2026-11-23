@@ -183,6 +183,7 @@ table.mt td:nth-child(2){font-variant-numeric:tabular-nums}
  </div>
  <div class="row" style="margin-top:12px"><button class="btn pri" id="isGo">우주정거장 위치 불러오기</button><button class="btn" id="isLive">🎥 NASA 생중계 보기</button></div>
  <div class="mn-vid" id="isVid" hidden></div>
+ <p class="mn-src" id="isAlt2" hidden>영상이 안 나오면 NASA가 다른 카메라로 바꾼 거예요. <a href="https://www.youtube.com/watch?v=M3HKLzjvKPc" target="_blank" rel="noopener">두 번째 NASA 생중계</a>나 <a href="https://www.youtube.com/@NASA/streams" target="_blank" rel="noopener">NASA 생중계 목록</a>에서 보세요.</p>
  <p class="mn-src">위치: wheretheiss.at 공개 자료. 생중계: NASA 공식 유튜브 (NASA가 방송 중일 때만 나와요. 우주정거장이 지구 밤쪽을 지날 때는 화면이 어두워요).</p>
 </section>
 
@@ -260,7 +261,7 @@ function iss(){fetch('https://api.wheretheiss.at/v1/satellites/25544').then(func
  $('isKm').textContent=f(km)+' km';$('isAlt').textContent=f(d.altitude,1)+' km';$('isVel').textContent='시속 '+f(d.velocity)+' km';
  $('isPos').textContent='위도 '+f(d.latitude,2)+'°, 경도 '+f(d.longitude,2)+'°'}).catch(function(){$('isKm').textContent='잠시 뒤 다시'})}
 $('isGo').addEventListener('click',function(){if(window._iss)return;window._iss=setInterval(iss,5000);iss();this.textContent='5초마다 새로 가져오는 중';this.disabled=true});
-$('isLive').addEventListener('click',function(){var v=$('isVid');v.hidden=false;if(!v.firstChild)v.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/live_stream?channel=UCLA_DiR1FfKNvjuUpBHmylQ&autoplay=1&mute=1" title="NASA 생중계" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>'});
+$('isLive').addEventListener('click',function(){var v=$('isVid');v.hidden=false;if(!v.firstChild)v.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/ROboUHfPUrU?autoplay=1&mute=1" title="NASA 생중계" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';$('isAlt2').hidden=false});
 slow();moon();setInterval(moon,100);setInterval(slow,60000);
 })();
 </script>
