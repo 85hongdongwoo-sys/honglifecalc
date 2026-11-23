@@ -30,9 +30,9 @@
   "label": "Korea F-2-7 Visa Points"
  },
  {
-  "url": "/ko/moon-distance.html",
+  "url": "/ko/science/moon-distance.html",
   "hub": "/ko/index.html",
-  "after": "clock.html",
+  "after": "/ko/science/",
   "label": "달까지 거리 실시간"
  }
 ]

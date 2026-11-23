@@ -50,6 +50,9 @@ jobs:
         run: python3 build/patch_topbar.py _site
       - name: New pages (sitemap + hub links)
         run: python3 build/patch_newpages.py _site
+      - name: Korean space pages (science tile + science list)
+        continue-on-error: true
+        run: python3 build/patch_ko_space.py _site
       - name: Deepen top pages (TOC, tables, examples, FAQ)
         run: python3 build/patch_deep.py _site
       - name: Add hreflang cluster for country hubs
