@@ -28,5 +28,11 @@
   "hub": "/en/index.html",
   "after": "/en/korea-severance-pay-calculator.html",
   "label": "Korea F-2-7 Visa Points"
+ },
+ {
+  "url": "/ko/moon-distance.html",
+  "hub": "/ko/index.html",
+  "after": "clock.html",
+  "label": "달까지 거리 실시간"
  }
 ]
