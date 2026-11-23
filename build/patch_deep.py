@@ -255,7 +255,7 @@ def patch(path, cfg):
     t = t.replace("</head>", CSS + "</head>", 1)
     v = cfg.get("views")
     if v:
-        t = t.replace("</body>", f'<script src="/assets/hl-views.js?v=2" defer data-target="{v[0]}" data-lang="{v[1]}"{' data-series="last"' if len(v) > 2 and v[2] == 'last' else ''}></script></body>', 1)
+        t = t.replace("</body>", f'<script src="/assets/hl-views.js?v=3" defer data-target="{v[0]}" data-lang="{v[1]}"{' data-series="last"' if len(v) > 2 and v[2] == 'last' else ''}></script></body>', 1)
     path.write_text(t, encoding="utf-8")
     return True
 

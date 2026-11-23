@@ -79,6 +79,6 @@ def add_top(out, by, toc, toc_title='On this page', views=None):
     if 'id="hl-deep-css"' not in s:
         s = s.replace('</head>', TOP_CSS + '</head>', 1)
     if views:
-        s = s.replace('</body>', f'<script src="/assets/hl-views.js?v=2" defer data-target="{views[0]}" data-lang="{views[1]}"></script></body>', 1)
+        s = s.replace('</body>', f'<script src="/assets/hl-views.js?v=3" defer data-target="{views[0]}" data-lang="{views[1]}"></script></body>', 1)
     open(out, 'w', encoding='utf-8').write(s)
     return out

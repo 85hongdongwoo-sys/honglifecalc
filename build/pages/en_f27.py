@@ -139,7 +139,7 @@ run();
 
 # ---------- article ----------
 T2 = lambda h: h.replace('class="tbl"', 'class="tbl t2"', 1)
-T2CSS = ('<style>@media(max-width:640px){.help .t2{display:table;width:100%}.help .t2 thead{display:table-header-group}'
+T2CSS = ('<style>.field select{max-width:100%;min-width:0}@media(max-width:640px){.help .t2{display:table;width:100%}.help .t2 thead{display:table-header-group}'
          '.help .t2 tbody{display:table-row-group}.help .t2 tr{display:table-row;border:0}.help .t2 td{display:table-cell;border-bottom:1px solid var(--line,#E3E7EE);padding:6px 4px;text-align:left}'
          '.help .t2 td:not(:first-child),.help .t2 th:not(:first-child){text-align:right;white-space:nowrap}.help .t2 td::before{content:none}}</style>')
 age_t = T2(table(['Age on the application date', 'Points'], [['18–24', '23'], ['25–29', '25 (maximum)'], ['30–34', '23'], ['35–39', '20'], ['40–44', '12'], ['45–50', '8'], ['51 and over', '3']]))
@@ -236,7 +236,7 @@ s = re.sub(r'<section class="panel" data-calc="krsev">.*?</section>',
            TOP + '<section class="panel">' + FORM + '<div class="card res" id="out" aria-live="polite"></div></section>', s, count=1, flags=re.S)
 s = re.sub(r'<section class="card help">.*?</section>', lambda m: '<section class="card help">' + ART + '</section>', s, count=1, flags=re.S)
 s = s.replace('<script src="../g.js"></script>', '<script src="../g.js"></script>\n' + JS, 1)
-s = s.replace('</body>', '<script src="/assets/hl-views.js?v=2" defer data-target="#examples" data-lang="en"></script></body>', 1)
+s = s.replace('</body>', '<script src="/assets/hl-views.js?v=3" defer data-target="#examples" data-lang="en"></script></body>', 1)
 assert 'data-calc' not in s and 'id="figures"' in s and 'Korea F-2-7' in s
 out = os.path.join(OUT, 'en', SLUG)
 open(out, 'w', encoding='utf-8').write(s)
