@@ -1,0 +1,30 @@
+name: Prints data (Met Open Access)
+on:
+  workflow_dispatch:
+    inputs:
+      per:
+        description: 'Artworks per collection'
+        default: '40'
+permissions:
+  contents: write
+  actions: write
+jobs:
+  prints:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: build}
+      - run: pip install -q pillow
+      - run: python3 build/prints/fetch_met.py out ${{ github.event.inputs.per || '40' }}
+      - name: Publish to data-prints branch and redeploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd out
+          git init -q -b data-prints
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "Prints $(date +%F)"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data-prints
+          gh workflow run pages.yml --ref main -R "$GITHUB_REPOSITORY" || true
