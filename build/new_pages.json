@@ -46,5 +46,29 @@
   "hub": "/de/index.html",
   "after": "/de/stromkosten-rechner.html",
   "label": "Dynamischer Stromtarif-Rechner (Börsenstrompreis live)"
+ },
+ {
+  "url": "/uk/london-driving-cost-traffic-cameras.html",
+  "hub": "/uk/index.html",
+  "after": "/uk/fuel-cost-calculator.html",
+  "label": "London Driving Cost & Live Traffic Cameras"
+ },
+ {
+  "url": "/sg/jb-trip-cost-causeway-cameras.html",
+  "hub": "/sg/index.html",
+  "after": "/sg/fuel-cost-calculator.html",
+  "label": "Drive to JB: Trip Cost & Live Checkpoint Cameras"
+ },
+ {
+  "url": "/us/bad-weather-drive-time-radar.html",
+  "hub": "/us/index.html",
+  "after": "/us/fuel-cost-calculator.html",
+  "label": "Bad-Weather Drive Time & Live Radar"
+ },
+ {
+  "url": "/ca/bc-mountain-pass-trip-cameras.html",
+  "hub": "/ca/index.html",
+  "after": "/ca/cra-mileage-rate-calculator.html",
+  "label": "BC Mountain Pass Trip Planner & Live Cameras"
  }
 ]
