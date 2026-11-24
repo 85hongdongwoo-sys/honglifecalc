@@ -88,5 +88,11 @@
   "hub": "/jp/index.html",
   "after": "/jp/denkidai-keisan.html",
   "label": "外干しカレンダー（週間天気で乾燥機代の節約）"
+ },
+ {
+  "url": "/uk/washing-drying-forecast.html",
+  "hub": "/uk/index.html",
+  "after": "/uk/electricity-cost-calculator.html",
+  "label": "Washing Line Drying Forecast (will my washing dry?)"
  }
 ]
