@@ -12,13 +12,13 @@ TODAY = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=3)).date()
 E = lambda s: html.escape(str(s), quote=True)
 
 L10N = {
- 'es': dict(dir='/es/edad/', shell='arg/calculadora-vacaciones.html', shell_url='/arg/calculadora-vacaciones.html', locale='es-AR', hub='Edad de los famosos',
-            hub_lead='Cuántos años tienen hoy, cuánto miden y qué edad tendrán en los próximos Mundiales.', age='edad', years='años', months='meses', days='días',
+ 'es': dict(dir='/es/edad/', shell='arg/calculadora-vacaciones.html', shell_url='/arg/calculadora-vacaciones.html', locale='es-AR', hub='Famosos en números',
+            hub_lead='Edad, altura y momentos clave de los famosos en números, y cómo te comparás con ellos.', age='edad', years='años', months='meses', days='días',
             mes=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'], home='Inicio',
             signs=['Capricornio','Acuario','Piscis','Aries','Tauro','Géminis','Cáncer','Leo','Virgo','Libra','Escorpio','Sagitario'],
             zod=['Rata','Buey','Tigre','Conejo','Dragón','Serpiente','Caballo','Cabra','Mono','Gallo','Perro','Cerdo'], src='Datos'),
- 'pt': dict(dir='/br/idade/', shell='br/calculadora-ferias.html', shell_url='/br/calculadora-ferias.html', locale='pt-BR', hub='Idade dos famosos',
-            hub_lead='Quantos anos têm hoje, quanto medem e que idade terão nas próximas Copas.', age='idade', years='anos', months='meses', days='dias',
+ 'pt': dict(dir='/br/idade/', shell='br/calculadora-ferias.html', shell_url='/br/calculadora-ferias.html', locale='pt-BR', hub='Famosos em números',
+            hub_lead='Idade, altura e momentos marcantes dos famosos em números, e como você se compara com eles.', age='idade', years='anos', months='meses', days='dias',
             mes=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'], home='Início',
             signs=['Capricórnio','Aquário','Peixes','Áries','Touro','Gêmeos','Câncer','Leão','Virgem','Libra','Escorpião','Sagitário'],
             zod=['Rato','Búfalo','Tigre','Coelho','Dragão','Serpente','Cavalo','Cabra','Macaco','Galo','Cão','Porco'], src='Dados'),
@@ -54,6 +54,12 @@ def slug(s):
 
 
 def d(s): return dt.date.fromisoformat(s)
+
+
+def bday(b, y):
+    """birthday in year y (29 Feb → 28 Feb in non-leap years)"""
+    try: return b.replace(year=y)
+    except ValueError: return dt.date(y, 2, 28)
 
 
 def age_at(b, x):
@@ -137,9 +143,9 @@ def build(p, others):
     b = d(p['birth']); dead = p.get('death')
     if dead: return None  # living people only in this section
     age = age_at(b, TODAY)
-    nb = b.replace(year=TODAY.year) if (TODAY.month, TODAY.day) <= (b.month, b.day) else b.replace(year=TODAY.year + 1)
-    if (nb.month, nb.day) == (TODAY.month, TODAY.day) and nb.year == TODAY.year: nb = nb.replace(year=TODAY.year + 1)
-    last = nb.replace(year=nb.year - 1)
+    nb = bday(b, TODAY.year)
+    if nb <= TODAY: nb = bday(b, TODAY.year + 1)
+    last = bday(b, nb.year - 1)
     mm = (TODAY.year - last.year) * 12 + TODAY.month - last.month; dd = TODAY.day - last.day
     if dd < 0:
         mm -= 1; dd += (TODAY.replace(day=1) - dt.timedelta(days=1)).day

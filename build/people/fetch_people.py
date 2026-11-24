@@ -10,12 +10,13 @@ UA = {'User-Agent': 'honglifecalc.com people pages (data job; contact via hongli
 
 
 def get(url, data=None):
-    for a in range(5):
+    for a in range(7):
         try:
             req = urllib.request.Request(url, data=data, headers=UA)
             return json.load(urllib.request.urlopen(req, timeout=90))
         except Exception as e:
-            print('retry', a, e); time.sleep(4 * (a + 1))
+            wait = 30 * (a + 1) if '429' in str(e) else 4 * (a + 1)
+            print('retry', a, e, 'wait', wait); time.sleep(wait)
     raise SystemExit('unreachable ' + url[:120])
 
 
@@ -110,7 +111,7 @@ for p in REG['people']:
                positions=[{'n': name(i), 's': s, 'e': en} for i, s, en in pos if name(i)],
                awards=[{'n': name(i), 'd': d} for i, d in aw if name(i)], founded=founded)
     out.append(rec); print('ok', q, lab, rec['birth'], cm, len(rec['teams']), len(rec['positions']), len(rec['awards']), len(founded))
-    time.sleep(1)
+    time.sleep(4)
 
 os.makedirs(os.path.join(OUT, 'people-data'), exist_ok=True)
 json.dump({'fetched': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'source': 'Wikidata (CC0)', 'people': out},
