@@ -124,5 +124,11 @@
   "hub": "/arg/index.html",
   "after": "/arg/calculadora-indemnizacion-despido.html",
   "label": "Calculadora de alquileres (IPC / ICL, datos BCRA en vivo)"
+ },
+ {
+  "url": "/de/mindestlohn-2027.html",
+  "hub": "/de/index.html",
+  "after": "/de/stundenlohn-rechner.html",
+  "label": "Mindestlohn 2027: 14,60 € (Monatslohn & Minijob 633 €)"
  }
 ]
