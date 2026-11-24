@@ -33,6 +33,10 @@ jobs:
         continue-on-error: true
         run: |
           git fetch -q --depth 1 origin data-fx && git archive FETCH_HEAD | tar -x -C _site && python3 build/fx/gen_fx_pages.py _site && ( [ -f build/fx/gen_holidays.py ] && python3 build/fx/gen_holidays.py _site || true )
+      - name: Argentina BCRA pages (data-ar branch) — UVA hoy, ICL hoy, inflación
+        continue-on-error: true
+        run: |
+          git fetch -q --depth 1 origin data-ar && git archive FETCH_HEAD | tar -x -C _site && python3 build/ar/gen_ar_pages.py _site
       - name: Quake & aurora pages (data-geo branch)
         continue-on-error: true
         run: |
