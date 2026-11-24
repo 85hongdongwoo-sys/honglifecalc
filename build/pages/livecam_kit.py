@@ -19,6 +19,7 @@ CAM_CSS = '''<style id="lc-css">
 .lc-cam figcaption{background:#fff;color:#1d1d1f;font-size:13px;line-height:1.35;padding:7px 9px;border:1px solid #e5e7eb;border-top:0;border-radius:0 0 12px 12px}
 .lc-cam figcaption b{display:block;font-size:13.5px}
 .lc-cam .lc-t{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.62);color:#fff;font-size:11.5px;padding:2px 7px;border-radius:6px}
+.app>#cams{grid-column:1/-1}
 .lc-err{background:#FFF4E5;border:1px solid #F5D9A8;border-radius:10px;padding:10px 12px;font-size:14px}
 .lc-src{font-size:12.5px;color:#6e6e73;margin-top:10px}
 .lc-h{font-size:16px;margin:18px 0 6px;color:#12305C}
