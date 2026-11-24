@@ -1,0 +1,207 @@
+"""AR: Calculadora de alquileres (ICL e IPC) — live data from the BCRA Estadísticas API v4 (CORS ok):
+variable 40 Índice para Contratos de Locación (ICL, base 30.6.20=1) and variable 27 Inflación mensual (INDEC IPC, as published by BCRA).
+Own design (contract paper + staircase chart), not the shared calculator layout.
+Template shell: /arg/calculadora-vacaciones.html. Writes overlay/arg/calculadora-alquileres.html."""
+import json, os, re, sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from enrich_lib import ORIG, OUT, TBL_CSS, TOP_CSS, table, faq_html
+
+PATH = '/arg/calculadora-alquileres.html'
+URL = 'https://honglifecalc.com' + PATH
+TITLE = 'Calculadora de alquileres 2026: aumento por IPC o ICL (datos BCRA hoy)'
+H1 = 'Calculadora de alquileres: aumento por IPC o ICL'
+DESC = ('Calculá el aumento de tu alquiler por IPC o ICL con los datos oficiales del BCRA al día de hoy: nuevo monto, porcentaje, '
+        'meses usados y la escalera de todos los ajustes del contrato. Trimestral, cuatrimestral, semestral o anual.')
+DATE_ES = '25 de noviembre de 2026'
+
+CSS = '''<style id="al-css">
+section.app.al{display:block!important;grid-template-columns:none!important;min-width:0;max-width:100%}
+.al-tick{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:thin;max-width:100%}
+.al-tick div{flex:0 0 auto;background-color:#0B3A5B;color:#fff;border-radius:12px;padding:8px 12px;min-width:132px}
+.al-tick small{display:block;font-size:11px;color:#BFE3FA;letter-spacing:.02em}.al-tick b{display:block;font-size:18px;font-variant-numeric:tabular-nums;color:#fff}
+.al-tick i{font-style:normal;font-size:11px;color:#FDE68A}
+.al-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:16px;align-items:start}
+.al-paper{position:relative;background-color:#FFFDF7;border:1px solid #E7DCC2;border-radius:6px;padding:20px 18px 16px;box-shadow:0 1px 0 #E7DCC2,0 6px 0 -3px #F5EFE1,0 10px 24px rgba(60,40,10,.08);min-width:0}
+.al-paper:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(90deg,#74ACDF 0 22px,#fff 22px 44px);border-radius:6px 6px 0 0}
+.al-paper h2{font-family:Georgia,"Times New Roman",serif;font-size:21px;margin:4px 0 2px;color:#2B2112}
+.al-paper .sub{font-size:12.5px;color:#7A6A4F;margin:0 0 12px;border-bottom:1px dashed #D9CCAE;padding-bottom:10px}
+.al-f{display:block;margin:0 0 12px}.al-f>span{display:block;font-size:13px;font-weight:700;color:#4A3B22;margin-bottom:5px}
+.al-f input,.al-f select{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 11px;border:1px solid #D9CCAE;border-radius:8px;background-color:#fff;min-height:44px;min-width:0}
+.al-f small{display:block;font-size:12px;color:#7A6A4F;margin-top:4px}
+.al-pills{display:flex;flex-wrap:wrap;gap:6px}.al-pills label{flex:1 1 58px;text-align:center;border:1px solid #D9CCAE;border-radius:999px;padding:8px 6px;font-size:14px;cursor:pointer;background-color:#fff;min-width:0}
+.al-pills label{position:relative;overflow:hidden}.al-pills input{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}.al-pills label:has(input:checked){background-color:#0B3A5B;border-color:#0B3A5B;color:#fff;font-weight:700}
+.al-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.al-res{min-width:0}
+.al-big{position:relative;background-color:#EAF5FD;border:1px solid #BFE3FA;border-radius:18px;padding:16px 16px 14px;overflow:hidden}
+.al-big small{display:block;font-size:13px;color:#0B3A5B;font-weight:700}
+.al-big b{display:block;font-size:36px;line-height:1.1;color:#0B3A5B;font-variant-numeric:tabular-nums;margin:4px 0;overflow-wrap:anywhere}
+.al-big span{display:block;font-size:14px;color:#24475F}
+.al-stamp{position:absolute;right:12px;top:12px;transform:rotate(-12deg);border:3px solid #C2410C;color:#C2410C;border-radius:10px;padding:4px 8px;font-weight:900;font-size:16px;letter-spacing:.04em;opacity:.85;animation:alst .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes alst{from{transform:rotate(-12deg) scale(2.2);opacity:0}to{transform:rotate(-12deg) scale(1);opacity:.85}}
+.al-chart{margin:14px 0 6px;background-color:#fff;border:1px solid #E3EAF4;border-radius:16px;padding:10px}
+.al-chart svg{display:block;width:100%;height:auto}
+.al-step{transform-origin:bottom;transform-box:fill-box;animation:alup .7s ease both}@keyframes alup{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.al-cmp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.al-cmp div{background-color:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:9px 10px;min-width:0}
+.al-cmp small{display:block;font-size:11.5px;color:#64748B}.al-cmp b{display:block;font-size:17px;color:#0F172A;overflow-wrap:anywhere}
+.al-tb{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+.al-tb th,.al-tb td{padding:7px 6px;border-bottom:1px solid #E2E8F0;text-align:right;vertical-align:top}
+.al-tb th:first-child,.al-tb td:first-child{text-align:left}
+.al-tb tr.pend td{color:#94A3B8}
+.al-tb td small{display:block;color:#64748B;font-size:11.5px}
+.al-note{font-size:12.5px;color:#64748B;margin-top:8px}
+.al-err{background-color:#FFF4E5;border:1px solid #F5D9A8;border-radius:10px;padding:10px 12px;font-size:14px}
+@media(max-width:860px){.al-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.al-big b{font-size:28px}.al-stamp{font-size:13px;right:8px;top:8px}.al-cmp{grid-template-columns:1fr 1fr}.al-cmp div:last-child{grid-column:1/-1}
+.al-tb thead{display:none}.al-tb,.al-tb tbody,.al-tb tr{display:block}.al-tb tr{border-bottom:1px solid #E2E8F0;padding:6px 0}.al-tb td{display:flex;justify-content:space-between;gap:10px;border:0;padding:2px 0;text-align:right}.al-tb td::before{content:attr(data-l);font-weight:700;color:#64748B;text-align:left;flex:none}.al-tb td:first-child{display:block;text-align:left;font-weight:800;color:#0B3A5B}.al-tb td:first-child::before{content:none}.al-two{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.al-step,.al-stamp{animation:none}}
+</style>'''
+
+APP = '''<section class="app al" id="calc"><div class="al-tick" id="tick" aria-live="polite"><div><small>ICL hoy (BCRA)</small><b>…</b></div><div><small>Inflación mensual</small><b>…</b></div><div><small>Inflación interanual</small><b>…</b></div></div>
+<div class="al-grid"><form class="al-paper" id="form" onsubmit="return false"><h2>Contrato de locación</h2><p class="sub">Completá los datos de tu contrato. Los índices se descargan del Banco Central en este momento.</p>
+<label class="al-f"><span>Alquiler inicial ($ por mes)</span><input id="m" inputmode="numeric" value="600.000"></label>
+<label class="al-f"><span>Fecha de inicio del contrato</span><input id="d" type="date" value="2025-12-01"></label>
+<div class="al-f"><span>Índice de actualización</span><div class="al-pills"><label><input type="radio" name="ix" value="ipc" checked>IPC (INDEC)</label><label><input type="radio" name="ix" value="icl">ICL (BCRA)</label></div></div>
+<div class="al-f"><span>Ajuste cada</span><div class="al-pills"><label><input type="radio" name="fq" value="3" checked>3 meses</label><label><input type="radio" name="fq" value="4">4 meses</label><label><input type="radio" name="fq" value="6">6 meses</label><label><input type="radio" name="fq" value="12">12 meses</label></div></div>
+<div class="al-two"><label class="al-f"><span>Duración</span><select id="dur"><option value="24" selected>24 meses</option><option value="36">36 meses</option><option value="12">12 meses</option></select></label>
+<label class="al-f" id="lagw"><span>Meses de IPC</span><select id="lag"><option value="1" selected>Último dato publicado</option><option value="0">Meses del período</option></select></label></div>
+<small style="display:block;font-size:12px;color:#7A6A4F">Con IPC, "último dato publicado" usa los meses anteriores al mes previo al ajuste (ej.: ajuste de abril → diciembre, enero y febrero), porque el INDEC publica cada mes a mediados del siguiente. Usá lo que diga tu contrato.</small>
+</form><div class="al-res" id="out"><p>Cargando índices del BCRA …</p></div></div></section>'''
+
+JS = r'''<script>
+(function(){'use strict';
+const $=id=>document.getElementById(id);
+const API='https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/';
+const ARS=new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0});
+const P=(x,d)=>(x).toLocaleString('es-AR',{minimumFractionDigits:d==null?1:d,maximumFractionDigits:d==null?1:d})+'%';
+const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const fd=s=>{const [y,m,d]=s.split('-');return d+'/'+m+'/'+y};
+const num=v=>{const n=parseFloat(String(v).replace(/\./g,'').replace(',','.').replace(/[^0-9.]/g,''));return isFinite(n)?n:0};
+const rad=n=>(document.querySelector('input[name="'+n+'"]:checked')||{}).value;
+let ICL=null,IPC=null,INT=null;
+async function series(id,desde){let out=[],off=0;for(;;){const j=await fetch(API+id+'?desde='+desde+'&limit=3000&offset='+off).then(r=>{if(!r.ok)throw new Error('BCRA '+r.status);return r.json()});const d=(j.results&&j.results[0]&&j.results[0].detalle)||[];out=out.concat(d);const c=j.metadata&&j.metadata.resultset&&j.metadata.resultset.count||0;off+=3000;if(off>=c||!d.length)break}return out.map(x=>[x.fecha,+x.valor]).sort((a,b)=>a[0]<b[0]?-1:1)}
+function addM(s,k){const [y,m,d]=s.split('-').map(Number);const t=new Date(Date.UTC(y,m-1+k,1));const last=new Date(Date.UTC(t.getUTCFullYear(),t.getUTCMonth()+1,0)).getUTCDate();t.setUTCDate(Math.min(d,last));return t.toISOString().slice(0,10)}
+function iclAt(s){if(!ICL||!ICL.length)return null;let v=null;for(const [f,x] of ICL){if(f<=s)v=[f,x];else break}return v&&v[0]===s?v[1]:(v&&s<=ICL[ICL.length-1][0]?v[1]:null)}
+const ipcMap=()=>{const m={};(IPC||[]).forEach(([f,v])=>{m[f.slice(0,7)]=v});return m};
+function ym(s,k){const [y,m]=s.split('-').map(Number);const t=new Date(Date.UTC(y,m-1+k,1));return t.toISOString().slice(0,7)}
+function draw(){const m0=num($('m').value),d0=$('d').value,ix=rad('ix'),fq=+rad('fq'),dur=+$('dur').value,lag=+$('lag').value;
+ $('lagw').style.opacity=ix==='ipc'?1:.45;$('lag').disabled=ix!=='ipc';
+ if(!m0||!/^\d{4}-\d{2}-\d{2}$/.test(d0)){$('out').innerHTML='<div class="al-err">Ingresá el monto y la fecha de inicio.</div>';return}
+ if(ix==='icl'&&d0<'2020-07-01'){$('out').innerHTML='<div class="al-err">El ICL existe desde el 1/7/2020 (Ley 27.551).</div>';return}
+ const today=new Date().toISOString().slice(0,10),M=ipcMap();
+ const rows=[{n:0,date:d0,rent:m0,f:1,pct:0,ok:true,used:'Inicio del contrato'}];let base=m0,prevDate=d0;
+ for(let k=fq;k<dur;k+=fq){const dt=addM(d0,k);let f=null,used='';
+  if(ix==='icl'){const a=iclAt(prevDate),b=iclAt(dt);if(a&&b&&dt<=today){f=b/a;used='ICL '+fd(prevDate)+' '+a.toLocaleString('es-AR')+' → '+fd(dt)+' '+b.toLocaleString('es-AR')}else used='ICL del '+fd(dt)+' aún no disponible'}
+  else{const ms=[];for(let i=fq;i>=1;i--)ms.push(ym(dt,-i-lag));const vals=ms.map(x=>M[x]);
+   if(vals.every(v=>v!=null)){f=vals.reduce((p,v)=>p*(1+v/100),1);used='IPC '+ms.map((x,i)=>MES[+x.slice(5)-1]+' '+x.slice(2,4)+' '+P(vals[i])).join(' · ')}else used='Falta IPC de '+ms.filter((x,i)=>vals[i]==null).map(x=>MES[+x.slice(5)-1]+' '+x.slice(0,4)).join(', ')}
+  if(f!=null){base=base*f;rows.push({n:k,date:dt,rent:base,f,pct:(f-1)*100,ok:true,used});prevDate=dt}else{rows.push({n:k,date:dt,rent:null,ok:false,used});break}}
+ const done=rows.filter(r=>r.ok),cur=done.filter(r=>r.date<=today).pop()||rows[0],nextR=rows.find(r=>r.date>today),last=done[done.length-1];
+ const tot=(last.rent/m0-1)*100;
+ // inflation over the same span (IPC months from start to last adjustment)
+ let infl=null,ia='',ib='';{const a=ym(d0,0);let p=1,c=0;for(let x=a;M[x]!=null;x=ym(x+'-01',1)){p*=1+M[x]/100;c++;ib=x}if(c){infl=(p-1)*100;ia=a}}
+ const curTot=(cur.rent/m0-1)*100;
+ let h='<div class="al-big"><small>Alquiler '+(cur.n===0?'actual (sin ajustes todavía)':'actual desde el '+fd(cur.date))+'</small><b>'+ARS.format(cur.rent)+'</b><span>'+(cur.n?'Último ajuste: +'+P(cur.pct)+' · acumulado desde el inicio: +'+P((cur.rent/m0-1)*100):'Primer ajuste: '+(rows[1]?fd(rows[1].date):'—'))+'</span>'+(cur.n?'<div class="al-stamp">+'+P(cur.pct,0)+'</div>':'')+'</div>';
+ if(nextR)h+='<p class="al-note" style="color:#0B3A5B;font-weight:700">Próximo ajuste: '+fd(nextR.date)+(nextR.ok?' → '+ARS.format(nextR.rent)+' (+'+P(nextR.pct)+')':' — '+nextR.used+'.')+'</p>';
+ // staircase chart
+ const W=Math.max(300,Math.round(($('out').clientWidth||640)-22)),H=230,pl=8,pr=8,pt=22,pb=34,steps=rows.length,maxR=Math.max(...done.map(r=>r.rent))*1.12,bw=(W-pl-pr)/Math.max(steps,1);
+ let svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Escalera de ajustes del alquiler">';
+ for(let g=1;g<=3;g++){const y=pt+(H-pt-pb)*(1-g/3);svg+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+y+'" y2="'+y+'" stroke="#EEF2F7"/>'}
+ rows.forEach((r,i)=>{const x=pl+i*bw+3,w=bw-6;if(r.ok){const hh=(H-pt-pb)*r.rent/maxR,y=H-pb-hh,isCur=r===cur;svg+='<rect class="al-step" style="animation-delay:'+(i*0.09).toFixed(2)+'s" x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+hh.toFixed(1)+'" rx="6" fill="'+(isCur?'#0B3A5B':(r.date>today?'#BFE3FA':'#74ACDF'))+'"/>';if(bw>40)svg+='<text x="'+(x+w/2).toFixed(1)+'" y="'+(y-6).toFixed(1)+'" font-size="10.5" text-anchor="middle" fill="#0B3A5B">'+(r.rent>=1e6?(r.rent/1e6).toLocaleString('es-AR',{maximumFractionDigits:2})+' M':Math.round(r.rent/1000)+' mil')+'</text>'}
+  else svg+='<rect x="'+x.toFixed(1)+'" y="'+(H-pb-40)+'" width="'+w.toFixed(1)+'" height="40" rx="6" fill="none" stroke="#CBD5E1" stroke-dasharray="4 4"/><text x="'+(x+w/2).toFixed(1)+'" y="'+(H-pb-15)+'" font-size="16" text-anchor="middle" fill="#94A3B8">?</text>';
+  svg+='<text x="'+(x+w/2).toFixed(1)+'" y="'+(H-pb+16)+'" font-size="11" text-anchor="middle" fill="#64748B">'+MES[+r.date.slice(5,7)-1]+' '+r.date.slice(2,4)+'</text>'});
+ svg+='</svg>';h+='<div class="al-chart">'+svg+'</div>';
+ h+='<div class="al-cmp"><div><small>Tu alquiler subió (hasta hoy)</small><b>+'+P(curTot)+'</b></div><div><small>Inflación '+(infl==null?'':MES[+ia.slice(5)-1]+' '+ia.slice(2,4)+'–'+MES[+ib.slice(5)-1]+' '+ib.slice(2,4))+'</small><b>'+(infl==null?'—':'+'+P(infl))+'</b></div><div><small>Pagás por año ahora</small><b>'+ARS.format(cur.rent*12)+'</b></div></div>';
+ h+='<table class="al-tb"><thead><tr><th>Ajuste</th><th>Desde</th><th>Aumento</th><th>Alquiler</th></tr></thead><tbody>'+rows.map((r,i)=>'<tr class="'+(r.ok?'':'pend')+'"><td data-l="Ajuste">'+(i?'#'+i:'Inicio')+'<small>'+r.used+'</small></td><td data-l="Desde">'+fd(r.date)+'</td><td data-l="Aumento">'+(i&&r.ok?'+'+P(r.pct):'—')+'</td><td data-l="Alquiler">'+(r.ok?ARS.format(r.rent):'pendiente')+'</td></tr>').join('')+'</tbody></table>';
+ h+='<p class="al-note">Datos: BCRA, API de Estadísticas v4 — ICL (variable 40, base 30/06/2020 = 1) e inflación mensual del INDEC (variable 27). Consultado en vivo. El resultado no reemplaza lo pactado en tu contrato.</p>';
+ $('out').innerHTML=h}
+function tick(){const t=$('tick').children,li=ICL&&ICL.filter(x=>x[0]<=new Date().toISOString().slice(0,10)).pop(),lp=IPC&&IPC[IPC.length-1];
+ if(li)t[0].innerHTML='<small>ICL hoy (BCRA)</small><b>'+li[1].toLocaleString('es-AR')+'</b><i>'+fd(li[0])+'</i>';
+ if(lp)t[1].innerHTML='<small>Inflación mensual</small><b>'+P(lp[1])+'</b><i>'+MES[+lp[0].slice(5,7)-1]+' '+lp[0].slice(0,4)+' · INDEC</i>';
+ if(INT)t[2].innerHTML='<small>Inflación interanual</small><b>'+P(INT[1])+'</b><i>'+MES[+INT[0].slice(5,7)-1]+' '+INT[0].slice(0,4)+'</i>'}
+async function load(){try{const since=($('d').value||'2024-01-01')<'2020-07-01'?'2020-07-01':($('d').value||'2024-01-01');const ipcSince=ym(since,-14)+'-01';
+ const [a,b,c]=await Promise.all([series(40,addM(since,-1)),series(27,ipcSince),series(28,ym(new Date().toISOString().slice(0,10),-3)+'-01')]);ICL=a;IPC=b;INT=c[c.length-1];tick();draw()}
+ catch(e){$('out').innerHTML='<div class="al-err">No pudimos leer los datos del BCRA ahora ('+e.message+'). Probá de nuevo en unos minutos.</div>'}}
+let lastStart='';
+document.querySelectorAll('#form input,#form select').forEach(el=>el.addEventListener(el.type==='radio'||el.tagName==='SELECT'?'change':'input',()=>{if(el.id==='d'){const v=el.value;if(ICL&&v&&v<lastStart){lastStart=v;load();return}}draw()}));
+$('m').addEventListener('change',()=>{const v=num($('m').value);if(v)$('m').value=Math.round(v).toLocaleString('es-AR')});
+lastStart=$('d').value;load();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{if(ICL)draw()},200)});
+})();
+</script>'''
+
+FAQ = [
+ ("¿Cómo se calcula el aumento de alquiler por ICL?",
+  "Se divide el valor del ICL del día del ajuste por el valor del ICL del día de inicio (o del último ajuste) y se multiplica el alquiler por ese cociente. El BCRA publica el ICL todos los días (base 30/06/2020 = 1)."),
+ ("¿Cómo se calcula el aumento por IPC?",
+  "Se multiplican las variaciones mensuales del IPC del INDEC de los meses que toma el contrato: (1 + IPC mes 1) × (1 + IPC mes 2) × … − 1. Para un ajuste trimestral se usan 3 meses, para uno cuatrimestral 4 y así."),
+ ("¿Qué meses de IPC se usan si el último mes todavía no se publicó?",
+  "El INDEC publica la inflación de cada mes a mediados del mes siguiente. Por eso muchos contratos usan el último dato publicado (ej.: para un ajuste de abril, diciembre a febrero). Otros esperan a que salga el mes del período. Elegí la opción que diga tu contrato."),
+ ("¿Sigue vigente la ley de alquileres con ICL?",
+  "El DNU 70/2023 derogó la Ley 27.551 desde el 29/12/2023: en los contratos nuevos las partes eligen el índice y la frecuencia. Los contratos firmados antes con ICL siguen ajustando por ICL hasta su fin."),
+ ("¿Los datos están actualizados?",
+  "Sí. Cada vez que abrís la página, la calculadora descarga el ICL y la inflación mensual directamente de la API de Estadísticas del Banco Central (BCRA)."),
+]
+
+ART = f'''<p><b>En resumen:</b> poné tu alquiler inicial, la fecha de inicio, el índice (IPC o ICL) y cada cuántos meses ajusta. La calculadora baja los índices oficiales del <b>Banco Central</b> en el momento y arma la <b>escalera de ajustes</b> de todo el contrato.</p>
+<h2 id="como">Cómo se calcula</h2>
+<ul><li><b>ICL:</b> nuevo alquiler = alquiler × ICL(fecha de ajuste) ÷ ICL(fecha anterior)</li>
+<li><b>IPC:</b> nuevo alquiler = alquiler × (1 + IPC₁) × (1 + IPC₂) × … de los meses del período</li>
+<li>Cada ajuste parte del alquiler ya ajustado (aumentos acumulados)</li></ul>
+<h3 id="ejemplo">Ejemplo con IPC trimestral</h3>
+''' + table(['Paso', 'Cálculo'], [
+    ['Alquiler inicial', '$ 600.000'],
+    ['IPC de 3 meses: 2,1 %, 1,7 % y 1,9 %', '1,021 × 1,017 × 1,019 = 1,05809 → +5,81 %'],
+    ['Nuevo alquiler', '$ 600.000 × 1,05809 = $ 634.852'],
+]) + '''
+<h3 id="indices">IPC o ICL: diferencias</h3>
+''' + table(['', 'IPC (INDEC)', 'ICL (BCRA)'], [
+    ['Qué mide', 'Inflación de precios al consumidor', 'Mitad inflación (CER) y mitad salarios (RIPTE)'],
+    ['Publicación', 'Mensual, a mediados del mes siguiente', 'Diaria'],
+    ['Uso típico', 'Contratos nuevos desde el DNU 70/2023', 'Contratos firmados con la Ley 27.551 (jul 2020 – dic 2023)'],
+]) + '''
+''' + faq_html(FAQ, heading='Preguntas frecuentes').replace('<h2 style="margin-top:22px">Preguntas frecuentes</h2>', '<h2 id="faq" style="margin-top:22px">Preguntas frecuentes</h2>') + f'''
+<p class="note">Fuentes (revisado el {DATE_ES}): <a href="https://www.bcra.gob.ar/BCRAyVos/Catalogo_de_APIs_banco_central.asp" rel="nofollow">BCRA: API de Estadísticas</a>; <a href="https://www.bcra.gob.ar/PublicacionesEstadisticas/Principales_variables.asp" rel="nofollow">BCRA: Principales variables (ICL)</a>; <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31" rel="nofollow">INDEC: Índice de precios al consumidor</a>. No es asesoramiento legal.</p>'''
+
+TOC = [('calc', 'Calculadora'), ('como', 'Cómo se calcula'), ('ejemplo', 'Ejemplo'), ('indices', 'IPC o ICL'), ('faq', 'Preguntas')]
+
+
+def main():
+    s = open(os.path.join(ORIG, 'arg/calculadora-vacaciones.html'), encoding='utf-8').read()
+    old = 'https://honglifecalc.com/arg/calculadora-vacaciones.html'
+    s = re.sub(r'<title>.*?</title>', f'<title>{TITLE}</title>', s, count=1, flags=re.S)
+    s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{DESC}">', s, count=1)
+    s = re.sub(r'(<meta property="og:title" content=")[^"]*', lambda m: m.group(1) + TITLE, s, count=1)
+    s = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m.group(1) + DESC, s, count=1)
+    s = re.sub(r'(<meta property="og:image:alt" content=")[^"]*', lambda m: m.group(1) + H1, s, count=1)
+    s = s.replace(old, URL)
+    assert old not in s
+    s = re.sub(r'<link rel="alternate" hreflang[^>]*>', '', s)
+    ld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": H1, "url": URL, "description": DESC,
+           "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "es-AR",
+           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "ARS"}},
+          {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Hong Life", "item": "https://honglifecalc.com/"},
+              {"@type": "ListItem", "position": 2, "name": "Argentina", "item": "https://honglifecalc.com/arg/"},
+              {"@type": "ListItem", "position": 3, "name": H1, "item": URL}]},
+          {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+              {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub('<[^>]+>', '', a)}} for q, a in FAQ]}]
+    s = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', '', s, flags=re.S)
+    s = s.replace('</head>', ''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>' for x in ld)
+                  + CSS + TOP_CSS + '</head>', 1)
+    s = re.sub(r'<header class="hero">.*?</header>', '<header class="hero"><div class="in"><span class="year">🇦🇷 Datos del BCRA en vivo</span>'
+               f'<h1>{H1}</h1><p>Cuánto vas a pagar después de cada ajuste, con el índice oficial de hoy.</p></div></header>', s, count=1, flags=re.S)
+    s = re.sub(r'<section class="app">.*?</section></section>', lambda m: APP, s, count=1, flags=re.S)
+    top = (f'<!--hl:deep--><div class="hl-by"><span>Por <b>Hong Life Calculators</b></span><span>Revisado <b>{DATE_ES}</b></span>'
+           '<span>Datos <b>BCRA · INDEC</b></span></div><details class="card hl-toc" open><summary>En esta página</summary><ol>'
+           + ''.join(f'<li><a href="#{i}">{n}</a></li>' for i, n in TOC) + '</ol></details>')
+    s = s.replace('<section class="app al"', top + '<section class="app al"', 1)
+    s = re.sub(r'<article class="card help">.*?</article>', lambda m: '<article class="card help">' + TBL_CSS + ART + '</article>', s, count=1, flags=re.S)
+    s = re.sub(r"<script>\n\(function\(\)\{'use strict';.*?</script>", lambda m: JS, s, count=1, flags=re.S)
+    s = re.sub(r'<script src="/assets/hl-viz\.js[^"]*" defer></script>', '', s)
+    assert 'api.bcra.gob.ar' in s and 'id="tick"' in s and 'id="faq"' in s and 'hl-viz' not in s and s.count('<section class="app al"') == 1
+    out = os.path.join(OUT, PATH.lstrip('/'))
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    open(out, 'w', encoding='utf-8').write(s)
+    print(out, len(s))
+
+
+main()

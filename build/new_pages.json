@@ -118,5 +118,11 @@
   "hub": "/us/index.html",
   "after": "/us/wind-chill-frostbite-forecast.html",
   "label": "Turkey Thawing & Cooking Time Calculator (USDA)"
+ },
+ {
+  "url": "/arg/calculadora-alquileres.html",
+  "hub": "/arg/index.html",
+  "after": "/arg/calculadora-indemnizacion-despido.html",
+  "label": "Calculadora de alquileres (IPC / ICL, datos BCRA en vivo)"
  }
 ]
