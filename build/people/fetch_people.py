@@ -29,51 +29,87 @@ def tval(node):
     return node['value'][:10]
 
 
+API = 'https://www.wikidata.org/w/api.php?format=json&'
+
+
+def ents(ids, props='labels', langs='es|pt|en'):
+    r = {}
+    ids = [i for i in dict.fromkeys(ids) if i]
+    for k in range(0, len(ids), 50):
+        j = get(API + 'action=wbgetentities&props=' + props + '&languages=' + langs + '&ids=' + '|'.join(ids[k:k + 50]))
+        r.update(j.get('entities', {}))
+        time.sleep(0.5)
+    return r
+
+
+def tv(snak):
+    """(YYYY-MM-DD, precision) of a time snak"""
+    try:
+        v = snak['datavalue']['value']; t = v['time'].lstrip('+')[:10]; pr = v['precision']
+        if pr < 11: t = t[:4] + ('-01-01' if pr <= 9 else t[4:7] + '-01')
+        return t, pr
+    except Exception:
+        return None, 0
+
+
+def qv(snak):
+    try: return snak['datavalue']['value']['id']
+    except Exception: return None
+
+
+def qual(c, prop):
+    q = c.get('qualifiers', {}).get(prop)
+    return tv(q[0])[0] if q else None
+
+
 out = []
 for p in REG['people']:
-    j = get('https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=info|labels|descriptions|sitelinks&sites='
-            + p['wiki'] + '&titles=' + urllib.parse.quote(p['title']) + '&languages=' + p['lang'] + '|en')
-    ents = [e for e in j.get('entities', {}).values() if 'missing' not in e]
-    if not ents:
+    j = get(API + 'action=wbgetentities&props=labels|descriptions|claims|sitelinks&sites=' + p['wiki'] + '&titles='
+            + urllib.parse.quote(p['title']) + '&languages=' + p['lang'] + '|en')
+    found = [e for e in j.get('entities', {}).values() if 'missing' not in e]
+    if not found:
         print('NOT FOUND', p['title']); continue
-    e = ents[0]; q = e['id']; L = p['lang']
+    e = found[0]; q = e['id']; L = p['lang']; C = e.get('claims', {})
     lab = (e['labels'].get(L) or e['labels'].get('en') or {}).get('value', p['title'])
     desc = (e.get('descriptions', {}).get(L) or {}).get('value', '')
-    sl = len(e.get('sitelinks', {}))
-    lang = f'"{L},en"'
-    base = sparql(f'''SELECT ?b ?bp ?d ?dp ?placeLabel ?h ?hu ?ws WHERE {{
-      wd:{q} p:P569/psv:P569 [wikibase:timeValue ?b; wikibase:timePrecision ?bp].
-      OPTIONAL{{ wd:{q} p:P570/psv:P570 [wikibase:timeValue ?d; wikibase:timePrecision ?dp] }}
-      OPTIONAL{{ wd:{q} wdt:P19 ?place }}
-      OPTIONAL{{ wd:{q} p:P2048/psv:P2048 [wikibase:quantityAmount ?h; wikibase:quantityUnit ?hu] }}
-      OPTIONAL{{ wd:{q} wdt:P2031 ?ws }}
-      SERVICE wikibase:label {{ bd:serviceParam wikibase:language {lang}. }} }}''')
-    if not base:
-        print('NO BIRTH', lab); continue
-    b0 = base[0]
-    births = {x['b']['value'][:10] for x in base}
-    if len(births) > 1 or int(b0['bp']['value']) < 11:
+    births = [tv(c['mainsnak']) for c in C.get('P569', []) if c.get('rank') != 'deprecated']
+    births = [x for x in births if x[0]]
+    if not births or len({x[0] for x in births}) > 1 or births[0][1] < 11:
         print('SKIP unclear birth', lab, births); continue
+    death = [tv(c['mainsnak'])[0] for c in C.get('P570', [])]
     cm = None
-    for x in base:
-        if 'h' in x:
-            v = float(x['h']['value']); u = x['hu']['value']
-            if u.endswith('Q11573'): v *= 100
-            if u.endswith('Q174728'): pass
-            if 140 <= v <= 230: cm = round(v)
-    occ = [x['oLabel']['value'] for x in sparql(f'SELECT ?oLabel WHERE {{ wd:{q} wdt:P106 ?o. SERVICE wikibase:label {{ bd:serviceParam wikibase:language {lang}. }} }}')]
-    teams = [{'n': x['tLabel']['value'], 's': tval(x.get('s')), 'e': tval(x.get('e'))} for x in sparql(
-        f'SELECT ?tLabel ?s ?e WHERE {{ wd:{q} p:P54 ?st. ?st ps:P54 ?t. OPTIONAL{{?st pq:P580 ?s}} OPTIONAL{{?st pq:P582 ?e}} SERVICE wikibase:label {{ bd:serviceParam wikibase:language {lang}. }} }}')]
-    pos = [{'n': x['pLabel']['value'], 's': tval(x.get('s')), 'e': tval(x.get('e'))} for x in sparql(
-        f'SELECT ?pLabel ?s ?e WHERE {{ wd:{q} p:P39 ?st. ?st ps:P39 ?p. OPTIONAL{{?st pq:P580 ?s}} OPTIONAL{{?st pq:P582 ?e}} SERVICE wikibase:label {{ bd:serviceParam wikibase:language {lang}. }} }}')]
-    awards = [{'n': x['aLabel']['value'], 'd': tval(x.get('d'))} for x in sparql(
-        f'SELECT ?aLabel ?d WHERE {{ wd:{q} p:P166 ?st. ?st ps:P166 ?a. OPTIONAL{{?st pq:P585 ?d}} SERVICE wikibase:label {{ bd:serviceParam wikibase:language {lang}. }} }}')]
-    founded = [{'n': x['cLabel']['value'], 'd': tval(x.get('d'))} for x in sparql(
-        f'SELECT ?cLabel ?d WHERE {{ ?c wdt:P112 wd:{q}. OPTIONAL{{?c wdt:P571 ?d}} SERVICE wikibase:label {{ bd:serviceParam wikibase:language {lang}. }} }} LIMIT 20')]
-    rec = dict(p, qid=q, label=lab, desc=desc, sitelinks=sl, birth=b0['b']['value'][:10],
-               death=(b0['d']['value'][:10] if 'd' in b0 else None), place=b0.get('placeLabel', {}).get('value', ''),
-               cm=cm, work_start=tval(b0.get('ws')), occ=sorted(set(occ)), teams=teams, positions=pos, awards=awards, founded=founded)
-    out.append(rec); print('ok', q, lab, rec['birth'], cm, len(teams), len(pos), len(awards), len(founded))
+    for c in C.get('P2048', []):
+        try:
+            v = c['mainsnak']['datavalue']['value']; amt = float(v['amount']); u = v['unit']
+            if u.endswith('/Q11573'): amt *= 100
+            if 140 <= amt <= 230: cm = round(amt)
+        except Exception: pass
+    refs = []
+    place = qv(C['P19'][0]['mainsnak']) if C.get('P19') else None; refs.append(place)
+    occ = [qv(c['mainsnak']) for c in C.get('P106', [])]; refs += occ
+    teams = [(qv(c['mainsnak']), qual(c, 'P580'), qual(c, 'P582')) for c in C.get('P54', [])]
+    pos = [(qv(c['mainsnak']), qual(c, 'P580'), qual(c, 'P582')) for c in C.get('P39', [])]
+    aw = [(qv(c['mainsnak']), qual(c, 'P585')) for c in C.get('P166', [])]
+    refs += [x[0] for x in teams + pos] + [x[0] for x in aw]
+    ws = tv(C['P2031'][0]['mainsnak'])[0] if C.get('P2031') else None
+    # companies founded: CirrusSearch haswbstatement (no query service)
+    sr = get(API + 'action=query&list=search&srnamespace=0&srlimit=20&srsearch=' + urllib.parse.quote('haswbstatement:P112=' + q))
+    comp = [x['title'] for x in sr.get('query', {}).get('search', [])]
+    ce = ents(comp, 'labels|claims', L + '|en') if comp else {}
+    refs = [r for r in refs if r]
+    lb = ents(refs, 'labels', L + '|en')
+    name = lambda i: ((lb.get(i, {}).get('labels', {}).get(L) or lb.get(i, {}).get('labels', {}).get('en') or {}).get('value')) if i else None
+    founded = []
+    for cid, ent in ce.items():
+        inc = [tv(c['mainsnak'])[0] for c in ent.get('claims', {}).get('P571', [])]
+        founded.append({'n': (ent.get('labels', {}).get(L) or ent.get('labels', {}).get('en') or {}).get('value', cid), 'd': inc[0] if inc else None})
+    rec = dict(p, qid=q, label=lab, desc=desc, sitelinks=len(e.get('sitelinks', {})), birth=births[0][0],
+               death=death[0] if death else None, place=name(place) or '', cm=cm, work_start=ws,
+               occ=sorted({name(o) for o in occ if name(o)}),
+               teams=[{'n': name(i), 's': s, 'e': en} for i, s, en in teams if name(i)],
+               positions=[{'n': name(i), 's': s, 'e': en} for i, s, en in pos if name(i)],
+               awards=[{'n': name(i), 'd': d} for i, d in aw if name(i)], founded=founded)
+    out.append(rec); print('ok', q, lab, rec['birth'], cm, len(rec['teams']), len(rec['positions']), len(rec['awards']), len(founded))
     time.sleep(1)
 
 os.makedirs(os.path.join(OUT, 'people-data'), exist_ok=True)
