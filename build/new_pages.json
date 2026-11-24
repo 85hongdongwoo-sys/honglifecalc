@@ -112,5 +112,11 @@
   "hub": "/us/index.html",
   "after": "/us/wind-chill-frostbite-forecast.html",
   "label": "How Fast Does Santa Fly? Santa Speed Calculator"
+ },
+ {
+  "url": "/us/turkey-cooking-time-calculator.html",
+  "hub": "/us/index.html",
+  "after": "/us/wind-chill-frostbite-forecast.html",
+  "label": "Turkey Thawing & Cooking Time Calculator (USDA)"
  }
 ]
