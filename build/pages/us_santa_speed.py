@@ -72,7 +72,7 @@ function draw(){const mi=$('unit').value==='mi',K=mi?0.621371:1,U=mi?'mi':'km',k
  const gap=Math.sqrt(LAND/homes),dist=homes*gap,v=dist/sec; // km, km, km/s
  pct=Math.min(1,Math.log10(v/0.343+1)/4);
  const ang=-90+180*Math.min(1,Math.log10(v/0.343)/Math.log10(C/0.343));
- let h='<div class="ss-big"><div><small>Santa's average speed</small><b>'+fmt(v*K,0)+' '+U+'/s</b><span>'+fmt(v*3600*K)+' '+(mi?'mph':'km/h')+' · Mach '+fmt(v/SOUND)+' · '+fmt(v/C*100,2)+'% of the speed of light</span></div>'
+ let h='<div class="ss-big"><div><small>Santa&#39;s average speed</small><b>'+fmt(v*K,0)+' '+U+'/s</b><span>'+fmt(v*3600*K)+' '+(mi?'mph':'km/h')+' · Mach '+fmt(v/SOUND)+' · '+fmt(v/C*100,2)+'% of the speed of light</span></div>'
  +'<div class="ss-g"><svg viewBox="0 0 150 95" aria-hidden="true"><path d="M12 82 A63 63 0 0 1 138 82" fill="none" stroke="#E2E8F0" stroke-width="12" stroke-linecap="round"/><path d="M12 82 A63 63 0 0 1 138 82" fill="none" stroke="#BE123C" stroke-width="12" stroke-linecap="round" stroke-dasharray="198" stroke-dashoffset="'+(198*(1-(ang+90)/180)).toFixed(1)+'"/><g class="nd" id="nd" style="transform:rotate(-90deg)"><line x1="75" y1="82" x2="75" y2="30" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/></g><circle cx="75" cy="82" r="7" fill="#0F172A"/><text x="12" y="94" font-size="9" fill="#64748B">sound</text><text x="118" y="94" font-size="9" fill="#64748B">light</text></svg></div></div>';
  h+='<div class="ss-sum"><div><span>Homes to visit</span><b>'+big(homes)+'</b><span>'+fmt(kids*share)+' children ÷ '+per+' per home</span></div>'
  +'<div class="ss-sum-x"></div><div><span>Homes per second</span><b>'+fmt(homes/sec)+'</b><span>over '+fmt(hrs,1)+' hours of Christmas night</span></div>'
