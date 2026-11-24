@@ -100,5 +100,17 @@
   "hub": "/us/index.html",
   "after": "/us/electricity-cost-calculator.html",
   "label": "Wind Chill & Frostbite Time Forecast (NWS live)"
+ },
+ {
+  "url": "/us/white-christmas-chance.html",
+  "hub": "/us/index.html",
+  "after": "/us/wind-chill-frostbite-forecast.html",
+  "label": "White Christmas Chance by City (NOAA, 30 years)"
+ },
+ {
+  "url": "/us/santa-speed-calculator.html",
+  "hub": "/us/index.html",
+  "after": "/us/wind-chill-frostbite-forecast.html",
+  "label": "How Fast Does Santa Fly? Santa Speed Calculator"
  }
 ]
