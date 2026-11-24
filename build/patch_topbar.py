@@ -110,7 +110,7 @@ app.onclick=function(){try{w.gtag&&gtag("event","a2hs_topbar")}catch(e){}
 
 /* 어두운 배경(풀밭·남색 상자) 위 어두운 글자 → 흰색으로 (모든 페이지) */
 function lum(c){var m=c&&c.match(/[\d.]+/g);if(!m)return 1;var a=m.length>3?+m[3]:1;if(a<.5)return -1;return(.2126*m[0]+.7152*m[1]+.0722*m[2])/255}
-function bgOf(e){while(e&&e.nodeType===1){var cs=getComputedStyle(e),l=lum(cs.backgroundColor);if(l>=0)return l;if(cs.backgroundImage&&cs.backgroundImage!=="none"&&e!==d.documentElement){var l2=lum(cs.backgroundColor);return l2>=0?l2:.3}e=e.parentElement}return 1}
+function bgOf(e){while(e&&e.nodeType===1){var cs=getComputedStyle(e),l=lum(cs.backgroundColor);if(l>=0)return l;if(cs.backgroundImage&&cs.backgroundImage!=="none"&&e!==d.documentElement){var g=cs.backgroundImage.match(/rgba?\([^)]*\)/);if(/gradient/.test(cs.backgroundImage)&&g){var l3=lum(g[0]);if(l3>=0)return l3}return .3}e=e.parentElement}return 1}
 function fix(){var all=d.body?d.body.getElementsByTagName("*"):[],i,e,own,n;for(i=0;i<all.length;i++){e=all[i];if(/^(INPUT|SELECT|TEXTAREA|OPTION|SVG|PATH|SCRIPT|STYLE|IMG|CANVAS)$/i.test(e.tagName))continue;
   own=!1;for(n=e.firstChild;n;n=n.nextSibling)if(n.nodeType===3&&n.nodeValue.trim()){own=!0;break}if(!own)continue;
   var c=getComputedStyle(e).color;if(lum(c)>.55)continue;if(bgOf(e)<.36){e.style.setProperty("color","#fff","important");if(e.tagName==="A")e.style.setProperty("text-decoration","underline")}}}

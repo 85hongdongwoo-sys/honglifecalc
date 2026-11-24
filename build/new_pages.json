@@ -82,5 +82,11 @@
   "hub": "/dk/index.html",
   "after": "/dk/beregn-elforbrug.html",
   "label": "Hvornår er strømmen billigst? (elpris time for time)"
+ },
+ {
+  "url": "/jp/sotoboshi-calendar.html",
+  "hub": "/jp/index.html",
+  "after": "/jp/denkidai-keisan.html",
+  "label": "外干しカレンダー（週間天気で乾燥機代の節約）"
  }
 ]
