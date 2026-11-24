@@ -45,6 +45,9 @@ jobs:
       - name: Korean hub (square tiles + collapsible list)
         continue-on-error: true
         run: python3 build/patch_ko_hub.py _site
+      - name: Korean hub banner (season slide)
+        continue-on-error: true
+        run: python3 build/patch_ko_flash.py _site
       - name: Top bar (favorites, app install) + readable text on dark backgrounds — all languages
         continue-on-error: true
         run: python3 build/patch_topbar.py _site
