@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Per-calculator apps (PWA): every page in sitemap.xml gets its own web app manifest, so
+"""Per-calculator apps (PWA): every calculator page (sitemap and the rest) gets its own web app manifest, so
 'Install app / Add to Home Screen' on a calculator opens THAT calculator (not the site home).
 Icons and colours come from the site manifest the page used (/manifest.webmanifest or the Korean one).
 Run at deploy after patch_sitemap.py:  python3 build/patch_pwa.py _site"""
@@ -53,8 +53,20 @@ def clip(s, n):
     return s if len(s) <= n else s[:n].rstrip(' ·,(-–—:')
 
 
+# every page that links a site manifest (sitemap pages first, then the rest), not only the sitemap
 sm = open(os.path.join(root, 'sitemap.xml'), encoding='utf-8').read()
 paths = [u[len(SITE):] or '/' for u in re.findall(r'<loc>(https://honglifecalc\.com[^<]*)</loc>', sm)]
+_have = set(paths)
+for d, _, fs in os.walk(root):
+    rel = os.path.relpath(d, root).replace(os.sep, '/')
+    if rel.split('/')[0] in ('app', 'assets', 'ev', 'geo'):
+        continue
+    for fn in fs:
+        if not fn.endswith('.html') or fn in ('404.html',):
+            continue
+        p = '/' + ('' if rel == '.' else rel + '/') + ('' if fn == 'index.html' else fn)
+        if p not in _have:
+            _have.add(p); paths.append(p)
 outdir = os.path.join(root, 'app', 'm')
 os.makedirs(outdir, exist_ok=True)
 n = skip = 0
@@ -93,6 +105,7 @@ for p in paths:
                           "icons": [base["icons"][0]] if base.get("icons") else []}]}
     json.dump(man, open(os.path.join(outdir, key + '.webmanifest'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     s = s.replace(m.group(0), f'<link rel="manifest" href="/app/m/{key}.webmanifest">', 1)
+    s = re.sub(r'<link rel="manifest" href="/(ko/)?manifest\.webmanifest">\s*', '', s)  # some pages carry a duplicate link
     s = re.sub(r'<meta name="apple-mobile-web-app-title" content="[^"]*">',
                lambda _: f'<meta name="apple-mobile-web-app-title" content="{html.escape(short)}">', s, count=1)
     open(f, 'w', encoding='utf-8').write(s)
