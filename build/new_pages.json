@@ -76,5 +76,11 @@
   "hub": "/fr/index.html",
   "after": "/fr/calcul-cout-carburant.html",
   "label": "Carburant le moins cher autour de moi (prix en direct)"
+ },
+ {
+  "url": "/dk/hvornaar-er-stroemmen-billigst.html",
+  "hub": "/dk/index.html",
+  "after": "/dk/beregn-elforbrug.html",
+  "label": "Hvornår er strømmen billigst? (elpris time for time)"
  }
 ]
