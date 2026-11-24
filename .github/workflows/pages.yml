@@ -53,6 +53,8 @@ jobs:
       - name: Korean space pages (science tile + science list)
         continue-on-error: true
         run: python3 build/patch_ko_space.py _site
+      - name: Answer-first titles for page-1 pages with no clicks
+        run: python3 build/patch_titles.py _site
       - name: Deepen top pages (TOC, tables, examples, FAQ)
         run: python3 build/patch_deep.py _site
       - name: Add hreflang cluster for country hubs
