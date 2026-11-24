@@ -1,46 +1,6 @@
 {
  "queue": [
   {
-   "path": "/uk/isa-calculator.html",
-   "chars": 746,
-   "impr28": 21
-  },
-  {
-   "path": "/us/benefits/earned-income-tax-credit-guide.html",
-   "chars": 1224,
-   "impr28": 21
-  },
-  {
-   "path": "/ar/bmi-calculator.html",
-   "chars": 615,
-   "impr28": 20
-  },
-  {
-   "path": "/au/bonus-tax-calculator.html",
-   "chars": 757,
-   "impr28": 20
-  },
-  {
-   "path": "/ie/savings-goal-calculator.html",
-   "chars": 622,
-   "impr28": 19
-  },
-  {
-   "path": "/uk/50-30-20-budget-calculator.html",
-   "chars": 548,
-   "impr28": 19
-  },
-  {
-   "path": "/uk/rent-affordability-calculator.html",
-   "chars": 452,
-   "impr28": 19
-  },
-  {
-   "path": "/uk/savings-goal-calculator.html",
-   "chars": 622,
-   "impr28": 19
-  },
-  {
    "path": "/uk/tax-free-childcare-calculator.html",
    "chars": 586,
    "impr28": 19
@@ -586,6 +546,14 @@
   "/au/long-service-leave-calculator.html",
   "/au/savings-goal-calculator.html",
   "/fr/calcul-consommation-electrique.html",
-  "/fr/smic-2026.html"
+  "/fr/smic-2026.html",
+  "/uk/isa-calculator.html",
+  "/us/benefits/earned-income-tax-credit-guide.html",
+  "/ar/bmi-calculator.html",
+  "/au/bonus-tax-calculator.html",
+  "/ie/savings-goal-calculator.html",
+  "/uk/50-30-20-budget-calculator.html",
+  "/uk/rent-affordability-calculator.html",
+  "/uk/savings-goal-calculator.html"
  ]
 }
