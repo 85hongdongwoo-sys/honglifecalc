@@ -40,5 +40,11 @@
   "hub": "/uk/index.html",
   "after": "/uk/electricity-cost-calculator.html",
   "label": "Best Time to Charge an EV (live grid carbon)"
+ },
+ {
+  "url": "/de/dynamischer-stromtarif-rechner.html",
+  "hub": "/de/index.html",
+  "after": "/de/stromkosten-rechner.html",
+  "label": "Dynamischer Stromtarif-Rechner (Börsenstrompreis live)"
  }
 ]
