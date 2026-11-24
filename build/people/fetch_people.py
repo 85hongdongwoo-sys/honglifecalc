@@ -63,20 +63,19 @@ def qual(c, prop):
     return tv(q[0])[0] if q else None
 
 
-out = []
-for p in REG['people']:
+def fetch_one(p):
     j = get(API + 'action=wbgetentities&props=labels|descriptions|claims|sitelinks&sites=' + p['wiki'] + '&titles='
             + urllib.parse.quote(p['title']) + '&languages=' + p['lang'] + '|en')
     found = [e for e in j.get('entities', {}).values() if 'missing' not in e]
     if not found:
-        print('NOT FOUND', p['title']); continue
+        print('NOT FOUND', p['title']); return None
     e = found[0]; q = e['id']; L = p['lang']; C = e.get('claims', {})
     lab = (e['labels'].get(L) or e['labels'].get('en') or {}).get('value', p['title'])
     desc = (e.get('descriptions', {}).get(L) or {}).get('value', '')
     births = [tv(c['mainsnak']) for c in C.get('P569', []) if c.get('rank') != 'deprecated']
     births = [x for x in births if x[0]]
     if not births or len({x[0] for x in births}) > 1 or births[0][1] < 11:
-        print('SKIP unclear birth', lab, births); continue
+        print('SKIP unclear birth', lab, births); return None
     death = [tv(c['mainsnak'])[0] for c in C.get('P570', [])]
     cm = None
     for c in C.get('P2048', []):
@@ -110,11 +109,48 @@ for p in REG['people']:
                teams=[{'n': name(i), 's': s, 'e': en} for i, s, en in teams if name(i)],
                positions=[{'n': name(i), 's': s, 'e': en} for i, s, en in pos if name(i)],
                awards=[{'n': name(i), 'd': d} for i, d in aw if name(i)], founded=founded)
-    out.append(rec); print('ok', q, lab, rec['birth'], cm, len(rec['teams']), len(rec['positions']), len(rec['awards']), len(founded))
-    time.sleep(4)
+    print('ok', q, lab, rec['birth'], cm, len(rec['teams']), len(rec['positions']), len(rec['awards']), len(founded))
+    time.sleep(3)
+    return rec
 
+
+
+# ── daily run: keep what is published, refresh a slice, add the next ADD_PER_DAY candidates ──
+import datetime as _dt
+ADD = int(os.environ.get('ADD_PER_DAY', '100'))
+state_p = os.path.join(OUT, 'people-data', 'people.json')
+prev = json.load(open(state_p, encoding='utf-8')) if os.path.isfile(state_p) else {'people': [], 'skipped': []}
+have = {r['qid']: r for r in prev.get('people', [])}
+skipped = set(prev.get('skipped', []))
+day = _dt.date.today().toordinal()
+out, done_titles = [], set()
+for p in REG['people']:                       # hand-picked people: always
+    old = next((r for r in have.values() if r.get('title') == p['title'] and r.get('wiki') == p['wiki']), None)
+    if old and int(old['qid'][1:]) % 14 != day % 14:
+        out.append(dict(old, **{k: p[k] for k in p})); done_titles.add((p['wiki'], p['title'])); continue
+    r = fetch_one(p)
+    if r: out.append(r); done_titles.add((p['wiki'], p['title']))
+for q, old in have.items():                   # already published candidates: keep, refresh 1/14 per day
+    if (old.get('wiki'), old.get('title')) in done_titles: continue
+    if int(q[1:]) % 14 == day % 14:
+        r = fetch_one({k: old[k] for k in ('wiki', 'title', 'lang', 'cat', 'views') if k in old})
+        out.append(r or old)
+    else:
+        out.append(old)
+    done_titles.add((old.get('wiki'), old.get('title')))
+added = 0
+for cf in sorted(f for f in os.listdir(os.path.join(OUT, 'people-data')) if f.startswith('candidates-')):
+    for c in json.load(open(os.path.join(OUT, 'people-data', cf), encoding='utf-8'))['people']:
+        if added >= ADD: break
+        if c['qid'] in have or c['qid'] in skipped or (c['wiki'], c['title']) in done_titles: continue
+        r = fetch_one({k: c[k] for k in ('wiki', 'title', 'lang', 'cat', 'views') if k in c})
+        if r and (r.get('cm') or r['teams'] or r['positions'] or r['awards'] or r.get('work_start')):
+            out.append(r); added += 1; done_titles.add((c['wiki'], c['title']))
+        else:
+            skipped.add(c['qid'])
+print('added today', added, 'total', len(out))
 os.makedirs(os.path.join(OUT, 'people-data'), exist_ok=True)
-json.dump({'fetched': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'source': 'Wikidata (CC0)', 'people': out},
+json.dump({'fetched': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'source': 'Wikidata (CC0)', 'people': out, 'skipped': sorted(skipped)},
           open(os.path.join(OUT, 'people-data', 'people.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 assert out, 'no people'
 print('done', len(out))

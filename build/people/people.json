@@ -1,23 +1,131 @@
 {
  "_note": "Registro de personas. Para agregar una persona: una línea con wiki (eswiki/ptwiki), title (título exacto del artículo), lang, cat. Las páginas se generan solas en el próximo deploy.",
  "cats": {
-  "futbolista": {"es": "Futbolistas", "pt": "Jogadores de futebol"},
-  "politico":   {"es": "Políticos", "pt": "Políticos"},
-  "cantante":   {"es": "Cantantes", "pt": "Cantores"},
-  "actor":      {"es": "Actores", "pt": "Atores"},
-  "empresario": {"es": "Empresarios", "pt": "Empresários"}
+  "politico": {
+   "es": "Políticos",
+   "pt": "Políticos",
+   "en": "Politicians"
+  },
+  "futbolista": {
+   "es": "Futbolistas",
+   "pt": "Jogadores de futebol",
+   "en": "Soccer players"
+  },
+  "atleta": {
+   "es": "Deportistas",
+   "pt": "Atletas",
+   "en": "Athletes"
+  },
+  "cantante": {
+   "es": "Cantantes y músicos",
+   "pt": "Cantores e músicos",
+   "en": "Singers & musicians"
+  },
+  "actor": {
+   "es": "Actores",
+   "pt": "Atores",
+   "en": "Actors"
+  },
+  "empresario": {
+   "es": "Empresarios",
+   "pt": "Empresários",
+   "en": "Business leaders"
+  },
+  "creador": {
+   "es": "Creadores y presentadores",
+   "pt": "Criadores e apresentadores",
+   "en": "Creators & TV hosts"
+  },
+  "otro": {
+   "es": "Escritores y científicos",
+   "pt": "Escritores e cientistas",
+   "en": "Writers & scientists"
+  }
  },
  "people": [
-  {"wiki": "eswiki", "title": "Lionel Messi", "lang": "es", "cat": "futbolista", "kit": ["#74ACDF", "#FFFFFF", "10", "ARGENTINA"]},
-  {"wiki": "eswiki", "title": "Lamine Yamal", "lang": "es", "cat": "futbolista", "kit": ["#C60B1E", "#F1BF00", "", "ESPAÑA"]},
-  {"wiki": "eswiki", "title": "Pedro Sánchez", "lang": "es", "cat": "politico"},
-  {"wiki": "eswiki", "title": "Raphael (cantante)", "lang": "es", "cat": "cantante"},
-  {"wiki": "eswiki", "title": "Charly García", "lang": "es", "cat": "cantante"},
-  {"wiki": "eswiki", "title": "Shakira", "lang": "es", "cat": "cantante"},
-  {"wiki": "eswiki", "title": "Bad Bunny", "lang": "es", "cat": "cantante"},
-  {"wiki": "eswiki", "title": "Antonio Grimau", "lang": "es", "cat": "actor"},
-  {"wiki": "eswiki", "title": "Eduardo Costantini", "lang": "es", "cat": "empresario"},
-  {"wiki": "ptwiki", "title": "Neymar", "lang": "pt", "cat": "futbolista", "kit": ["#FFDF00", "#009C3B", "10", "BRASIL"]},
-  {"wiki": "ptwiki", "title": "Luiz Inácio Lula da Silva", "lang": "pt", "cat": "politico"}
+  {
+   "wiki": "eswiki",
+   "title": "Lionel Messi",
+   "lang": "es",
+   "cat": "futbolista",
+   "kit": [
+    "#74ACDF",
+    "#FFFFFF",
+    "10",
+    "ARGENTINA"
+   ]
+  },
+  {
+   "wiki": "eswiki",
+   "title": "Lamine Yamal",
+   "lang": "es",
+   "cat": "futbolista",
+   "kit": [
+    "#C60B1E",
+    "#F1BF00",
+    "",
+    "ESPAÑA"
+   ]
+  },
+  {
+   "wiki": "eswiki",
+   "title": "Pedro Sánchez",
+   "lang": "es",
+   "cat": "politico"
+  },
+  {
+   "wiki": "eswiki",
+   "title": "Raphael (cantante)",
+   "lang": "es",
+   "cat": "cantante"
+  },
+  {
+   "wiki": "eswiki",
+   "title": "Charly García",
+   "lang": "es",
+   "cat": "cantante"
+  },
+  {
+   "wiki": "eswiki",
+   "title": "Shakira",
+   "lang": "es",
+   "cat": "cantante"
+  },
+  {
+   "wiki": "eswiki",
+   "title": "Bad Bunny",
+   "lang": "es",
+   "cat": "cantante"
+  },
+  {
+   "wiki": "eswiki",
+   "title": "Antonio Grimau",
+   "lang": "es",
+   "cat": "actor"
+  },
+  {
+   "wiki": "eswiki",
+   "title": "Eduardo Costantini",
+   "lang": "es",
+   "cat": "empresario"
+  },
+  {
+   "wiki": "ptwiki",
+   "title": "Neymar",
+   "lang": "pt",
+   "cat": "futbolista",
+   "kit": [
+    "#FFDF00",
+    "#009C3B",
+    "10",
+    "BRASIL"
+   ]
+  },
+  {
+   "wiki": "ptwiki",
+   "title": "Luiz Inácio Lula da Silva",
+   "lang": "pt",
+   "cat": "politico"
+  }
  ]
 }

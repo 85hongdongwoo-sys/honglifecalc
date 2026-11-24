@@ -1,18 +1,35 @@
 name: People pages data (Wikidata)
 on:
   workflow_dispatch:
+    inputs:
+      add:
+        description: 'New people to add this run'
+        default: '100'
   schedule:
-    - cron: '17 4 * * *'   # 01:17 Buenos Aires — ages roll over before the morning
+    - cron: '17 4 * * *'   # daily: +100 people (US first), ages roll over before the morning
 permissions:
   contents: write
   actions: write
 jobs:
   people:
     runs-on: ubuntu-latest
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
         with: {sparse-checkout: build}
-      - run: python3 build/people/fetch_people.py out
+      - name: Load published state (data-people branch)
+        run: |
+          mkdir -p out
+          if git fetch -q --depth 1 origin data-people; then git archive FETCH_HEAD | tar -x -C out; fi
+          ls -la out/people-data || true
+      - name: Candidates (US, weekly — the people Americans read about most)
+        run: |
+          f=out/people-data/candidates-US.json
+          if [ ! -f "$f" ] || [ "$(date +%u)" = "1" ]; then python3 build/people/candidates.py US enwiki en out; fi
+      - name: Fetch facts (+ new people)
+        env:
+          ADD_PER_DAY: ${{ github.event.inputs.add || '100' }}
+        run: python3 build/people/fetch_people.py out
       - name: Publish to data-people branch and redeploy
         env:
           GH_TOKEN: ${{ github.token }}

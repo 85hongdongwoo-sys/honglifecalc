@@ -17,6 +17,11 @@ L10N = {
             mes=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'], home='Inicio',
             signs=['Capricornio','Acuario','Piscis','Aries','Tauro','Géminis','Cáncer','Leo','Virgo','Libra','Escorpio','Sagitario'],
             zod=['Rata','Buey','Tigre','Conejo','Dragón','Serpiente','Caballo','Cabra','Mono','Gallo','Perro','Cerdo'], src='Datos'),
+ 'en': dict(dir='/us/age/', shell='us/electricity-cost-calculator.html', shell_url='/us/electricity-cost-calculator.html', locale='en-US', hub='Famous People in Numbers',
+            hub_lead='How old famous people are today, how tall they are, their big moments by age, and how you compare.', age='age', years='years', months='months', days='days',
+            mes=['January','February','March','April','May','June','July','August','September','October','November','December'], home='Home',
+            signs=['Capricorn','Aquarius','Pisces','Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius'],
+            zod=['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig'], src='Data'),
  'pt': dict(dir='/br/idade/', shell='br/calculadora-ferias.html', shell_url='/br/calculadora-ferias.html', locale='pt-BR', hub='Famosos em números',
             hub_lead='Idade, altura e momentos marcantes dos famosos em números, e como você se compara com eles.', age='idade', years='anos', months='meses', days='dias',
             mes=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'], home='Início',
@@ -44,6 +49,16 @@ T = {  # phrases
             older='mais velho', younger='mais novo', cmp_txt='{n} é <b>{y} anos {w}</b> que você. Quando {n} tinha a sua idade ({a}) era <b>{yr}</b>.',
             cmp_h=' Você mede <b>{d} cm {w}</b> que {n}.', more='a mais', less='a menos', you='Você', note='Sem fotos nem dados da vida privada. Dados públicos do Wikidata (CC0).',
             upd='Atualizado', range='entre {a} e {b}', yr='ano'),
+ 'en': dict(has='is', born='Born', in_='in', turns='Turns', on='on', within='in', today='Age today', lived='Days alive', nextb='Next birthday',
+            inD='in', height='Height', sign='Zodiac · Chinese zodiac', cups='How old at the next World Cups?', career='Career by age',
+            cmp='Compare yourself with', yourb='Your date of birth', yourh='Your height (cm)', others='More famous people', faq='FAQ',
+            q_age='How old is {n}?', q_h='How tall is {n}?', q_cup='How old will {n} be at the 2030 World Cup?', q_sign="What is {n}'s zodiac sign?",
+            q_office='How old was {n} when first taking office as {p}?', q_since='When did {n} start their career?', q_found='How old was {n} when founding {c}?',
+            office='Office and age at taking office', inoffice='{d} days in office', founded='Companies founded', company_age='the company is {y} years old',
+            work='Years in the business', since='since {y}', award='award', team='team', start='Joins', debut='Debut for', cup='World Cup',
+            older='older', younger='younger', cmp_txt='{n} is <b>{y} years {w}</b> than you. When {n} was your age ({a}) it was <b>{yr}</b>.',
+            cmp_h=' You are <b>{d} cm {w}</b> than {n}.', more='taller', less='shorter', you='You', note='No photos and no private life. Public facts from Wikidata (CC0).',
+            upd='Updated', range='{a}–{b}', yr='year'),
 }
 CUPS = [('2026', '2026-06-11'), ('2030', '2030-06-08'), ('2034', '2034-06-01')]  # opening days (2034: month known, day approximate → shown as age range)
 
@@ -128,6 +143,20 @@ CSS = {
 .pp-card b{font-size:50px;font-weight:900;color:#F5F5F4;font-family:Georgia,serif}
 .pp-card span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:12px;color:#D6D3D1;letter-spacing:.12em}
 .pp{--pp-line:#D6D3D1;--pp-dot:#B91C1C}</style>''',
+ 'atleta': '''<style>.pp-card{position:relative;border-radius:16px;min-height:190px;background-color:#0F3D2E;overflow:hidden;display:flex;align-items:center;justify-content:center;border:3px solid #0B2545}
+.pp-card:before{content:"";position:absolute;inset:14px;border:2px solid rgba(255,255,255,.55);border-radius:10px}.pp-card:after{content:"";position:absolute;left:50%;top:14px;bottom:14px;border-left:2px solid rgba(255,255,255,.55)}
+.pp-card b{position:relative;z-index:1;font-size:50px;font-weight:900;color:#fff;background-color:#0B2545;border-radius:50%;width:92px;height:92px;display:flex;align-items:center;justify-content:center}
+.pp-card span{position:absolute;left:0;right:0;bottom:0;background-color:#0B2545;color:#fff;text-align:center;font-size:11.5px;font-weight:800;padding:6px 4px;z-index:1}
+.pp{--pp-line:#86EFAC;--pp-dot:#0B2545}</style>''',
+ 'creador': '''<style>.pp-card{position:relative;border-radius:26px;min-height:190px;background-color:#111827;border:6px solid #1F2937;display:flex;align-items:center;justify-content:center}
+.pp-card:before{content:"";position:absolute;top:8px;left:50%;width:40px;height:6px;margin-left:-20px;border-radius:3px;background-color:#374151}
+.pp-card b{font-size:44px;font-weight:900;color:#fff;background:linear-gradient(135deg,#F43F5E,#8B5CF6);border-radius:18px;width:92px;height:92px;display:flex;align-items:center;justify-content:center}
+.pp-card span{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:11.5px;color:#D1D5DB;font-weight:700}
+.pp{--pp-line:#F9A8D4;--pp-dot:#8B5CF6}</style>''',
+ 'otro': '''<style>.pp-card{position:relative;border-radius:4px 14px 14px 4px;min-height:190px;background-color:#7C2D12;border-left:12px solid #451A03;display:flex;align-items:center;justify-content:center}
+.pp-card b{font-size:44px;color:#FEF3C7;font-family:Georgia,serif;border-top:2px solid #FCD34D;border-bottom:2px solid #FCD34D;padding:6px 10px}
+.pp-card span{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:11.5px;color:#FDE68A;letter-spacing:.1em}
+.pp{--pp-line:#FCD34D;--pp-dot:#7C2D12}</style>''',
  'empresario': '''<style>.pp-card{position:relative;border-radius:14px;min-height:190px;background-color:#0B1220;display:flex;align-items:center;justify-content:center;font-family:Consolas,monospace}
 .pp-card b{font-size:46px;color:#34D399;text-shadow:0 0 10px rgba(52,211,153,.5)}
 .pp-card span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:12px;color:#94A3B8}
@@ -136,6 +165,15 @@ CSS = {
 
 KEY_AW = re.compile(r'^(FIFA )?Bal[oó]n de Oro$|^Bola de Ouro$|The Best|Bota de Oro|Chuteira de Ouro|Golden Boy|Laureus|Princesa de Asturias|Grammy|Goya|Mart[ií]n Fierro|Konex|Nobel|Oscar|Premio Gardel|Premios? Lo Nuestro', re.I)
 YOUTH = re.compile(r'sub-|\bU-?\d\d|"[A-C]"|Atl[eè]tic|\sB$|juvenil|Ol[ií]mpic|base|reservas', re.I)
+
+
+def fdate(lang, x):
+    m = L10N[lang]['mes'][x.month - 1]
+    return f'{m} {x.day}, {x.year}' if lang == 'en' else f'{x.day} de {m} de {x.year}'
+
+
+def ftin(cm):
+    tot = round(cm / 2.54); return f"{tot // 12}'{tot % 12}\""
 
 
 def initials(lab):
@@ -155,7 +193,10 @@ def build(p, others):
     if dd < 0:
         mm -= 1; dd += (TODAY.replace(day=1) - dt.timedelta(days=1)).day
     days = (TODAY - b).days; to_next = (nb - TODAY).days
-    cm = p.get('cm'); hm = f"{cm / 100:.2f}".replace('.', ',') + ' m' if cm else None
+    cm = p.get('cm')
+    if not cm: hm = None
+    elif p['lang'] == 'en': hm = f"{ftin(cm)} ({cm} cm)"
+    else: hm = f"{cm / 100:.2f}".replace('.', ',') + ' m'
     cat = p['cat']; mes = L['mes']
     url = L['dir'] + slug(lab) + '.html'
     # career events
@@ -174,7 +215,7 @@ def build(p, others):
         for c in p['founded']:
             if c['d']: ev.append((c['d'], c['n'], 'fund'))
     if p.get('work_start'):
-        ev.append((p['work_start'], {'es': 'Comienzo de su carrera', 'pt': 'Início da carreira'}[p['lang']], 'start'))
+        ev.append((p['work_start'], {'es': 'Comienzo de su carrera', 'pt': 'Início da carreira', 'en': 'Career begins'}[p['lang']], 'start'))
     cnt = {}
     for a in sorted(p['awards'], key=lambda x: x['d'] or '9'):
         if a['d'] and KEY_AW.search(a['n']):
@@ -188,8 +229,11 @@ def build(p, others):
         c1, c2, num, country = p['kit']
         card = f'<div class="pp-card" style="background:repeating-linear-gradient(90deg,{c1} 0 24px,{c2} 24px 48px)"><b>{E(num or initials(lab))}</b><span>{E(country)}</span></div>'
     else:
-        sub = {'futbolista': 'FÚTBOL', 'politico': 'POLÍTICA', 'cantante': 'MÚSICA', 'actor': 'CINE · TV', 'empresario': 'EMPRESA'}[cat] if p['lang'] == 'es' else \
-              {'futbolista': 'FUTEBOL', 'politico': 'POLÍTICA', 'cantante': 'MÚSICA', 'actor': 'CINEMA · TV', 'empresario': 'EMPRESA'}[cat]
+        SUB = {'es': dict(futbolista='FÚTBOL', politico='POLÍTICA', cantante='MÚSICA', actor='CINE · TV', empresario='EMPRESA', atleta='DEPORTE', creador='PANTALLA', otro='CULTURA'),
+               'pt': dict(futbolista='FUTEBOL', politico='POLÍTICA', cantante='MÚSICA', actor='CINEMA · TV', empresario='EMPRESA', atleta='ESPORTE', creador='TELA', otro='CULTURA'),
+               'en': dict(futbolista='SOCCER', politico='POLITICS', cantante='MUSIC', actor='FILM · TV', empresario='BUSINESS', atleta='SPORTS', creador='SCREEN', otro='IDEAS')}
+        sub = SUB[p['lang']][cat]
+        if cat == 'atleta' and p.get('occ'): sub = E(p['occ'][0]).upper()[:28]
         card = f'<div class="pp-card"><b>{E(initials(lab))}</b><span>{sub}</span></div>'
     # extra blocks per category
     extra = ''
@@ -202,6 +246,12 @@ def build(p, others):
             cells += f'<div><small>{t["cup"]} {y}</small><b>{r}</b><small>{L["years"]}</small></div>'
         extra += f'<h2>{t["cups"]}</h2><div class="pp-cups">{cells}</div>'
         faq.append((t['q_cup'].format(n=short), f"{age_at(b, d('2030-06-08'))} {L['years']}."))
+    if cat == 'atleta':
+        H = {'es': '¿Qué edad tendrá en los próximos Juegos Olímpicos?', 'pt': 'Quantos anos terá nos próximos Jogos Olímpicos?', 'en': 'Age at the next Olympics'}[p['lang']]
+        G = [('Los Angeles 2028', '2028-07-14'), ({'es': 'Invierno 2030', 'pt': 'Inverno 2030', 'en': 'Winter 2030'}[p['lang']], '2030-02-01'), ('Brisbane 2032', '2032-07-23')]
+        extra += f'<h2>{H}</h2><div class="pp-cups">' + ''.join(f'<div><small>{g}</small><b>{age_at(b, d(x))}</b><small>{L["years"]}</small></div>' for g, x in G) + '</div>'
+    if cat == 'politico' and p['lang'] == 'en':
+        extra += f'<h2>Age on Election Day 2028</h2><div class="pp-cups"><div><small>Nov 7, 2028</small><b>{age_at(b, d("2028-11-07"))}</b><small>years</small></div><div><small>Inauguration Jan 20, 2029</small><b>{age_at(b, d("2029-01-20"))}</b><small>years</small></div><div><small>End of term 2033</small><b>{age_at(b, d("2033-01-20"))}</b><small>years</small></div></div>'
     if cat == 'politico':
         cur = [ps for ps in p['positions'] if ps['s'] and not ps['e']]
         if cur:
@@ -209,7 +259,7 @@ def build(p, others):
                               1 if re.search(r'Presidente|Gobernador|Governador|Jefe de Gobierno|Alcalde|Prefeito|Ministr', x['n']) else 2)
             ps = sorted(cur, key=lambda x: (prio(x), x['s']))[0]
             first = min(x['s'] for x in p['positions'] if x['n'] == ps['n'] and x['s'])
-            t1 = {'es': 'Primera vez', 'pt': 'Primeira vez'}[p['lang']]; t2 = {'es': 'Mandato actual', 'pt': 'Mandato atual'}[p['lang']]
+            t1 = {'es': 'Primera vez', 'pt': 'Primeira vez', 'en': 'First time'}[p['lang']]; t2 = {'es': 'Mandato actual', 'pt': 'Mandato atual', 'en': 'Current term'}[p['lang']]
             extra += (f'<h2>{t["office"]}</h2><div class="pp-box"><p style="margin:0 0 6px;font-size:17px"><b>{E(ps["n"])}</b></p>'
                       f'<p style="margin:0;font-size:15px">{t1}: <b>{first[:4]}</b> · {L["age"]} <b>{age_txt(b, first, t)}</b><br>'
                       f'{t2}: {t["since"].format(y=ps["s"][:4])} · {t["inoffice"].format(d=n((TODAY - d(ps["s"])).days))}</p></div>')
@@ -224,9 +274,16 @@ def build(p, others):
     sg = sign(L, b); zd = L['zod'][(b.year - 4) % 12]
     faq.append((t['q_sign'].format(n=short), f"{sg}. {zd}."))
     place = f" {t['in_']} {E(p['place'])}" if p.get('place') else ''
-    ans = (f"<b>{E(short)} {t['has']} {age} {L['years']}.</b> {t['born']} {b.day} de {mes[b.month - 1]} de {b.year}{place}. "
-           f"{t['turns']} {age + 1} {t['on']} {nb.day} de {mes[nb.month - 1]} de {nb.year}, {t['within']} {to_next} {L['days']}.")
-    oth = ''.join('<a href="' + L['dir'] + slug(o['label']) + '.html">' + E(re.sub(r'\s*\(.*?\)', '', o['label'])) + '</a>' for o in others if o['qid'] != p['qid'])
+    if p['lang'] == 'en':
+        ans = (f"<b>{E(short)} is {age} years old.</b> Born {fdate('en', b)}{place}. "
+               f"Turns {age + 1} on {fdate('en', nb)}, in {to_next} days.")
+    else:
+        ans = (f"<b>{E(short)} {t['has']} {age} {L['years']}.</b> {t['born']} {fdate(p['lang'], b)}{place}. "
+               f"{t['turns']} {age + 1} {t['on']} {fdate(p['lang'], nb)}, {t['within']} {to_next} {L['days']}.")
+    md = p['birth'][5:10]
+    same_day = [o for o in others if o['qid'] != p['qid'] and o['birth'][5:10] == md][:6]
+    near = sorted([o for o in others if o['qid'] != p['qid'] and o['cat'] == cat and o not in same_day], key=lambda o: abs(d(o['birth']) - b))[:10]
+    oth = ''.join('<a href="' + L['dir'] + slug(o['label']) + '.html">' + E(re.sub(r'\s*\(.*?\)', '', o['label'])) + (' 🎂' if o in same_day else '') + '</a>' for o in same_day + near)
     cmpjs = ('<script>(function(){var B=new Date(' + f'{b.year},{b.month - 1},{b.day}' + '),H=' + str(cm or 0) + ',N=' + json.dumps(short) + ',T=' + json.dumps({k: t[k] for k in ('cmp_txt', 'cmp_h', 'older', 'younger', 'more', 'less', 'you')}, ensure_ascii=False)
              + ',$=function(i){return document.getElementById(i)};function A(x,y){var a=y.getFullYear()-x.getFullYear();if(y.getMonth()<x.getMonth()||(y.getMonth()===x.getMonth()&&y.getDate()<x.getDate()))a--;return a}'
              + 'function f(n){return n.toLocaleString()}function go(){var v=$("pm").value,h=parseFloat($("ph").value)||0;if(!v)return;var m=new Date(v+"T00:00:00"),now=new Date(),diff=(m-B)/864e5,y=Math.floor(Math.abs(diff)/365.2425),my=A(m,now);'
@@ -245,11 +302,14 @@ def build(p, others):
             + f'<label>{t["yourh"]}<input id="ph" inputmode="numeric" value="175"></label></div><div class="pp-out" id="po"></div>' + ('<div class="pp-sil" id="psil"></div>' if cm else '') + '</div>'
             + (f'<h2>{t["others"]}</h2><div class="pp-oth">{oth}</div>' if oth else '')
             + cmpjs + '</section>')
-    title = f"{short} {L['age']}: {age} {L['years']}" + (f" | {t['height']} {hm}" if hm else '')
+    if p['lang'] == 'en':
+        title = f"{short} Age: {age} Years Old" + (f" | Height {ftin(cm)}" if cm else '')
+    else:
+        title = f"{short} {L['age']}: {age} {L['years']}" + (f" | {t['height']} {hm}" if hm else '')
     desc = re.sub('<[^>]+>', '', ans) + (f" {t['height']}: {hm}." if hm else '')
     art = (f'<h2 id="faq">{t["faq"]}</h2>' + ''.join(f'<h3>{E(q)}</h3><p>{E(a)}</p>' for q, a in faq)
            + f'<p class="note">{L["src"]}: <a href="https://www.wikidata.org/wiki/{p["qid"]}" rel="nofollow">Wikidata {p["qid"]}</a> · {t["upd"]} {TODAY.day}/{TODAY.month}/{TODAY.year}. {t["note"]}</p>')
-    return dict(url=url, title=title, desc=desc, h1=f"{E(short)} {L['age']}", lead=E(p.get('desc') or ''), css=CSS['base'] + CSS[cat], body=body, art=art, faq=faq, lang=p['lang'], name=short, age=age, cat=cat)
+    return dict(url=url, title=title, desc=desc, h1=(f"How old is {E(short)}?" if p['lang'] == 'en' else f"{E(short)} {L['age']}"), lead=E(p.get('desc') or ''), css=CSS['base'] + CSS[cat], body=body, art=art, faq=faq, lang=p['lang'], name=short, age=age, cat=cat, rank=p.get('views') or p.get('sitelinks', 0))
 
 
 def shell(lang):
@@ -295,19 +355,30 @@ for lang, ps in by_lang.items():
     for p in ps:
         pg = build(p, ps)
         if pg: write(pg); pages.append(pg); made.append(pg['url'])
-    # hub (category groups, age table)
+    # hub: top people per category + one page per category (all, by age)
     L = L10N[lang]; t = T[lang]
     groups = ''
+    cat_pages = []
     for cat, names in REG['cats'].items():
         rows = [pg for pg in pages if pg['cat'] == cat]
         if not rows: continue
-        rows.sort(key=lambda x: -x['age'])
-        groups += (f'<h2>{E(names[lang])}</h2><div class="pp-box"><table style="width:100%;border-collapse:collapse;font-size:15px">'
-                   + ''.join(f'<tr><td style="padding:7px 4px;border-bottom:1px solid #F1F5F9"><a href="{x["url"]}">{E(x["name"])}</a></td><td style="padding:7px 4px;border-bottom:1px solid #F1F5F9;text-align:right"><b>{x["age"]}</b> {L["years"]}</td></tr>' for x in rows)
-                   + '</table></div>')
+        rows.sort(key=lambda x: -x['rank'])
+        cslug = L['dir'] + slug(names['en' if lang == 'en' else lang]) + '.html'
+        tbl = lambda rs: ('<div class="pp-box"><table style="width:100%;border-collapse:collapse;font-size:15px">'
+                          + ''.join(f'<tr><td style="padding:7px 4px;border-bottom:1px solid #F1F5F9"><a href="{x["url"]}">{E(x["name"])}</a></td><td style="padding:7px 4px;border-bottom:1px solid #F1F5F9;text-align:right"><b>{x["age"]}</b> {L["years"]}</td></tr>' for x in rs)
+                          + '</table></div>')
+        more = {'es': 'Ver todos', 'pt': 'Ver todos', 'en': 'See all'}[lang]
+        groups += f'<h2>{E(names[lang])} ({len(rows)})</h2>' + tbl(rows[:12]) + (f'<p style="margin:6px 2px 0"><a href="{cslug}">{more} → {E(names[lang])}</a></p>' if len(rows) > 12 else '')
+        if len(rows) > 12:
+            byage = sorted(rows, key=lambda x: x['age'])
+            ttl = {'es': f'Edad de {names[lang].lower()} famosos', 'pt': f'Idade de {names[lang].lower()} famosos', 'en': f'Ages of famous {names[lang].lower()}'}[lang]
+            cat_pages.append(dict(url=cslug, title=f'{ttl} ({TODAY.year})', desc=L['hub_lead'], h1=E(ttl), lead=E(L['hub_lead']), css=CSS['base'], lang=lang, name=names[lang],
+                                  body=f'<section class="app pp" id="calc">{tbl(byage)}</section>', art=f'<p class="note">{L["src"]}: Wikidata (CC0) · {t["upd"]} {TODAY.isoformat()}.</p>'))
     hub = dict(url=L['dir'], title=f"{L['hub']} {TODAY.year}", desc=L['hub_lead'], h1=L['hub'], lead=L['hub_lead'], css=CSS['base'], lang=lang, name=L['hub'],
-               body=f'<section class="app pp" id="calc"><p class="pp-ans">{L["hub_lead"]}</p>{groups}</section>', art=f'<p class="note">{L["src"]}: Wikidata (CC0) · {t["upd"]} {TODAY.day}/{TODAY.month}/{TODAY.year}.</p>')
+               body=f'<section class="app pp" id="calc">{groups}</section>', art=f'<p class="note">{L["src"]}: Wikidata (CC0) · {t["upd"]} {TODAY.isoformat()}.</p>')
     write(hub); made.append(L['dir'])
+    for cp in cat_pages:
+        write(cp); made.append(cp['url'])
 
 # sitemap
 sm = os.path.join(SITE, 'sitemap.xml')
@@ -319,7 +390,7 @@ if os.path.isfile(sm):
             s = s.replace('</urlset>', f'  <url><loc>{loc}</loc><lastmod>{TODAY.isoformat()}</lastmod></url>\n</urlset>', 1)
     open(sm, 'w', encoding='utf-8').write(s)
 # links from country hubs
-for hubp, lang in (('arg/index.html', 'es'), ('es/index.html', 'es'), ('mx/index.html', 'es'), ('br/index.html', 'pt')):
+for hubp, lang in (('arg/index.html', 'es'), ('es/index.html', 'es'), ('mx/index.html', 'es'), ('br/index.html', 'pt'), ('us/index.html', 'en')):
     fp = os.path.join(SITE, hubp)
     if not os.path.isfile(fp) or lang not in by_lang: continue
     h = open(fp, encoding='utf-8').read()
