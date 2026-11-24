@@ -149,8 +149,15 @@ for cf in sorted(f for f in os.listdir(os.path.join(OUT, 'people-data')) if f.st
         else:
             skipped.add(c['qid'])
 print('added today', added, 'total', len(out))
+import re as _re, unicodedata as _ud
+_dirs = {'es': '/es/edad/', 'pt': '/br/idade/', 'en': '/us/age/'}
+def _slug(x):
+    x = _ud.normalize('NFKD', _re.sub(r'\s*\(.*?\)', '', x)).encode('ascii', 'ignore').decode().lower()
+    return _re.sub(r'[^a-z0-9]+', '-', x).strip('-')
+new_urls = [_dirs[r['lang']] + _slug(r['label']) + '.html' for r in out if r['qid'] not in have and r['lang'] in _dirs]
 os.makedirs(os.path.join(OUT, 'people-data'), exist_ok=True)
 json.dump({'fetched': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'source': 'Wikidata (CC0)', 'people': out, 'skipped': sorted(skipped)},
           open(os.path.join(OUT, 'people-data', 'people.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 assert out, 'no people'
+open(os.path.join(OUT, 'people-data', 'new-urls.txt'), 'w').write(' '.join(new_urls))
 print('done', len(out))

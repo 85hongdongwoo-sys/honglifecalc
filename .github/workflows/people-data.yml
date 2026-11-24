@@ -41,3 +41,9 @@ jobs:
           git add -A && git commit -qm "people $(date +%F)"
           git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data-people
           gh workflow run pages.yml --ref main -R "$GITHUB_REPOSITORY" || true
+      - name: Tell Bing/Naver (IndexNow) about today's new pages once they are live
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          u="$(cat out/people-data/new-urls.txt 2>/dev/null)"
+          if [ -n "$u" ]; then sleep 420; gh workflow run indexnow.yml --ref main -R "$GITHUB_REPOSITORY" -f urls="$u /us/age/ /es/edad/ /br/idade/" || true; fi
