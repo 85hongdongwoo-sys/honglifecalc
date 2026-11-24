@@ -1,0 +1,26 @@
+name: People pages data (Wikidata)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * *'   # 01:17 Buenos Aires — ages roll over before the morning
+permissions:
+  contents: write
+  actions: write
+jobs:
+  people:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: build}
+      - run: python3 build/people/fetch_people.py out
+      - name: Publish to data-people branch and redeploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd out
+          git init -q -b data-people
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "people $(date +%F)"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data-people
+          gh workflow run pages.yml --ref main -R "$GITHUB_REPOSITORY" || true

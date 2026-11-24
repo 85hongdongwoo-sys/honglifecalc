@@ -1,0 +1,23 @@
+{
+ "_note": "Registro de personas. Para agregar una persona: una línea con wiki (eswiki/ptwiki), title (título exacto del artículo), lang, cat. Las páginas se generan solas en el próximo deploy.",
+ "cats": {
+  "futbolista": {"es": "Futbolistas", "pt": "Jogadores de futebol"},
+  "politico":   {"es": "Políticos", "pt": "Políticos"},
+  "cantante":   {"es": "Cantantes", "pt": "Cantores"},
+  "actor":      {"es": "Actores", "pt": "Atores"},
+  "empresario": {"es": "Empresarios", "pt": "Empresários"}
+ },
+ "people": [
+  {"wiki": "eswiki", "title": "Lionel Messi", "lang": "es", "cat": "futbolista", "kit": ["#74ACDF", "#FFFFFF", "10", "ARGENTINA"]},
+  {"wiki": "eswiki", "title": "Lamine Yamal", "lang": "es", "cat": "futbolista", "kit": ["#C60B1E", "#F1BF00", "", "ESPAÑA"]},
+  {"wiki": "eswiki", "title": "Pedro Sánchez", "lang": "es", "cat": "politico"},
+  {"wiki": "eswiki", "title": "Raphael (cantante)", "lang": "es", "cat": "cantante"},
+  {"wiki": "eswiki", "title": "Charly García", "lang": "es", "cat": "cantante"},
+  {"wiki": "eswiki", "title": "Shakira", "lang": "es", "cat": "cantante"},
+  {"wiki": "eswiki", "title": "Bad Bunny", "lang": "es", "cat": "cantante"},
+  {"wiki": "eswiki", "title": "Antonio Grimau", "lang": "es", "cat": "actor"},
+  {"wiki": "eswiki", "title": "Eduardo Costantini", "lang": "es", "cat": "empresario"},
+  {"wiki": "ptwiki", "title": "Neymar", "lang": "pt", "cat": "futbolista", "kit": ["#FFDF00", "#009C3B", "10", "BRASIL"]},
+  {"wiki": "ptwiki", "title": "Luiz Inácio Lula da Silva", "lang": "pt", "cat": "politico"}
+ ]
+}
