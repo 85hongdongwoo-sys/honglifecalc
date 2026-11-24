@@ -1,9 +1,7 @@
 name: Italy fuel prices (MIMIT Osservaprezzi)
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '30 7 * * *'    # MIMIT publishes the 8:00 prices the next morning
-    - cron: '30 13 * * *'
+  # schedule paused: mimit.gov.it does not answer GitHub-hosted runners (timeouts, 2026-11-24)
 permissions:
   contents: write
 jobs:
