@@ -8,8 +8,8 @@ from enrich_lib import ORIG, OUT, TBL_CSS, TOP_CSS, table, faq_html
 
 PATH = '/arg/calculadora-alquileres.html'
 URL = 'https://honglifecalc.com' + PATH
-TITLE = 'Calculadora de alquileres 2026: aumento por IPC o ICL (datos BCRA hoy)'
-H1 = 'Calculadora de alquileres: aumento por IPC o ICL'
+TITLE = 'Calculadora de alquileres ICL e IPC 2026'
+H1 = 'Calculadora de alquileres ICL e IPC'
 DESC = ('Calculá el aumento de tu alquiler por IPC o ICL con los datos oficiales del BCRA al día de hoy: nuevo monto, porcentaje, '
         'meses usados y la escalera de todos los ajustes del contrato. Trimestral, cuatrimestral, semestral o anual.')
 DATE_ES = '25 de noviembre de 2026'
