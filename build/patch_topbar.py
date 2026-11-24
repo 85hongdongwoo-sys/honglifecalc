@@ -115,6 +115,16 @@ function fix(){var all=d.body?d.body.getElementsByTagName("*"):[],i,e,own,n;for(
   own=!1;for(n=e.firstChild;n;n=n.nextSibling)if(n.nodeType===3&&n.nodeValue.trim()){own=!0;break}if(!own)continue;
   var c=getComputedStyle(e).color;if(lum(c)>.55)continue;if(bgOf(e)<.36){e.style.setProperty("color","#fff","important");if(e.tagName==="A")e.style.setProperty("text-decoration","underline")}}}
 if(d.readyState==="complete")fix();else w.addEventListener("load",fix);setTimeout(fix,2500);
+
+/* 좌우 폭 맞추기: 본문 밖에 붙은 상자(머리 그림·공유·최근 사용·바닥글)를 본문 카드와 같은 좌우 선에 맞춤 */
+function align(){try{var m=d.querySelector("main.wrap,main,.wrap");if(!m)return;var k=m.children,ref=null,i;
+  for(i=0;i<k.length;i++){var r0=k[i].getBoundingClientRect(),cs0=getComputedStyle(k[i]);if(r0.width>120&&r0.height>40&&cs0.position!=="fixed"&&cs0.position!=="absolute"){ref=r0;break}}
+  if(!ref)return;var W=d.documentElement.clientWidth,L=Math.round(ref.left),R=Math.round(W-ref.right);if(L<0||R<0||L+R>W*.5)return;
+  var t=d.querySelectorAll("body>header.hero,body>.hl-share,body>footer,.hl-recent");
+  for(i=0;i<t.length;i++){var e=t[i];e.style.setProperty("box-sizing","border-box","important");e.style.setProperty("width","auto","important");e.style.setProperty("max-width","none","important");
+    e.style.setProperty("margin-left",L+"px","important");e.style.setProperty("margin-right",R+"px","important")}}catch(x){}}
+if(d.readyState==="complete")align();else w.addEventListener("load",align);setTimeout(align,1200);setTimeout(align,3200);
+var at;w.addEventListener("resize",function(){clearTimeout(at);at=setTimeout(align,150)});
 })();
 '''
 
