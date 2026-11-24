@@ -121,7 +121,7 @@ if(d.readyState==="complete")fix();else w.addEventListener("load",fix);setTimeou
 function align(){try{var m=d.querySelector("main.wrap,main,.wrap");if(!m)return;var k=m.children,ref=null,i;
   for(i=0;i<k.length;i++){var r0=k[i].getBoundingClientRect(),cs0=getComputedStyle(k[i]);if(r0.width>120&&r0.height>40&&cs0.position!=="fixed"&&cs0.position!=="absolute"){ref=r0;break}}
   if(!ref)return;var W=d.documentElement.clientWidth,L=Math.round(ref.left),R=Math.round(W-ref.right);if(L<0||R<0||L+R>W*.5)return;
-  var t=d.querySelectorAll("body>header.hero,body>.hl-share,body>.hl-rel,body>footer,.hl-recent");
+  var t=d.querySelectorAll("body>header.hero,body>.hl-share,body>.hl-rel,body>footer,body>.hl-recent");
   for(i=0;i<t.length;i++){var e=t[i];e.style.setProperty("box-sizing","border-box","important");e.style.setProperty("width","auto","important");e.style.setProperty("max-width","none","important");
     e.style.setProperty("margin-left",L+"px","important");e.style.setProperty("margin-right",R+"px","important")}}catch(x){}}
 if(d.readyState==="complete")align();else w.addEventListener("load",align);setTimeout(align,1200);setTimeout(align,3200);
