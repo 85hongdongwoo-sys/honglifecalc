@@ -94,5 +94,11 @@
   "hub": "/uk/index.html",
   "after": "/uk/electricity-cost-calculator.html",
   "label": "Washing Line Drying Forecast (will my washing dry?)"
+ },
+ {
+  "url": "/us/wind-chill-frostbite-forecast.html",
+  "hub": "/us/index.html",
+  "after": "/us/electricity-cost-calculator.html",
+  "label": "Wind Chill & Frostbite Time Forecast (NWS live)"
  }
 ]
