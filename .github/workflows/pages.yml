@@ -37,6 +37,10 @@ jobs:
         continue-on-error: true
         run: |
           git fetch -q --depth 1 origin data-ar && git archive FETCH_HEAD | tar -x -C _site && python3 build/ar/gen_ar_pages.py _site
+      - name: People pages (data-people branch) — Famosos en números
+        continue-on-error: true
+        run: |
+          git fetch -q --depth 1 origin data-people && git archive FETCH_HEAD | tar -x -C _site && python3 build/people/gen_people.py _site
       - name: Quake & aurora pages (data-geo branch)
         continue-on-error: true
         run: |

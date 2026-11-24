@@ -53,7 +53,7 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')
 
 
-def d(s): return dt.date.fromisoformat(s)
+def d(s): return dt.date.fromisoformat(s if len(s) == 10 else (s + '-01-01')[:10])
 
 
 def bday(b, y):
@@ -63,16 +63,21 @@ def bday(b, y):
 
 
 def age_at(b, x):
-    return x.year - b.year - ((x.month, x.day) < (b.month, b.day))
+    try: bd = b.replace(year=x.year)
+    except ValueError: bd = dt.date(x.year, 2, 28)
+    return x.year - b.year - (x < bd)
 
 
 def age_txt(b, s, t):
-    """age at date s; year-only dates (…-01-01) become a range"""
+    """age at date s; a year-only (YYYY) or month-only (YYYY-MM) date becomes a range when the age changes inside it"""
     if not s: return None
-    if s.endswith('-01-01'):
-        y = int(s[:4]); a, c = y - b.year - 1, y - b.year
-        return f'{a}–{c}'
-    return str(age_at(b, d(s)))
+    if len(s) == 10: return str(age_at(b, d(s)))
+    if len(s) == 7:
+        y, m = int(s[:4]), int(s[5:7]); lo = dt.date(y, m, 1); hi = (dt.date(y + (m == 12), m % 12 + 1, 1) - dt.timedelta(days=1))
+    else:
+        y = int(s[:4]); lo, hi = dt.date(y, 1, 1), dt.date(y, 12, 31)
+    a, c = age_at(b, lo), age_at(b, hi)
+    return str(a) if a == c else f'{a}–{c}'
 
 
 def n(x): return f'{x:,}'.replace(',', '.')
@@ -91,7 +96,7 @@ CSS = {
 .pp-nums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .pp-n{border-radius:14px;padding:10px 12px;min-width:0;border:1px solid #E2E8F0;background-color:#fff}
 .pp-n small{display:block;font-size:12px;color:#64748B}.pp-n b{display:block;font-size:20px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:#0F172A}
-.pp-n.big{grid-column:1/-1}.pp-n.big b{font-size:28px}
+.pp-n.pp-hi{grid-column:1/-1}.pp-n.pp-hi b{font-size:28px}
 .pp h2{font-size:20px;margin:24px 0 10px}
 .pp-box{background-color:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:14px}
 .pp-tl{list-style:none;margin:0;padding:0;position:relative}.pp-tl:before{content:"";position:absolute;left:59px;top:8px;bottom:8px;width:3px;border-radius:3px;background-color:var(--pp-line,#CBD5E1)}
@@ -104,7 +109,7 @@ CSS = {
 .pp-out{margin-top:10px;font-size:15px;background-color:#F5F7FB;border-radius:12px;padding:10px 12px}
 .pp-sil{display:flex;align-items:flex-end;justify-content:center;gap:30px;height:230px;margin-top:12px;border-bottom:2px solid #E2E8F0}.pp-sil div{text-align:center;font-size:12.5px;color:#64748B}
 .pp-oth{display:flex;flex-wrap:wrap;gap:8px}.pp-oth a{border:1px solid #E2E8F0;background-color:#fff;border-radius:999px;padding:6px 12px;font-size:14px;color:#0F172A;text-decoration:none}
-@media(max-width:560px){.pp-hero{grid-template-columns:104px minmax(0,1fr);gap:10px}.pp-n b{font-size:17px}.pp-n.big b{font-size:22px}.pp-cmp .row{grid-template-columns:1fr}.pp-ans{font-size:16.5px}}
+@media(max-width:560px){.pp-hero{grid-template-columns:104px minmax(0,1fr);gap:10px}.pp-n b{font-size:17px}.pp-n.pp-hi b{font-size:22px}.pp-cmp .row{grid-template-columns:1fr}.pp-ans{font-size:16.5px}}
 </style>''',
  'futbolista': '''<style>.pp-card{position:relative;border-radius:16px;overflow:hidden;min-height:190px;border:3px solid #0B2545}
 .pp-card b{position:absolute;left:0;right:0;top:40px;text-align:center;font-size:84px;font-weight:900;color:#0B2545;text-shadow:0 2px 0 #fff}
@@ -113,12 +118,12 @@ CSS = {
  'politico': '''<style>.pp-card{position:relative;border-radius:6px;min-height:190px;background-color:#FBF8F0;border:1px solid #D9CFB4;box-shadow:0 6px 18px rgba(60,40,10,.08);display:flex;align-items:center;justify-content:center}
 .pp-card b{width:96px;height:96px;border-radius:50%;border:3px double #7C2D12;color:#7C2D12;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:34px;transform:rotate(-8deg)}
 .pp-card span{position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-family:Georgia,serif;font-size:12.5px;color:#5B4A2A}
-.pp{--pp-line:#C9B98E;--pp-dot:#7C2D12}.pp-n.big{background-color:#FBF8F0;border-color:#D9CFB4}</style>''',
+.pp{--pp-line:#C9B98E;--pp-dot:#7C2D12}.pp-n.pp-hi{background-color:#FBF8F0;border-color:#D9CFB4}</style>''',
  'cantante': '''<style>.pp-card{position:relative;border-radius:16px;min-height:190px;background-color:#120A24;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .pp-card:before{content:"";position:absolute;left:50%;top:-40%;width:180%;height:140%;margin-left:-90%;background:radial-gradient(ellipse at top,rgba(255,214,102,.55),transparent 60%)}
 .pp-card b{position:relative;font-size:52px;font-weight:900;color:#FFD666;letter-spacing:2px}
 .pp-card span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:12.5px;color:#E9D5FF;font-weight:700}
-.pp{--pp-line:#C4B5FD;--pp-dot:#7C3AED}.pp-n.big{background-color:#120A24;border-color:#120A24}.pp-n.big small{color:#C4B5FD}.pp-n.big b{color:#FFD666}</style>''',
+.pp{--pp-line:#C4B5FD;--pp-dot:#7C3AED}.pp-n.pp-hi{background-color:#120A24;border-color:#120A24}.pp-n.pp-hi small{color:#C4B5FD}.pp-n.pp-hi b{color:#FFD666}</style>''',
  'actor': '''<style>.pp-card{position:relative;border-radius:10px;min-height:190px;background-color:#111;display:flex;align-items:center;justify-content:center;border-left:14px dashed #444;border-right:14px dashed #444}
 .pp-card b{font-size:50px;font-weight:900;color:#F5F5F4;font-family:Georgia,serif}
 .pp-card span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:12px;color:#D6D3D1;letter-spacing:.12em}
@@ -126,7 +131,7 @@ CSS = {
  'empresario': '''<style>.pp-card{position:relative;border-radius:14px;min-height:190px;background-color:#0B1220;display:flex;align-items:center;justify-content:center;font-family:Consolas,monospace}
 .pp-card b{font-size:46px;color:#34D399;text-shadow:0 0 10px rgba(52,211,153,.5)}
 .pp-card span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:12px;color:#94A3B8}
-.pp{--pp-line:#94A3B8;--pp-dot:#0EA5E9}.pp-n.big{background-color:#0B1220;border-color:#0B1220}.pp-n.big small{color:#94A3B8}.pp-n.big b{color:#34D399}</style>''',
+.pp{--pp-line:#94A3B8;--pp-dot:#0EA5E9}.pp-n.pp-hi{background-color:#0B1220;border-color:#0B1220}.pp-n.pp-hi small{color:#94A3B8}.pp-n.pp-hi b{color:#34D399}</style>''',
 }
 
 KEY_AW = re.compile(r'^(FIFA )?Bal[oó]n de Oro$|^Bola de Ouro$|The Best|Bota de Oro|Chuteira de Ouro|Golden Boy|Laureus|Princesa de Asturias|Grammy|Goya|Mart[ií]n Fierro|Konex|Nobel|Oscar|Premio Gardel|Premios? Lo Nuestro', re.I)
@@ -161,8 +166,10 @@ def build(p, others):
             if not tm['s'] or YOUTH.search(tm['n']) or tm['n'] in seen: continue
             seen.add(tm['n']); ev.append((tm['s'], (t['debut'] + ' ' if re.search(r'selecci', tm['n'], re.I) else t['start'] + ' ') + tm['n'], t['team']))
     if cat == 'politico':
+        seenP = set()
         for ps in sorted(p['positions'], key=lambda x: x['s'] or '9'):
-            if ps['s']: ev.append((ps['s'], ps['n'], 'cargo'))
+            if ps['s'] and ps['n'] not in seenP:
+                seenP.add(ps['n']); ev.append((ps['s'], ps['n'], 'cargo'))
     if cat == 'empresario':
         for c in p['founded']:
             if c['d']: ev.append((c['d'], c['n'], 'fund'))
@@ -175,7 +182,7 @@ def build(p, others):
             nm = (f"{cnt[k]}.º " if re.search(r'Bal[oó]n de Oro$|Bola de Ouro$', k) else '') + re.sub(r'^Anexo:', '', k)
             ev.append((a['d'], nm, t['award']))
     ev.sort(key=lambda x: x[0]); ev = ev[:24]
-    tl = ''.join(f'<li><span class="a{" r" if e[0].endswith("-01-01") else ""}">{age_txt(b, e[0], t)}</span><span class="o"></span><span class="t">{E(e[1])}<small>{e[0][:4]}</small></span></li>' for e in ev)
+    tl = ''.join(f'<li><span class="a{" r" if len(e[0]) < 10 and "–" in (age_txt(b, e[0], t) or "") else ""}">{age_txt(b, e[0], t)}</span><span class="o"></span><span class="t">{E(e[1])}<small>{e[0][:4]}</small></span></li>' for e in ev)
     # card
     if cat == 'futbolista' and p.get('kit'):
         c1, c2, num, country = p['kit']
@@ -198,11 +205,17 @@ def build(p, others):
     if cat == 'politico':
         cur = [ps for ps in p['positions'] if ps['s'] and not ps['e']]
         if cur:
-            ps = sorted(cur, key=lambda x: x['s'])[-1]
-            extra += f'<h2>{t["office"]}</h2><div class="pp-box"><p style="margin:0;font-size:16px"><b>{E(ps["n"])}</b> · {t["since"].format(y=ps["s"][:4])} · {t["inoffice"].format(d=n((TODAY - d(ps["s"])).days))} · {L["age"]} {age_txt(b, ps["s"], t)}</p></div>'
-            faq.append((t['q_office'].format(n=short, p=ps['n']), f"{age_txt(b, ps['s'], t)} {L['years']} ({ps['s'][:4]})."))
+            prio = lambda x: (0 if re.search(r'^Presidente (del Gobierno|de la Naci|do Brasil|da Rep|de la Rep)|Primer Ministro|Primeiro-Ministro|^Rey|^Rei', x['n']) else
+                              1 if re.search(r'Presidente|Gobernador|Governador|Jefe de Gobierno|Alcalde|Prefeito|Ministr', x['n']) else 2)
+            ps = sorted(cur, key=lambda x: (prio(x), x['s']))[0]
+            first = min(x['s'] for x in p['positions'] if x['n'] == ps['n'] and x['s'])
+            t1 = {'es': 'Primera vez', 'pt': 'Primeira vez'}[p['lang']]; t2 = {'es': 'Mandato actual', 'pt': 'Mandato atual'}[p['lang']]
+            extra += (f'<h2>{t["office"]}</h2><div class="pp-box"><p style="margin:0 0 6px;font-size:17px"><b>{E(ps["n"])}</b></p>'
+                      f'<p style="margin:0;font-size:15px">{t1}: <b>{first[:4]}</b> · {L["age"]} <b>{age_txt(b, first, t)}</b><br>'
+                      f'{t2}: {t["since"].format(y=ps["s"][:4])} · {t["inoffice"].format(d=n((TODAY - d(ps["s"])).days))}</p></div>')
+            faq.append((t['q_office'].format(n=short, p=ps['n']), f"{age_txt(b, first, t)} {L['years']} ({first[:4]})."))
     if cat == 'empresario' and p['founded']:
-        rows = ''.join(f'<li><span class="a">{age_txt(b, c["d"], t) or "—"}</span><span class="o"></span><span class="t">{E(c["n"])}<small>{(c["d"] or "")[:4]}{" · " + t["company_age"].format(y=age_at(d(c["d"]), TODAY)) if c["d"] and not c["d"].endswith("-01-01") else ""}</small></span></li>' for c in p['founded'] if c['d'])
+        rows = ''.join(f'<li><span class="a">{age_txt(b, c["d"], t) or "—"}</span><span class="o"></span><span class="t">{E(c["n"])}<small>{(c["d"] or "")[:4]}{" · " + t["company_age"].format(y=age_at(d(c["d"]), TODAY)) if c["d"] else ""}</small></span></li>' for c in p['founded'] if c['d'])
         if rows: extra += f'<h2>{t["founded"]}</h2><div class="pp-box"><ul class="pp-tl">{rows}</ul></div>'
     if cat in ('cantante', 'actor') and p.get('work_start'):
         ws = p['work_start']; yrs = TODAY.year - int(ws[:4])
@@ -222,7 +235,7 @@ def build(p, others):
              + 'if(H&&h){var p=function(c,col,l){return \'<div><svg width="\'+Math.round(c*0.34)+\'" height="\'+c+\'" viewBox="0 0 34 100" preserveAspectRatio="none"><circle cx="17" cy="9" r="8" fill="\'+col+\'"/><path d="M5 20Q17 15 29 20L27 58L22 58L21 100L13 100L12 58L7 58Z" fill="\'+col+\'"/></svg>\'+l+"<br><b>"+c+" cm</b></div>"};$("psil").innerHTML=p(H,"#0B2545",N)+p(Math.round(h),"#74ACDF",T.you)}}'
              + '$("pm").addEventListener("input",go);$("ph").addEventListener("input",go);go()})();</script>')
     body = (f'<section class="app pp" id="calc"><p class="pp-ans">{ans}</p><div class="pp-hero">{card}<div class="pp-nums">'
-            f'<div class="pp-n big"><small>{t["today"]}</small><b>{age} {L["years"]}, {mm} {L["months"]} {dd} {L["days"]}</b></div>'
+            f'<div class="pp-n pp-hi"><small>{t["today"]}</small><b>{age} {L["years"]}, {mm} {L["months"]} {dd} {L["days"]}</b></div>'
             f'<div class="pp-n"><small>{t["lived"]}</small><b>{n(days)}</b></div><div class="pp-n"><small>{t["nextb"]}</small><b>{t["inD"]} {to_next} {L["days"]}</b></div>'
             + (f'<div class="pp-n"><small>{t["height"]}</small><b>{hm}</b></div>' if hm else '')
             + '<div class="pp-n"' + ('' if hm else ' style="grid-column:1/-1"') + f'><small>{t["sign"]}</small><b>{sg} · {zd}</b></div></div></div>'

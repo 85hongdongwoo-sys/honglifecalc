@@ -47,7 +47,7 @@ def tv(snak):
     """(YYYY-MM-DD, precision) of a time snak"""
     try:
         v = snak['datavalue']['value']; t = v['time'].lstrip('+')[:10]; pr = v['precision']
-        if pr < 11: t = t[:4] + ('-01-01' if pr <= 9 else t[4:7] + '-01')
+        if pr < 11: t = t[:4] if pr <= 9 else t[:7]   # keep the real precision: YYYY or YYYY-MM
         return t, pr
     except Exception:
         return None, 0
