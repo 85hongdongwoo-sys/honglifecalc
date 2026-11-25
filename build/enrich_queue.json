@@ -1,46 +1,6 @@
 {
  "queue": [
   {
-   "path": "/uk/tax-free-childcare-calculator.html",
-   "chars": 586,
-   "impr28": 19
-  },
-  {
-   "path": "/ca/fhsa-calculator.html",
-   "chars": 1133,
-   "impr28": 17
-  },
-  {
-   "path": "/ca/gic-calculator.html",
-   "chars": 1026,
-   "impr28": 17
-  },
-  {
-   "path": "/uk/child-benefit-calculator.html",
-   "chars": 757,
-   "impr28": 17
-  },
-  {
-   "path": "/au/fhss-calculator.html",
-   "chars": 1058,
-   "impr28": 16
-  },
-  {
-   "path": "/es/root-exponent-calculator.html",
-   "chars": 581,
-   "impr28": 16
-  },
-  {
-   "path": "/uk/savings-interest-tax-calculator.html",
-   "chars": 718,
-   "impr28": 16
-  },
-  {
-   "path": "/us/benefits/head-start.html",
-   "chars": 1303,
-   "impr28": 16
-  },
-  {
    "path": "/us/benefits/lifeline-phone-internet.html",
    "chars": 1132,
    "impr28": 16
@@ -554,6 +514,14 @@
   "/ie/savings-goal-calculator.html",
   "/uk/50-30-20-budget-calculator.html",
   "/uk/rent-affordability-calculator.html",
-  "/uk/savings-goal-calculator.html"
+  "/uk/savings-goal-calculator.html",
+  "/uk/tax-free-childcare-calculator.html",
+  "/uk/child-benefit-calculator.html",
+  "/ca/fhsa-calculator.html",
+  "/ca/gic-calculator.html",
+  "/au/fhss-calculator.html",
+  "/uk/savings-interest-tax-calculator.html",
+  "/es/root-exponent-calculator.html",
+  "/us/benefits/head-start.html"
  ]
 }
