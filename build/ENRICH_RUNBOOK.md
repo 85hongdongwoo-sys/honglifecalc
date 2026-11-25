@@ -12,6 +12,8 @@ calculator or checked today against an official / primary source that you cite o
    (e.g. `uk_pension.py`, `us_pmi.py`, `ca_cg.py`) — copy their structure and depth.
 
 ## For each page (take the first N from `build/enrich_queue.json` → "queue")
+0. If `build/drafts/` has a script for the page, start from it: it is a finished draft whose official figures still need
+   verifying (see `build/drafts/README.md` and the claims_*.json files there). Move it back to `build/pages/` when done.
 1. Read the original page (`$HL_ORIG/<path>`): title, description, form inputs, help article, and the calc
    function (it may live in a shared JS file such as `/us/us.js`, `/ca/ca.js`, `/<cc>/salary/calc.js`).
    If the page already has a substantial article (several sections, tables, worked examples, sources),
