@@ -1,0 +1,142 @@
+[
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "Lifeline discount $9.25 a month off phone or internet service",
+  "url": "https://www.fcc.gov/lifeline-consumers"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "Tribal lands enhanced discount up to $34.25 a month",
+  "url": "https://www.fcc.gov/lifeline-consumers"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "Income eligibility at or below 135% of the federal poverty guidelines",
+  "url": "https://www.lifelinesupport.org/do-i-qualify/"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "Qualifying programs: SNAP, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension and Survivors Benefit (plus Tribal programs on Tribal lands)",
+  "url": "https://www.lifelinesupport.org/do-i-qualify/"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "One Lifeline benefit per household; phone or internet (or bundle), not both",
+  "url": "https://www.fcc.gov/lifeline-consumers"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "Apply via the National Verifier at lifelinesupport.org, online / by mail / through a company",
+  "url": "https://www.fcc.gov/lifeline-consumers"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "Must recertify every year or benefit stops",
+  "url": "https://www.fcc.gov/lifeline-consumers"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "Affordable Connectivity Program stopped providing discounts in 2024 (funds ran out); Lifeline continues",
+  "url": "https://www.fcc.gov/acp"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "Household = people who live together and share income and expenses; two households at one address can each qualify",
+  "url": "https://www.lifelinesupport.org/do-i-qualify/"
+ },
+ {
+  "path": "/us/benefits/lifeline-phone-internet.html",
+  "claim": "135% limits computed from verified 2026 HHS guidelines (1 $21,546; 2 $29,214; 3 $36,882; 4 $44,550; +$7,668; AK $26,932 for 1; HI $24,786 for 1), rounded down. Check USAC's own 2026 135% chart if published (rounding)",
+  "url": "https://www.lifelinesupport.org/do-i-qualify/"
+ },
+ {
+  "path": "/us/benefits/section-8-housing-voucher.html",
+  "claim": "Total tenant payment = highest of 30% of monthly adjusted income, 10% of monthly income, welfare rent, or PHA minimum rent (up to $50)",
+  "url": "https://www.ecfr.gov/current/title-24/subtitle-A/part-5/subpart-F/section-5.628"
+ },
+ {
+  "path": "/us/benefits/section-8-housing-voucher.html",
+  "claim": "Deductions: $480 per dependent; $525 elderly/disabled family (24 CFR 5.611). NEED: are these the 2026 amounts or has HUD inflation-adjusted them under HOTMA for 2026 (e.g. HUD 'CY2026 inflationary adjustments')? If adjusted, give the 2026 values; constants DEP/ELD in build/pages/us_section8.py",
+  "url": "https://www.ecfr.gov/current/title-24/subtitle-A/part-5/subpart-F/section-5.611"
+ },
+ {
+  "path": "/us/benefits/section-8-housing-voucher.html",
+  "claim": "Child care deduction: reasonable expenses for children 12 and under so a family member can work, study or seek work",
+  "url": "https://www.ecfr.gov/current/title-24/subtitle-A/part-5/subpart-F/section-5.611"
+ },
+ {
+  "path": "/us/benefits/section-8-housing-voucher.html",
+  "claim": "At initial occupancy, if gross rent exceeds payment standard, family share may not exceed 40% of adjusted monthly income",
+  "url": "https://www.ecfr.gov/current/title-24/subtitle-B/chapter-IX/part-982/subpart-K/section-982.508"
+ },
+ {
+  "path": "/us/benefits/section-8-housing-voucher.html",
+  "claim": "Eligibility generally very low income (≤50% AMI); at least 75% of new admissions each fiscal year must be extremely low income (≤30% AMI)",
+  "url": "https://www.ecfr.gov/current/title-24/subtitle-B/chapter-IX/part-982/subpart-E/section-982.201"
+ },
+ {
+  "path": "/us/benefits/section-8-housing-voucher.html",
+  "claim": "Dependent = member under 18, or disabled, or full-time student (not head, spouse, co-head, foster child)",
+  "url": "https://www.ecfr.gov/current/title-24/subtitle-A/part-5/subpart-D/section-5.403"
+ },
+ {
+  "path": "/us/benefits/section-8-housing-voucher.html",
+  "claim": "Medical/disability expense deduction (stated only generally as 'some medical costs' - no threshold given)",
+  "url": "https://www.ecfr.gov/current/title-24/subtitle-A/part-5/subpart-F/section-5.611"
+ },
+ {
+  "path": "/us/benefits/wic.html",
+  "claim": "WIC income limits 1 July 2026–30 June 2027 at 185% FPL: 1 $29,526 ($2,461/mo, $568/wk); 2 $40,034 ($3,337/mo); 3 $50,542 ($4,212/mo, $972/wk); 4 $61,050 ($5,088/mo, $1,175/wk); +$10,508 each extra; Alaska 1 $36,908, Hawaii 1 $33,966 (we round up). Confirm FNS table values incl. monthly/weekly rounding",
+  "url": "https://www.fns.usda.gov/wic/iegs"
+ },
+ {
+  "path": "/us/benefits/wic.html",
+  "claim": "Adjunctive income eligibility through SNAP, Medicaid, TANF",
+  "url": "https://www.fns.usda.gov/wic/wic-eligibility-requirements"
+ },
+ {
+  "path": "/us/benefits/wic.html",
+  "claim": "Categories: pregnant; postpartum up to 6 months; breastfeeding up to infant's 1st birthday; infants; children up to 5th birthday; nutritional risk determined by health professional at clinic",
+  "url": "https://www.fns.usda.gov/wic/wic-eligibility-requirements"
+ },
+ {
+  "path": "/us/benefits/wic.html",
+  "claim": "Pregnant woman's household size increased by number of expected unborn children",
+  "url": "https://www.fns.usda.gov/wic/wic-eligibility-requirements"
+ },
+ {
+  "path": "/us/benefits/wic.html",
+  "claim": "Fathers, grandparents, foster parents can apply for children in their care",
+  "url": "https://www.fns.usda.gov/wic/wic-eligibility-requirements"
+ },
+ {
+  "path": "/ca/self-employed-tax-calculator.html",
+  "claim": "2026 CPP: YBE $3,500, YMPE $74,600, YAMPE $85,000; self-employed rate 11.9%, CPP2 self-employed 8%; max self-employed CPP $8,460.90, CPP2 $832",
+  "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/canada-pension-plan-cpp/cpp-contribution-rates-maximums-exemptions.html"
+ },
+ {
+  "path": "/ca/self-employed-tax-calculator.html",
+  "claim": "Instalments required if net tax owing > $3,000 ($1,800 Quebec) in current year and either of two previous years; due March 15, June 15, September 15, December 15",
+  "url": "https://www.canada.ca/en/revenue-agency/services/payments/payments-cra/individual-payments/instalments.html"
+ },
+ {
+  "path": "/ca/self-employed-tax-calculator.html",
+  "claim": "Self-employed filing deadline June 15, 2027 for 2026; balance owing due April 30, 2027",
+  "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/important-dates-individuals.html"
+ },
+ {
+  "path": "/ca/self-employed-tax-calculator.html",
+  "claim": "GST/HST small supplier threshold $30,000 in a single calendar quarter or over four consecutive calendar quarters",
+  "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html"
+ },
+ {
+  "path": "/ca/self-employed-tax-calculator.html",
+  "claim": "Self-employed can opt in to EI special benefits (maternity, parental, sickness etc.); no regular EI",
+  "url": "https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/reports/self-employed.html"
+ },
+ {
+  "path": "/ca/self-employed-tax-calculator.html",
+  "claim": "Federal 2026 brackets 14/20.5/26/29/33% starting $58,523.01 / $117,045.01 / $181,440.01 / $258,482.01 (already verified in round 1)",
+  "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html"
+ }
+]

@@ -11,24 +11,9 @@
    "impr28": 15
   },
   {
-   "path": "/au/super-co-contribution-calculator.html",
-   "chars": 1133,
-   "impr28": 15
-  },
-  {
-   "path": "/nl/spaardoel-berekenen.html",
-   "chars": 499,
-   "impr28": 15
-  },
-  {
    "path": "/us/benefits/section-8-housing-voucher.html",
    "chars": 1436,
    "impr28": 15
-  },
-  {
-   "path": "/au/net-worth-calculator.html",
-   "chars": 583,
-   "impr28": 14
   },
   {
    "path": "/us/benefits/wic.html",
@@ -36,28 +21,8 @@
    "impr28": 14
   },
   {
-   "path": "/co/calculadora-gasto-gasolina.html",
-   "chars": 533,
-   "impr28": 13
-  },
-  {
-   "path": "/de/zinseszins-rechner.html",
-   "chars": 446,
-   "impr28": 13
-  },
-  {
-   "path": "/fr/calcul-objectif-epargne.html",
-   "chars": 647,
-   "impr28": 13
-  },
-  {
    "path": "/it/calcolo-giorni-tra-date.html",
    "chars": 482,
-   "impr28": 13
-  },
-  {
-   "path": "/nl/root-exponent-calculator.html",
-   "chars": 612,
    "impr28": 13
   },
   {
@@ -86,11 +51,6 @@
    "impr28": 12
   },
   {
-   "path": "/nz/fuel-cost-calculator.html",
-   "chars": 580,
-   "impr28": 11
-  },
-  {
    "path": "/ru/transportnyj-nalog.html",
    "chars": 744,
    "impr28": 11
@@ -103,21 +63,6 @@
   {
    "path": "/tw/labor-pension/labor-insurance-pension-formula.html",
    "chars": 1431,
-   "impr28": 10
-  },
-  {
-   "path": "/it/calcolo-costo-carburante.html",
-   "chars": 578,
-   "impr28": 10
-  },
-  {
-   "path": "/nl/stroomverbruik-berekenen.html",
-   "chars": 533,
-   "impr28": 10
-  },
-  {
-   "path": "/sg/retirement-savings-calculator.html",
-   "chars": 783,
    "impr28": 10
   },
   {
@@ -522,6 +467,17 @@
   "/au/fhss-calculator.html",
   "/uk/savings-interest-tax-calculator.html",
   "/es/root-exponent-calculator.html",
-  "/us/benefits/head-start.html"
+  "/us/benefits/head-start.html",
+  "/au/super-co-contribution-calculator.html",
+  "/sg/retirement-savings-calculator.html",
+  "/au/net-worth-calculator.html",
+  "/nl/root-exponent-calculator.html",
+  "/nl/spaardoel-berekenen.html",
+  "/nl/stroomverbruik-berekenen.html",
+  "/de/zinseszins-rechner.html",
+  "/fr/calcul-objectif-epargne.html",
+  "/co/calculadora-gasto-gasolina.html",
+  "/nz/fuel-cost-calculator.html",
+  "/it/calcolo-costo-carburante.html"
  ]
 }

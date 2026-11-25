@@ -1,0 +1,77 @@
+[
+ {
+  "path": "/au/atar-selection-rank-calculator.html",
+  "claim": "ATAR ranges from 0.00 to 99.95 in increments of 0.05; it is a rank, not a mark",
+  "url": "https://uac.edu.au/future-applicants/admission-criteria/year-12-qualifications"
+ },
+ {
+  "path": "/au/atar-selection-rank-calculator.html",
+  "claim": "ATAR shows your position relative to all students in your age group (ATAR 80 = better than about 80% of your age group), not just Year 12 students",
+  "url": "https://uac.edu.au/future-applicants/admission-criteria/year-12-qualifications"
+ },
+ {
+  "path": "/au/atar-selection-rank-calculator.html",
+  "claim": "In NSW (UAC), ATARs below 30 are reported as 'less than 30'",
+  "url": "https://uac.edu.au/future-applicants/admission-criteria/year-12-qualifications"
+ },
+ {
+  "path": "/au/atar-selection-rank-calculator.html",
+  "claim": "Selection rank = ATAR + adjustment factors; adjustment factors (subject bonus, regional, Educational Access Schemes) are set by each university and do not change the ATAR",
+  "url": "https://uac.edu.au/future-applicants/admission-criteria/university-selection-rank-adjustments"
+ },
+ {
+  "path": "/au/atar-selection-rank-calculator.html",
+  "claim": "Selection rank capped at 99.95 (page now hedges: calculator stops at 99.95, centres may differ) — please confirm what UAC says about the maximum selection rank",
+  "url": "https://uac.edu.au/future-applicants/admission-criteria/university-selection-rank-adjustments"
+ },
+ {
+  "path": "/au/atar-selection-rank-calculator.html",
+  "claim": "Lowest selection rank = lowest selection rank (ATAR + adjustments) that received an offer in a previous round",
+  "url": "https://uac.edu.au/future-applicants/faqs-and-forms/university-admission-criteria"
+ },
+ {
+  "path": "/au/super-co-contribution-calculator.html",
+  "claim": "Co-contribution 2026-27: lower income threshold $49,293, higher income threshold $64,293, maximum $500",
+  "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions"
+ },
+ {
+  "path": "/au/super-co-contribution-calculator.html",
+  "claim": "Matching rate 50 cents per $1 of personal (non-concessional) contributions; maximum reduces by 3.333 cents per $1 of total income above the lower threshold",
+  "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions"
+ },
+ {
+  "path": "/au/super-co-contribution-calculator.html",
+  "claim": "Minimum co-contribution paid is $20 (if entitlement is less than $20, ATO pays $20)",
+  "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions"
+ },
+ {
+  "path": "/au/super-co-contribution-calculator.html",
+  "claim": "Co-contribution eligibility: at least 10% of total income from employment/business, lodge tax return, under 71 at end of financial year, not exceeded non-concessional cap, not claimed a deduction for the contribution; total income = assessable income + reportable fringe benefits + reportable employer super contributions less business deductions; paid automatically after lodging",
+  "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/how-to-save-more-in-your-super/government-super-contributions/super-co-contribution"
+ },
+ {
+  "path": "/au/super-co-contribution-calculator.html",
+  "claim": "LISTO: 15% of concessional contributions, max $500, adjusted taxable income $37,000 or less; minimum $10 paid",
+  "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/how-to-save-more-in-your-super/government-super-contributions/low-income-super-tax-offset"
+ },
+ {
+  "path": "/au/super-co-contribution-calculator.html",
+  "claim": "Fund needs your TFN to accept the payment / personal contributions (TIP, used in tips list)",
+  "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/how-to-save-more-in-your-super/government-super-contributions/super-co-contribution"
+ },
+ {
+  "path": "/sg/retirement-savings-calculator.html",
+  "claim": "CPF LIFE payout eligibility age is 65",
+  "url": "https://www.cpf.gov.sg/member/retirement-income/monthly-payouts/cpf-life"
+ },
+ {
+  "path": "/sg/retirement-savings-calculator.html",
+  "claim": "Retirement sums for members turning 55 in 2026: BRS $110,200, FRS $220,400 (2x BRS), ERS $440,800 (max that can be set aside in RA)",
+  "url": "https://www.cpf.gov.sg/member/infohub/educational-resources/what-is-the-cpf-retirement-sum"
+ },
+ {
+  "path": "/sg/retirement-savings-calculator.html",
+  "claim": "Statutory retirement age 64 and re-employment age 69 from 1 July 2026",
+  "url": "https://www.mom.gov.sg/employment-practices/retirement"
+ }
+]

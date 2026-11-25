@@ -1,0 +1,112 @@
+[
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "Фиксированные страховые взносы ИП за 2026 год – 57 390 ₽, срок уплаты – до 28 декабря 2026 г. (НК РФ ст. 430 п.1.2, ст. 432)",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/insprem/"
+ },
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "Дополнительный взнос 1% с дохода свыше 300 000 ₽ за 2026 г., не больше 321 818 ₽; срок – до 1 июля 2027 г.",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/insprem/"
+ },
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "Для ИП на УСН «доходы минус расходы» 1% взноса считается с разницы доходов и расходов (а не со всех доходов). Calculator uses this (NET15=True) — if NOT confirmed, tell fork F5 to set NET15=False.",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/insprem/"
+ },
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "УСН ставки: 6% «доходы» (регион может снизить до 1%), 15% «доходы минус расходы» (регион может снизить до 5%) – НК РФ ст. 346.20",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/usn/"
+ },
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "Минимальный налог на УСН 15% – 1% от доходов (НК РФ ст. 346.18 п.6)",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/usn/"
+ },
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "УСН 6%: ИП без работников уменьшает налог на взносы полностью; с работниками – не более чем на 50% (НК РФ ст. 346.21 п.3.1)",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/usn/"
+ },
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "С 2026 г. ИП/организации на УСН с доходом больше 20 млн ₽ платят НДС; ставки 5% или 7% (специальные, без вычетов) либо 22% (общая); порог 15 млн ₽ в 2027 г. и 10 млн ₽ с 2028 г. (Федеральный закон от 28.11.2025 № 425-ФЗ)",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/usn/"
+ },
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "Сроки УСН для ИП: авансы до 28 апреля, 28 июля, 28 октября; налог за год – до 28 апреля следующего года; декларация ИП – до 25 апреля следующего года",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/usn/"
+ },
+ {
+  "path": "/ru/usn-ip.html",
+  "claim": "Сменить объект налогообложения УСН можно только с начала года, уведомив налоговую до 31 декабря (НК РФ ст. 346.14 п.2)",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/usn/"
+ },
+ {
+  "path": "/ru/transportnyj-nalog.html",
+  "claim": "Базовые ставки НК РФ ст. 361 для легковых: до 100 л.с. 2,5 ₽; свыше 100 до 150 – 3,5 ₽; свыше 150 до 200 – 5 ₽; свыше 200 до 250 – 7,5 ₽; свыше 250 – 15 ₽ за л.с.; регион может увеличить или уменьшить не более чем в 10 раз",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/transport/"
+ },
+ {
+  "path": "/ru/transportnyj-nalog.html",
+  "claim": "Ставки Москвы (Закон г. Москвы № 33, действующие на 2026 г.): до 100 л.с. 12 ₽; 100–125 – 25; 125–150 – 35; 150–175 – 45; 175–200 – 50; 200–225 – 65; 225–250 – 75; свыше 250 – 150 ₽",
+  "url": "https://www.nalog.gov.ru/rn77/service/tax/"
+ },
+ {
+  "path": "/ru/transportnyj-nalog.html",
+  "claim": "Повышающий коэффициент 3 – для легковых из перечня Минпромторга средней стоимостью от 10 до 15 млн ₽ не старше 10 лет и от 15 млн ₽ не старше 20 лет (НК РФ ст. 362 п.2)",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/transport/"
+ },
+ {
+  "path": "/ru/transportnyj-nalog.html",
+  "claim": "Неполный год: регистрация до 15-го числа включительно – месяц считается полным; снятие с учёта после 15-го – месяц полный (НК РФ ст. 362 п.3)",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/transport/"
+ },
+ {
+  "path": "/ru/transportnyj-nalog.html",
+  "claim": "Срок уплаты транспортного налога физлицами – до 1 декабря следующего года; налоговая присылает уведомление (НК РФ ст. 363)",
+  "url": "https://www.nalog.gov.ru/rn77/taxation/taxes/transport/"
+ },
+ {
+  "path": "/ru/transportnyj-nalog.html",
+  "claim": "Налог исчисляется в полных рублях: менее 50 коп. отбрасываются, 50 коп. и более округляются до рубля (НК РФ ст. 52 п.6)",
+  "url": "https://www.consultant.ru/document/cons_doc_LAW_19671/"
+ },
+ {
+  "path": "/ru/bmi-calculator.html",
+  "claim": "ВОЗ: избыточный вес – ИМТ ≥ 25, ожирение – ИМТ ≥ 30 у взрослых; в 2024 г. 45% взрослых (2,6 млрд) с избыточным весом, из них 940 млн (16%) с ожирением",
+  "url": "https://www.who.int/ru/news-room/fact-sheets/detail/obesity-and-overweight"
+ },
+ {
+  "path": "/ru/bmi-calculator.html",
+  "claim": "Классификация ВОЗ: <18,5 недостаточный; 18,5–24,9 норма; 25–29,9 предожирение; 30–34,9 ожирение I; 35–39,9 II; ≥40 III",
+  "url": "https://www.who.int/europe/news-room/fact-sheets/item/nutrition---maintaining-a-healthy-lifestyle"
+ },
+ {
+  "path": "/ru/bmi-calculator.html",
+  "claim": "Окружность талии (ВОЗ): риск повышен у мужчин >94 см, у женщин >80 см; сильно повышен >102 см и >88 см",
+  "url": "https://www.who.int/publications/i/item/9789241501491"
+ },
+ {
+  "path": "/ru/bmi-calculator.html",
+  "claim": "ВОЗ (WPRO, 2000) для Азиатско-Тихоокеанского региона: избыточный вес с ИМТ 23, ожирение с 25",
+  "url": "https://iris.who.int/handle/10665/206936"
+ },
+ {
+  "path": "/ru/bmi-calculator.html",
+  "claim": "Детям 5–19 лет ВОЗ оценивает ИМТ по возрасту (ИМТ для возраста по справочнику роста ВОЗ)",
+  "url": "https://www.who.int/ru/news-room/fact-sheets/detail/obesity-and-overweight"
+ },
+ {
+  "path": "/co/calculadora-gasto-gasolina.html",
+  "claim": "1 galón EE. UU. = 3,785411784 litros",
+  "url": "https://www.nist.gov/pml/owm/si-units-volume"
+ },
+ {
+  "path": "/co/calculadora-gasto-gasolina.html",
+  "claim": "OPTIONAL (not on page yet): precio de referencia de la gasolina corriente en Bogotá en noviembre de 2026, $ por galón — if verified, send fork F5 the value and URL; page then shows it via OFFICIAL constant",
+  "url": "https://minenergia.gov.co/es/sala-de-prensa/noticias-index/en-noviembre-el-gobierno-nacional-mantiene-estables-los-precios-de-la-gasolina-y-el-acpm/"
+ }
+]
