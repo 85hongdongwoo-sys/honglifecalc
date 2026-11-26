@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N2FHDE6TGQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N2FHDE6TGQ');</script>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<title>공무원 봉급 위젯·API | 내 블로그에 붙이는 무료 계산기</title>
+<meta name="description" content="공무원 봉급(기본급) 계산기를 내 블로그·사이트에 복사-붙여넣기로 넣는 무료 위젯과 데이터 API. 일반직·경찰·소방·교사 호봉별 2026년 기본급을 그대로 보여줘요.">
+<link rel="canonical" href="https://honglifecalc.com/ko/widget/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="공무원 봉급 위젯·API | 내 블로그에 붙이는 무료 계산기">
+<meta property="og:description" content="복사-붙여넣기 한 줄로 공무원 봉급 계산기를 내 사이트에 넣어요. 무료, 회원가입 없음, 데이터 API도 공개.">
+<meta property="og:url" content="https://honglifecalc.com/ko/widget/index.html">
+<meta name="theme-color" content="#244419">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{color-scheme:light;
+  --paper:#fff;--ink:#0F1B2D;--muted:#5A6678;--line:#DDE2EA;--soft:#EEF1F5;
+  --accent:#12305C;--accent-soft:#EAF0F8;--gold:#E8C27A;--gold-d:#B8862B;--up:#13795B;
+  --f:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#0F2A52 0,#0C2347 600px,#0A1E3E 100%) fixed;color:var(--ink);font:15px/1.65 var(--f);letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.brandbar{background:#081833;border-bottom:1px solid rgba(255,255,255,.08)}
+.brandbar .in{max-width:900px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:#fff;text-decoration:none}
+.logo i{width:26px;height:26px;border-radius:6px;background:var(--gold-d);display:grid;place-items:center;font-style:normal;font-size:14px;color:#0B1F3F;font-weight:800}
+.brandbar .meta{font-size:12.5px;color:#AEBBD0}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 48px}
+header.top{padding:28px 0 16px;border-bottom:1px solid rgba(255,255,255,.14)}
+h1{margin:0;font-weight:800;font-size:clamp(23px,4.4vw,30px);letter-spacing:-.025em;color:#fff;text-wrap:balance}
+h1 b{color:var(--gold)}
+.sub{margin:8px 0 0;color:#BFCBE0;font-size:15px;max-width:60ch}
+.card{background:var(--paper);border-radius:12px;padding:22px;margin-top:20px}
+.card h2{margin:0 0 10px;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.card h2 .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;font-size:14px;margin-right:8px;vertical-align:2px}
+.card p{margin:0 0 10px;line-height:1.75}
+.lead{color:var(--muted);font-size:14px;margin:-2px 0 14px}
+.demo{display:grid;place-items:center;padding:18px;background:var(--soft);border-radius:10px;margin:4px 0 8px}
+.codewrap{position:relative}
+pre{margin:0;padding:16px;background:#0D1B33;color:#E6ECF6;border-radius:10px;overflow:auto;font:13px/1.6 var(--mono);white-space:pre}
+pre .t{color:#8FB8FF}pre .s{color:#E8C27A}
+.copy{position:absolute;top:10px;right:10px;font:600 12px var(--f);color:#0D1B33;background:#E8C27A;border:0;border-radius:6px;padding:6px 12px;cursor:pointer}
+.copy:active{transform:translateY(1px)}
+.steps{margin:0;padding-left:20px;display:grid;gap:6px;line-height:1.7}
+dl.api{margin:10px 0 0;display:grid;gap:10px}
+dl.api dt{font-weight:700;font-family:var(--mono);font-size:13.5px;color:var(--accent);word-break:break-all}
+dl.api dd{margin:3px 0 0;color:#3A4659;font-size:14px}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:5px;background:#E5F4E4;color:#1b6b2a;margin-right:6px}
+.note{margin:14px 0 0;font-size:12.5px;color:var(--muted);line-height:1.7}
+footer{margin-top:24px;background:var(--paper);border-radius:12px;padding:18px 20px;font-size:12.5px;color:var(--muted);display:grid;gap:6px}
+footer nav{font-weight:600}
+@media (max-width:480px){.card{padding:18px}}
+</style>
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홍라이프 계산기","item":"https://honglifecalc.com/ko/"},{"@type":"ListItem","position":2,"name":"공무원 봉급 위젯·API","item":"https://honglifecalc.com/ko/widget/index.html"}]}</script>
+</head>
+<body>
+<div class="brandbar"><div class="in"><a class="logo" href="/ko/"><i>H</i>홍라이프 계산기</a><span class="meta">무료 · 회원가입 없음</span></div></div>
+<div class="wrap">
+<header class="top">
+  <h1>공무원 봉급 <b>위젯·API</b></h1>
+  <p class="sub">공무원 봉급(기본급) 계산기를 내 블로그나 사이트에 <b>복사-붙여넣기 한 줄</b>로 넣는 무료 도구예요. 데이터를 프로그램으로 가져가는 주소(API)도 함께 공개해요.</p>
+</header>
+
+<section class="card">
+  <h2><span class="n">?</span>이게 뭔가요</h2>
+  <p>아래 계산기를 내 사이트에 그대로 넣을 수 있어요. 방문자가 직종·급수·호봉을 고르면 <b>2026년 월 기본급</b>이 바로 나와요. 공무원 블로그, 임용 준비 카페, 노무·세무 사이트에 넣으면 방문자에게 쓸모가 있고, 계산기 아래 작은 링크로 저희 사이트도 알려져요.</p>
+  <div class="demo">
+    <div class="honglife-gongpay"></div>
+  </div>
+  <p class="lead" style="text-align:center;margin:8px 0 0">↑ 실제로 움직이는 위젯이에요. 직종·호봉을 바꿔 보세요.</p>
+</section>
+
+<section class="card">
+  <h2><span class="n">1</span>붙이는 법 (복사-붙여넣기)</h2>
+  <p>내 사이트에서 계산기를 넣고 싶은 자리에 아래 두 줄을 붙이면 끝이에요. 티스토리·워드프레스·네이버 블로그(HTML 모드) 등 HTML을 넣을 수 있는 곳이면 돼요.</p>
+  <div class="codewrap">
+    <button class="copy" id="copy1">복사</button>
+<pre id="snip"><span class="t">&lt;div</span> class=<span class="s">"honglife-gongpay"</span><span class="t">&gt;&lt;/div&gt;</span>
+<span class="t">&lt;script</span> src=<span class="s">"https://honglifecalc.com/ko/widget/gong-pay.js"</span> defer<span class="t">&gt;&lt;/script&gt;</span></pre>
+  </div>
+  <p class="note">· 위젯은 다른 설치나 라이브러리가 필요 없어요. 광고·추적도 없어요.<br>· 무료예요. 계산기 아래 ‘홍라이프 계산기’ 링크(출처 표기)만 그대로 두시면 돼요.</p>
+</section>
+
+<section class="card">
+  <h2><span class="n">2</span>데이터 API (프로그램용)</h2>
+  <p>봉급표 숫자를 직접 프로그램으로 가져가고 싶다면, 아래 주소를 부르면 JSON으로 받을 수 있어요. 사람이 보는 화면이 아니라, <b>다른 앱·프로그램이 불러 쓰는 창구</b>예요.</p>
+  <dl class="api">
+    <dt>GET https://honglifecalc.com/api/gong-pay-2026.json</dt>
+    <dd><span class="tag">무료</span>2026년 일반직·경찰·소방·교사 호봉별 월 기본급 전체를 JSON으로 줘요.</dd>
+  </dl>
+  <p style="margin:14px 0 8px;font-weight:600">받는 모양</p>
+  <div class="codewrap">
+    <button class="copy" id="copy2">복사</button>
+<pre id="snip2">fetch(<span class="s">"https://honglifecalc.com/api/gong-pay-2026.json"</span>)
+  .then(r =&gt; r.json())
+  .then(d =&gt; {
+    <span class="t">// 일반직 9급 1호봉 월 기본급</span>
+    console.log(d.groups[<span class="s">"일반직"</span>][<span class="s">"9급"</span>][0]); <span class="t">// 2133000</span>
+  });</pre>
+  </div>
+  <p class="note">· 출처 표기(홍라이프 계산기, 링크)만 남겨 주시면 자유롭게 쓰셔도 돼요. 상업적 서비스에 넣기 전엔 한 번 문의 주세요.</p>
+</section>
+
+<section class="card">
+  <h2><span class="n">i</span>숫자의 출처</h2>
+  <p>봉급표는 <b>공무원보수규정 별표3(일반직)·별표10(경찰·소방)과 2026년 교원 봉급표</b> 기준이에요. 지어낸 값이 아니라 규정에 실린 2026년 기본급 그대로예요. 여기 나오는 건 ‘기본급’ 한 가지라, 실제 받는 돈(수당·공제 포함 실수령액)은 <a href="/ko/gw-pay.html">공무원 실수령액 계산기</a>에서 확인하세요.</p>
+</section>
+
+<footer>
+  <nav><a href="/ko/">전체 계산기</a> · <a href="/ko/gw-pay.html">공무원 실수령액</a> · <a href="/ko/about-site.html">사이트 소개</a> · <a href="/ko/report-error.html">오류 신고</a></nav>
+  <div>위젯·API는 무료로 제공돼요. 숫자는 참고용이며, 실제 지급액은 소속 기관 급여명세서가 기준이에요.</div>
+</footer>
+</div>
+
+<script src="/ko/widget/gong-pay.js" defer></script>
+<script>
+(function(){
+  function copyFrom(id,btn){
+    var t=document.getElementById(id).innerText;
+    navigator.clipboard.writeText(t).then(function(){
+      var o=btn.textContent;btn.textContent="복사됨!";setTimeout(function(){btn.textContent=o;},1400);
+    });
+  }
+  var b1=document.getElementById("copy1");if(b1)b1.onclick=function(){copyFrom("snip",b1);};
+  var b2=document.getElementById("copy2");if(b2)b2.onclick=function(){copyFrom("snip2",b2);};
+})();
+</script>
+</body>
+</html>

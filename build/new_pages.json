@@ -130,5 +130,11 @@
   "hub": "/de/index.html",
   "after": "/de/stundenlohn-rechner.html",
   "label": "Mindestlohn 2027: 14,60 € (Monatslohn & Minijob 633 €)"
+ },
+ {
+  "url": "/ko/widget/index.html",
+  "hub": "/ko/index.html",
+  "after": "gw-pay.html",
+  "label": "공무원 봉급 위젯·API (내 블로그에 붙이기)"
  }
 ]

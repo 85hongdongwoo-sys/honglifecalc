@@ -1,0 +1,59 @@
+/*! 홍라이프 공무원 봉급 위젯 · https://honglifecalc.com · 무료, 출처 표기만 유지해 주세요 */
+(function(){
+  "use strict";
+  var DATA = {"year":2026,"currency":"KRW","unit":"원(월 기본급)","source":"https://honglifecalc.com/ko/gw-pay.html","basis":"공무원보수규정 별표3(일반직)·별표10(경찰·소방)·2026년 교원 봉급표","groups":{"일반직":{"9급":[2133000,2147600,2168000,2194000,2226100,2264600,2309900,2367500,2456700,2542700,2624400,2705900,2783900,2859800,2932300,3002300,3070800,3134500,3197300,3257000,3313400,3367600,3419200,3468800,3516000,3558700,3595600,3631000,3665100,3698400,3731100],"8급":[2162100,2195700,2233800,2276600,2331700,2412900,2519600,2622400,2720300,2813000,2902700,2990300,3074500,3155100,3232400,3307100,3376800,3444300,3509300,3571100,3630200,3686900,3740800,3792900,3842300,3890300,3930200,3968700,4005100,4040300,4074600],"7급":[2317100,2367900,2423800,2485200,2567100,2682600,2798700,2915800,3027100,3133300,3233400,3331900,3425300,3514500,3599900,3680600,3758100,3832100,3902000,3968400,4031800,4091600,4149600,4204500,4256500,4306500,4348700,4388000,4426100,4462400,4496500],"6급":[2389500,2500700,2615200,2732400,2853100,2977100,3101500,3226200,3351300,3468700,3580000,3689600,3792700,3890000,3983600,4071300,4154900,4234100,4309100,4379600,4447600,4511500,4571300,4628500,4682800,4734100,4782800,4823700,4861900,4899800,4934800,4967800]},"경찰":{"순경":[2133000,2155600,2187500,2229200,2281100,2343900,2418400,2505600,2595100,2680900,2762900,2844100,2922200,2998100,3070500,3140600,3209100,3273000,3335700,3395400,3451600,3506000,3557600,3607200,3654200,3697100,3733900,3769300,3803400,3836800,3869200],"경장":[2215300,2245500,2290400,2350700,2427500,2522200,2628900,2731700,2829500,2922200,3012000,3099500,3183800,3264300,3341600,3416300,3486000,3553600,3618500,3680400,3739400,3796100,3850000,3902200,3951600,3999600,4039500,4078000,4114300,4149600,4183800],"경사":[2472100,2493100,2539000,2610800,2710600,2826000,2942100,3059100,3170300,3276600,3376800,3475200,3568600,3657900,3743200,3823900,3901400,3975500,4045300,4111700,4175200,4235000,4293000,4347900,4399900,4449900,4492000,4531300,4569300,4605800,4639900],"경위":[2507700,2567700,2640000,2758200,2879500,3001800,3125400,3249000,3373300,3490700,3600800,3709400,3812400,3909100,4002700,4090100,4173700,4252700,4327900,4399300,4467200,4531200,4592000,4650300,4705700,4756500,4800000,4841900,4881500,4918600,4954300],"경감":[2698600,2814700,2933000,3054900,3178700,3305500,3435100,3565700,3697600,3820800,3937600,4051200,4158400,4261000,4357000,4449500,4535400,4618100,4695400,4768800,4837900,4904700,4965900,5025200,5081100,5134000,5183300,5225600,5264800,5303200,5338600,5372500]},"소방":{"소방사":[2133000,2155600,2187500,2229200,2281100,2343900,2418400,2505600,2595100,2680900,2762900,2844100,2922200,2998100,3070500,3140600,3209100,3273000,3335700,3395400,3451600,3506000,3557600,3607200,3654200,3697100,3733900,3769300,3803400,3836800,3869200],"소방교":[2215300,2245500,2290400,2350700,2427500,2522200,2628900,2731700,2829500,2922200,3012000,3099500,3183800,3264300,3341600,3416300,3486000,3553600,3618500,3680400,3739400,3796100,3850000,3902200,3951600,3999600,4039500,4078000,4114300,4149600,4183800],"소방장":[2472100,2493100,2539000,2610800,2710600,2826000,2942100,3059100,3170300,3276600,3376800,3475200,3568600,3657900,3743200,3823900,3901400,3975500,4045300,4111700,4175200,4235000,4293000,4347900,4399900,4449900,4492000,4531300,4569300,4605800,4639900],"소방위":[2507700,2567700,2640000,2758200,2879500,3001800,3125400,3249000,3373300,3490700,3600800,3709400,3812400,3909100,4002700,4090100,4173700,4252700,4327900,4399300,4467200,4531200,4592000,4650300,4705700,4756500,4800000,4841900,4881500,4918600,4954300],"소방경":[2698600,2814700,2933000,3054900,3178700,3305500,3435100,3565700,3697600,3820800,3937600,4051200,4158400,4261000,4357000,4449500,4535400,4618100,4695400,4768800,4837900,4904700,4965900,5025200,5081100,5134000,5183300,5225600,5264800,5303200,5338600,5372500]},"교사":{"교사":[2041500,2103300,2166000,2228500,2291500,2354400,2416600,2478600,2495600,2516700,2538300,2585900,2657500,2773700,2889700,3006200,3121000,3241500,3361200,3481000,3600700,3733600,3865300,3997500,4129400,4261900,4400100,4538000,4682100,4826800,4971100,5115200,5261600,5407500,5553600,5699100,5825700,5952500,6079500,6205700]}}};
+  var FULL = "https://honglifecalc.com/ko/gw-pay.html";
+  function won(n){ return Number(n).toLocaleString("ko-KR"); }
+  function el(tag, css, html){ var e=document.createElement(tag); if(css)e.style.cssText=css; if(html!=null)e.innerHTML=html; return e; }
+  function opt(sel, items, keep){
+    var cur = keep ? sel.value : null;
+    sel.innerHTML="";
+    items.forEach(function(v){ var o=document.createElement("option"); o.value=v; o.textContent=v; sel.appendChild(o); });
+    if(cur && items.indexOf(cur)>=0) sel.value=cur;
+  }
+  var SS = "width:100%;box-sizing:border-box;padding:9px 10px;margin:4px 0 10px;border:1px solid #cfd8cf;border-radius:8px;font:inherit;font-size:15px;background:#fff;color:#1b2a1b;";
+  function build(mount){
+    if(mount.getAttribute("data-hl-done")) return;
+    mount.setAttribute("data-hl-done","1");
+    var box = el("div","max-width:360px;margin:0 auto;padding:18px;border:1px solid #d7e4d7;border-radius:14px;background:#f6faf4;font-family:'Pretendard',system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#1b2a1b;line-height:1.5;");
+    box.appendChild(el("div","font-size:17px;font-weight:700;margin-bottom:2px;","공무원 봉급(기본급) 조회"));
+    box.appendChild(el("div","font-size:12px;color:#5a6b5a;margin-bottom:12px;","2026년 봉급표 · 월 기본급"));
+
+    var lbl="font-size:13px;font-weight:600;color:#3a4a3a;";
+    box.appendChild(el("label",lbl,"직종"));
+    var sJob=el("select",SS); box.appendChild(sJob);
+    box.appendChild(el("label",lbl,"급수 · 계급"));
+    var sRank=el("select",SS); box.appendChild(sRank);
+    box.appendChild(el("label",lbl,"호봉"));
+    var sHob=el("select",SS); box.appendChild(sHob);
+
+    var out = el("div","margin-top:6px;padding:14px;border-radius:10px;background:#fff;border:1px solid #d7e4d7;text-align:center;");
+    box.appendChild(out);
+    var foot = el("div","margin-top:10px;font-size:11px;color:#7a8a7a;text-align:center;");
+    foot.innerHTML='실수령액·수당·연금까지 → <a href="'+FULL+'" target="_blank" rel="noopener" style="color:#2e7d32;font-weight:600;">홍라이프 계산기</a>';
+    box.appendChild(foot);
+
+    function ranks(){ return Object.keys(DATA.groups[sJob.value]); }
+    function arr(){ return DATA.groups[sJob.value][sRank.value]; }
+    function fillJob(){ opt(sJob, Object.keys(DATA.groups)); }
+    function fillRank(keep){ opt(sRank, ranks(), keep); }
+    function fillHob(keep){ var n=arr().length; var a=[]; for(var i=1;i<=n;i++)a.push(i+"호봉"); opt(sHob, a, keep); }
+    function calc(){
+      var i=parseInt(sHob.value,10)-1; var v=arr()[i];
+      if(v==null){ out.innerHTML="—"; return; }
+      out.innerHTML='<div style="font-size:12px;color:#5a6b5a;">월 기본급</div>'+
+        '<div style="font-size:26px;font-weight:800;color:#1b2a1b;margin:2px 0;">'+won(v)+'<span style="font-size:14px;font-weight:600;"> 원</span></div>'+
+        '<div style="font-size:12px;color:#5a6b5a;">연 환산(기본급×12) '+won(v*12)+' 원</div>';
+    }
+    sJob.onchange=function(){ fillRank(false); fillHob(false); calc(); };
+    sRank.onchange=function(){ fillHob(true); calc(); };
+    sHob.onchange=calc;
+    fillJob(); fillRank(false); fillHob(false); calc();
+    mount.innerHTML=""; mount.appendChild(box);
+  }
+  function init(){
+    var list=document.querySelectorAll('#honglife-gongpay,.honglife-gongpay,[data-honglife="gong-pay"]');
+    for(var i=0;i<list.length;i++) build(list[i]);
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
+})();
