@@ -1,0 +1,29 @@
+name: 대기 페이지 하루치 다시 올리기
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: '오늘 올릴 개수'
+        default: '100'
+  schedule:
+    - cron: '37 21 * * *'   # 매일 오전 6시 37분(한국)
+permissions:
+  contents: write
+  actions: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 다음 묶음 빼기
+        run: python3 build/kw/release_next.py ${{ github.event.inputs.n || '100' }}
+      - name: 저장 후 배포
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions" && git config user.email "actions@github.com"
+          git add build/noindex_list.txt build/lastmod.json build/kw/released.log
+          git diff --cached --quiet && exit 0
+          git commit -qm "Release next waiting pages ($(date -u +%F))"
+          git push -q
+          gh workflow run pages.yml --ref main || true

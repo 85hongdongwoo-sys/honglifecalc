@@ -62,6 +62,9 @@ jobs:
       - name: Trust theme for non-Korean pages (light, no grass/mascot) + English publisher name
         continue-on-error: true
         run: python3 build/patch_pro.py _site
+      - name: Search-term titles for re-released pages (build/kw/titles.json)
+        continue-on-error: true
+        run: python3 build/patch_kw.py _site
       - name: New pages (sitemap + hub links)
         run: python3 build/patch_newpages.py _site
       - name: Korean space pages (science tile + science list)
