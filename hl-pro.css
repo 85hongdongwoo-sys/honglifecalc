@@ -27,3 +27,9 @@ html:not(#hlpro) body .hl-share-fab{background-color:#fff!important;border:1px s
 html:not(#hlpro) body footer{background:#fff!important;border-top:1px solid var(--pro-line)!important;color:var(--pro-sub)!important}
 html:not(#hlpro) body main .card,html:not(#hlpro) body .wrap>.card{border-top-color:var(--pro-line)!important}
 html:not(#hlpro) body header.hero h1 em{color:var(--pro-acc)!important}
+/* 허브(목록) 페이지: 손글씨 제목·크림색 타일 → 깔끔한 흰 타일 */
+html:not(#hlpro) body h1,html:not(#hlpro) body .hlu-top h1{font-family:var(--hig-font,-apple-system,"Segoe UI",system-ui,sans-serif)!important;color:var(--pro-ink)!important;letter-spacing:-.02em}
+html:not(#hlpro) body h1 b,html:not(#hlpro) body h1 em{color:var(--pro-acc)!important;font-family:inherit!important}
+html:not(#hlpro) body .hlh-tile,html:not(#hlpro) body .hlu-panels,html:not(#hlpro) body .hlu-tabs,html:not(#hlpro) body .hl-recent,html:not(#hlpro) body .hl-recent a{background:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
+html:not(#hlpro) body .hlh-tile:hover{border-color:var(--pro-acc)!important}
+html:not(#hlpro) body .hlu-stamp{background:var(--pro-acc-soft)!important;color:var(--pro-acc)!important;border-color:transparent!important}
