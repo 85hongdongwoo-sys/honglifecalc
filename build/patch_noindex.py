@@ -8,6 +8,7 @@ B = 'https://honglifecalc.com'
 paths = [l.strip() for l in open(os.path.join(here, 'noindex_list.txt'), encoding='utf-8')
          if l.strip() and not l.startswith('#')]
 TAG = '<meta name="robots" content="noindex, follow">'
+TAG_KO = '<meta name="googlebot" content="noindex, follow">'  # 한국어는 구글만 제외(네이버는 그대로)
 done = missing = 0
 for p in paths:
     f = os.path.join(root, p.lstrip('/'))
@@ -17,6 +18,12 @@ for p in paths:
         missing += 1
         continue
     s = open(f, encoding='utf-8').read()
+    if p.startswith('/ko/'):
+        if 'name="googlebot"' not in s:
+            m = re.search(r'<meta\s+charset[^>]*>', s, re.I) or re.search(r'<head[^>]*>', s, re.I)
+            if m:
+                open(f, 'w', encoding='utf-8').write(s[:m.end()] + TAG_KO + s[m.end():]); done += 1
+        continue
     if re.search(r'<meta\s+name=["\']robots["\'][^>]*>', s, re.I):
         s2 = re.sub(r'<meta\s+name=["\']robots["\'][^>]*>', TAG, s, count=1, flags=re.I)
     else:
@@ -28,7 +35,7 @@ for p in paths:
     open(f, 'w', encoding='utf-8').write(s2)
     done += 1
 print('noindex pages:', done, 'missing:', missing)
-ex = {B + p for p in paths}
+ex = {B + p for p in paths if not p.startswith('/ko/')}  # 한국어는 사이트맵에 남김(네이버)
 for name in ('sitemap.xml', 'sitemap-images.xml'):
     sp = os.path.join(root, name)
     if not os.path.isfile(sp):

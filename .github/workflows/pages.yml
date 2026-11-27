@@ -59,6 +59,9 @@ jobs:
       - name: Top bar (favorites, app install) + readable text on dark backgrounds — all languages
         continue-on-error: true
         run: python3 build/patch_topbar.py _site
+      - name: Trust theme for non-Korean pages (light, no grass/mascot) + English publisher name
+        continue-on-error: true
+        run: python3 build/patch_pro.py _site
       - name: New pages (sitemap + hub links)
         run: python3 build/patch_newpages.py _site
       - name: Korean space pages (science tile + science list)
@@ -70,9 +73,9 @@ jobs:
         run: python3 build/patch_deep.py _site
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
-      # Noindex step paused 2026-11-22: the list was built from the Search Console top-1,000 rows (row cap), so it may include pages that did get impressions.
-      # - name: Noindex pages with no Google impressions (build/noindex_list.txt)
-      #   run: python3 build/patch_noindex.py _site
+      # Re-enabled 2026-11-27 with a list rebuilt from per-folder Search Console data (no row cap) + quality rules.
+      - name: Noindex low-value pages (build/noindex_list.txt)
+        run: python3 build/patch_noindex.py _site
       - name: Trim sitemaps (Korean pages with no Google impressions)
         run: python3 build/patch_sitemap.py _site
       - name: Spread related links evenly (nearest siblings ring)
