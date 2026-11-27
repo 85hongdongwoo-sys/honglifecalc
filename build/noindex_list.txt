@@ -4225,7 +4225,6 @@
 /en/money/bonus-tax-calculator.html
 /en/money/budget-calculator.html
 /en/money/cagr-calculator.html
-/en/money/california-tax-calculator.html
 /en/money/capital-gains-yield-calculator.html
 /en/money/car-refinance-calculator.html
 /en/money/carried-interest-calculator.html
@@ -4266,7 +4265,6 @@
 /en/money/ex-rights-price-calculator.html
 /en/money/expected-return-calculator.html
 /en/money/ffo-calculator.html
-/en/money/fha-loan-calculator.html
 /en/money/fire-number-calculator.html
 /en/money/fisher-equation-calculator.html
 /en/money/foreign-stock-fx-return-calculator.html
@@ -4287,7 +4285,6 @@
 /en/money/home-value-calculator.html
 /en/money/hotel-adr-calculator.html
 /en/money/hybrid-rate-mortgage-calculator.html
-/en/money/illinois-tax-calculator.html
 /en/money/impermanent-loss-calculator.html
 /en/money/information-ratio-calculator.html
 /en/money/interest-only-loan-calculator.html
@@ -4376,11 +4373,9 @@
 /en/money/stock-what-if-calculator.html
 /en/money/sustainable-growth-rate-calculator.html
 /en/money/target-sell-price-calculator.html
-/en/money/tax-equivalent-yield-calculator.html
 /en/money/taylor-rule-calculator.html
 /en/money/texas-tax-calculator.html
 /en/money/trading-expected-value-calculator.html
-/en/money/traditional-ira-deduction-calculator.html
 /en/money/treynor-ratio-calculator.html
 /en/money/true-cost-of-real-estate-commission-calculator.html
 /en/money/ttm-calculator.html
