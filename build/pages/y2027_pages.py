@@ -367,6 +367,88 @@ function go(){const s=N($('brS').value);$('brR').innerHTML='Equivale a <b>'+(s/1
     note='Valor de 2027 é previsão do governo e pode mudar. Valores brutos. Não é aconselhamento jurídico.'))
 
 
+# ───────────────────────── 🇨🇦 CA — bracket staircase (CRA T4127, 124th ed.) ─────────────────────────
+CA27 = [(0, .14), (60044, .205), (120088, .26), (186157, .29), (265203, .33)]
+CA26 = [(0, .14), (58523, .205), (117045, .26), (181440, .29), (258482, .33)]
+ca_steps = ''.join(f'<div style="--h:{40 + i * 15}%"><b>{r * 100:g}%</b><small>{"$0" if a == 0 else "$" + format(a, ",")}+</small></div>' for i, (a, r) in enumerate(CA27))
+PAGES.append(dict(
+    path='/ca/2027-tax-brackets.html', shell='ca/salary-after-tax-calculator.html', lang='en-CA', crumb='Canada',
+    title='2027 Federal Tax Brackets Canada (CRA official): $60,044, BPA $16,879', h1='2027 Federal Tax Brackets in Canada',
+    desc='Official CRA 2027 federal tax brackets (indexed 2.6%): 14% up to $60,044, 20.5% to $120,088, 26% to $186,157, 29% to $265,203, 33% above. Basic personal amount $16,879. CPP YMPE $76,700, EI max insurable $70,800.',
+    badge='🇨🇦 CRA T4127 · 124th edition', sub='Brackets, basic personal amount, CPP and EI for January 1, 2027 — with a 2026 vs 2027 calculator.', must='id="caI"',
+    css='<style id="y7-css">' + BASE + '''
+.ca-g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px}
+.ca-stair{background-color:#FEF2F2;border:1px solid #FECACA;border-radius:14px;padding:14px;min-width:0}.ca-stair h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#991B1B;margin:0 0 8px}
+.ca-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;align-items:end;height:190px}
+.ca-steps div{height:var(--h);background-color:#DC2626;border-radius:8px 8px 0 0;color:#fff;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:6px;min-width:0}
+.ca-steps div:nth-child(odd){background-color:#B91C1C}.ca-steps b{font-size:16px}.ca-steps small{font-size:10.5px;opacity:.9;text-align:center;overflow-wrap:anywhere;padding:0 2px}
+.ca-calc{border:1px solid #E5E7EB;border-radius:14px;padding:14px;min-width:0}.ca-calc h2{font-size:18px;margin:0 0 8px}.ca-calc label{display:block;font-size:13px;font-weight:700}
+.ca-calc input{display:block;width:100%;font:inherit;font-size:17px;padding:9px;border:1px solid #D1D5DB;border-radius:8px;margin-top:4px}
+.ca-o div{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #F3F4F6;font-size:15px}.ca-o b{font-variant-numeric:tabular-nums}.ca-o .sv{color:#047857}
+.ca-k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}.ca-k div{background-color:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:10px;min-width:0}
+.ca-k small{display:block;font-size:12px;color:#6B7280}.ca-k b{display:block;font-size:18px;overflow-wrap:anywhere}
+@media(max-width:760px){.ca-g{grid-template-columns:minmax(0,1fr)}.ca-k{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>''',
+    app=f'''<section class="app y7" id="calc"><p class="ans">The CRA has published the <b>2027 federal tax brackets</b>, indexed by <b>2.6%</b>: <b>14%</b> on the first <b>$60,044</b>, <b>20.5%</b> up to <b>$120,088</b>, <b>26%</b> up to <b>$186,157</b>, <b>29%</b> up to <b>$265,203</b> and <b>33%</b> above. The <b>basic personal amount rises to $16,879</b> (down to $15,214 for the highest incomes). They take effect on <b>January 1, 2027</b>.</p>
+<div class="ca-g"><div class="ca-stair"><h2>Federal rates 2027</h2><div class="ca-steps">{ca_steps}</div></div>
+<div class="ca-calc"><h2>Federal tax: 2026 vs 2027</h2><label for="caI">Taxable income ($)<input id="caI" inputmode="numeric" value="80000"></label><div class="ca-o" id="caO"></div><p style="font-size:12.5px;color:#6B7280;margin:8px 0 0">Federal tax after the basic personal amount credit only. Provincial tax is extra: <a href="/ca/salary-after-tax-calculator.html">salary after tax calculator</a>.</p></div></div>
+<div class="ca-k"><div><small>CPP max pensionable (YMPE)</small><b>$76,700</b></div><div><small>CPP2 ceiling (YAMPE)</small><b>$87,400</b></div><div><small>EI max insurable</small><b>$70,800</b></div><div><small>EI max employee premium</small><b>$1,161.12</b></div></div></section>''',
+    js=r'''<script>
+(function(){'use strict';const $=i=>document.getElementById(i);const N=s=>{const x=parseFloat(String(s).replace(/[^0-9.]/g,''));return isFinite(x)?x:0};const C=x=>'$'+Math.round(x).toLocaleString('en-CA');
+const B27=[[0,.14],[60044,.205],[120088,.26],[186157,.29],[265203,.33]],B26=[[0,.14],[58523,.205],[117045,.26],[181440,.29],[258482,.33]];
+function tax(y,B,bmax,bmin,lo,hi){let t=0;for(let i=0;i<B.length;i++){const a=B[i][0],b=i+1<B.length?B[i+1][0]:Infinity;if(y>a)t+=(Math.min(y,b)-a)*B[i][1]}let bpa=y<=lo?bmax:(y>=hi?bmin:bmax-(bmax-bmin)*(y-lo)/(hi-lo));return Math.max(0,t-bpa*.14)}
+function go(){const y=N($('caI').value),a=tax(y,B26,16452,14829,181440,258482),b=tax(y,B27,16879,15214,186157,265203);$('caO').innerHTML='<div><span>2026</span><b>'+C(a)+'</b></div><div><span>2027</span><b>'+C(b)+'</b></div><div><span>Difference</span><b class="sv">'+(b<=a?'−':'+')+C(Math.abs(a-b))+'</b></div>'}$('caI').addEventListener('input',go);go()})();
+</script>''',
+    faq_h='Frequently asked questions', src_h='Sources (checked November 27, 2026)',
+    faq=[('What are the 2027 federal tax brackets in Canada?', '14% on taxable income up to $60,044; 20.5% from $60,044 to $120,088; 26% from $120,088 to $186,157; 29% from $186,157 to $265,203; 33% over $265,203 (CRA T4127, 124th edition, effective January 1, 2027).'),
+         ('What is the indexation rate for 2027?', '2.6% (2026: 2.0%).'),
+         ('What is the basic personal amount for 2027?', '$16,879 for net income up to $186,157, reducing gradually to $15,214 at $265,203 or more.'),
+         ('What are the 2027 CPP and EI maximums?', 'CPP: YMPE $76,700, YAMPE $87,400, maximum employee contribution $4,209.00 plus $428.00 CPP2. EI: maximum insurable earnings $70,800, employee rate 1.64%, maximum premium $1,161.12 (outside Quebec).'),
+         ('What is the federal minimum wage in 2027?', 'It is $18.15 an hour since April 1, 2026. The April 1, 2027 rate (indexed to inflation) has not been announced yet.')],
+    extra='<h3 id="tbl">2026 vs 2027 federal brackets</h3>' + table(['Rate', '2026 from', '2027 from'], [[f'{r * 100:g}%', f'${a:,}', f'${b:,}'] for (a, r), (b, _) in zip(CA26, CA27)]),
+    src=[('Canada Revenue Agency — T4127 Payroll Deductions Formulas, 124th Edition, effective January 1, 2027', 'https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html'),
+         ('Canada Revenue Agency — Indexation adjustment (2026 amounts)', 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/frequently-asked-questions-individuals/adjustment-personal-income-tax-benefit-amounts.html'),
+         ('Government of Canada — Federal minimum wage $18.15 (March 2026)', 'https://www.canada.ca/en/employment-social-development/news/2026/03/government-of-canada-raises-the-federal-minimum-wage.html')],
+    note='Federal amounts only; provinces set their own brackets. Estimates, not tax advice.'))
+
+# ───────────────────────── 🇲🇽 MX — tablero de propuestas (decisión en diciembre) ─────────────────────────
+MX_P = [('Coparmex', 9.9), ('Acción Ciudadana Frente a la Pobreza', 9.5), ('Banamex (estimación)', 11.0), ('CTM y CROC', 12.0), ('Conasami (factible)', 12.0), ('UNT', 13.0), ('Sector obrero en Conasami', 15.0), ('Congreso del Trabajo (máx.)', 18.0)]
+mx_rows = ''.join(f'<li><span>{n}</span><i style="--w:{p / 18 * 100:.0f}%"></i><b>{p:g}%</b><em>${315.04 * (1 + p / 100):,.2f}</em></li>' for n, p in MX_P)
+PAGES.append(dict(
+    path='/mx/salario-minimo-2027.html', shell='mx/calculadora-horas-extra.html', lang='es-MX', crumb='México',
+    title='Salario mínimo 2027 en México: propuestas de 9.5% a 18% y cuándo se anuncia', h1='Salario mínimo 2027: ¿cuánto subirá?',
+    desc='Salario mínimo 2026: $315.04 diarios (frontera norte $440.87). Para 2027 las propuestas van de 9.5% a 18%; Conasami ve factible 12% (unos $352.84 diarios). El monto se anuncia a inicios de diciembre y rige desde el 1 de enero de 2027.',
+    badge='🇲🇽 Actualizado 27/11/2026', sub='Lo que se sabe antes del anuncio de Conasami y cuánto ganarías con cada propuesta.', must='id="mxP"',
+    css='<style id="y7-css">' + BASE + '''
+.mx-board{background-color:#14532D;color:#ECFDF5;border-radius:14px;padding:14px;min-width:0}.mx-board h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#FDE68A;margin:0 0 8px}
+.mx-board ul{list-style:none;margin:0;padding:0}.mx-board li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 10px;align-items:baseline;padding:7px 0;border-top:1px solid rgba(255,255,255,.15)}
+.mx-board li span{font-size:14px}.mx-board li b{color:#FDE68A}.mx-board li em{font-style:normal;font-size:13px;color:#A7F3D0;font-variant-numeric:tabular-nums}
+.mx-board li i{grid-column:1/-1;height:5px;border-radius:5px;background-color:rgba(255,255,255,.12);position:relative;overflow:hidden}.mx-board li i:after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);background-color:#F59E0B}
+.mx-now{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}.mx-now div{border:2px solid #14532D;border-radius:12px;padding:10px;min-width:0}.mx-now small{display:block;font-size:12px;color:#4B5563}.mx-now b{display:block;font-size:26px;color:#14532D}
+.mx-calc{margin-top:14px;border:1px solid #E5E7EB;border-radius:14px;padding:14px}.mx-calc h2{font-size:18px;margin:0 0 8px}.mx-calc .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mx-calc label{display:block;font-size:13px;font-weight:700}.mx-calc select,.mx-calc input{display:block;width:100%;font:inherit;font-size:17px;padding:9px;border:1px solid #D1D5DB;border-radius:8px;margin-top:4px;background-color:#fff}.mx-r{margin-top:10px;font-size:16px;line-height:1.7}
+@media(max-width:560px){.mx-now,.mx-calc .row{grid-template-columns:minmax(0,1fr)}}
+</style>''',
+    app=f'''<section class="app y7" id="calc"><p class="ans">El <b>salario mínimo 2027 todavía no es oficial</b>. Hoy rige el de 2026: <b>$315.04 diarios</b> en la zona general y <b>$440.87</b> en la Zona Libre de la Frontera Norte. Para 2027 las propuestas van de <b>9.5% a 18%</b>; el presidente de la Conasami considera factible <b>12%</b> (unos <b>$352.84 diarios</b>). El monto se anuncia <b>a inicios de diciembre de 2026</b> y aplica desde el <b>1 de enero de 2027</b>.</p>
+<div class="mx-now"><div><small>Zona general 2026</small><b>$315.04</b><small>diarios · ≈ $9,577 al mes</small></div><div><small>Frontera norte 2026</small><b>$440.87</b><small>diarios · ≈ $13,402 al mes</small></div></div>
+<div class="mx-board"><h2>Propuestas para 2027 (zona general)</h2><ul>{mx_rows}</ul></div>
+<div class="mx-calc"><h2>Tu salario con cada propuesta</h2><div class="row"><label for="mxP">Aumento<select id="mxP">{''.join(f'<option value="{p:g}">{p:g}% — {n}</option>' for n, p in MX_P)}</select></label><label for="mxS">Tu salario diario 2026 ($)<input id="mxS" inputmode="decimal" value="315.04"></label></div><div class="mx-r" id="mxR"></div></div></section>''',
+    js=r'''<script>
+(function(){'use strict';const $=i=>document.getElementById(i);const N=s=>{const x=parseFloat(String(s).replace(/[^0-9.]/g,''));return isFinite(x)?x:0};const P=x=>'$'+x.toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});
+function go(){const p=N($('mxP').value)/100,s=N($('mxS').value),n=s*(1+p);$('mxR').innerHTML='Diario 2027: <b>'+P(n)+'</b> (+'+P(n-s)+')<br>Mensual (×30.4): <b>'+P(n*30.4)+'</b> · antes '+P(s*30.4)}$('mxP').value='12';['mxP','mxS'].forEach(i=>$(i).addEventListener('input',go));$('mxP').addEventListener('change',go);go()})();
+</script>''',
+    faq_h='Preguntas frecuentes', src_h='Fuentes (consultadas el 27/11/2026)',
+    faq=[('¿Ya hay salario mínimo 2027?', 'Todavía no. Los sectores entregan propuestas hasta el 30 de noviembre y el Consejo de Representantes de la Conasami puede votar desde el 1 de diciembre; el anuncio se espera a inicios de diciembre de 2026.'),
+         ('¿Cuánto es el salario mínimo 2026?', '$315.04 diarios en la zona general (subió 13%) y $440.87 en la Zona Libre de la Frontera Norte (subió 5%).'),
+         ('¿Cuánto sería con 12%?', '$315.04 × 1.12 = $352.84 diarios, unos $10,726 al mes (×30.4).'),
+         ('¿Cuándo empieza a aplicar?', 'El nuevo salario mínimo rige desde el 1 de enero de 2027.'),
+         ('¿Cambia la jornada en 2027?', 'Según reportes, en 2027 la jornada pasa de 48 a 46 horas semanales sin reducir el sueldo, como parte de la reducción gradual hacia 40 horas.')],
+    extra='<h3 id="tbl">Salario diario y mensual por propuesta</h3>' + table(['Propuesta', 'Aumento', 'Diario 2027', 'Mensual (×30.4)'], [[n, f'{p:g}%', f'${315.04 * (1 + p / 100):,.2f}', f'${315.04 * (1 + p / 100) * 30.4:,.0f}'] for n, p in MX_P]),
+    src=[('Infobae México — Negociación del salario mínimo 2027 arranca con propuestas de 10% a más de 15% (26/11/2026)', 'https://www.infobae.com/mexico/2026/11/26/negociacion-del-salario-minimo-2027-arranca-con-propuestas-de-aumento-de-10-a-mas-de-15/'),
+         ('Bloomberg Línea — Salario mínimo en México aumentará a $315.04 diarios para 2026', 'https://www.bloomberglinea.com/latinoamerica/mexico/salario-minimo-en-mexico-aumentara-a-mxn31504-diarios-para-2026/')],
+    note='Las cifras de 2027 son propuestas y escenarios, no el monto oficial. Actualizaremos la página cuando Conasami publique la resolución.'))
+
+
 if __name__ == '__main__':
     for c in PAGES:
         build(c)

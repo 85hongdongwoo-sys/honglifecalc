@@ -184,5 +184,17 @@
   "hub": "/br/index.html",
   "after": "/br/calculadora-ferias.html",
   "label": "Salário mínimo 2027: R$ 1.741 (previsto)"
+ },
+ {
+  "url": "/ca/2027-tax-brackets.html",
+  "hub": "/ca/index.html",
+  "after": "/ca/salary-after-tax-calculator.html",
+  "label": "2027 federal tax brackets (CRA official)"
+ },
+ {
+  "url": "/mx/salario-minimo-2027.html",
+  "hub": "/mx/index.html",
+  "after": "/mx/calculadora-horas-extra.html",
+  "label": "Salario mínimo 2027: propuestas y fecha de anuncio"
  }
 ]
