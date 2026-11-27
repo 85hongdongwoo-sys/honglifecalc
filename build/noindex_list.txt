@@ -3697,15 +3697,12 @@
 /en/mbti/istp-istp-compatibility.html
 /en/mbti/istp-personality.html
 /en/money/28-36-rule-calculator.html
-/en/money/401k-match-calculator.html
-/en/money/403b-calculator.html
 /en/money/52-week-savings-challenge-calculator.html
 /en/money/actual-cash-value-calculator.html
 /en/money/adjusted-gross-income-calculator.html
 /en/money/affo-calculator.html
 /en/money/after-tax-cost-of-debt-calculator.html
 /en/money/altman-z-score-calculator.html
-/en/money/amt-calculator.html
 /en/money/annual-income-calculator.html
 /en/money/annual-money-review-calculator.html
 /en/money/annuity-payout-calculator.html
@@ -3717,7 +3714,6 @@
 /en/money/arv-calculator.html
 /en/money/average-cost-calculator.html
 /en/money/back-to-school-calculator.html
-/en/money/backdoor-roth-tax-calculator.html
 /en/money/basis-point-calculator.html
 /en/money/beta-stock-calculator.html
 /en/money/bitcoin-etf-calculator.html
@@ -3820,7 +3816,6 @@
 /en/money/investment-calculator.html
 /en/money/jensens-alpha-calculator.html
 /en/money/job-offer-comparison-calculator.html
-/en/money/jumbo-loan-calculator.html
 /en/money/kelly-criterion-calculator.html
 /en/money/lean-fire-calculator.html
 /en/money/lease-mileage-calculator.html
@@ -3832,7 +3827,6 @@
 /en/money/longevity-risk-calculator.html
 /en/money/loss-recovery-calculator.html
 /en/money/lottery-annuity-calculator.html
-/en/money/lottery-tax-calculator.html
 /en/money/managed-account-fee-calculator.html
 /en/money/margin-interest-calculator.html
 /en/money/market-capitalization-calculator.html
