@@ -12,6 +12,10 @@ if not todo:
     print('nothing left'); sys.exit(0)
 ts = set(todo)
 open('build/noindex_list.txt', 'w', encoding='utf-8').write('\n'.join(x for x in L if x.strip() not in ts))
+SX = 'build/sitemap_exclude.txt'   # 사이트맵 제외 목록에서도 빼야 구글이 사이트맵으로 찾음
+if os.path.isfile(SX):
+    X = open(SX, encoding='utf-8').read().split('\n')
+    open(SX, 'w', encoding='utf-8').write('\n'.join(x for x in X if x.strip() not in ts))
 lm = json.load(open('build/lastmod.json', encoding='utf-8'))
 today = datetime.date.today().isoformat()
 for u in todo: lm[u] = today
