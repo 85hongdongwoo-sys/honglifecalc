@@ -24,8 +24,8 @@ FAQ=[
 ("How much CPP does a self-employed person pay in 2026?","11.9% of net self-employment income between $3,500 and $74,600 – up to $8,460.90. Above that you pay 8% CPP2 on income up to $85,000, up to $832 more. You pay both the employee and the employer part."),
 ("Do self-employed people have to pay tax quarterly in Canada?","Only if the CRA asks. You must pay instalments when your net tax owing is more than $3,000 in 2026 and in either 2025 or 2024. The due dates are March 15, June 15, September 15 and December 15."),
 ("When is the tax deadline for self-employed people?","For 2026 income you have until June 15, 2027 to file your return. But any balance owing must still be paid by April 30, 2027, or interest starts."),
-("Do self-employed people pay EI?","Not by default. You can sign up to pay EI premiums to get special benefits such as maternity, parental or sickness benefits. Regular EI (for job loss) is not available."),
-("When do I need to register for GST/HST?","When your taxable sales go over $30,000 in a single calendar quarter or over four calendar quarters in a row. Below that you are a small supplier and registering is optional."),
+("Do self-employed people pay EI?","Not by default. You can sign up to pay EI premiums to get special benefits: maternity, parental, sickness, compassionate care and family caregiver benefits. In 2026 the premium is $1.63 for every $100 you earn, up to $1,123.07 a year. The program is for these special benefits, not job-loss (regular) EI."),
+("When do I need to register for GST/HST?","When your taxable sales go over $30,000 in a single calendar quarter or over the last four calendar quarters in a row. Sales of associated businesses count too. Below that you are a small supplier and registering is optional."),
 ]
 
 fig=[['Basic exemption (YBE)','$3,500','No CPP on the first $3,500 of earnings.'],
@@ -36,7 +36,8 @@ fig=[['Basic exemption (YBE)','$3,500','No CPP on the first $3,500 of earnings.'
      ['Federal tax rates 2026','14% · 20.5% · 26% · 29% · 33%','Brackets start at $58,523.01, $117,045.01, $181,440.01 and $258,482.01.'],
      ['Instalment threshold','$3,000 net tax owing','In 2026 and in 2025 or 2024. Quebec: $1,800.'],
      ['Instalment dates','March 15 · June 15 · September 15 · December 15','Quarterly payments if the CRA asks.'],
-     ['Filing and payment','File by June 15, 2027 · pay by April 30, 2027','For 2026 self-employment income.']]
+     ['Filing and payment','File by June 15, 2027 · pay by April 30, 2027','For 2026 self-employment income.'],
+     ['EI special benefits (optional)','$1.63 per $100 of earnings, max $1,123.07','2026 premium if you opt in (outside Quebec).']]
 
 art='''<h2 id="figures">2026 figures for self-employed Canadians</h2>
 '''+table(['Item','Amount','What it means'],fig)+'''
@@ -51,7 +52,7 @@ art='''<h2 id="figures">2026 figures for self-employed Canadians</h2>
 <p>Example first. You earn $80,000 profit in Ontario. CPP is 11.9% of your earnings between $3,500 and $74,600: $71,100 × 11.9% = $8,461. Then 8% CPP2 on $5,400 = $432. Part of that CPP is taken off your income before tax, and the rest gives you a tax credit. Income tax comes to $13,234.</p>
 <ul><li><b>Net income</b> means what you earned minus business expenses. Tax and CPP are worked out on this, not on your sales.</li>
 <li><b>CPP</b> (Canada Pension Plan) builds your future pension. An employee pays half and the employer pays half. When you work for yourself, you pay both halves.</li>
-<li><b>The employer half is deducted</b> from your income, and so are the enhanced parts and CPP2. The employee base half (4.95%) is a tax credit instead.</li>
+<li><b>Part of your CPP is deducted</b> from your income (line 22200): the employer half, plus the enhanced parts and CPP2. For the employee base part (4.95%) you get a tax credit instead (line 31000). Schedule 8 works this out.</li>
 <li><b>Instalments</b> are tax payments in advance, four times a year, so you don't owe a big amount in spring.</li></ul>
 <p>Quebec is different: you pay QPP and QPIP and file a separate Quebec return, so this calculator leaves Quebec out.</p>
 <h2 id="tips">Tips and common mistakes</h2>
@@ -61,11 +62,11 @@ art='''<h2 id="figures">2026 figures for self-employed Canadians</h2>
 <li><b>Pay by April 30.</b> The June 15 filing date does not delay the payment date.</li>
 <li><b>Watch the $30,000 GST/HST line.</b> Once you pass it, you must register and charge GST/HST.</li></ul>
 <h2 id="faq" style="margin-top:22px">Self-employed tax FAQ</h2>'''+''.join(f'<h3>{q}</h3><p>{a}</p>' for q,a in FAQ)+'''
-<p class="note">Sources (checked 25 November 2026): <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html" rel="nofollow">CRA – Tax rates and income brackets 2026</a>; <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/canada-pension-plan-cpp/cpp-contribution-rates-maximums-exemptions.html" rel="nofollow">CRA – CPP contribution rates, maximums and exemptions</a>; <a href="https://www.canada.ca/en/revenue-agency/services/payments/payments-cra/individual-payments/instalments.html" rel="nofollow">CRA – Paying your income tax by instalments</a>; <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/important-dates-individuals.html" rel="nofollow">CRA – Important dates for individuals</a>; <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html" rel="nofollow">CRA – When to register for GST/HST</a>; <a href="https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/reports/self-employed.html" rel="nofollow">ESDC – EI special benefits for self-employed people</a>. General information, not tax advice.</p>'''
+<p class="note">Sources (checked 27 November 2026): <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html" rel="nofollow">CRA – Tax rates and income brackets 2026</a>; <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/canada-pension-plan-cpp/cpp-contribution-rates-maximums.html" rel="nofollow">CRA – CPP contribution rates and maximums</a>; <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/calculating-deductions/making-deductions/second-additional-cpp-contribution-rates-maximums.html" rel="nofollow">CRA – CPP2 rates and maximums</a>; <a href="https://www.canada.ca/en/revenue-agency/services/payments/payments-cra/individual-payments/income-tax-instalments/who-pays-instalments.html" rel="nofollow">CRA – Who pays instalments</a>; <a href="https://www.canada.ca/en/services/taxes/resources-for-small-and-medium-businesses/2026-tax-deadlines-canadian-businesses-self-employed-individuals.html" rel="nofollow">Canada.ca – 2026 tax deadlines for self-employed individuals</a>; <a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4022/general-information-gst-hst-registrants.html" rel="nofollow">CRA – RC4022 GST/HST registrants</a>; <a href="https://www.canada.ca/en/services/benefits/ei/ei-self-employed-workers/premiums.html" rel="nofollow">Canada.ca – EI premiums for self-employed people</a>. General information, not tax advice.</p>'''
 
 out=build(P,'Self-Employed Tax Calculator Canada 2026 – Income Tax + CPP',
  'How much tax and CPP a self-employed Canadian pays in 2026, how much to set aside each month, CPP and CPP2 maximums, and instalment dates.',
  art,FAQ,calc=calc)
-add_top(out,[('By','Hong Life Calculators'),('Checked','25 November 2026'),('Sources','CRA, ESDC')],
+add_top(out,[('By','Hong Life Calculators'),('Checked','27 November 2026'),('Sources','CRA, ESDC')],
  [('form','Calculator'),('figures','2026 figures'),('ex','Examples'),('how','How it works'),('tips','Tips'),('faq','FAQ')],'On this page',('#examples','en'))
 print(out)

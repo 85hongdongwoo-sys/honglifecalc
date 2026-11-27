@@ -4,17 +4,18 @@ P='/us/benefits/lifeline-phone-internet.html'
 
 # 2026 HHS poverty guidelines (48 states + DC, Alaska, Hawaii) – Lifeline uses 135% of these
 G={'48':(15960,5680),'AK':(19950,7100),'HI':(18360,6530)}
-DISC=9.25; TRIBAL=34.25
+DISC=9.25; VOICE=5.25; TRIBAL=34.25
 
-form='''<form class="card" id="form" onsubmit="return false"><h2>Check your numbers</h2><style>.money::before{content:"$"}</style><label class="f"><span>People in your household</span><input id="n" inputmode="decimal" value="3"><small>Everyone who lives with you and shares money for bills and food.</small></label><label class="f"><span>Household income per year (before tax)</span><div class="money"><input id="i" inputmode="decimal" value="30,000"></div></label><label class="f"><span>Do you or someone in your home get SNAP, Medicaid, SSI, Federal Public Housing Assistance or the Veterans Pension and Survivors Benefit?</span><select id="p"><option value="0" selected>No</option><option value="1">Yes</option></select><small>Any one of these qualifies you whatever your income.</small></label><label class="f"><span>Where do you live?</span><select id="st"><option value="48" selected>48 states, DC or a territory</option><option value="AK">Alaska</option><option value="HI">Hawaii</option></select></label><label class="f"><span>Do you live on Tribal lands?</span><select id="tr"><option value="0" selected>No</option><option value="1">Yes</option></select><small>Tribal lands get a bigger discount.</small></label></form>'''
+form='''<form class="card" id="form" onsubmit="return false"><h2>Check your numbers</h2><style>.money::before{content:"$"}</style><label class="f"><span>People in your household</span><input id="n" inputmode="decimal" value="3"><small>Everyone who lives with you and shares money for bills and food.</small></label><label class="f"><span>Household income per year (before tax)</span><div class="money"><input id="i" inputmode="decimal" value="30,000"></div></label><label class="f"><span>Do you or someone in your home get SNAP, Medicaid, SSI, Federal Public Housing Assistance or the Veterans Pension and Survivors Benefit?</span><select id="p"><option value="0" selected>No</option><option value="1">Yes</option></select><small>Any one of these qualifies you whatever your income.</small></label><label class="f"><span>Where do you live?</span><select id="st"><option value="48" selected>48 states, DC or a territory</option><option value="AK">Alaska</option><option value="HI">Hawaii</option></select></label><label class="f"><span>What will the discount go on?</span><select id="sv"><option value="i" selected>Internet, or a phone + internet bundle</option><option value="v">Phone (voice) only</option></select><small>Phone-only service gets a smaller discount.</small></label><label class="f"><span>Do you live on Tribal lands?</span><select id="tr"><option value="0" selected>No</option><option value="1">Yes</option></select><small>Tribal lands get a bigger discount.</small></label></form>'''
 
 calc='''function calc(){const G={'48':[15960,5680],'AK':[19950,7100],'HI':[18360,6530]},g=G[$('st').value]||G['48'];
- const n=Math.max(1,Math.round(num('n'))),f=g[0]+g[1]*(n-1),lim=Math.floor(f*1.35),inc=num('i'),prog=$('p').value==='1',ok=prog||inc<=lim,tr=$('tr').value==='1',d=tr?34.25:9.25;
+ const n=Math.max(1,Math.round(num('n'))),f=g[0]+g[1]*(n-1),lim=Math.round(f*1.35),inc=num('i'),prog=$('p').value==='1',ok=prog||inc<=lim,tr=$('tr').value==='1',vo=$('sv').value==='v',d=vo?5.25:(tr?34.25:9.25);
  const nt='<p class="note">Uses 135% of the 2026 HHS poverty guidelines. The National Verifier makes the final decision. One Lifeline discount per household.</p>';
  return big(ok?'Likely eligible for Lifeline':'Income above the limit',ok?usd(d)+'/month':usd(lim),ok?'about '+usd(Math.round(d*12))+' a year off your phone or internet bill':'income limit for '+n+(n>1?' people':' person'))+
-  kv([['How you qualify',prog?'Through a benefit program (income does not matter)':(ok?'Through income':'Not yet – check the programs above')],['135% income limit for '+n,usd(lim)],['Per month',usd(Math.round(lim/12))],...(ok||prog?[]:[['Over the limit by',usd(inc-lim)]]),['Your discount',usd(d)+'/month'+(tr?' (Tribal lands)':'')],['Limit','one Lifeline benefit per household']])+nt}'''
+  kv([['How you qualify',prog?'Through a benefit program (income does not matter)':(ok?'Through income':'Not yet – check the programs above')],['135% income limit for '+n,usd(lim)],['Per month',usd(Math.round(lim/12))],...(ok||prog?[]:[['Over the limit by',usd(inc-lim)]]),['Your discount','up to '+usd(d)+'/month'+(vo?' (phone only'+(tr?'; ask about extra Tribal support':'')+')':' (internet or bundle'+(tr?', Tribal lands':'')+')')],['Limit','one Lifeline benefit per household']])+nt}'''
 
-lim=lambda n,k='48': int((G[k][0]+G[k][1]*(n-1))*1.35)
+import math
+lim=lambda n,k='48': math.floor((G[k][0]+G[k][1]*(n-1))*1.35+0.5)
 usd=lambda x:f"${x:,.0f}"
 rows=[[str(n),usd(lim(n)),usd(round(lim(n)/12)),usd(lim(n,'AK')),usd(lim(n,'HI'))] for n in range(1,9)]
 exs=[['1 person, $20,000, no benefits','$21,546','Eligible','$111 a year'],
@@ -26,21 +27,22 @@ print([r for r in rows][:3], lim(3), lim(4), lim(2), round(TRIBAL*12))
 
 FAQ=[
 ("What is the Lifeline income limit for 2026?","135% of the federal poverty guideline. For 1 person that is $21,546 a year, for 2 it is $29,214, for 3 it is $36,882 and for 4 it is $44,550 (48 states and DC). Add $7,668 for each extra person. Alaska and Hawaii have higher limits."),
-("How much is the Lifeline discount?","$9.25 a month off one phone or internet service, about $111 a year. On Tribal lands it can be up to $34.25 a month, about $411 a year."),
+("How much is the Lifeline discount?","Up to $9.25 a month off internet service or a phone + internet bundle, about $111 a year. Phone-only (voice) service gets up to $5.25 a month, about $63 a year. On Tribal lands the discount can be up to $34.25 a month, about $411 a year."),
 ("Which programs qualify me for Lifeline?","SNAP (food stamps), Medicaid, Supplemental Security Income (SSI), Federal Public Housing Assistance (such as Section 8) and the Veterans Pension and Survivors Benefit. If anyone in your household gets one of these, you qualify whatever your income. On Tribal lands some Tribal programs also count."),
 ("Can I get Lifeline for both my phone and my internet?","No. You get one Lifeline discount per household, on either a phone service or an internet service (or a bundle of both from one company)."),
-("Did the Affordable Connectivity Program come back?","No. The Affordable Connectivity Program (ACP) stopped giving discounts in 2024 when its money ran out. Lifeline is the federal program that is still running."),
-("How do I apply for Lifeline?","Apply online through the National Verifier at lifelinesupport.org, by mail, or through a phone or internet company that offers Lifeline. You need proof of income or proof that you get a qualifying benefit. Then pick a participating company to get the discount."),
+("Did the Affordable Connectivity Program come back?","No. The Affordable Connectivity Program (ACP) ended on 1 June 2024 because its funding ran out (full discounts stopped after April 2024). Lifeline is the federal program that is still running."),
+("How do I apply for Lifeline?","Apply online through the National Verifier at lifelinesupport.org, by mail, or through a phone or internet company that offers Lifeline. You need proof of income or proof that you get a qualifying benefit. Then pick a participating company to get the discount. In Oregon and Texas, the state runs its own Lifeline process."),
 ("Do I need to renew Lifeline every year?","Yes. You must recertify every year to show you still qualify. If you don't, your discount stops."),
 ]
 
 art='''<p class="note" style="margin-top:0">Hong Life is an independent guide, <b>not a government website</b>. Apply and confirm through the official Lifeline National Verifier.</p>
 <h2 id="limits">Lifeline income limits 2026 (135% of poverty guidelines)</h2>
 <div id="examples">'''+table(['People in household','48 states and DC, per year','Per month','Alaska','Hawaii'],rows)+'''</div>
-<p class="note">135% of the 2026 HHS poverty guidelines ($15,960 for one person plus $5,680 for each extra person in the 48 states and DC), rounded down to whole dollars.</p>
+<p class="note">135% of the 2026 HHS poverty guidelines ($15,960 for one person plus $5,680 for each extra person in the 48 states and DC), rounded to whole dollars the same way as USAC’s own 2026 chart.</p>
 <h2 id="figures">Key Lifeline figures</h2>
 '''+table(['Item','Amount','What it means'],[
- ['Standard discount','$9.25 a month','Taken off your phone or internet bill each month.'],
+ ['Standard discount','Up to $9.25 a month','For internet, or a phone + internet bundle. Taken off your bill each month.'],
+ ['Phone-only discount','Up to $5.25 a month','For voice (phone) service without internet.'],
  ['Tribal lands discount','Up to $34.25 a month','For people who live on qualifying Tribal lands.'],
  ['Income limit','135% of the poverty guideline','$36,882 a year for 3 people in 2026.'],
  ['Benefit programs','SNAP, Medicaid, SSI, Federal Public Housing Assistance, Veterans Pension and Survivors Benefit','Getting any one of these qualifies you.'],
@@ -48,7 +50,7 @@ art='''<p class="note" style="margin-top:0">Hong Life is an independent guide, <
  ['Renewal','Every year','You must recertify or the discount stops.']])+'''
 <h2 id="ex">Examples: do I qualify?</h2>
 '''+table(['Household','Income limit','Result','Savings'],exs)+'''
-<ul><li><b>One person earning $20,000.</b> The limit is $21,546, so they qualify through income and save $9.25 a month.</li>
+<ul><li><b>One person earning $20,000.</b> The limit is $21,546, so they qualify through income and save up to $9.25 a month on internet.</li>
 <li><b>Family of 3 earning $30,000.</b> The limit is $36,882. They are $6,882 under it, so they qualify.</li>
 <li><b>Family of 4 earning $50,000 who get SNAP.</b> Their income is over the $44,550 limit, but SNAP qualifies them anyway.</li>
 <li><b>Couple earning $32,000 with no benefits.</b> The limit for 2 is $29,214. They are $2,786 over, so they don't qualify unless they join a benefit program.</li></ul>
@@ -66,11 +68,11 @@ art='''<p class="note" style="margin-top:0">Hong Life is an independent guide, <
 <li><b>Don't miss recertification.</b> Watch for the yearly notice. If you don't answer, the discount ends.</li>
 <li><b>Never pay to apply.</b> Applying for Lifeline is free.</li></ul>
 <h2 id="faq" style="margin-top:22px">Lifeline FAQ</h2>'''+''.join(f'<h3>{q}</h3><p>{a}</p>' for q,a in FAQ)+'''
-<p class="note">Sources (checked 25 November 2026): <a href="https://www.fcc.gov/lifeline-consumers" rel="nofollow">FCC – Lifeline Support for Affordable Communications</a>; <a href="https://www.lifelinesupport.org/do-i-qualify/" rel="nofollow">USAC – Do I qualify?</a>; <a href="https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines" rel="nofollow">HHS ASPE – 2026 Poverty Guidelines</a>. General information, not legal advice.</p>'''
+<p class="note">Sources (checked 27 November 2026): <a href="https://www.fcc.gov/lifeline-consumers" rel="nofollow">FCC – Lifeline Support for Affordable Communications</a>; <a href="https://www.lifelinesupport.org/how-to-qualify/" rel="nofollow">USAC – How to qualify (2026 income chart)</a>; <a href="https://www.lifelinesupport.org/faqs/" rel="nofollow">USAC – Lifeline FAQs</a>; <a href="https://www.federalregister.gov/documents/2026/01/15/2026-00755/annual-update-of-the-hhs-poverty-guidelines" rel="nofollow">HHS – 2026 Poverty Guidelines (Federal Register, 15 Jan 2026)</a>. General information, not legal advice.</p>'''
 
-out=build(P,'Lifeline Program 2026 – Income Limits and $9.25 Phone or Internet Discount',
- 'Do you qualify for Lifeline in 2026? Income limits by household size ($36,882 for 3), qualifying programs, the $9.25 discount and how to apply.',
+out=build(P,'Lifeline 2026 – Income Limits and the $9.25 Internet Discount',
+ 'Do you qualify for Lifeline in 2026? Income limits by household size ($36,882 for 3), qualifying programs, the $9.25 / $5.25 discounts and how to apply.',
  art,FAQ,form=form,calc=calc)
-add_top(out,[('By','Hong Life Calculators'),('Checked','25 November 2026'),('Sources','FCC, USAC, HHS poverty guidelines')],
+add_top(out,[('By','Hong Life Calculators'),('Checked','27 November 2026'),('Sources','FCC, USAC, HHS poverty guidelines')],
  [('form','Calculator'),('limits','2026 income limits'),('figures','Key figures'),('ex','Examples'),('how','How it works'),('tips','Tips'),('faq','FAQ')],'On this page',('#examples','en'))
 print(out)

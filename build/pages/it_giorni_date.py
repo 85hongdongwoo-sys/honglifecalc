@@ -1,8 +1,8 @@
-import sys; sys.path.insert(0,'/home/claude/honglifecalc/build'); sys.path.insert(0,'/tmp/claude-0/-home-claude/22ae3873-7b3e-5235-a76f-08bef551a9af/scratchpad')
+import sys; sys.path.insert(0,'/home/claude/honglifecalc/build')
 from enrich_lib import build, table, add_top
 from it_hol import count, easter
 P='/it/calcolo-giorni-tra-date.html'
-CHK='25 novembre 2026'
+CHK='27 novembre 2026'
 
 form='''<form class="card" id="form" onsubmit="return false"><h2>I tuoi dati</h2><div class="two"><label class="f"><span>Data di inizio</span><input id="d1" type="date" value="2026-11-25"></label><label class="f"><span>Data di fine</span><input id="d2" type="date" value="2026-12-25"></label></div><label class="f"><span>Giorno finale</span><select id="fine"><option value="0">Escluso (come la differenza tra le date)</option><option value="1">Incluso (conta anche l’ultimo giorno)</option></select></label><label class="f"><span>Festività nei giorni lavorativi</span><select id="fe"><option value="1">Escludi le festività nazionali</option><option value="0">Non escluderle</option></select><small>Feste nazionali italiane, compreso il 4 ottobre dal 2026. Il santo patrono locale non è escluso.</small></label></form>'''
 
@@ -36,7 +36,7 @@ FAQ=[
 ("Quanti giorni mancano a Natale?","Dal 25 novembre al 25 dicembre 2026 ci sono 30 giorni. Di questi, 22 sono giorni da lunedì a venerdì e 21 sono lavorativi, perché l’8 dicembre (Immacolata) cade di martedì."),
 ("Quanti giorni lavorativi ci sono nel 2026?","Nel 2026 ci sono 261 giorni da lunedì a venerdì. Togliendo le 7 festività nazionali che cadono in un giorno feriale, restano 254 giorni lavorativi. Le ferie e il santo patrono vanno tolti a parte."),
 ("Il giorno finale va contato?","Dipende da cosa ti serve. Per la differenza tra due date (età, scadenze, “tra quanti giorni”) di solito non si conta. Per la durata di un periodo in cui contano tutti i giorni, come un soggiorno o un contratto dal 1 al 31 del mese, si conta. Scegli l’opzione nel calcolatore."),
-("Il 4 ottobre è festivo?","Sì, dal 2026 il 4 ottobre, festa di San Francesco d’Assisi, è di nuovo festività nazionale. Nel 2026 cade di domenica; nel 2027 cade di lunedì, quindi toglie un giorno lavorativo."),
+("Il 4 ottobre è festivo?","Sì, dal 2026 il 4 ottobre, festa di San Francesco d’Assisi, è festa nazionale (patrono d’Italia): lo ha stabilito la legge 8 ottobre 2025, n. 151, in vigore dal 1° gennaio 2026. Nel 2026 cade di domenica; nel 2027 cade di lunedì, quindi toglie un giorno lavorativo."),
 ("Come si contano i giorni tra due date?","Si sottrae la data di inizio da quella di fine. Dal 6 novembre al 25 dicembre ci sono 24 giorni rimasti di novembre più 25 di dicembre: 49 giorni. Il calcolatore lo fa per te e tiene conto degli anni bisestili."),
 ("Quante settimane sono 100 giorni?","100 giorni sono 14 settimane e 2 giorni. Per passare dai giorni alle settimane dividi per 7: il quoziente sono le settimane, il resto sono i giorni."),
 ]
@@ -65,6 +65,6 @@ art='''<h2 id="figures">Festività nazionali 2026 (usate per i giorni lavorativi
 out=build(P,'Calcolo giorni tra due date 2026 – giorni lavorativi e festività',
  'Quanti giorni ci sono tra due date? Giorni, settimane e giorni lavorativi senza le festività nazionali 2026 (anche il 4 ottobre). Esempi e FAQ.',
  art,FAQ,form=form,calc=calc)
-add_top(out,[('A cura di','Hong Life Calculators'),('Verificato il','25 novembre 2026'),('Fonti','Normattiva')],
+add_top(out,[('A cura di','Hong Life Calculators'),('Verificato il',CHK),('Fonti','Normattiva')],
  [('form','Calcolatore'),('figures','Festività 2026'),('ex','Esempi'),('how','Come funziona'),('tips','Consigli'),('faq','FAQ')],'In questa pagina',('#examples','it'))
 print(out)

@@ -1,46 +1,6 @@
 {
  "queue": [
   {
-   "path": "/us/benefits/lifeline-phone-internet.html",
-   "chars": 1132,
-   "impr28": 16
-  },
-  {
-   "path": "/au/atar-selection-rank-calculator.html",
-   "chars": 1075,
-   "impr28": 15
-  },
-  {
-   "path": "/us/benefits/section-8-housing-voucher.html",
-   "chars": 1436,
-   "impr28": 15
-  },
-  {
-   "path": "/us/benefits/wic.html",
-   "chars": 1260,
-   "impr28": 14
-  },
-  {
-   "path": "/it/calcolo-giorni-tra-date.html",
-   "chars": 482,
-   "impr28": 13
-  },
-  {
-   "path": "/tw/labor-pension/less-than-15-years-lump-sum.html",
-   "chars": 1248,
-   "impr28": 12
-  },
-  {
-   "path": "/ca/self-employed-tax-calculator.html",
-   "chars": 1387,
-   "impr28": 12
-  },
-  {
-   "path": "/de/abiturnote-rechner.html",
-   "chars": 1003,
-   "impr28": 12
-  },
-  {
    "path": "/de/teilzeit-rechner.html",
    "chars": 507,
    "impr28": 12
@@ -478,6 +438,14 @@
   "/fr/calcul-objectif-epargne.html",
   "/co/calculadora-gasto-gasolina.html",
   "/nz/fuel-cost-calculator.html",
-  "/it/calcolo-costo-carburante.html"
+  "/it/calcolo-costo-carburante.html",
+  "/us/benefits/lifeline-phone-internet.html",
+  "/au/atar-selection-rank-calculator.html",
+  "/us/benefits/section-8-housing-voucher.html",
+  "/us/benefits/wic.html",
+  "/it/calcolo-giorni-tra-date.html",
+  "/tw/labor-pension/less-than-15-years-lump-sum.html",
+  "/ca/self-employed-tax-calculator.html",
+  "/de/abiturnote-rechner.html"
  ]
 }

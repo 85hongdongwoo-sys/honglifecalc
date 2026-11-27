@@ -12,7 +12,7 @@
     fr: ['Tableau', 'Graphique'], ja: ['表', 'グラフ'], pt: ['Tabela', 'Gráfico'], it: ['Tabella', 'Grafico'],
     nl: ['Tabel', 'Grafiek'], pl: ['Tabela', 'Wykres'], sv: ['Tabell', 'Diagram'], da: ['Tabel', 'Diagram'],
     no: ['Tabell', 'Diagram'], nb: ['Tabell', 'Diagram'], tr: ['Tablo', 'Grafik'], id: ['Tabel', 'Grafik'],
-    ms: ['Jadual', 'Carta'], vi: ['Bảng', 'Biểu đồ'], zh: ['表格', '图表'], ru: ['Таблица', 'График'],
+    ms: ['Jadual', 'Carta'], vi: ['Bảng', 'Biểu đồ'], zh: ['表格', '图表'], tw: ['表格', '圖表'], ru: ['Таблица', 'График'],
     hi: ['तालिका', 'चार्ट'], ar: ['جدول', 'رسم بياني']
   }[LANG] || ['Table', 'Chart'];
   var LAST = me && me.getAttribute('data-series') === 'last';

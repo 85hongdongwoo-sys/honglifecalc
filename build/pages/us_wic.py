@@ -26,7 +26,7 @@ FAQ=[
 ("What is the WIC income limit for a family of 3?","$50,542 a year, $4,212 a month or $972 a week (48 states and DC). For 2 people it is $40,034 a year."),
 ("Does a pregnant woman count as two people for WIC?","Yes. A pregnant woman's household is counted with the unborn baby, so a pregnant woman living alone uses the limit for 2 people ($40,034). With twins, count 3."),
 ("If I get Medicaid or SNAP, do I qualify for WIC?","You meet the income test automatically if you get SNAP, Medicaid or TANF. You still need to be in a WIC group (pregnant, a new mother, a baby or a child under 5) and have a nutrition check at the clinic."),
-("Who can get WIC?","Pregnant women, women up to 6 months after the baby is born, breastfeeding women up to the baby's first birthday, babies, and children up to their 5th birthday. Dads, grandparents and foster parents can apply for children in their care."),
+("Who can get WIC?","Pregnant women, women up to 6 months after the baby is born, breastfeeding women up to the baby's first birthday, babies, and children up to their 5th birthday. Moms, dads, foster parents, grandparents and anyone else raising a child under 5 can apply for the child in their care. A foster child counts as a separate household of one."),
 ("Is WIC income before or after tax?","Before tax (gross income). Count income from everyone in the household."),
 ]
 
@@ -52,11 +52,11 @@ art='''<p class="note" style="margin-top:0">Hong Life is an independent guide, <
 <li><b>Working families qualify too.</b> Many families with jobs are under 185% of the poverty line.</li>
 <li><b>Bring proof.</b> ID, proof of address and proof of income or of SNAP, Medicaid or TANF.</li></ul>
 <h2 id="faq" style="margin-top:22px">WIC FAQ</h2>'''+''.join(f'<h3>{q}</h3><p>{a}</p>' for q,a in FAQ)+'''
-<p class="note">Sources (checked 25 November 2026): <a href="https://www.fns.usda.gov/wic/iegs" rel="nofollow">USDA FNS – WIC Income Eligibility Guidelines</a>; <a href="https://www.fns.usda.gov/wic/wic-eligibility-requirements" rel="nofollow">USDA FNS – WIC eligibility requirements</a>; <a href="https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines" rel="nofollow">HHS ASPE – 2026 Poverty Guidelines</a>. General information, not legal advice.</p>'''
+<p class="note">Sources (checked 27 November 2026): <a href="https://www.federalregister.gov/documents/2026/04/29/2026-08323/special-supplemental-nutrition-program-for-women-infants-and-children-wic-20262027-income" rel="nofollow">USDA – WIC 2026–2027 Income Eligibility Guidelines (Federal Register, 29 Apr 2026)</a>; <a href="https://www.fna.usda.gov/wic/faqs" rel="nofollow">USDA – WIC FAQs</a>; <a href="https://www.fna.usda.gov/wic/eligibility-tool" rel="nofollow">USDA – WIC eligibility tool</a>; <a href="https://www.federalregister.gov/documents/2026/01/15/2026-00755/annual-update-of-the-hhs-poverty-guidelines" rel="nofollow">HHS – 2026 Poverty Guidelines</a>. General information, not legal advice.</p>'''
 
 out=build(P,'WIC Income Limits 2026–27 – Am I Eligible? Calculator by Family Size',
  'WIC income limits from 1 July 2026: $50,542 a year for 3, $61,050 for 4. Check if you qualify, who counts, and how SNAP or Medicaid helps.',
  art,FAQ,form=form,calc=calc)
-add_top(out,[('By','Hong Life Calculators'),('Checked','25 November 2026'),('Sources','USDA FNS, HHS poverty guidelines')],
+add_top(out,[('By','Hong Life Calculators'),('Checked','27 November 2026'),('Sources','USDA (Federal Register), HHS poverty guidelines')],
  [('form','Calculator'),('limits','2026–27 income limits'),('ex','Examples'),('how','How WIC works'),('tips','Tips'),('faq','FAQ')],'On this page',('#examples','en'))
 print(out)
