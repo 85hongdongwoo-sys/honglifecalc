@@ -14,11 +14,20 @@
     '.hlv li i{width:12px;height:12px;border-radius:4px}.hlv li b{font-variant-numeric:tabular-nums;color:#12305C}' +
     '.hlv li span{overflow-wrap:anywhere;word-break:keep-all}@media(max-width:380px){.hlv{gap:12px;padding:12px}.hlv svg{width:112px;height:112px}.hlv li{font-size:12.5px}}' +
 '.hlx{margin:16px 0 6px;padding:14px 16px;border:1px solid #E1E5EC;border-radius:14px;background:#FAFBFD}.hlx h4{margin:0 0 10px;font:700 13px/1.3 system-ui,sans-serif;color:#5F6875;letter-spacing:.02em;text-transform:uppercase}' +
-    '.hlv.hlx-r li{font-size:13px}@media(max-width:430px){.hlv.hlx-r svg,.hlv.hlx-s svg{width:108px;height:108px}}.hlx .br{display:grid;grid-template-columns:minmax(0,38%) 1fr;gap:10px;align-items:center;margin:7px 0;font-size:13.5px}.hlx .br span{overflow-wrap:anywhere;word-break:keep-all;color:#2F343B}' +
+    '.hlv.hlx-r li{font-size:13px}@media(max-width:430px){.hlv.hlx-r:not([data-hlv2]) svg,.hlv.hlx-s svg{width:108px;height:108px}}.hlx .br{display:grid;grid-template-columns:minmax(0,38%) 1fr;gap:10px;align-items:center;margin:7px 0;font-size:13.5px}.hlx .br span{overflow-wrap:anywhere;word-break:keep-all;color:#2F343B}' +
     '.hlx .br div{position:relative;height:22px;background:#EEF1F6;border-radius:7px;overflow:hidden}.hlx .br i{position:absolute;left:0;top:0;bottom:0;border-radius:7px;transition:width .6s ease}' +
     '.hlx .br b{position:absolute;right:8px;top:50%;transform:translateY(-50%);font:700 12px/1 system-ui,sans-serif;color:#12305C;font-variant-numeric:tabular-nums}' +
     '.hlx .gg{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-around}.hlx .gg figure{margin:0;text-align:center;width:112px}.hlx .gg figcaption{font-size:12.5px;color:#2F343B;line-height:1.3;word-break:keep-all}' +
     '.hlx svg.ln{width:100%;height:auto;display:block}.hlx .lg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:12.5px;color:#2F343B}.hlx .lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}' +
+'.hlv[data-hlv2]{display:block}.hlv2-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}@media(max-width:560px){.hlv2-g{grid-template-columns:1fr}}' +
+    '.hlv2-p{background:#fff;border:1px solid #E5E8EE;border-radius:14px;padding:10px 12px 12px;min-width:0}.hlv2-t{display:flex;gap:4px;justify-content:flex-end;margin-bottom:6px}' +
+    '.hlv2-t button{width:30px;height:28px;border:1px solid transparent;border-radius:8px;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0;color:#94A3B8}.hlv2-t button svg{width:16px;height:16px;fill:currentColor}' +
+    '.hlv2-t button:hover{background:#F1F5F9;color:#475569}.hlv2-t button[aria-selected=true]{background:#EEF2FF;border-color:#C7D2FE;color:#4F46E5}' +
+    '.hlv2-c{display:flex;justify-content:center;align-items:center;min-height:150px}.hlv[data-hlv2] .hlv2-c svg{width:100%;height:auto;max-width:200px}.hlv[data-hlv2] .hlv2-c svg.k-bars,.hlv[data-hlv2] .hlv2-c svg.k-stack{max-width:100%}' +
+    '.hlv2-c .bt{font:700 11px/1 system-ui,sans-serif;fill:#334155;font-variant-numeric:tabular-nums}.hlv2-c .st{font:700 10.5px/1 system-ui,sans-serif;fill:#fff}' +
+    '.hlv2-c .gr{transform-origin:0 50%;animation:hlvg .7s cubic-bezier(.2,.8,.2,1) both}.hlv2-c .gc{transform-box:fill-box;transform-origin:50% 100%;animation:hlvc .7s cubic-bezier(.2,.8,.2,1) both}@keyframes hlvc{from{transform:scaleY(0)}}.hlv2-c .k-donut circle{animation:hlvf .6s ease both}@keyframes hlvg{from{transform:scaleX(0)}}@keyframes hlvf{from{opacity:0}}' +
+    '@media (prefers-reduced-motion:reduce){.hlv2-c .gr,.hlv2-c .k-donut circle{animation:none}}' +
+    '.hlv[data-hlv2] ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:7px 16px}' +
     '[dir=rtl] .hlv,[dir=rtl] .hlx{direction:rtl}';
   var T = (function (l) {
     var M = { ko: ['한눈에 비교', '비율', '변화 추이'], ja: ['ひと目で比較', '割合', '推移'], zh: ['一目了然', '比例', '变化趋势'],
@@ -35,33 +44,115 @@
   function pctTxt(p) { return (p >= 10 ? Math.round(p) : Math.round(p * 10) / 10) + '%'; }
   function stripNum(t) { return t.replace(/[\s ]*[-−+]?[\$€£¥₩₹₱₽₺₫₦R$]*\s?[\d][\d.,\s ']*\s?(%|[A-Za-z₩€£¥₹₽₺₫₦円원元₱zł]{0,4}\.?)?\s*$/, '').trim() || t; }
 
+  /* 결과 그래프 2개 + 종류 선택(도넛·막대·띠·파이) — 2026-11-28 */
+  var KINDS = [['donut', 'M12 3a9 9 0 1 0 9 9h-4a5 5 0 1 1-5-5z'], ['bars', 'M4 5h14v3H4zM4 10.5h9v3H4zM4 16h5v3H4z'], ['stack', 'M3 9h7v6H3zM10 9h6v6h-6zM16 9h5v6h-5z'], ['pie', 'M12 3v9l7.8 4.5A9 9 0 1 1 12 3z']];
+  var KLAB = { donut: 'Donut', bars: 'Bars', stack: '100% bar', pie: 'Pie', rings: 'Rings', hbar: 'Bars', cols: 'Columns' };
+  var CKINDS = [['rings', 'M12 2a10 10 0 1 0 10 10h-3a7 7 0 1 1-7-7zM12 7a5 5 0 1 0 5 5h-3a2 2 0 1 1-2-2z'], ['hbar', 'M4 5h14v3H4zM4 10.5h9v3H4zM4 16h5v3H4z'], ['cols', 'M4 20V10h4v10zM10 20V4h4v16zM16 20v-7h4v7z']];
+  function drawRings(items) {
+    var mx = Math.max.apply(null, items.map(function (x) { return x.v; }));
+    var svg = svgEl('svg', { viewBox: '0 0 120 120', role: 'img', translate: 'no', 'class': 'k-donut' });
+    var n = items.length, w = Math.max(5, Math.min(9, 40 / n)), gap = w + 2.2;
+    items.forEach(function (x, k) {
+      var R = 52 - w / 2 - k * gap, C = 2 * Math.PI * R, f = Math.max(0.012, x.v / mx) * 0.75;
+      [['#EEF1F6', C * 0.75], [x.c, C * f]].forEach(function (a) { svg.appendChild(svgEl('circle', { cx: 60, cy: 60, r: R, fill: 'none', stroke: a[0], 'stroke-width': w, 'stroke-linecap': 'round', 'stroke-dasharray': a[1] + ' ' + C, transform: 'rotate(-90 60 60)' })); });
+    });
+    return svg;
+  }
+  function drawHBar(items) {
+    var mx = Math.max.apply(null, items.map(function (x) { return x.v; })), h = items.length * 26 + 4;
+    var svg = svgEl('svg', { viewBox: '0 0 240 ' + h, role: 'img', translate: 'no', 'class': 'k-bars' });
+    items.forEach(function (x, k) {
+      var y = 4 + k * 26; svg.appendChild(svgEl('rect', { x: 0, y: y, width: 160, height: 18, rx: 6, fill: '#EEF1F6' }));
+      svg.appendChild(svgEl('rect', { x: 0, y: y, width: Math.max(2, x.v / mx * 160), height: 18, rx: 6, fill: x.c, 'class': 'gr' }));
+      var t = svgEl('text', { x: 166, y: y + 13, 'class': 'bt' }); t.textContent = x.t.length > 12 ? x.t.slice(0, 12) : x.t; svg.appendChild(t);
+    });
+    return svg;
+  }
+  function drawCols(items) {
+    var mx = Math.max.apply(null, items.map(function (x) { return x.v; })), n = items.length, bw = Math.min(34, 200 / n - 8);
+    var svg = svgEl('svg', { viewBox: '0 0 240 150', role: 'img', translate: 'no', 'class': 'k-stack' });
+    svg.appendChild(svgEl('line', { x1: 0, x2: 240, y1: 130, y2: 130, stroke: '#E2E8F0' }));
+    items.forEach(function (x, k) {
+      var cx = (k + 0.5) * 240 / n, hh = Math.max(2, x.v / mx * 104);
+      svg.appendChild(svgEl('rect', { x: cx - bw / 2, y: 130 - hh, width: bw, height: hh, rx: 5, fill: x.c, 'class': 'gc' }));
+      var t = svgEl('text', { x: cx, y: 124 - hh, 'text-anchor': 'middle', 'class': 'bt' }); t.textContent = x.t.length > 10 ? x.t.slice(0, 10) : x.t; svg.appendChild(t);
+    });
+    return svg;
+  }
+  function drawC(kind, items) { return kind === 'hbar' ? drawHBar(items) : kind === 'cols' ? drawCols(items) : drawRings(items); }
+  function svgEl(n, a) { var e = D.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
+  function drawDonut(segs, tot, pie) {
+    var svg = svgEl('svg', { viewBox: '0 0 120 120', role: 'img', translate: 'no', 'class': 'k-donut' });
+    var R = pie ? 30 : 46, W = pie ? 60 : 20, C = 2 * Math.PI * R, off = 0;
+    if (!pie) svg.appendChild(svgEl('circle', { cx: 60, cy: 60, r: R, fill: 'none', stroke: '#EEF1F6', 'stroke-width': W }));
+    segs.forEach(function (s) {
+      var len = C * s.v / tot;
+      svg.appendChild(svgEl('circle', { cx: 60, cy: 60, r: R, fill: 'none', stroke: s.c, 'stroke-width': W, 'stroke-dasharray': Math.max(len - (segs.length > 1 && len > 2 ? (pie ? .6 : 1.2) : 0), 0) + ' ' + C, 'stroke-dashoffset': -off, transform: 'rotate(-90 60 60)' }));
+      off += len;
+    });
+    if (!pie) {
+      var main = segs[0], t1 = svgEl('text', { x: 60, y: 62, 'text-anchor': 'middle', 'class': 'c1' }); t1.textContent = pctTxt(main.v / tot * 100);
+      var t2 = svgEl('text', { x: 60, y: 78, 'text-anchor': 'middle', 'class': 'c2' }); var sh = stripNum(main.l); t2.textContent = sh.length > 16 ? sh.slice(0, 15) + '…' : sh;
+      svg.appendChild(t1); svg.appendChild(t2);
+    }
+    return svg;
+  }
+  function drawBars(segs, tot) {
+    var n = segs.length, h = n * 26 + 4, mx = Math.max.apply(null, segs.map(function (s) { return s.v; }));
+    var svg = svgEl('svg', { viewBox: '0 0 240 ' + h, role: 'img', translate: 'no', 'class': 'k-bars' });
+    segs.forEach(function (s, k) {
+      var y = 4 + k * 26, w = Math.max(2, s.v / mx * 178);
+      svg.appendChild(svgEl('rect', { x: 0, y: y, width: 178, height: 18, rx: 6, fill: '#EEF1F6' }));
+      svg.appendChild(svgEl('rect', { x: 0, y: y, width: w, height: 18, rx: 6, fill: s.c, 'class': 'gr' }));
+      var t = svgEl('text', { x: 186, y: y + 13, 'class': 'bt' }); t.textContent = pctTxt(s.v / tot * 100); svg.appendChild(t);
+    });
+    return svg;
+  }
+  function drawStack(segs, tot) {
+    var svg = svgEl('svg', { viewBox: '0 0 240 64', role: 'img', translate: 'no', 'class': 'k-stack' }), x = 0;
+    segs.forEach(function (s) {
+      var w = s.v / tot * 240;
+      svg.appendChild(svgEl('rect', { x: x, y: 14, width: Math.max(w - (segs.length > 1 ? 1 : 0), 0.5), height: 28, fill: s.c, 'class': 'gr' }));
+      if (w > 30) { var t = svgEl('text', { x: x + w / 2, y: 33, 'text-anchor': 'middle', 'class': 'st' }); t.textContent = pctTxt(s.v / tot * 100); svg.appendChild(t); }
+      x += w;
+    });
+    return svg;
+  }
+  function draw(kind, segs, tot) { return kind === 'bars' ? drawBars(segs, tot) : kind === 'stack' ? drawStack(segs, tot) : drawDonut(segs, tot, kind === 'pie'); }
+  function pref(i, v) { try { if (v) localStorage.setItem('hlv-k' + i, v); return localStorage.getItem('hlv-k' + i); } catch (e) { return null; } }
+  function panel(i, def, segs, tot, label, kinds, drawFn) {
+    kinds = kinds || KINDS; drawFn = drawFn || draw;
+    var p = D.createElement('div'); p.className = 'hlv2-p';
+    var tabs = D.createElement('div'); tabs.className = 'hlv2-t'; tabs.setAttribute('role', 'tablist');
+    var area = D.createElement('div'); area.className = 'hlv2-c';
+    var cur = pref(i) || def; if (!kinds.some(function (kd) { return kd[0] === cur; })) cur = def;
+    function show(k) {
+      cur = k; area.innerHTML = ''; var g = drawFn(k, segs, tot); g.setAttribute('aria-label', label); area.appendChild(g);
+      [].forEach.call(tabs.children, function (b) { b.setAttribute('aria-selected', b.getAttribute('data-k') === k ? 'true' : 'false'); });
+    }
+    kinds.forEach(function (kd) {
+      var b = D.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('data-k', kd[0]); b.title = KLAB[kd[0]]; b.setAttribute('aria-label', KLAB[kd[0]]);
+      var ic = svgEl('svg', { viewBox: '0 0 24 24', 'aria-hidden': 'true' }); ic.appendChild(svgEl('path', { d: kd[1] })); b.appendChild(ic);
+      b.addEventListener('click', function () { pref(i, kd[0]); show(kd[0]); });
+      tabs.appendChild(b);
+    });
+    p.appendChild(tabs); p.appendChild(area); show(cur);
+    return p;
+  }
   function build(segs, sig) {
     var tot = segs.reduce(function (a, s) { return a + s.v; }, 0);
     if (!(tot > 0)) return null;
-    var box = D.createElement('div'); box.className = 'hlv'; box.setAttribute('data-hlv', sig);
-    var svg = D.createElementNS(NS, 'svg'); svg.setAttribute('translate', 'no'); svg.setAttribute('viewBox', '0 0 120 120'); svg.setAttribute('role', 'img');
-    var R = 46, C = 2 * Math.PI * R, off = 0, lab = [];
-    var bg = D.createElementNS(NS, 'circle'); bg.setAttribute('cx', 60); bg.setAttribute('cy', 60); bg.setAttribute('r', R);
-    bg.setAttribute('fill', 'none'); bg.setAttribute('stroke', '#EEF1F6'); bg.setAttribute('stroke-width', 20); svg.appendChild(bg);
+    var box = D.createElement('div'); box.className = 'hlv'; box.setAttribute('data-hlv', sig); box.setAttribute('data-hlv2', '1');
+    var lab = segs.map(function (s) { return s.l + ' ' + pctTxt(s.v / tot * 100); }).join(', ');
+    var g = D.createElement('div'); g.className = 'hlv2-g';
+    g.appendChild(panel(1, 'donut', segs, tot, lab)); g.appendChild(panel(2, 'bars', segs, tot, lab));
     var ul = D.createElement('ul');
-    segs.forEach(function (s, k) {
-      var p = s.v / tot * 100, len = C * s.v / tot;
-      var c = D.createElementNS(NS, 'circle'); c.setAttribute('cx', 60); c.setAttribute('cy', 60); c.setAttribute('r', R);
-      c.setAttribute('fill', 'none'); c.setAttribute('stroke', s.c); c.setAttribute('stroke-width', 20);
-      c.setAttribute('stroke-dasharray', Math.max(len - (segs.length > 1 && len > 2 ? 1.2 : 0), 0) + ' ' + C);
-      c.setAttribute('stroke-dashoffset', -off); c.setAttribute('transform', 'rotate(-90 60 60)');
-      svg.appendChild(c); off += len;
+    segs.forEach(function (s) {
       var li = D.createElement('li'); var dot = D.createElement('i'); dot.style.background = s.c;
-      var sp = D.createElement('span'); sp.textContent = s.l; var b = D.createElement('b'); b.textContent = pctTxt(p);
+      var sp = D.createElement('span'); sp.textContent = s.l; var b = D.createElement('b'); b.textContent = pctTxt(s.v / tot * 100);
       li.appendChild(dot); li.appendChild(sp); li.appendChild(b); ul.appendChild(li);
-      lab.push(s.l + ' ' + pctTxt(p));
     });
-    var main = segs[0], mp = main.v / tot * 100;
-    var t1 = D.createElementNS(NS, 'text'); t1.setAttribute('x', 60); t1.setAttribute('y', 62); t1.setAttribute('text-anchor', 'middle'); t1.setAttribute('class', 'c1'); t1.textContent = pctTxt(mp);
-    var t2 = D.createElementNS(NS, 'text'); t2.setAttribute('x', 60); t2.setAttribute('y', 78); t2.setAttribute('text-anchor', 'middle'); t2.setAttribute('class', 'c2');
-    var short = stripNum(main.l); t2.textContent = short.length > 16 ? short.slice(0, 15) + '…' : short;
-    svg.appendChild(t1); svg.appendChild(t2); svg.setAttribute('aria-label', lab.join(', '));
-    box.appendChild(svg); box.appendChild(ul);
+    box.appendChild(g); box.appendChild(ul);
     return box;
   }
 
@@ -178,22 +269,16 @@
   function prune(host, keep) {   /* drop charts left over from an earlier result (e.g. a ring that showed NaN while a field was empty) */
     [].forEach.call(host.querySelectorAll('[data-hlx]'), function (x) { if (x !== keep && x.getAttribute('data-hlx') !== 'u' && !(keep && keep.contains(x))) x.remove(); });
   }
-  function bars(items, sig) {   /* radial (concentric ring) comparison — circular infographic */
+  function bars(items, sig) {   /* comparison — 2 graphs with a type picker (rings, bars, columns) */
     var mx = Math.max.apply(null, items.map(function (x) { return x.v; })); if (!(mx > 0)) return null;
-    var bx = D.createElement('div'); bx.className = 'hlv'; bx.setAttribute('data-hlx', 'b' + sig); bx.classList.add('hlx-r');
-    var svg = D.createElementNS(NS, 'svg'); svg.setAttribute('translate', 'no'); svg.setAttribute('viewBox', '0 0 120 120'); svg.setAttribute('role', 'img');
-    var n = items.length, w = Math.max(5, Math.min(9, 40 / n)), gap = w + 2.2, ul = D.createElement('ul'), lab = [];
-    items.forEach(function (x, k) {
-      var R = 52 - w / 2 - k * gap, C = 2 * Math.PI * R, f = Math.max(0.012, x.v / mx) * 0.75, col = PAL[k % PAL.length];
-      [['#EEF1F6', C * 0.75], [col, C * f]].forEach(function (a, j) {
-        var c = D.createElementNS(NS, 'circle'); c.setAttribute('cx', 60); c.setAttribute('cy', 60); c.setAttribute('r', R); c.setAttribute('fill', 'none');
-        c.setAttribute('stroke', a[0]); c.setAttribute('stroke-width', w); c.setAttribute('stroke-linecap', 'round');
-        c.setAttribute('stroke-dasharray', a[1] + ' ' + C); c.setAttribute('transform', 'rotate(-90 60 60)'); svg.appendChild(c);
-      });
-      var li = D.createElement('li'), dot = D.createElement('i'), sp = D.createElement('span'), b = D.createElement('b');
-      dot.style.background = col; sp.textContent = x.l; b.textContent = x.t; li.appendChild(dot); li.appendChild(sp); li.appendChild(b); ul.appendChild(li); lab.push(x.l + ' ' + x.t);
-    });
-    svg.setAttribute('aria-label', lab.join(', ')); bx.appendChild(svg); bx.appendChild(ul); return bx;
+    var bx = D.createElement('div'); bx.className = 'hlv'; bx.setAttribute('data-hlx', 'b' + sig); bx.classList.add('hlx-r'); bx.setAttribute('data-hlv2', '1');
+    items.forEach(function (x, k) { x.c = PAL[k % PAL.length]; });
+    var lab = items.map(function (x) { return x.l + ' ' + x.t; }).join(', ');
+    var g = D.createElement('div'); g.className = 'hlv2-g';
+    g.appendChild(panel(3, 'rings', items, 0, lab, CKINDS, drawC)); g.appendChild(panel(4, 'hbar', items, 0, lab, CKINDS, drawC));
+    var ul = D.createElement('ul');
+    items.forEach(function (x) { var li = D.createElement('li'), dot = D.createElement('i'), sp = D.createElement('span'), b = D.createElement('b'); dot.style.background = x.c; sp.textContent = x.l; b.textContent = x.t; li.appendChild(dot); li.appendChild(sp); li.appendChild(b); ul.appendChild(li); });
+    bx.appendChild(g); bx.appendChild(ul); return bx;
   }
   function gauges(items, sig) {
     var b = box('g', T.rate, sig), g = D.createElement('div'); g.className = 'gg';

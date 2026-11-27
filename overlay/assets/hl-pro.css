@@ -1,35 +1,82 @@
-/* honglifecalc.com — 해외(한국어 외) 페이지 신뢰감 테마 (2026-11-27)
-   돈·세금 계산을 찾는 해외 방문자에게 '공식 자료처럼 정돈된' 느낌: 밝은 회색 바탕, 흰 상단 막대, 남색 강조, 장식 캐릭터 숨김.
-   한국어(/ko/) 페이지에는 넣지 않는다(build/patch_pro.py). */
-:root{--hig-tint:#1F4E8C;--hig-tint-d:#163B6B;--pro-ink:#16202C;--pro-sub:#4A5565;--pro-line:#E2E6EC;--pro-bg:#F4F6F9;--pro-acc:#1F4E8C;--pro-acc-soft:#EAF1FB}
-html:not(#hlpro) body{background:var(--pro-bg)!important;background-image:none!important}
-/* 상단 막대 */
-html:not(#hlpro) body .brand{background:#fff!important;border-bottom:1px solid var(--pro-line)!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html:not(#hlpro) body .brand a,html:not(#hlpro) body .brand .hl-tb-name,html:not(#hlpro) body .brand b,html:not(#hlpro) body .brand span{color:var(--pro-ink)!important}
-html:not(#hlpro) body .brand button,html:not(#hlpro) body .brand .hl-tb-app{background:#fff!important;color:var(--pro-ink)!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
-html:not(#hlpro) body .brand img.hl-mark{background:var(--pro-ink)!important;border-radius:7px}
-/* 검색칸 */
-html:not(#hlpro) body .hl-sb-q{background-color:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
-/* 제목 영역: 장식 캐릭터 숨기고 글자 대비 높이기 */
+/* honglifecalc.com — 해외(한국어 외)페이지 현대 디자인 v2 (2026-11-28)
+   밝은 바탕 + 떠 있는 흰 카드, 큰 굵은 제목, 남보라 강조, 반투명 상단 막대, 둥근 입력칸과 포커스 링.
+   한국어(/ko/) 페이지에는 넣지 않는다(build/patch_pro.py). 구체성을 높이려고 모든 규칙 앞에 html:not(#hlpro)를 붙인다. */
+:root{--hig-tint:#4F46E5;--hig-tint-d:#4338CA;--pro-ink:#0F172A;--pro-sub:#475569;--pro-mute:#64748B;--pro-line:#E5E7EB;--pro-line2:#EEF0F3;
+  --pro-bg:#F8FAFC;--pro-acc:#4F46E5;--pro-acc2:#7C3AED;--pro-acc-soft:#EEF2FF;--pro-card:#FFFFFF;--pro-r:20px;
+  --pro-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px -12px rgba(15,23,42,.10);
+  --pro-font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif}
+html:not(#hlpro) body{background:var(--pro-bg)!important;background-image:radial-gradient(1200px 420px at 50% -120px,rgba(99,102,241,.10),transparent 70%)!important;background-repeat:no-repeat!important;color:var(--pro-ink)!important;font-family:var(--pro-font)!important;-webkit-font-smoothing:antialiased}
+html:not(#hlpro) body *{font-family:inherit}
+html:not(#hlpro) body code,html:not(#hlpro) body pre,html:not(#hlpro) body .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace!important}
+
+/* 상단 막대: 반투명 흰색 + 흐림 */
+html:not(#hlpro) body .brand{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78)!important;-webkit-backdrop-filter:saturate(180%) blur(14px)!important;backdrop-filter:saturate(180%) blur(14px)!important;border-bottom:1px solid rgba(15,23,42,.06)!important;box-shadow:none!important}
+html:not(#hlpro) body .brand a,html:not(#hlpro) body .brand .hl-tb-name,html:not(#hlpro) body .brand b,html:not(#hlpro) body .brand span{color:var(--pro-ink)!important;letter-spacing:-.01em}
+html:not(#hlpro) body .brand button,html:not(#hlpro) body .brand .hl-tb-app{background:#fff!important;color:var(--pro-ink)!important;border:1px solid var(--pro-line)!important;border-radius:999px!important;box-shadow:0 1px 2px rgba(15,23,42,.05)!important;font-weight:600!important}
+html:not(#hlpro) body .brand .hl-tb-app{background:var(--pro-ink)!important;color:#fff!important;border-color:var(--pro-ink)!important}
+html:not(#hlpro) body .brand .hl-tb-app *{color:#fff!important}
+html:not(#hlpro) body .brand img.hl-mark{background:var(--pro-ink)!important;border-radius:9px}
+
+/* 검색칸: 큰 알약 모양 */
+html:not(#hlpro) body .hl-sb-q{background-color:#fff!important;border:1px solid var(--pro-line)!important;border-radius:999px!important;box-shadow:0 1px 2px rgba(15,23,42,.04),0 6px 20px -10px rgba(79,70,229,.25)!important;transition:box-shadow .15s,border-color .15s}
+html:not(#hlpro) body .hl-sb-q:focus{border-color:var(--pro-acc)!important;box-shadow:0 0 0 4px rgba(79,70,229,.15)!important;outline:none}
+
+/* 페이지 틀: 큰 흰 판 대신 떠 있는 카드들 */
+html:not(#hlpro) body main.wrap{background:transparent!important;box-shadow:none!important;border:0!important}
 html:not(#hlpro) body header.hero .in::after,html:not(#hlpro) body header.top .in::after{display:none!important;content:none!important}
-html:not(#hlpro) body header.hero,html:not(#hlpro) body header.top{background:#fff!important;border-bottom:1px solid var(--pro-line)!important;border-top-color:var(--pro-acc)!important;box-shadow:0 1px 2px rgba(16,24,40,.05)!important}
-html:not(#hlpro) body header.hero h1,html:not(#hlpro) body header.top h1{color:var(--pro-ink)!important}
-html:not(#hlpro) body header.hero h1 b,html:not(#hlpro) body header.top h1 b{color:var(--pro-acc)!important}
-html:not(#hlpro) body header.hero p,html:not(#hlpro) body header.top p{color:var(--pro-sub)!important;opacity:1!important}
-html:not(#hlpro) body header.hero .year,html:not(#hlpro) body header.top .year{background:var(--pro-acc-soft)!important;color:var(--pro-acc)!important;border:0!important}
-/* 결과 상자·강조색 */
-html:not(#hlpro) body .big,html:not(#hlpro) body #out .big{background:var(--pro-acc)!important;color:#fff!important}
-html:not(#hlpro) body .big b,html:not(#hlpro) body .big span,html:not(#hlpro) body .big em{color:#fff!important}
-html:not(#hlpro) body a{color:var(--pro-acc)}
-/* 크림색 띠(관련 계산기·공유) → 흰색 카드 */
-html:not(#hlpro) body section.hl-rel,html:not(#hlpro) body section.hl-share{background:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
-html:not(#hlpro) body .hl-share-fab{background-color:#fff!important;border:1px solid var(--pro-line)!important}
-html:not(#hlpro) body footer{background:#fff!important;border-top:1px solid var(--pro-line)!important;color:var(--pro-sub)!important}
+html:not(#hlpro) body header.hero,html:not(#hlpro) body header.top{background:transparent!important;border:0!important;box-shadow:none!important}
+html:not(#hlpro) body h1{font-family:var(--pro-font)!important;color:var(--pro-ink)!important;font-weight:800!important;letter-spacing:-.035em!important;line-height:1.08!important;font-size:clamp(30px,4.6vw,46px)!important}
+html:not(#hlpro) body h1 b,html:not(#hlpro) body h1 em{background:linear-gradient(90deg,var(--pro-acc),var(--pro-acc2));-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;font-family:inherit!important}
+html:not(#hlpro) body header.hero p,html:not(#hlpro) body header.top p,html:not(#hlpro) body .hlu-sub{color:var(--pro-sub)!important;opacity:1!important;font-size:16.5px!important;line-height:1.6}
+html:not(#hlpro) body header.hero .year,html:not(#hlpro) body header.top .year,html:not(#hlpro) body .hlu-stamp{background:var(--pro-acc-soft)!important;color:var(--pro-acc)!important;border:1px solid rgba(79,70,229,.15)!important;border-radius:999px!important;font-weight:600!important;padding:4px 12px!important}
+
+/* 카드 */
+html:not(#hlpro) body .card,html:not(#hlpro) body section.hl-rel,html:not(#hlpro) body section.hl-share,html:not(#hlpro) body article.help{background:var(--pro-card)!important;border:1px solid var(--pro-line)!important;border-radius:var(--pro-r)!important;box-shadow:var(--pro-shadow)!important}
 html:not(#hlpro) body main .card,html:not(#hlpro) body .wrap>.card{border-top-color:var(--pro-line)!important}
-html:not(#hlpro) body header.hero h1 em{color:var(--pro-acc)!important}
-/* 허브(목록) 페이지: 손글씨 제목·크림색 타일 → 깔끔한 흰 타일 */
-html:not(#hlpro) body h1,html:not(#hlpro) body .hlu-top h1{font-family:var(--hig-font,-apple-system,"Segoe UI",system-ui,sans-serif)!important;color:var(--pro-ink)!important;letter-spacing:-.02em}
-html:not(#hlpro) body h1 b,html:not(#hlpro) body h1 em{color:var(--pro-acc)!important;font-family:inherit!important}
-html:not(#hlpro) body .hlh-tile,html:not(#hlpro) body .hlu-panels,html:not(#hlpro) body .hlu-tabs,html:not(#hlpro) body .hl-recent,html:not(#hlpro) body .hl-recent a{background:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
-html:not(#hlpro) body .hlh-tile:hover{border-color:var(--pro-acc)!important}
-html:not(#hlpro) body .hlu-stamp{background:var(--pro-acc-soft)!important;color:var(--pro-acc)!important;border-color:transparent!important}
+html:not(#hlpro) body h2{color:var(--pro-ink)!important;font-weight:750!important;letter-spacing:-.02em!important}
+html:not(#hlpro) body h3{color:var(--pro-ink)!important;font-weight:700!important;letter-spacing:-.01em!important}
+html:not(#hlpro) body main p,html:not(#hlpro) body main li{color:#334155}
+html:not(#hlpro) body a{color:var(--pro-acc);text-underline-offset:3px}
+
+/* 입력칸: 흰 바탕, 얇은 테두리, 포커스 링 */
+html:not(#hlpro) body #form label.f>span{color:var(--pro-sub)!important;font-weight:600!important;font-size:13.5px!important;letter-spacing:.01em}
+html:not(#hlpro) body #form input,html:not(#hlpro) body #form select{background-color:#fff!important;border:1px solid #DCE0E6!important;border-radius:12px!important;box-shadow:0 1px 2px rgba(15,23,42,.04)!important;color:var(--pro-ink)!important;font-weight:600;transition:border-color .15s,box-shadow .15s}
+html:not(#hlpro) body #form input:focus,html:not(#hlpro) body #form select:focus{border-color:var(--pro-acc)!important;box-shadow:0 0 0 4px rgba(79,70,229,.14)!important;outline:none!important}
+html:not(#hlpro) body #form select{max-width:100%;min-width:0;text-overflow:ellipsis}
+html:not(#hlpro) body #form label.f{min-width:0}
+
+/* 결과: 그라데이션 강조 상자 */
+html:not(#hlpro) body .big,html:not(#hlpro) body #out .big{background:linear-gradient(135deg,#4F46E5 0%,#6D28D9 100%)!important;color:#fff!important;border-radius:18px!important;box-shadow:0 12px 30px -12px rgba(79,70,229,.55)!important}
+html:not(#hlpro) body .big *{color:#fff!important}
+html:not(#hlpro) body #out .kv>div,html:not(#hlpro) body #out .kv>*{border-color:var(--pro-line2)!important}
+
+/* 표 */
+html:not(#hlpro) body main table th{color:var(--pro-mute)!important;font-weight:600!important;font-size:12.5px!important;text-transform:none;background:#F8FAFC!important}
+html:not(#hlpro) body main table td,html:not(#hlpro) body main table th{border-color:var(--pro-line2)!important}
+
+/* 그림·관련 링크·공유 */
+html:not(#hlpro) body figure.hl-fig{background:#fff!important;border:1px solid var(--pro-line)!important;border-radius:16px!important}
+html:not(#hlpro) body a.hl-rel-a{background:#fff!important;border:1px solid var(--pro-line)!important;border-radius:14px!important;transition:transform .15s,box-shadow .15s,border-color .15s}
+html:not(#hlpro) body a.hl-rel-a:hover{transform:translateY(-2px);border-color:rgba(79,70,229,.35)!important;box-shadow:0 10px 24px -14px rgba(79,70,229,.45)!important}
+html:not(#hlpro) body .hl-share-fab{background-color:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:0 8px 20px -10px rgba(15,23,42,.35)!important}
+html:not(#hlpro) body footer{background:transparent!important;border-top:1px solid var(--pro-line)!important;color:var(--pro-mute)!important}
+
+/* 허브(목록) 페이지 타일 */
+html:not(#hlpro) body .hlh-tile,html:not(#hlpro) body .hlu-panels,html:not(#hlpro) body .hlu-tabs,html:not(#hlpro) body .hl-recent,html:not(#hlpro) body .hl-recent a{background:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important;border-radius:16px!important}
+html:not(#hlpro) body .hlh-tile{transition:transform .15s,box-shadow .15s,border-color .15s}
+html:not(#hlpro) body .hlh-tile:hover{transform:translateY(-2px);border-color:rgba(79,70,229,.35)!important;box-shadow:0 10px 24px -14px rgba(79,70,229,.45)!important}
+
+/* 2027 요약 상자(y27): 흰 카드 + 위쪽 강조선 */
+html:not(#hlpro) body .y27{background:#fff!important;border:1px solid var(--pro-line)!important;border-radius:18px!important;box-shadow:inset 0 4px 0 var(--pro-acc)!important;padding-top:20px!important}
+html:not(#hlpro) body .y27 .lead b{color:var(--pro-acc)!important}
+html:not(#hlpro) body .y27 .chips div{background:#F8FAFC!important;border-left:0!important;border:1px solid var(--pro-line)!important;border-radius:14px!important}
+html:not(#hlpro) body .y27 .two div{background:#F8FAFC!important;border:1px solid var(--pro-line)!important;border-top:3px solid var(--pro-acc)!important;border-radius:14px!important}
+@media(max-width:600px){html:not(#hlpro) body .y27 tr{background:#F8FAFC!important;border:1px solid var(--pro-line2)}}
+@media (prefers-reduced-motion:reduce){html:not(#hlpro) body *{transition:none!important}}
+/* 메인·허브 상단 막대(.brandbar)와 인기 목록 */
+html:not(#hlpro) body .brandbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78)!important;-webkit-backdrop-filter:saturate(180%) blur(14px)!important;backdrop-filter:saturate(180%) blur(14px)!important;border-bottom:1px solid rgba(15,23,42,.06)!important;box-shadow:none!important}
+html:not(#hlpro) body .brandbar a,html:not(#hlpro) body .brandbar .logo{color:var(--pro-ink)!important;font-weight:700!important;letter-spacing:-.01em}
+html:not(#hlpro) body .hlh-pop a,html:not(#hlpro) body .hlh-fortune{background:#fff!important;border:1px solid var(--pro-line)!important;border-radius:16px!important;box-shadow:none!important;transition:transform .15s,box-shadow .15s,border-color .15s}
+html:not(#hlpro) body .hlh-pop a:hover{transform:translateY(-2px);border-color:rgba(79,70,229,.35)!important;box-shadow:0 10px 24px -14px rgba(79,70,229,.45)!important}
+html:not(#hlpro) body .hlh-pop em{color:var(--pro-acc)!important;font-style:normal;font-weight:800}
+html:not(#hlpro) body #out.card{box-shadow:var(--pro-shadow)!important;border-top:1px solid var(--pro-line)!important}
