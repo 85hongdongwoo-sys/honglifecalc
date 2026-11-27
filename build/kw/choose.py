@@ -40,7 +40,7 @@ def tcase(s):
 def head_tail(t):
     t = html.unescape(t).strip()
     t = re.sub(r'\s*[–|]\s*(Free Calculator|حاسبات Hong Life|Hong Life.*)$', '', t)
-    m = re.search(r'\s[–—|]\s', t)
+    m = re.search(r'\s[–—|]\s|:\s', t)
     return (t[:m.start()], t[m.end():]) if m else (t, '')
 
 
@@ -73,15 +73,29 @@ for u, v in kw.items():
     hw = set(words(head))
     if set(words(prim)) <= hw:
         continue  # 이미 검색어가 제목 앞에 있음
+    CW = r'calculat|converter|rechner|calcul|kalkul|simulador|simulateur|計算|计算|حاسبة|hesap|chart'
+    if re.search(CW, head, re.I) and not re.search(CW, prim, re.I):
+        continue  # 계산기·변환기라는 말이 빠지면 바꾸지 않음
+    if len(words(prim)) < len(hw) - 2:
+        continue  # 원래보다 너무 짧아지면 바꾸지 않음
+    if re.match(r'(how to|cách|example)\b', prim, re.I) or re.search(r'\b(example|vs)\b', prim, re.I):
+        continue
+    prim = ' '.join(re.sub(r'\b20\d\d(?:[-/–]\d{2,4})?\b', '', prim).split())   # 연도는 원래 제목의 것만 씀
     new = tcase(prim)
+    keep = {w.lower(): w for w in re.findall(r'[\w%€£$]+', head)}   # 원래 제목의 대소문자(VO2, NAT, eFG 등) 유지
+    new = ' '.join(keep.get(w.lower(), w) for w in new.split())
     yr = re.search(r'\b(20\d\d(?:[-/–]\d{2})?)\b', head)
     if yr and not re.search(r'\b20\d\d', new):
         new += ' ' + yr.group(1)
+    tail = re.sub(r'^(Free (Online )?(Calculator|Converter))$', '', tail.strip())
     if tail:
         room = 72 - len(new) - 3
         tl = tail if len(tail) <= room else (tail[:room].rsplit(' ', 1)[0].rstrip(',;:–-') if room > 12 else '')
         if tl:
             new += ' – ' + tl
+    lw = [w.lower() for w in re.findall(r'\w+', new)]
+    if any(lw.count(w) > 1 and len(w) > 3 for w in set(lw)):
+        continue  # 같은 말 반복
     titles[u] = {'title': new, 'primary': prim, 'old': t['title']}
 json.dump(sorted(release), open(os.path.join(outdir, 'release.json'), 'w'), ensure_ascii=False, indent=0)
 json.dump(titles, open(os.path.join(outdir, 'titles.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
