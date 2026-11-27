@@ -136,5 +136,53 @@
   "hub": "/ko/index.html",
   "after": "gw-pay.html",
   "label": "공무원 봉급 위젯·API (내 블로그에 붙이기)"
+ },
+ {
+  "url": "/us/2027-pay-changes.html",
+  "hub": "/us/index.html",
+  "after": "/us/2027-tax-brackets.html",
+  "label": "Minimum Wage 2027 by State & 2027 Federal Pay Raise"
+ },
+ {
+  "url": "/jp/2027-kawaru-okane.html",
+  "hub": "/jp/index.html",
+  "after": "/jp/denkidai-keisan.html",
+  "label": "2027年に変わるお金(最低賃金1,176円・年収の壁178万円・公務員給与)"
+ },
+ {
+  "url": "/de/was-aendert-sich-2027.html",
+  "hub": "/de/index.html",
+  "after": "/de/mindestlohn-2027.html",
+  "label": "Was ändert sich 2027? Mindestlohn, Kindergeld, Grundfreibetrag, Besoldung"
+ },
+ {
+  "url": "/uk/minimum-wage-april-2027.html",
+  "hub": "/uk/index.html",
+  "after": "/uk/company-car-tax-calculator.html",
+  "label": "Minimum wage April 2027: £13.21 (all rates)"
+ },
+ {
+  "url": "/fr/ce-qui-change-2027.html",
+  "hub": "/fr/index.html",
+  "after": "/fr/calcul-cout-carburant.html",
+  "label": "Ce qui change en 2027 : SMIC 12,51 €, point d’indice"
+ },
+ {
+  "url": "/es/que-cambia-2027.html",
+  "hub": "/es/index.html",
+  "after": "/es/calculadora-gasto-gasolina.html",
+  "label": "SMI 2027 (1.286 €) y subida de funcionarios 4,5 %"
+ },
+ {
+  "url": "/au/tax-cut-1-july-2027.html",
+  "hub": "/au/index.html",
+  "after": "/au/fuel-cost-calculator.html",
+  "label": "Tax cut 1 July 2027 (14%) calculator"
+ },
+ {
+  "url": "/br/salario-minimo-2027.html",
+  "hub": "/br/index.html",
+  "after": "/br/calculadora-ferias.html",
+  "label": "Salário mínimo 2027: R$ 1.741 (previsto)"
  }
 ]
