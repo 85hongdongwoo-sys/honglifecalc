@@ -2,26 +2,28 @@
    돈·세금 계산을 찾는 해외 방문자에게 '공식 자료처럼 정돈된' 느낌: 밝은 회색 바탕, 흰 상단 막대, 남색 강조, 장식 캐릭터 숨김.
    한국어(/ko/) 페이지에는 넣지 않는다(build/patch_pro.py). */
 :root{--hig-tint:#1F4E8C;--hig-tint-d:#163B6B;--pro-ink:#16202C;--pro-sub:#4A5565;--pro-line:#E2E6EC;--pro-bg:#F4F6F9;--pro-acc:#1F4E8C;--pro-acc-soft:#EAF1FB}
-html body{background:var(--pro-bg)!important;background-image:none!important}
+html:not(#hlpro) body{background:var(--pro-bg)!important;background-image:none!important}
 /* 상단 막대 */
-html body .brand{background:#fff!important;border-bottom:1px solid var(--pro-line)!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html body .brand a,html body .brand .hl-tb-name,html body .brand b,html body .brand span{color:var(--pro-ink)!important}
-html body .brand button,html body .brand .hl-tb-app{background:#fff!important;color:var(--pro-ink)!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
-html body .brand img.hl-mark{background:var(--pro-ink)!important;border-radius:7px}
+html:not(#hlpro) body .brand{background:#fff!important;border-bottom:1px solid var(--pro-line)!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:not(#hlpro) body .brand a,html:not(#hlpro) body .brand .hl-tb-name,html:not(#hlpro) body .brand b,html:not(#hlpro) body .brand span{color:var(--pro-ink)!important}
+html:not(#hlpro) body .brand button,html:not(#hlpro) body .brand .hl-tb-app{background:#fff!important;color:var(--pro-ink)!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
+html:not(#hlpro) body .brand img.hl-mark{background:var(--pro-ink)!important;border-radius:7px}
 /* 검색칸 */
-html body .hl-sb-q{background-color:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
+html:not(#hlpro) body .hl-sb-q{background-color:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
 /* 제목 영역: 장식 캐릭터 숨기고 글자 대비 높이기 */
-html body header.hero .in::after,html body header.top .in::after{display:none!important;content:none!important}
-html body header.hero,html body header.top{background:#fff!important;border-bottom:1px solid var(--pro-line)!important}
-html body header.hero h1,html body header.top h1{color:var(--pro-ink)!important}
-html body header.hero h1 b,html body header.top h1 b{color:var(--pro-acc)!important}
-html body header.hero p,html body header.top p{color:var(--pro-sub)!important;opacity:1!important}
-html body header.hero .year,html body header.top .year{background:var(--pro-acc-soft)!important;color:var(--pro-acc)!important;border:0!important}
+html:not(#hlpro) body header.hero .in::after,html:not(#hlpro) body header.top .in::after{display:none!important;content:none!important}
+html:not(#hlpro) body header.hero,html:not(#hlpro) body header.top{background:#fff!important;border-bottom:1px solid var(--pro-line)!important;border-top-color:var(--pro-acc)!important;box-shadow:0 1px 2px rgba(16,24,40,.05)!important}
+html:not(#hlpro) body header.hero h1,html:not(#hlpro) body header.top h1{color:var(--pro-ink)!important}
+html:not(#hlpro) body header.hero h1 b,html:not(#hlpro) body header.top h1 b{color:var(--pro-acc)!important}
+html:not(#hlpro) body header.hero p,html:not(#hlpro) body header.top p{color:var(--pro-sub)!important;opacity:1!important}
+html:not(#hlpro) body header.hero .year,html:not(#hlpro) body header.top .year{background:var(--pro-acc-soft)!important;color:var(--pro-acc)!important;border:0!important}
 /* 결과 상자·강조색 */
-html body .big,html body #out .big{background:var(--pro-acc)!important;color:#fff!important}
-html body .big b,html body .big span,html body .big em{color:#fff!important}
-html body a{color:var(--pro-acc)}
+html:not(#hlpro) body .big,html:not(#hlpro) body #out .big{background:var(--pro-acc)!important;color:#fff!important}
+html:not(#hlpro) body .big b,html:not(#hlpro) body .big span,html:not(#hlpro) body .big em{color:#fff!important}
+html:not(#hlpro) body a{color:var(--pro-acc)}
 /* 크림색 띠(관련 계산기·공유) → 흰색 카드 */
-html body section.hl-rel,html body section.hl-share{background:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
-html body .hl-share-fab{background-color:#fff!important;border:1px solid var(--pro-line)!important}
-html body footer{background:#fff!important;border-top:1px solid var(--pro-line)!important;color:var(--pro-sub)!important}
+html:not(#hlpro) body section.hl-rel,html:not(#hlpro) body section.hl-share{background:#fff!important;border:1px solid var(--pro-line)!important;box-shadow:none!important}
+html:not(#hlpro) body .hl-share-fab{background-color:#fff!important;border:1px solid var(--pro-line)!important}
+html:not(#hlpro) body footer{background:#fff!important;border-top:1px solid var(--pro-line)!important;color:var(--pro-sub)!important}
+html:not(#hlpro) body main .card,html:not(#hlpro) body .wrap>.card{border-top-color:var(--pro-line)!important}
+html:not(#hlpro) body header.hero h1 em{color:var(--pro-acc)!important}
