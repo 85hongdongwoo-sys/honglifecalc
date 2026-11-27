@@ -449,6 +449,217 @@ function go(){const p=N($('mxP').value)/100,s=N($('mxS').value),n=s*(1+p);$('mxR
     note='Las cifras de 2027 son propuestas y escenarios, no el monto oficial. Actualizaremos la página cuando Conasami publique la resolución.'))
 
 
+# ───────────────────────── 🇺🇸 Social Security COLA 2027 — benefit check ─────────────────────────
+SSA = [('Average retired worker', 2095, 2170), ('Aged couple, both receiving', 3238, 3355), ('Aged widow(er) alone', 1936, 2005), ('All disabled workers', 1642, 1701), ('SSI individual (federal)', 994, 1029), ('SSI couple (federal)', 1491, 1544), ('Max benefit at full retirement age', 4152, 4188)]
+PAGES.append(dict(
+    path='/us/social-security-cola-2027.html', shell='us/bonus-tax-calculator.html', lang='en-US', crumb='United States',
+    title='Social Security COLA 2027: 3.6% — New Benefit Amounts & Calculator', h1='Social Security COLA 2027: 3.6%',
+    desc='The 2027 Social Security COLA is 3.6%. Average retired worker benefit rises from $2,095 to $2,170 a month. SSI: $1,029 individual. Taxable maximum $192,300. Earnings test $25,560. Calculator for your new check.',
+    badge='🇺🇸 SSA · checked Nov 27, 2026', sub='Your January 2027 check, the new limits, and when the money arrives.', must='id="ssB"',
+    css='<style id="y7-css">' + BASE + '''
+.ss-check{background-color:#F0FDF4;border:1px solid #86EFAC;border-radius:6px;padding:16px;position:relative;min-width:0;background-image:repeating-linear-gradient(135deg,rgba(22,101,52,.04) 0,rgba(22,101,52,.04) 2px,transparent 2px,transparent 10px)}
+.ss-check .t{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#166534}
+.ss-check .pay{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end;border-bottom:1px solid #166534;padding:14px 0 6px}
+.ss-check .pay span{font-family:Georgia,serif;font-style:italic;font-size:15px}.ss-check .pay b{font-size:30px;font-family:Georgia,serif;background-color:#fff;border:1px solid #86EFAC;padding:2px 10px;border-radius:4px}
+.ss-check label{display:block;font-size:13px;font-weight:700;margin-top:12px}.ss-check input{display:block;width:100%;font:inherit;font-size:18px;padding:9px;border:1px solid #86EFAC;border-radius:6px;margin-top:4px;background-color:#fff}
+.ss-check .r{margin-top:8px;font-size:15px}.ss-mic{font-family:"Courier New",monospace;font-size:12px;color:#166534;margin-top:10px;letter-spacing:.08em}
+.ss-list{margin-top:14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ss-list div{border:1px solid #E5E7EB;border-radius:10px;padding:10px;min-width:0}.ss-list small{display:block;font-size:12px;color:#6B7280}.ss-list b{font-size:17px}.ss-list s{color:#9CA3AF;font-size:13px;margin-right:6px}
+@media(max-width:560px){.ss-list{grid-template-columns:minmax(0,1fr)}.ss-check .pay{grid-template-columns:minmax(0,1fr)}}
+</style>''',
+    app='''<section class="app y7" id="calc"><p class="ans">Social Security and SSI benefits rise <b>3.6% in 2027</b>, the largest increase in five years. The <b>average retired worker</b> goes from about <b>$2,095 to $2,170 a month</b> (+$75). The higher Social Security checks start in <b>January 2027</b>; SSI recipients get theirs on <b>December 31, 2026</b>.</p>
+<div class="ss-check"><div class="t"><span>Benefit statement · 2027</span><span>COLA +3.6%</span></div><div class="pay"><span>Your new monthly benefit</span><b id="ssOut">$2,170</b></div>
+<label for="ssB">Your 2026 monthly benefit before deductions ($)<input id="ssB" inputmode="decimal" value="2095"></label><div class="r" id="ssR"></div><div class="ss-mic">⑆ 0 3 6 ⑆ 2027 ⑈ estimate only</div></div>
+<div class="ss-list"><div><small>Taxable maximum</small><s>$184,500</s><b>$192,300</b></div><div><small>Earnings test (under FRA)</small><s>$24,480</s><b>$25,560/yr</b></div><div><small>Earnings test (year you reach FRA)</small><s>$65,160</s><b>$67,920/yr</b></div><div><small>Quarter of coverage</small><s>$1,890</s><b>$1,970</b></div></div></section>''',
+    js=r'''<script>
+(function(){'use strict';const $=i=>document.getElementById(i);const N=s=>{const x=parseFloat(String(s).replace(/[^0-9.]/g,''));return isFinite(x)?x:0};const U=x=>'$'+x.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+function go(){const b=N($('ssB').value),n=Math.floor(b*1.036);$('ssOut').textContent=U(n);$('ssR').innerHTML='+'+U(n-b)+' a month · +'+U((n-b)*12)+' a year (before any Medicare Part B change)'}$('ssB').addEventListener('input',go);go()})();
+</script>''',
+    faq_h='Frequently asked questions', src_h='Sources (checked November 27, 2026)',
+    faq=[('What is the Social Security COLA for 2027?', '3.6%, announced by the Social Security Administration on October 14, 2026.'),
+         ('How much will the average Social Security check be in 2027?', 'About $2,170 a month for all retired workers, up from $2,095 (SSA estimate for January 2027).'),
+         ('When does the 2027 COLA show up?', 'In the January 2027 Social Security payment. SSI recipients receive the increase on December 31, 2026.'),
+         ('What is the 2027 SSI payment?', '$1,029 a month for an individual and $1,544 for a couple (federal amounts).'),
+         ('What is the Social Security wage base for 2027?', '$192,300. Earnings above this are not subject to the 6.2% Social Security tax.'),
+         ('How does Social Security round the COLA?', 'The new benefit is rounded down to the next lower dollar, which is why the calculator rounds down.')],
+    extra='<h3 id="tbl">2026 vs 2027 average monthly benefits</h3>' + table(['Type', 'Before COLA', 'After 3.6% COLA'], [[n, f'${a:,}', f'${b:,}'] for n, a, b in SSA]),
+    src=[('SSA — Social Security Announces 3.6 Percent Benefit Increase for 2027 (Oct 14, 2026)', 'https://www.ssa.gov/news/en/press/releases/2026-10-14.html'),
+         ('SSA — 2027 Social Security Changes fact sheet', 'https://www.ssa.gov/news/en/cola/factsheets/2027.html')],
+    note='Medicare Part B premiums are usually deducted from the check, so the amount you receive can rise by less. Estimate only.'))
+
+# ───────────────────────── 🇺🇸 401(k) limit 2027 — fill meters ─────────────────────────
+PAGES.append(dict(
+    path='/us/401k-limit-2027.html', shell='us/bonus-tax-calculator.html', lang='en-US', crumb='United States',
+    title='401(k) Limit 2027: $25,500 (+$8,500 Catch-Up), IRA $7,500, HSA $4,500', h1='401(k) Contribution Limit 2027: $25,500',
+    desc='IRS 2027 limits: 401(k)/403(b)/TSP $25,500, catch-up age 50+ $8,500, ages 60–63 $11,750. IRA $7,500 (+$1,100 catch-up). SIMPLE $17,500. HSA $4,500. Roth IRA phase-out $158,000–$173,000 single.',
+    badge='🇺🇸 IRS · announced Nov 12, 2026', sub='How much you can put in for 2027 — and how close your paycheck percentage gets you.', must='id="kAge"',
+    css='<style id="y7-css">' + BASE + '''
+.k-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.k-meter{border:1px solid #E5E7EB;border-radius:14px;padding:14px;min-width:0}.k-meter h2{font-size:18px;margin:0 0 10px}
+.k-bar{margin:10px 0}.k-bar .l{display:flex;justify-content:space-between;gap:8px;font-size:14px}.k-bar .tr{height:14px;border-radius:8px;background-color:#EEF2FF;overflow:hidden;margin-top:4px}.k-bar .tr i{display:block;height:100%;background-color:#4F46E5;border-radius:8px;transition:width .3s}
+.k-bar.cu .tr i{background-color:#F59E0B}
+.k-form label{display:block;font-size:13px;font-weight:700;margin-top:8px}.k-form select,.k-form input{display:block;width:100%;font:inherit;font-size:17px;padding:9px;border:1px solid #D1D5DB;border-radius:8px;margin-top:4px;background-color:#fff}
+.k-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.k-tiles div{background-color:#EEF2FF;border-radius:12px;padding:12px;min-width:0}.k-tiles small{display:block;font-size:12px;color:#4338CA}.k-tiles b{display:block;font-size:22px}
+.k-r{margin-top:10px;font-size:15px;line-height:1.6}
+@media(max-width:720px){.k-g{grid-template-columns:minmax(0,1fr)}}
+</style>''',
+    app='''<section class="app y7" id="calc"><p class="ans">For 2027 you can defer <b>$25,500</b> into a 401(k), 403(b), most 457 plans or the federal TSP — <b>$1,000 more</b> than in 2026. Workers 50 and older can add a <b>$8,500 catch-up</b> (total $34,000), and those aged <b>60 to 63</b> can add <b>$11,750</b> instead. The <b>IRA limit stays $7,500</b> (+$1,100 catch-up) and the <b>HSA limit</b> for self-only coverage is <b>$4,500</b>.</p>
+<div class="k-g"><div class="k-tiles"><div><small>401(k) / 403(b) / TSP</small><b>$25,500</b></div><div><small>Catch-up 50+</small><b>$8,500</b></div><div><small>Super catch-up 60–63</small><b>$11,750</b></div><div><small>IRA (+$1,100 at 50+)</small><b>$7,500</b></div><div><small>SIMPLE IRA</small><b>$17,500</b></div><div><small>HSA self-only</small><b>$4,500</b></div></div>
+<div class="k-meter"><h2>Will your contributions hit the limit?</h2><div class="k-form"><label for="kAge">Your age in 2027<select id="kAge"><option value="0">Under 50</option><option value="8500" selected>50–59 or 64+</option><option value="11750">60–63</option></select></label><label for="kSal">Salary ($)<input id="kSal" inputmode="numeric" value="90000"></label><label for="kPct">Contribution (% of pay)<input id="kPct" inputmode="decimal" value="15"></label></div>
+<div class="k-bar"><div class="l"><span>Regular limit</span><b id="kL1">–</b></div><div class="tr"><i id="kB1" style="width:0"></i></div></div><div class="k-bar cu"><div class="l"><span>Catch-up</span><b id="kL2">–</b></div><div class="tr"><i id="kB2" style="width:0"></i></div></div><div class="k-r" id="kR"></div></div></div></section>''',
+    js=r'''<script>
+(function(){'use strict';const $=i=>document.getElementById(i);const N=s=>{const x=parseFloat(String(s).replace(/[^0-9.]/g,''));return isFinite(x)?x:0};const U=x=>'$'+Math.round(x).toLocaleString('en-US');
+function go(){const cu=+$('kAge').value,c=N($('kSal').value)*N($('kPct').value)/100,a=Math.min(c,25500),b=Math.min(Math.max(c-25500,0),cu);
+$('kL1').textContent=U(a)+' / $25,500';$('kB1').style.width=(a/25500*100)+'%';$('kL2').textContent=cu?U(b)+' / '+U(cu):'not eligible';$('kB2').style.width=cu?(b/cu*100)+'%':'0';
+const max=25500+cu;$('kR').innerHTML=c>=max?'✅ You reach the full '+U(max)+'. Anything above stops.':'To max out '+U(max)+', contribute about <b>'+(max/Math.max(N($('kSal').value),1)*100).toFixed(1)+'%</b> of pay.'}
+['kAge','kSal','kPct'].forEach(i=>{$(i).addEventListener('input',go);$(i).addEventListener('change',go)});go()})();
+</script>''',
+    faq_h='Frequently asked questions', src_h='Sources (checked November 27, 2026)',
+    faq=[('What is the 401(k) limit for 2027?', '$25,500 for employee elective deferrals to 401(k), 403(b), most 457 plans and the Thrift Savings Plan (2026: $24,500).'),
+         ('What is the 401(k) catch-up for 2027?', '$8,500 for ages 50 and over, or $11,750 for ages 60 to 63 under the SECURE 2.0 "super catch-up".'),
+         ('What is the IRA limit for 2027?', '$7,500, unchanged from 2026, plus a $1,100 catch-up for ages 50 and over.'),
+         ('What are the Roth IRA income limits for 2027?', 'The phase-out range is $158,000–$173,000 for singles and heads of household and $250,000–$260,000 for married couples filing jointly.'),
+         ('What is the HSA limit for 2027?', '$4,500 for self-only coverage (2026: $4,400).'),
+         ('Who is a highly compensated employee in 2027?', 'Someone who earned more than $170,000 (up from $160,000).')],
+    extra='<h3 id="tbl">2026 vs 2027 limits</h3>' + table(['Limit', '2026', '2027'], [['401(k)/403(b)/TSP deferral', '$24,500', '$25,500'], ['Catch-up 50+', '$8,000', '$8,500'], ['Catch-up 60–63', '—', '$11,750'], ['IRA', '$7,500', '$7,500'], ['IRA catch-up 50+', '$1,100', '$1,100'], ['SIMPLE IRA', '$17,000', '$17,500'], ['HSA self-only', '$4,400', '$4,500'], ['Roth IRA phase-out (single)', '—', '$158,000–$173,000'], ['HCE threshold', '$160,000', '$170,000']]),
+    src=[('PLANSPONSOR — IRS raises 401(k) contribution limit to $25,500, IRA limit to $7,500 (Nov 12, 2026)', 'https://www.plansponsor.com/irs-raises-401k-contribution-limit-to-25500-ira-limit-to-7500/'),
+         ('IRS — 2027 cost-of-living adjustments (newsroom)', 'https://www.irs.gov/node/167581')],
+    note='Employer contributions count toward a separate overall limit. Plan rules may be lower. Not tax advice.'))
+
+# ───────────────────────── 🇵🇱 PL — pasek wypłaty ─────────────────────────
+PAGES.append(dict(
+    path='/pl/placa-minimalna-2027.html', shell='pl/calculator.html', lang='pl-PL', crumb='Polska',
+    title='Płaca minimalna 2027: 4950 zł brutto, stawka godzinowa 32,30 zł', h1='Płaca minimalna 2027: 4950 zł brutto',
+    desc='Od 1 stycznia 2027 r. minimalne wynagrodzenie wynosi 4950 zł brutto (+144 zł, 3%), a minimalna stawka godzinowa 32,30 zł. Rozporządzenie ogłoszone we wrześniu 2026 r. Kalkulator miesięczny i godzinowy.',
+    badge='🇵🇱 Stan na 27.11.2026', sub='Ile wynosi najniższa krajowa i stawka godzinowa od stycznia 2027.', must='id="plH"',
+    css='<style id="y7-css">' + BASE + '''
+.pl-pasek{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:2px solid #DC2626;border-radius:12px;overflow:hidden}
+.pl-pasek div{padding:14px;min-width:0;border-right:2px dashed #FCA5A5;background-color:#fff}.pl-pasek div:last-child{border-right:0;background-color:#DC2626;color:#fff}
+.pl-pasek small{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.8}.pl-pasek b{display:block;font-size:28px;line-height:1.15;margin-top:4px}
+.pl-calc{margin-top:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.pl-box{border:1px solid #E5E7EB;border-radius:12px;padding:12px;min-width:0}.pl-box h2{font-size:16px;margin:0 0 6px}.pl-box label{display:block;font-size:13px;font-weight:700}
+.pl-box input{display:block;width:100%;font:inherit;font-size:17px;padding:9px;border:1px solid #D1D5DB;border-radius:8px;margin-top:4px}.pl-box .r{margin-top:8px;font-size:15px;line-height:1.6}
+@media(max-width:620px){.pl-pasek,.pl-calc{grid-template-columns:minmax(0,1fr)}.pl-pasek div{border-right:0;border-bottom:2px dashed #FCA5A5}}
+</style>''',
+    app='''<section class="app y7" id="calc"><p class="ans">Od <b>1 stycznia 2027 r.</b> <b>płaca minimalna wynosi 4950 zł brutto</b> miesięcznie, czyli <b>o 144 zł (3%) więcej</b> niż 4806 zł w 2026 r. <b>Minimalna stawka godzinowa</b> dla umów zlecenia rośnie do <b>32,30 zł</b> (+0,90 zł). Rozporządzenie Rady Ministrów ukazało się w Dzienniku Ustaw we wrześniu 2026 r.</p>
+<div class="pl-pasek"><div><small>2026</small><b>4806 zł</b><small>31,40 zł/godz.</small></div><div><small>Podwyżka</small><b>+144 zł</b><small>+0,90 zł/godz.</small></div><div><small>Od 1.01.2027</small><b>4950 zł</b><small>32,30 zł/godz.</small></div></div>
+<div class="pl-calc"><div class="pl-box"><h2>Umowa zlecenie</h2><label for="plH">Liczba godzin w miesiącu<input id="plH" inputmode="decimal" value="120"></label><div class="r" id="plR"></div></div>
+<div class="pl-box"><h2>Część etatu</h2><label for="plE">Wymiar etatu (np. 0,5)<input id="plE" inputmode="decimal" value="1"></label><div class="r" id="plER"></div></div></div></section>''',
+    js=r'''<script>
+(function(){'use strict';const $=i=>document.getElementById(i);const N=s=>{const x=parseFloat(String(s).replace(',','.').replace(/[^0-9.]/g,''));return isFinite(x)?x:0};const Z=x=>x.toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' zł';
+function go(){const h=N($('plH').value);$('plR').innerHTML='2027: <b>'+Z(h*32.30)+'</b> brutto<br>2026: '+Z(h*31.40)+' (+'+Z(h*0.90)+')';const e=N($('plE').value);$('plER').innerHTML='Minimum przy tym wymiarze: <b>'+Z(4950*e)+'</b> brutto<br>Rocznie: '+Z(4950*e*12)}
+['plH','plE'].forEach(i=>$(i).addEventListener('input',go));go()})();
+</script>''',
+    faq_h='Najczęstsze pytania', src_h='Źródła (stan na 27.11.2026)',
+    faq=[('Ile wynosi płaca minimalna w 2027 roku?', '4950 zł brutto miesięcznie od 1 stycznia 2027 r. (w 2026 r.: 4806 zł).'),
+         ('Ile wynosi minimalna stawka godzinowa w 2027 roku?', '32,30 zł brutto za godzinę (w 2026 r.: 31,40 zł). Dotyczy m.in. umów zlecenia.'),
+         ('O ile wzrośnie najniższa krajowa?', 'O 144 zł brutto, czyli o około 3%.'),
+         ('Czy związki zawodowe chciały więcej?', 'Tak, związki proponowały 5200 zł, a pracodawcy 4860 zł. Rada Dialogu Społecznego nie osiągnęła porozumienia, więc kwotę ustalił rząd.'),
+         ('Ile wynosi płaca minimalna 2027 netto?', 'Kwota netto zależy od składek, podatku i rodzaju umowy, dlatego podajemy tu kwoty brutto ustalone w rozporządzeniu.')],
+    extra='<h3 id="tbl">Płaca minimalna 2026 i 2027</h3>' + table(['', '2026', '2027'], [['Miesięcznie (brutto)', '4806 zł', '4950 zł'], ['Stawka godzinowa', '31,40 zł', '32,30 zł'], ['Rocznie (×12)', '57 672 zł', '59 400 zł']]),
+    src=[('Infor Kadry — Od 1 stycznia 2027 r. płaca minimalna wyniesie 4950 zł', 'https://kadry.infor.pl/kadry/wynagrodzenia/wynagrodzenie-minimalne/7602954,od-1-stycznia-2027-r-placa-minimalna-wyniesie-4950-zl-podwyzka-o-144-zl-w-stosunku-do-2026-r-to-3-proc-czyli-wiecej-niz-przewidywano.html'),
+         ('XYZ.pl — Płaca minimalna w 2027 r. Rozporządzenie trafiło do Dziennika Ustaw (15.09.2026)', 'https://xyz.pl/?p=249900'),
+         ('Dziennik Ustaw 2026 poz. 1213', 'https://eli.gov.pl/eli/DU/2026/1213')],
+    note='Kwoty brutto. To nie jest porada prawna.'))
+
+# ───────────────────────── 🇳🇱 NL — leeftijdstrap ─────────────────────────
+NL = [(21, 15.29), (20, 13.38), (19, 11.47), (18, 9.56), (17, 7.65), (16, 6.12), (15, 4.59)]
+nl_stairs = ''.join(f'<div style="--h:{r / 15.29 * 100:.0f}%"><b>€{r:.2f}</b><small>{a}{"+" if a == 21 else ""} jr</small></div>' for a, r in reversed(NL))
+PAGES.append(dict(
+    path='/nl/minimumloon-2027.html', shell='nl/aow-leeftijd-berekenen.html', lang='nl-NL', crumb='Nederland',
+    title='Minimumloon 2027: €15,29 per uur (alle leeftijden)', h1='Minimumloon per 1 januari 2027: €15,29',
+    desc='Het wettelijk minimumloon per 1 januari 2027 is €15,29 bruto per uur voor 21 jaar en ouder. Jeugdlonen: 20 jaar €13,38, 19 €11,47, 18 €9,56, 17 €7,65, 16 €6,12, 15 €4,59. Bereken je maandloon.',
+    badge='🇳🇱 Rijksoverheid · 27-11-2026', sub='Uurloon per leeftijd en wat dat per maand is.', must='id="nlA"',
+    css='<style id="y7-css">' + BASE + '''
+.nl-trap{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;align-items:end;height:210px;background-color:#FFF7ED;border-radius:14px;padding:14px 10px 10px}
+.nl-trap div{height:var(--h);background-color:#EA580C;border-radius:8px 8px 2px 2px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:6px 2px;color:#fff;min-width:0}
+.nl-trap div:last-child{background-color:#9A3412}.nl-trap b{font-size:13px;overflow-wrap:anywhere;text-align:center}.nl-trap small{font-size:11px}
+.nl-calc{margin-top:14px;border:1px solid #E5E7EB;border-radius:14px;padding:14px}.nl-calc h2{font-size:18px;margin:0 0 8px}.nl-calc .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.nl-calc label{display:block;font-size:13px;font-weight:700}.nl-calc select,.nl-calc input{display:block;width:100%;font:inherit;font-size:17px;padding:9px;border:1px solid #D1D5DB;border-radius:8px;margin-top:4px;background-color:#fff}.nl-r{margin-top:10px;font-size:16px;line-height:1.7}
+@media(max-width:560px){.nl-trap b{font-size:11px}.nl-calc .row{grid-template-columns:minmax(0,1fr)}}
+</style>''',
+    app=f'''<section class="app y7" id="calc"><p class="ans">Per <b>1 januari 2027</b> is het <b>minimumloon €15,29 bruto per uur</b> voor werknemers van <b>21 jaar en ouder</b>. Jongeren krijgen een percentage daarvan: <b>20 jaar €13,38</b>, 19 jaar €11,47 en 18 jaar €9,56. Er is geen vast maandbedrag meer: je maandloon hangt af van je aantal uren.</p>
+<div class="nl-trap">{nl_stairs}</div>
+<div class="nl-calc"><h2>Wat verdien je per maand?</h2><div class="row"><label for="nlA">Leeftijd<select id="nlA">{''.join(f'<option value="{r}">{a}{" jaar en ouder" if a == 21 else " jaar"}</option>' for a, r in NL)}</select></label><label for="nlH">Uren per week<input id="nlH" inputmode="decimal" value="38"></label></div><div class="nl-r" id="nlR"></div></div></section>''',
+    js=r'''<script>
+(function(){'use strict';const $=i=>document.getElementById(i);const N=s=>{const x=parseFloat(String(s).replace(',','.').replace(/[^0-9.]/g,''));return isFinite(x)?x:0};const E=x=>'€ '+x.toLocaleString('nl-NL',{minimumFractionDigits:2,maximumFractionDigits:2});
+function go(){const r=+$('nlA').value,h=N($('nlH').value),m=r*h*52/12;$('nlR').innerHTML='Per uur: <b>'+E(r)+'</b><br>Per maand (gemiddeld): <b>'+E(m)+'</b> bruto<br>Per jaar: '+E(m*12)+' (exclusief 8% vakantiegeld)'}
+$('nlA').addEventListener('change',go);$('nlH').addEventListener('input',go);go()})();
+</script>''',
+    faq_h='Veelgestelde vragen', src_h='Bronnen (gecontroleerd op 27-11-2026)',
+    faq=[('Hoe hoog is het minimumloon in 2027?', '€15,29 bruto per uur per 1 januari 2027 voor 21 jaar en ouder.'),
+         ('Wat is het minimumloon voor jongeren in 2027?', '20 jaar €13,38, 19 jaar €11,47, 18 jaar €9,56, 17 jaar €7,65, 16 jaar €6,12 en 15 jaar €4,59 per uur.'),
+         ('Hoeveel is het minimumloon per maand bij 38 uur?', '€15,29 × 38 × 52 ÷ 12 = €2.517,75 bruto per maand gemiddeld.'),
+         ('Komt er vakantiegeld bovenop?', 'Ja, minimaal 8% vakantiegeld komt bovenop het minimumloon.'),
+         ('Bestaat er nog een maandbedrag?', 'Nee, sinds 2024 geldt alleen een wettelijk minimumuurloon.')],
+    extra='<h3 id="tbl">Minimumloon per leeftijd per 1 januari 2027</h3>' + table(['Leeftijd', 'Bruto per uur'], [[f'{a}{" jaar en ouder" if a == 21 else " jaar"}', f'€ {r:.2f}'.replace('.', ',')] for a, r in NL]) + '<p>Bereken ook je loon met de <a href="/nl/minimumloon-berekenen.html">minimumloon calculator</a>.</p>',
+    src=[('Rijksoverheid — Bedragen minimumloon 2027', 'https://www.rijksoverheid.nl/onderwerpen/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2027')],
+    note='Brutobedragen. De bedragen per 1 juli 2027 worden later bekendgemaakt.'))
+
+# ───────────────────────── 🇹🇼 TW — 紅色日曆 ─────────────────────────
+PAGES.append(dict(
+    path='/tw/zuidi-gongzi-2027.html', shell='tw/50-30-20-budget-calculator.html', lang='zh-Hant-TW', crumb='台灣',
+    title='2027最低工資：月薪30,900元、時薪205元（115年→116年）', h1='2027年最低工資：月薪30,900元、時薪205元',
+    desc='最低工資審議會2026年9月24日通過，2027年1月1日起每月最低工資30,900元（+1,400元）、每小時205元（+9元），調幅4.745%，連續第11年調漲。',
+    badge='🇹🇼 2026/11/27 查核', sub='月薪、時薪、兼職月收入一次算。', must='id="twH"',
+    css='<style id="y7-css">' + BASE + '''
+.tw-cal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tw-page{background-color:#fff;border:1px solid #FECACA;border-radius:10px;overflow:hidden;text-align:center;min-width:0;box-shadow:0 3px 0 #FECACA}
+.tw-page .top{background-color:#B91C1C;color:#FEF3C7;font-size:13px;padding:6px;letter-spacing:.2em}.tw-page b{display:block;font-size:40px;color:#B91C1C;margin:8px 0 0;font-variant-numeric:tabular-nums}
+.tw-page p{margin:2px 10px 12px;font-size:14px;color:#4B5563}
+.tw-calc{margin-top:14px;border:1px solid #FECACA;background-color:#FFF7ED;border-radius:12px;padding:14px}.tw-calc h2{font-size:17px;margin:0 0 8px}
+.tw-calc label{display:block;font-size:13px;font-weight:700}.tw-calc input{display:block;width:100%;font:inherit;font-size:17px;padding:9px;border:1px solid #FCA5A5;border-radius:8px;margin-top:4px;background-color:#fff}.tw-r{margin-top:10px;font-size:16px;line-height:1.7}
+@media(max-width:480px){.tw-cal{grid-template-columns:minmax(0,1fr)}}
+</style>''',
+    app='''<section class="app y7" id="calc"><p class="ans">最低工資審議會於<b>2026年9月24日</b>通過，<b>2027年1月1日起</b>每月最低工資調為<b>30,900元</b>（原29,500元，+1,400元），每小時調為<b>205元</b>（原196元，+9元），調幅<b>4.745%</b>，是連續第11年調漲。</p>
+<div class="tw-cal"><div class="tw-page"><div class="top">月薪 · 2027.1.1</div><b>30,900</b><p>原 29,500 元 · +1,400</p></div><div class="tw-page"><div class="top">時薪 · 2027.1.1</div><b>205</b><p>原 196 元 · +9</p></div></div>
+<div class="tw-calc"><h2>兼職時薪試算</h2><label for="twH">每月工作時數<input id="twH" inputmode="decimal" value="80"></label><div class="tw-r" id="twR"></div></div></section>''',
+    js=r'''<script>
+(function(){'use strict';const $=i=>document.getElementById(i);const N=s=>{const x=parseFloat(String(s).replace(/[^0-9.]/g,''));return isFinite(x)?x:0};const T=x=>Math.round(x).toLocaleString('zh-TW')+' 元';
+function go(){const h=N($('twH').value);$('twR').innerHTML='2027年：<b>'+T(h*205)+'</b>／月<br>2026年：'+T(h*196)+'（每月多 '+T(h*9)+'）'}$('twH').addEventListener('input',go);go()})();
+</script>''',
+    faq_h='常見問題', src_h='資料來源（2026/11/27查核）',
+    faq=[('2027年最低工資是多少？', '每月30,900元、每小時205元，自2027年1月1日起實施。'),
+         ('2027年最低工資漲多少？', '月薪調升1,400元、時薪調升9元，調幅4.745%。'),
+         ('什麼時候通過的？', '勞動部最低工資審議會於2026年9月24日開會通過。'),
+         ('兼職每月工作80小時可以領多少？', '205元×80小時＝16,400元（稅前），比2026年多720元。')],
+    extra='<h3 id="tbl">2026年與2027年比較</h3>' + table(['', '2026年', '2027年'], [['每月最低工資', '29,500元', '30,900元'], ['每小時最低工資', '196元', '205元']]),
+    src=[('公視新聞網 — 最低工資連11年調漲 明年月薪30900元、時薪205元', 'https://news.pts.org.tw/article/828540'),
+         ('1111人力銀行 — 明年最低工資月薪30,900元、時薪205元', 'https://www.1111.com.tw/news/jobns/167643')],
+    note='以上為稅前金額。實際適用以勞動部公告為準。'))
+
+# ───────────────────────── 🇵🇹 PT — azulejo ─────────────────────────
+PAGES.append(dict(
+    path='/pt/salario-minimo-2027.html', shell='pt/calculadora-consumo-eletrico.html', lang='pt-PT', crumb='Portugal',
+    title='Salário mínimo 2027 em Portugal: 970 € (previsto no OE2027)', h1='Salário mínimo nacional 2027: 970 €',
+    desc='O Governo prevê no Orçamento do Estado para 2027 um salário mínimo de 970 € (hoje 920 €), mais 50 €. Valor anual em 14 meses: 13.580 €. Ainda falta o decreto-lei.',
+    badge='🇵🇹 Verificado a 27/11/2026', sub='Valor previsto, quanto dá por ano e por hora.', must='id="ptH"',
+    css='<style id="y7-css">' + BASE + '''
+.pt-az{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pt-tile{border-radius:12px;padding:16px;min-width:0;color:#1E3A8A;background-color:#F8FAFC;border:2px solid #1D4ED8;background-image:radial-gradient(circle at 0 0,transparent 18px,#DBEAFE 19px,#DBEAFE 21px,transparent 22px),radial-gradient(circle at 100% 100%,transparent 18px,#DBEAFE 19px,#DBEAFE 21px,transparent 22px)}
+.pt-tile small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase}.pt-tile b{display:block;font-size:38px;line-height:1.1}.pt-tile p{margin:6px 0 0;font-size:14px;color:#334155}
+.pt-tile.n{background-color:#1D4ED8;color:#fff;background-image:none}.pt-tile.n p{color:#DBEAFE}
+.pt-calc{margin-top:14px;border:1px solid #E5E7EB;border-radius:12px;padding:14px}.pt-calc h2{font-size:17px;margin:0 0 8px}.pt-calc label{display:block;font-size:13px;font-weight:700}
+.pt-calc input{display:block;width:100%;font:inherit;font-size:17px;padding:9px;border:1px solid #D1D5DB;border-radius:8px;margin-top:4px}.pt-r{margin-top:10px;font-size:16px;line-height:1.7}
+@media(max-width:520px){.pt-az{grid-template-columns:minmax(0,1fr)}}
+</style>''',
+    app='''<section class="app y7" id="calc"><p class="ans">O relatório do <b>Orçamento do Estado para 2027</b> prevê um <b>salário mínimo nacional de 970 €</b> em 2027, mais <b>50 €</b> do que os <b>920 €</b> de 2026, em linha com o acordo de concertação social. O valor só fica oficial com o decreto-lei do Governo, normalmente publicado em dezembro.</p>
+<div class="pt-az"><div class="pt-tile"><small>2026 · em vigor</small><b>920 €</b><p>12.880 € por ano (14 meses)</p></div><div class="pt-tile n"><small>2027 · previsto</small><b>970 €</b><p>13.580 € por ano (14 meses)</p></div></div>
+<div class="pt-calc"><h2>Quanto dá por hora?</h2><label for="ptH">Horas por semana<input id="ptH" inputmode="decimal" value="40"></label><div class="pt-r" id="ptR"></div></div></section>''',
+    js=r'''<script>
+(function(){'use strict';const $=i=>document.getElementById(i);const N=s=>{const x=parseFloat(String(s).replace(',','.').replace(/[^0-9.]/g,''));return isFinite(x)?x:0};const E=x=>x.toLocaleString('pt-PT',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+function go(){const h=N($('ptH').value),m=h*52/12;$('ptR').innerHTML='2027: <b>'+E(970/m)+'</b> por hora<br>2026: '+E(920/m)+' por hora'}$('ptH').addEventListener('input',go);go()})();
+</script>''',
+    faq_h='Perguntas frequentes', src_h='Fontes (verificadas a 27/11/2026)',
+    faq=[('Qual é o salário mínimo em 2027?', 'O Governo prevê 970 € no Orçamento do Estado para 2027. O valor final é fixado por decreto-lei, depois de ouvidos os parceiros sociais.'),
+         ('Quanto aumenta o salário mínimo em 2027?', '50 € por mês face aos 920 € de 2026 (cerca de 5,4%).'),
+         ('Quanto é o salário mínimo 2027 por ano?', '970 € × 14 meses = 13.580 € brutos.'),
+         ('Os sindicatos pedem mais?', 'Sim. A CGTP pede 1.100 € e a UGT mais de 1.000 €; as confederações patronais opõem-se a rever a meta.')],
+    extra='<h3 id="tbl">Salário mínimo 2026 e 2027</h3>' + table(['', '2026', '2027 (previsto)'], [['Mensal', '920 €', '970 €'], ['Anual (14 meses)', '12.880 €', '13.580 €'], ['Duodécimos (÷12)', '1.073,33 €', '1.131,67 €']]),
+    src=[('DNoticias — Governo assume salário mínimo nos 970 euros no próximo ano (8/10/2026)', 'https://www.dnoticias.pt/2026/10/8/508265-governo-assume-salario-minimo-nos-970-euros-no-proximo-ano/'),
+         ('WageIndicator — Portugal: Government sets 2027 minimum wage at €970 (31/10/2026)', 'https://wageindicator.org/ai/work/collective-bargaining-agreement/updates/2026/portugal-government-sets-2027-minimum-wage-at-970-october-31-2026/')],
+    note='Valor de 2027 previsto, ainda sem decreto-lei publicado. Valores brutos.'))
+
+
 if __name__ == '__main__':
     for c in PAGES:
         build(c)

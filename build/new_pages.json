@@ -196,5 +196,41 @@
   "hub": "/mx/index.html",
   "after": "/mx/calculadora-horas-extra.html",
   "label": "Salario mínimo 2027: propuestas y fecha de anuncio"
+ },
+ {
+  "url": "/us/social-security-cola-2027.html",
+  "hub": "/us/index.html",
+  "after": "/us/2027-pay-changes.html",
+  "label": "Social Security COLA 2027: 3.6%"
+ },
+ {
+  "url": "/us/401k-limit-2027.html",
+  "hub": "/us/index.html",
+  "after": "/us/2027-pay-changes.html",
+  "label": "401(k) limit 2027: $25,500"
+ },
+ {
+  "url": "/pl/placa-minimalna-2027.html",
+  "hub": "/pl/index.html",
+  "after": "/pl/calculator.html",
+  "label": "Płaca minimalna 2027: 4950 zł"
+ },
+ {
+  "url": "/nl/minimumloon-2027.html",
+  "hub": "/nl/index.html",
+  "after": "/nl/minimumloon-berekenen.html",
+  "label": "Minimumloon 2027: €15,29"
+ },
+ {
+  "url": "/tw/zuidi-gongzi-2027.html",
+  "hub": "/tw/index.html",
+  "after": "/tw/50-30-20-budget-calculator.html",
+  "label": "2027最低工資 30,900元"
+ },
+ {
+  "url": "/pt/salario-minimo-2027.html",
+  "hub": "/pt/index.html",
+  "after": "/pt/calculadora-consumo-eletrico.html",
+  "label": "Salário mínimo 2027: 970 €"
  }
 ]
