@@ -12,7 +12,8 @@ GL = {'en': ('en', 'us'), 'us': ('en', 'us'), 'uk': ('en', 'gb'), 'ca': ('en', '
 def seed_of(title):
     t = html.unescape(title)
     t = re.split(r'\s[–—|-]\s|\(|:', t)[0]
-    t = re.sub(r'\b(20\d\d)\b', '', t)
+    t = re.sub(r'\b20\d\d(?:[-/–]\d{2,4})?\b', '', t)
+    t = re.sub(r'[?!.,]+', ' ', t)
     return ' '.join(t.lower().split())
 def sugg(q, hl, gl):
     u = 'https://suggestqueries.google.com/complete/search?client=firefox&hl=%s&gl=%s&q=%s' % (hl, gl, urllib.parse.quote(q))
@@ -23,7 +24,8 @@ def sugg(q, hl, gl):
         except Exception as e:
             time.sleep(2)
     return None
-urls = [l.strip() for l in open('build/noindex_list.txt', encoding='utf-8') if l.startswith('/')][:mx]
+TG = 'build/kw/targets.txt' if os.path.isfile('build/kw/targets.txt') else 'build/noindex_list.txt'
+urls = [l.strip() for l in open(TG, encoding='utf-8') if l.startswith('/')][:mx]
 res = {}
 prev = os.path.join(out, 'kw.json')
 for i, u in enumerate(urls):
