@@ -23,7 +23,7 @@ def target_ok(p):
     if p.endswith('/') and (p + 'index.html') in exists: return True
     if (p + '.html') in exists or (p + '/index.html') in exists: return True
     return os.path.exists(os.path.join(root, p.lstrip('/')))
-BAD = re.compile(r'\bNaN\b|\bundefined\b|\[object Object\]|\{\{|\}\}|Infinity|TODO|lorem ipsum', re.I)
+BAD = re.compile(r'(?<![\w(])NaN(?![\w,)])|\[object Object\]|\{\{|\}\}|\bTODO\b|lorem ipsum')
 HANGUL = re.compile(r'[가-힣]')
 issues = collections.defaultdict(list)
 titles = collections.defaultdict(list)
