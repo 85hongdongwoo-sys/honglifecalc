@@ -7,7 +7,7 @@ root = sys.argv[1] if len(sys.argv) > 1 else '_site'
 TAG = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">'
        '<link rel="stylesheet" href="/assets/hl-pro.css?v=3" id="hl-pro">')
-MOTION = '<script src="/assets/hl-motion.js?v=1" defer></script>'  # 메인(첫 화면)만
+MOTION = '<script src="/assets/hl-motion.js?v=2" defer></script>'  # 메인(첫 화면)만
 SKIP_TOP = {'assets', 'embed'}   # 2026-11-28: 한국어(/ko/)도 같은 디자인
 LANG = re.compile(r'<html[^>]*\blang="([^"]*)"', re.I)
 n = 0
@@ -24,7 +24,7 @@ for dp, dn, fn in os.walk(root):
         if not m or 'id="hl-pro"' in s or '</head>' not in s:
             continue
         s = s.replace('</head>', TAG + '</head>', 1)
-        if rel == '.' and f == 'index.html':
+        if f == 'index.html' and rel in ('.', 'ko'):
             s = s.replace('</body>', MOTION + '</body>', 1)
         if m.group(1).lower().startswith('ko'):
             open(p, 'w', encoding='utf-8').write(s); n += 1

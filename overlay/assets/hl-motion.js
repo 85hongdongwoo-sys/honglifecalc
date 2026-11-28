@@ -6,15 +6,33 @@
 (function () {
   if (window.__hlMotion) return; window.__hlMotion = 1;
   var D = document, W = window;
-  var main = D.querySelector('main.hlu') || D.querySelector('main');
+  var KO = /^ko/i.test(D.documentElement.lang || '');
+  var main = D.querySelector('main.hlu') || D.querySelector('main') || D.querySelector('body > div.wrap');
   if (!main) return;
   var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var nCalc = D.querySelectorAll('main .hlu-p a[href$=".html"]').length;
+  var nCalc = KO ? (function () { var s = {}; [].forEach.call(main.querySelectorAll('a[href$=".html"]'), function (a) { s[a.getAttribute('href')] = 1; }); return Object.keys(s).length; })() : D.querySelectorAll('main .hlu-p a[href$=".html"]').length;
+  var L = KO ? {
+    eyebrow: '● 무료 · 가입 없음 · 휴대폰에서도', words: [['필요한', 0], ['모든', 0], ['계산,', 0], ['한\u00a0곳에서.', 1]],
+    sub: '세금·월급·대출·연금 계산기를 공식 기준으로 만들고, 계산 과정을 한 줄씩 보여 드려요.',
+    sCalc: '이 페이지의 계산기', sYear: '발표된 2027년 기준 반영',
+    s1: ['1단계', '숫자를 넣으세요.', '연봉·가격·이율을 넣으면 바로 계산돼요. 넣은 숫자는 내 휴대폰·컴퓨터 안에서만 쓰여요.'],
+    s2: ['2단계', '답부터 보여 드려요.', '궁금한 숫자를 맨 위에, 계산 과정은 그 아래에 한 줄씩 보여 드려요.'],
+    s3: ['3단계', '그래프 두 개로 한눈에.', '나눠 볼 수 있는 결과는 그래프 두 개로 보여 드려요. 도넛·막대·기둥 중에서 골라 보세요.'],
+    f1: '연봉', f2: '기준 연도', cur: '', unit: '원', typ: '50,000,000', cap: '한 달 실수령액', to: 3520000, note: '예시예요 — 실제 금액은 입력에 따라 달라요.', aria: '소개', loc: 'ko-KR'
+  } : {
+    eyebrow: '● Free · No sign-up · Works on your phone', words: [['Every', 0], ['number', 0], ['you', 0], ['need,', 0], ['in', 1], ['every', 1], ['country.', 1]],
+    sub: 'Tax, salary, mortgage and benefit calculators built on each country’s official rules — with the working shown, so you can check every step.',
+    sCalc: 'calculators on this page', sYear: 'tax figures where published',
+    s1: ['Step 1', 'Type your numbers.', 'Salary, price, rate — results update as you type, right in your browser.'],
+    s2: ['Step 2', 'See the answer first.', 'The number you came for sits at the top, with each line of the calculation underneath.'],
+    s3: ['Step 3', 'Read it in two charts.', 'Results with a breakdown come with two graphs — pick donut, bars or columns for each.'],
+    f1: 'Annual salary', f2: 'Tax year', cur: '$', unit: '', typ: '85,000', cap: 'Take-home pay a month', to: 5240, note: 'Example only — your numbers will differ.', aria: 'Introduction', loc: 'en-US'
+  };
   var nCountry = (function () { var s = {}; [].forEach.call(D.querySelectorAll('a[href]'), function (a) { var m = (a.getAttribute('href') || '').match(/^\/([a-z]{2,3})\/(?:index\.html)?$/); if (m) s[m[1]] = 1; }); return Object.keys(s).length; })();
-  function fmt(n) { return n.toLocaleString('en-US'); }
+  function fmt(n) { return n.toLocaleString(L.loc); }
 
   var css = '' +
-    '.hm{position:relative;margin:0 0 28px}' +
+    '.hm{position:relative;margin:0 0 28px;word-break:keep-all}' +
     '.hm-hero{min-height:min(78vh,720px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:48px 8px 24px;will-change:transform,opacity}' +
     '.hm-eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 14px;border-radius:999px;background:#EEF2FF;color:#4F46E5;font:600 13px/1 Inter,system-ui,sans-serif;letter-spacing:.01em;margin-bottom:22px}' +
     '.hm-h{font:800 clamp(40px,8.4vw,92px)/1.02 Inter,system-ui,sans-serif;letter-spacing:-.045em;color:#0F172A;margin:0;max-width:14ch}' +
@@ -40,7 +58,7 @@
     '.hm-card{width:min(78%,320px);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:20px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#E2E8F0;font:500 14px/1.4 Inter,system-ui,sans-serif}' +
     '.hm-field{margin:0 0 12px}.hm-field i{display:block;font-style:normal;font-size:12px;color:#A5B4FC;margin-bottom:6px}.hm-field b{display:block;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.1);font:700 18px/1 Inter,system-ui,sans-serif;color:#fff;font-variant-numeric:tabular-nums}' +
     '.hm-field b:after{content:"";display:inline-block;width:2px;height:18px;margin-left:3px;vertical-align:-3px;background:#A5B4FC;animation:hmblink 1s steps(1) infinite}@keyframes hmblink{50%{opacity:0}}' +
-    '.hm-big{font:800 clamp(44px,6vw,64px)/1 Inter,system-ui,sans-serif;letter-spacing:-.04em;color:#fff;font-variant-numeric:tabular-nums}.hm-cap{color:#A5B4FC;font:600 13px/1 Inter,system-ui,sans-serif;margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}' +
+    '.hm-big{white-space:nowrap;font:800 clamp(34px,6vw,64px)/1 Inter,system-ui,sans-serif;letter-spacing:-.04em;color:#fff;font-variant-numeric:tabular-nums}.hm-cap{color:#A5B4FC;font:600 13px/1 Inter,system-ui,sans-serif;margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}' +
     '.hm-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(86%,380px)}.hm-two>div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px;display:flex;align-items:center;justify-content:center}' +
     '.hm-two svg{width:100%;height:auto}.hm-ring{transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}.hm-bar{transform-origin:0 50%;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}' +
     '.hm-scene.on .hm-bar{transform:none}' +
@@ -50,27 +68,27 @@
     '@media (prefers-reduced-motion:reduce){.hm *,.hm-rv{transition:none!important;animation:none!important;opacity:1!important;transform:none!important;filter:none!important}}';
   var st = D.createElement('style'); st.textContent = css; D.head.appendChild(st);
 
-  var WS = [['Every', 0], ['number', 0], ['you', 0], ['need,', 0], ['in', 1], ['every', 1], ['country.', 1]];
+  var WS = L.words;
   var h = WS.map(function (w, i) { return '<span class="w' + (w[1] ? ' g' : '') + '" style="transition-delay:' + (i * 80) + 'ms">' + w[0] + '</span>'; }).join(' ');
   var stats = '';
-  if (nCalc > 0) stats += '<div><b data-to="' + nCalc + '">0</b><span>calculators on this page</span></div>';
-  stats += '<div><b>2027</b><span>tax figures where published</span></div>';
+  if (nCalc > 0) stats += '<div><b data-to="' + nCalc + '">0</b><span>' + L.sCalc + '</span></div>';
+  stats += '<div><b>2027</b><span>' + L.sYear + '</span></div>';
 
-  var sec = D.createElement('section'); sec.className = 'hm'; sec.setAttribute('aria-label', 'Introduction');
+  var sec = D.createElement('section'); sec.className = 'hm'; sec.setAttribute('aria-label', L.aria);
   sec.innerHTML =
-    '<div class="hm-hero"><div class="hm-eyebrow">● Free · No sign-up · Works on your phone</div>' +
+    '<div class="hm-hero"><div class="hm-eyebrow">' + L.eyebrow + '</div>' +
     '<h2 class="hm-h">' + h + '</h2>' +
-    '<p class="hm-sub">Tax, salary, mortgage and benefit calculators built on each country’s official rules — with the working shown, so you can check every step.</p>' +
+    '<p class="hm-sub">' + L.sub + '</p>' +
     '<div class="hm-stats">' + stats + '</div><div class="hm-cue" aria-hidden="true"></div></div>' +
     '<div class="hm-story">' +
     '<div class="hm-steps">' +
-    '<div class="hm-step" data-s="0"><small>Step 1</small><h3>Type your numbers.</h3><p>Salary, price, rate — results update as you type, right in your browser.</p></div>' +
-    '<div class="hm-step" data-s="1"><small>Step 2</small><h3>See the answer first.</h3><p>The number you came for sits at the top, with each line of the calculation underneath.</p></div>' +
-    '<div class="hm-step" data-s="2"><small>Step 3</small><h3>Read it in two charts.</h3><p>Results with a breakdown come with two graphs — pick donut, bars or columns for each.</p></div>' +
+    '<div class="hm-step" data-s="0"><small>' + L.s1[0] + '</small><h3>' + L.s1[1] + '</h3><p>' + L.s1[2] + '</p></div>' +
+    '<div class="hm-step" data-s="1"><small>' + L.s2[0] + '</small><h3>' + L.s2[1] + '</h3><p>' + L.s2[2] + '</p></div>' +
+    '<div class="hm-step" data-s="2"><small>' + L.s3[0] + '</small><h3>' + L.s3[1] + '</h3><p>' + L.s3[2] + '</p></div>' +
     '</div>' +
     '<div class="hm-stage" aria-hidden="true">' +
-    '<div class="hm-scene" data-s="0"><div class="hm-card"><div class="hm-field"><i>Annual salary</i><b class="hm-type" data-v="85,000">$</b></div><div class="hm-field"><i>Tax year</i><b>2027</b></div></div></div>' +
-    '<div class="hm-scene" data-s="1"><div class="hm-card" style="text-align:left"><div class="hm-cap">Take-home pay a month</div><div class="hm-big" data-to="5240" data-pre="$">$0</div><div style="margin-top:12px;color:#CBD5E1;font-size:13px">Example only — your numbers will differ.</div></div></div>' +
+    '<div class="hm-scene" data-s="0"><div class="hm-card"><div class="hm-field"><i>' + L.f1 + '</i><b class="hm-type" data-v="' + L.typ + '">' + L.cur + '</b></div><div class="hm-field"><i>' + L.f2 + '</i><b>2027</b></div></div></div>' +
+    '<div class="hm-scene" data-s="1"><div class="hm-card" style="text-align:left"><div class="hm-cap">' + L.cap + '</div><div class="hm-big" data-to="' + L.to + '" data-pre="' + L.cur + '" data-suf="' + L.unit + '">' + L.cur + '0' + L.unit + '</div><div style="margin-top:12px;color:#CBD5E1;font-size:13px">' + L.note + '</div></div></div>' +
     '<div class="hm-scene" data-s="2"><div class="hm-two"><div><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="44" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="18"/>' +
     '<circle class="hm-ring" cx="60" cy="60" r="44" fill="none" stroke="#818CF8" stroke-width="18" stroke-dasharray="276.5" stroke-dashoffset="276.5" data-off="88" transform="rotate(-90 60 60)"/>' +
     '<circle class="hm-ring" cx="60" cy="60" r="44" fill="none" stroke="#F472B6" stroke-width="18" stroke-dasharray="276.5" stroke-dashoffset="276.5" data-off="230" transform="rotate(-90 60 60)" style="transition-delay:.25s"/></svg></div>' +
@@ -79,15 +97,15 @@
   main.insertBefore(sec, main.firstChild);
 
   function count(el, dur) {
-    var to = +el.getAttribute('data-to'), pre = el.getAttribute('data-pre') || '', t0 = null;
-    if (RM) { el.textContent = pre + fmt(to); return; }
-    function f(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = pre + fmt(Math.round(to * e)); if (p < 1) requestAnimationFrame(f); }
+    var to = +el.getAttribute('data-to'), pre = el.getAttribute('data-pre') || '', suf = el.getAttribute('data-suf') || '', t0 = null;
+    if (RM) { el.textContent = pre + fmt(to) + suf; return; }
+    function f(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = pre + fmt(Math.round(to * e)) + suf; if (p < 1) requestAnimationFrame(f); }
     requestAnimationFrame(f);
   }
   function type(el) {
-    var v = el.getAttribute('data-v'), i = 0; el.textContent = '$';
-    if (RM) { el.textContent = '$' + v; return; }
-    (function n() { if (i <= v.length) { el.textContent = '$' + v.slice(0, i++); setTimeout(n, 110); } })();
+    var v = el.getAttribute('data-v'), i = 0, c = L.cur, u = L.unit; el.textContent = c;
+    if (RM) { el.textContent = c + v + u; return; }
+    (function n() { if (i <= v.length) { el.textContent = c + v.slice(0, i) + (i === v.length ? u : ''); i++; setTimeout(n, 90); } })();
   }
   requestAnimationFrame(function () { setTimeout(function () { sec.classList.add('in'); [].forEach.call(sec.querySelectorAll('.hm-stats b[data-to]'), function (b) { count(b, 1400); }); }, 60); });
 
@@ -122,6 +140,6 @@
   /* 아래 목록이 화면에 들어올 때 올라오기 */
   if ('IntersectionObserver' in W && !RM) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
-    [].forEach.call(D.querySelectorAll('main .hlu-top, main .hl-home, main .hlu-tabs, main .hlu-p'), function (el) { el.classList.add('hm-rv'); io.observe(el); });
+    [].forEach.call(D.querySelectorAll('main .hlu-top, main .hl-home, main .hlu-tabs, main .hlu-p, body > div.wrap > section, body > div.wrap > div'), function (el) { if (el === sec || sec.contains(el)) return; el.classList.add('hm-rv'); io.observe(el); });
   }
 })();
