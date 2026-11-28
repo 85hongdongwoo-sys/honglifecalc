@@ -396,7 +396,8 @@ for hubp, lang in (('arg/index.html', 'es'), ('es/index.html', 'es'), ('mx/index
     h = open(fp, encoding='utf-8').read()
     if 'id="pp-link"' in h: continue
     L = L10N[lang]
-    box = f'<section class="card" id="pp-link" style="margin:14px 0"><h2 style="margin:0 0 6px">{L["hub"]}</h2><p style="margin:0"><a href="{L["dir"]}">{L["hub_lead"]}</a></p></section>'
-    h2 = re.sub(r'(<main[^>]*>)', lambda m: m.group(1) + box, h, count=1)
+    # 돈 계산기 목록 위쪽에서 빼고, 맨 아래 작은 링크 한 줄로만 (주제가 달라 퍼널을 흐리지 않게)
+    box = f'<p id="pp-link" style="margin:22px 0 6px;font-size:13px;opacity:.75"><a href="{L["dir"]}">{L["hub"]}</a></p>'
+    h2 = h.replace('</main>', box + '</main>', 1) if '</main>' in h else h
     if h2 != h: open(fp, 'w', encoding='utf-8').write(h2)
 print('people pages:', len(made), made)
