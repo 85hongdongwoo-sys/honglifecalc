@@ -1,0 +1,33 @@
+<section class="hl-guide" id="guide" style="--g:#7e22ce;--g2:#f5edfd" aria-labelledby="g-h">
+<p class="g-kick">Random numbers · fair picks and draws</p>
+<h2 id="g-h">Using a random number generator fairly – picking winners, rolling dice, choosing lottery-style numbers, and how “random” it really is</h2>
+<div class="g-ans"><b>Short answer:</b> to pick one number between 1 and 100, set the minimum to 1 and the maximum to 100 – every number has exactly a 1 in 100 chance. For a giveaway, number your entries, generate one number, and the matching entry wins. Turn on “no repeats” when you need several different winners.</div>
+
+<p>People use random numbers for all sorts of everyday decisions: drawing a raffle, choosing who goes first, assigning teams, picking a restaurant or testing a game idea. The generator above uses your browser’s built-in random function, which is more than good enough for draws, games and classroom activities.</p>
+
+<h3>Common uses and settings</h3>
+<table class="g-cards"><thead><tr><th>Use</th><th>Min – Max</th><th>How many</th><th>Repeats?</th></tr></thead><tbody>
+<tr><td data-l="Use">Roll a die</td><td data-l="Range">1 – 6</td><td data-l="How many">1</td><td data-l="Repeats">—</td></tr>
+<tr><td data-l="Use">Flip a coin (1 = heads)</td><td data-l="Range">1 – 2</td><td data-l="How many">1</td><td data-l="Repeats">—</td></tr>
+<tr><td data-l="Use">Pick 3 winners from 250 entries</td><td data-l="Range">1 – 250</td><td data-l="How many">3</td><td data-l="Repeats">No</td></tr>
+<tr><td data-l="Use">Lottery-style 6 from 49</td><td data-l="Range">1 – 49</td><td data-l="How many">6</td><td data-l="Repeats">No</td></tr>
+<tr><td data-l="Use">Random PIN-style code</td><td data-l="Range">0 – 9</td><td data-l="How many">4</td><td data-l="Repeats">Yes</td></tr>
+</tbody></table>
+
+<h3>Running a fair giveaway</h3>
+<ol class="g-steps">
+<li>Close entries and make a numbered list – a spreadsheet row number is perfect.</li>
+<li>Remove duplicate or invalid entries <i>before</i> the draw, and say publicly how many valid entries there are.</li>
+<li>Generate the number(s) live or record your screen, so people can see the draw wasn’t chosen.</li>
+<li>Announce the matching entry. If a winner doesn’t respond, draw again from the remaining entries.</li>
+</ol>
+
+<h3>Questions people ask about random numbers</h3>
+<details class="g-q"><summary>Is this generator truly random?</summary><div>It’s “pseudo-random”: numbers come from an algorithm seeded unpredictably by your device. They’re statistically even and unpredictable enough for games, draws and sampling. For cryptography or regulated lotteries, special hardware or certified systems are used instead.</div></details>
+<details class="g-q"><summary>What are the odds of picking the same number twice?</summary><div>With repeats allowed, each draw is independent. Drawing two numbers from 1–10, there’s a 1 in 10 chance the second matches the first. Over many draws, repeats happen far more often than people expect – that’s normal randomness, not a fault.</div></details>
+<details class="g-q"><summary>Can I generate random numbers in Excel?</summary><div>Yes: =RANDBETWEEN(1,100) gives a whole number from 1 to 100, and =RAND() gives a decimal between 0 and 1. Both change every time the sheet recalculates.</div></details>
+<details class="g-q"><summary>What are the odds of winning a 6-from-49 lottery?</summary><div>1 in 13,983,816 for the jackpot. Generated numbers have exactly the same chance as numbers you pick yourself – but random picks are less likely to share a jackpot, because many players choose birthdays.</div></details>
+<details class="g-q"><summary>Does a random number generator remember previous results?</summary><div>No. Each new number is independent, so after five 6s in a row the next roll is still a 1 in 6 chance of another 6.</div></details>
+
+<div class="g-src">Odds calculated by Hong Life Calculators (6 from 49: C(49,6) = 13,983,816), checked 28 Nov 2026. Spreadsheet functions per Microsoft Excel documentation. For entertainment and everyday use; not for regulated gambling.</div>
+</section>
