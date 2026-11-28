@@ -10,5 +10,11 @@ new = "if(page==='en')return;\n  var loc=page;"
 if new in s:
     print('lang switch: already'); sys.exit(0)
 assert old in s, 'pattern not found'
-open(p, 'w', encoding='utf-8').write(s.replace(old, new, 1))
+s = s.replace(old, new, 1)
+# 나라 허브(/br/ 등)의 '영어'는 영어 첫 화면(/)으로 — 다른 나라(/ae/) 허브로 가지 않게
+o2 = "if(page==='en')enHref=here;else enHref=alt('en')||'/en/';"
+n2 = "if(page==='en')enHref=here;else enHref=(D.querySelector('meta[name=hl-hubs]')?'/':alt('en'))||'/en/';"
+assert o2 in s, 'pattern2 not found'
+s = s.replace(o2, n2, 1)
+open(p, 'w', encoding='utf-8').write(s)
 print('lang switch: page language + English only')
