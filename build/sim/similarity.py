@@ -116,7 +116,10 @@ pairs.sort(key=lambda p: -p[2])
 # 5) 검색에 남길 페이지 고르기: 이미 남긴 페이지 모두와 5% 미만으로만 겹치는 페이지만 남긴다 (우선순위 순)
 LIMIT = 0.05
 GUIDES = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'guides')
+PRI_F = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'priority.txt')
+PRI = {l.strip(): n for n, l in enumerate(open(PRI_F, encoding='utf-8')) if l.startswith('/')} if os.path.isfile(PRI_F) else {}
 def tier(u):
+    if u in PRI: return -1000 + PRI[u]   # 실제 유입이 있는 페이지 먼저 (build/sim/priority.txt 순서)
     if u == '/' or re.fullmatch(r'/[a-z]{2,3}(-[a-z]+)?/', u): return 0
     if os.path.isfile(os.path.join(GUIDES, u.lstrip('/'))): return 1
     if u.startswith(('/en/', '/us/', '/uk/')): return 2
