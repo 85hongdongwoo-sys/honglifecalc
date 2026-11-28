@@ -1,0 +1,31 @@
+# 페이지|주제어 — 사람들이 묻는 질문 모으기 (questions.py)
+/uk/income-tax-calculator.html|income tax
+/uk/take-home-pay-calculator.html|take home pay
+/mx/calculadora-isr.html|isr
+/uk/stamp-duty-calculator.html|stamp duty
+/uk/state-pension-calculator.html|state pension
+/uk/capital-gains-tax-calculator.html|capital gains tax
+/uk/dividend-tax-calculator.html|dividend tax
+/uk/statutory-sick-pay-calculator.html|statutory sick pay
+/uk/maternity-pay-calculator.html|maternity pay
+/uk/carers-allowance-calculator.html|carers allowance
+/uk/mortgage-calculator.html|mortgage
+/us/roth-ira-calculator.html|roth ira
+/us/hsa-calculator.html|hsa
+/us/fica-tax-calculator.html|fica
+/us/gift-tax-calculator.html|gift tax
+/us/estate-tax-calculator.html|estate tax
+/us/eitc-calculator.html|earned income credit
+/us/overtime-pay-calculator.html|overtime pay
+/us/benefits/social-security-cola-2027.html|social security cola
+/us/benefits/pell-grant.html|pell grant
+/tr/brutten-nete-maas-hesaplama.html|brütten nete maaş
+/tr/kidem-tazminati-hesaplama.html|kıdem tazminatı
+/vn/thue-thu-nhap-ca-nhan.html|thuế thu nhập cá nhân
+/pl/kalkulator-vat.html|vat
+/nl/bijtelling-auto-2026.html|bijtelling
+/fr/allocation-rentree-scolaire.html|allocation rentrée scolaire
+/pt/simulador-irs-jovem.html|irs jovem
+/se/foraldrapenning-kalkylator.html|föräldrapenning
+/no/lonn-etter-skatt-kalkulator.html|lønn etter skatt
+/ru/zarplata-na-ruki.html|зарплата на руки

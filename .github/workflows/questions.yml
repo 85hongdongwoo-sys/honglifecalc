@@ -1,0 +1,20 @@
+name: 사람들이 묻는 질문 모으기
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  q:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 build/kw/questions.py build/kw/q_seeds.txt q-out
+      - name: data-q 브랜치에 저장
+        if: always()
+        run: |
+          cd q-out
+          git init -q && git checkout -q -b data-q
+          git config user.name "github-actions" && git config user.email "actions@github.com"
+          git add q.json && git commit -qm "questions $(date -u +%F)"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data-q
