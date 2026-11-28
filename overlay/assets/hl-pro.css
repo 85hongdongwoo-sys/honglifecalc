@@ -101,3 +101,61 @@ html:not(#hlpro) body .brandbar>.in{flex-wrap:nowrap!important;gap:10px!importan
 html:not(#hlpro) body .brandbar>.in>*{flex:0 0 auto}
 html:not(#hlpro) body .brandbar>.in>.langs{flex:1 1 auto!important;min-width:0!important;justify-content:flex-start!important}
 @media (max-width:520px){html:not(#hlpro) body .brandbar>.in>a.logo{font-size:0!important;gap:0!important}html:not(#hlpro) body .brandbar>.in>a.logo img{font-size:16px}}
+
+/* ── 한국어 페이지 색 통일 (2026-11-28): 첫 화면의 남색·보라·분홍 + 슬레이트 회색 하나로.
+   크림·금색·풀색·주황을 같은 계열로 바꾼다. ── */
+html[lang^="ko"]{--paper:#FFFFFF;--soft:#F1F5F9;--line:#E5E7EB;--gold-soft:#EEF2FF;--hl-grass:#4F46E5;--hl-grass-d:#4338CA;--hl-cream:#F8FAFC;
+  --u-gold:#6366F1;--u-gold2:#4F46E5;--u-ink:#0F172A;--u-muted:#64748B;--u-line:#E5E7EB}
+html[lang^="ko"]:not(#hlpro) body img.hl-mark{background:#0F172A!important}
+/* 언어 버튼 */
+html[lang^="ko"]:not(#hlpro) body nav.hl-lg{background:#EEF2FF!important;border:1px solid #E0E7FF!important}
+html[lang^="ko"]:not(#hlpro) body nav.hl-lg a{color:#4F46E5!important;background:transparent!important}
+html[lang^="ko"]:not(#hlpro) body nav.hl-lg a[aria-current],html[lang^="ko"]:not(#hlpro) body nav.hl-lg a.on,html[lang^="ko"]:not(#hlpro) body nav.hl-lg a:first-child{background:#fff!important;color:#0F172A!important;box-shadow:0 1px 3px rgba(15,23,42,.12)!important}
+html[lang^="ko"]:not(#hlpro) body nav.hl-lg span{color:#A5B4FC!important}
+/* 분야 탭·작은 탭 */
+html[lang^="ko"]:not(#hlpro) body nav.tabs{background:rgba(248,250,252,.92)!important;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-color:#E5E7EB!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs > button,html[lang^="ko"]:not(#hlpro) body nav.tabs .maintabs button{color:#475569!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs button{background:#fff!important;color:#334155!important;border:1px solid #E5E7EB!important;box-shadow:none!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs button:hover{border-color:#A5B4FC!important;color:#4338CA!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs button.on,html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs button.active,html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs button[aria-selected="true"],html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs button[aria-pressed="true"]{background:linear-gradient(135deg,#4F46E5,#7C3AED)!important;color:#fff!important;border-color:transparent!important}
+/* 계산 결과 영수증 윗선 */
+html[lang^="ko"]:not(#hlpro) body .receipt{border-top-color:#4F46E5!important}
+/* 넘겨 보는 소식 상자 */
+html[lang^="ko"]:not(#hlpro) body section#flash,html[lang^="ko"]:not(#hlpro) body section#flash .fs{background:linear-gradient(135deg,#EEF2FF 0%,#F5F3FF 60%,#FDF2F8 100%)!important;border-color:#E0E7FF!important}
+html[lang^="ko"]:not(#hlpro) body section#flash h2 em{color:#7C3AED!important}
+html[lang^="ko"]:not(#hlpro) body section#flash p{color:#475569!important}
+html[lang^="ko"]:not(#hlpro) body section#flash a.cta{background:linear-gradient(135deg,#4F46E5,#7C3AED)!important;color:#fff!important;border-color:transparent!important}
+html[lang^="ko"]:not(#hlpro) body section#flash a.cta2{color:#4F46E5!important}
+html[lang^="ko"]:not(#hlpro) body section#flash .glass{background:linear-gradient(140deg,#1E1B4B,#4F46E5)!important;border-color:rgba(255,255,255,.22)!important}
+html[lang^="ko"]:not(#hlpro) body section#flash .glass .lb{color:#C7D2FE!important}
+html[lang^="ko"]:not(#hlpro) body section#flash .fnav button.d{background:#C7D2FE!important}
+html[lang^="ko"]:not(#hlpro) body section#flash .fnav button.d.on,html[lang^="ko"]:not(#hlpro) body section#flash .fnav button.d[aria-current]{background:#4F46E5!important}
+html[lang^="ko"]:not(#hlpro) body section#flash .farr button{background:#0F172A!important;border-color:#0F172A!important;color:#fff!important}
+html[lang^="ko"]:not(#hlpro) body section#flash .fprog{background:#7C3AED!important}
+/* 메인 위쪽 상자들 */
+html[lang^="ko"]:not(#hlpro) body .hlh-pop small,html[lang^="ko"]:not(#hlpro) body .hlh-tile span{color:#64748B!important}
+/* 전체 계산기 목록 */
+html[lang^="ko"]:not(#hlpro) body nav.calc-index .ci-grid b{color:#4F46E5!important}
+html[lang^="ko"]:not(#hlpro) body nav.calc-index details.ci-fam{border-color:#E5E7EB!important;background:#fff!important}
+html[lang^="ko"]:not(#hlpro) body nav.calc-index details.ci-fam summary span{background:#EEF2FF!important;color:#4338CA!important;border-color:#C7D2FE!important}
+html[lang^="ko"]:not(#hlpro) body nav.calc-index details.ci-fam li a{background:#F8FAFC!important;border-color:#E5E7EB!important;color:#0F172A!important}
+html[lang^="ko"]:not(#hlpro) body nav.calc-index details.ci-fam li a:hover{background:#EEF2FF!important;color:#4338CA!important}
+html[lang^="ko"]:not(#hlpro) body .ci-tools input{border-color:#E5E7EB!important;background:#fff!important}
+html[lang^="ko"]:not(#hlpro) body .ci-tools input:focus{outline:3px solid rgba(79,70,229,.25)!important}
+html[lang^="ko"]:not(#hlpro) body .ci-tools button{background:#EEF2FF!important;color:#3730A3!important;border-color:#E0E7FF!important}
+/* 작은 표시(span.k)·관련 계산기 묶음 */
+html[lang^="ko"]:not(#hlpro) body span.k{background:#EEF2FF!important;color:#3730A3!important;border-color:#C7D2FE!important}
+html[lang^="ko"]:not(#hlpro) body .hl-rel{border-top-color:#4F46E5!important}
+html[lang^="ko"]:not(#hlpro) body .hl-rel .hl-rel-t:before{background:#4F46E5!important}
+html[lang^="ko"]:not(#hlpro) body .hl-rel a.hl-rel-a b:after{color:#4F46E5!important}
+html[lang^="ko"]:not(#hlpro) body .hl-rel a.hl-rel-a:hover{border-color:#4F46E5!important;background:#EEF2FF!important}
+html[lang^="ko"]:not(#hlpro) body .hl-next a{color:#4338CA!important;border-color:#C7D2FE!important;background:#fff!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs :not(.subtabs) > button[role="tab"][aria-selected="true"]{color:#4338CA!important;border-bottom-color:#4F46E5!important;box-shadow:inset 0 -2px 0 #4F46E5!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs button[aria-selected="true"]{box-shadow:none!important;color:#fff!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs a.sublink{background:#F5F3FF!important;color:#5B21B6!important;border:1px dashed #C4B5FD!important;box-shadow:none!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs a.sublink:hover{background:#EDE9FE!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs a.sublink::after,html[lang^="ko"]:not(#hlpro) body nav.tabs .subtabs a.sublink::before{color:#7C3AED!important}
+html[lang^="ko"]:not(#hlpro) body .hl-sb-q{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%234F46E5' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E")!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .row a{background:#fff!important;color:#334155!important;border:1px solid #E5E7EB!important;box-shadow:none!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .row a:hover{border-color:#A5B4FC!important;color:#4338CA!important}
+html[lang^="ko"]:not(#hlpro) body nav.tabs .row a[aria-current],html[lang^="ko"]:not(#hlpro) body nav.tabs .row a.on{background:linear-gradient(135deg,#4F46E5,#7C3AED)!important;color:#fff!important;border-color:transparent!important}

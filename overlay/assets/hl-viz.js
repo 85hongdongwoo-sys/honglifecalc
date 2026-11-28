@@ -5,7 +5,7 @@
 (function () {
   if (window.__hlViz) return; window.__hlViz = 1;
   var D = document, NS = 'http://www.w3.org/2000/svg';
-  var PAL = ['#0F8A5F', '#1F5FD1', '#B8862B', '#C2413A', '#6C4BD8', '#0E8FA3', '#D9822B', '#7A8AA8', '#A34E8F', '#5B8C2A'];
+  var PAL = ['#4F46E5', '#EC4899', '#0EA5E9', '#7C3AED', '#F59E0B', '#14B8A6', '#F43F5E', '#64748B', '#A855F7', '#22C55E'];  // 2026-11-28 첫 화면 색(남색·분홍·보라)에 맞춤
   var css = '.hlv{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 18px;margin:16px 0 6px;padding:14px;border:1px solid #E1E5EC;border-radius:14px;background:#FAFBFD}' +
     '.hlv svg{flex:0 0 auto;width:136px;height:136px}.hlv circle{transition:stroke-dasharray .6s ease,stroke-dashoffset .6s ease}' +
     '.hlv .c1{font:800 22px/1 system-ui,sans-serif;fill:#12305C}.hlv .c2{font:600 10.5px/1 system-ui,sans-serif;fill:#5F6875}' +
@@ -359,13 +359,13 @@
     var svg = D.createElementNS(NS, 'svg'); svg.setAttribute('translate', 'no'); svg.setAttribute('viewBox', '0 0 120 120'); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', (sp ? sp.textContent.trim() + ' ' : '') + v);
     var gid = 'hlg' + Math.random().toString(36).slice(2, 7), df = D.createElementNS(NS, 'defs'), lg = D.createElementNS(NS, 'linearGradient');
     lg.setAttribute('id', gid); lg.setAttribute('x1', 0); lg.setAttribute('y1', 0); lg.setAttribute('x2', 1); lg.setAttribute('y2', 1);
-    [['0', '#0F8A5F'], ['.55', '#1F5FD1'], ['1', '#B8862B']].forEach(function (x) { var st = D.createElementNS(NS, 'stop'); st.setAttribute('offset', x[0]); st.setAttribute('stop-color', x[1]); lg.appendChild(st); });
+    [['0', '#4F46E5'], ['.55', '#7C3AED'], ['1', '#EC4899']].forEach(function (x) { var st = D.createElementNS(NS, 'stop'); st.setAttribute('offset', x[0]); st.setAttribute('stop-color', x[1]); lg.appendChild(st); });
     df.appendChild(lg); svg.appendChild(df);
     var c = D.createElementNS(NS, 'circle'); c.setAttribute('cx', 60); c.setAttribute('cy', 60); c.setAttribute('r', 48); c.setAttribute('fill', 'none'); c.setAttribute('stroke', 'url(#' + gid + ')'); c.setAttribute('stroke-width', 14); svg.appendChild(c);
     var t = D.createElementNS(NS, 'text'); t.setAttribute('x', 60); t.setAttribute('y', 65); t.setAttribute('text-anchor', 'middle');
     t.setAttribute('style', 'font:800 ' + (v.length > 14 ? 10 : v.length > 11 ? 12 : v.length > 8 ? 15 : 19) + 'px system-ui,sans-serif;fill:#12305C'); t.textContent = v; svg.appendChild(t);
     var ul = D.createElement('ul'), li = D.createElement('li'), dot = D.createElement('i'), s1 = D.createElement('span'), b1 = D.createElement('b');
-    dot.style.background = '#1F5FD1'; s1.textContent = sp ? sp.textContent.trim() : ''; b1.textContent = v; li.appendChild(dot); li.appendChild(s1); li.appendChild(b1); ul.appendChild(li);
+    dot.style.background = '#4F46E5'; s1.textContent = sp ? sp.textContent.trim() : ''; b1.textContent = v; li.appendChild(dot); li.appendChild(s1); li.appendChild(b1); ul.appendChild(li);
     bx.appendChild(svg); bx.appendChild(ul); return { box: bx, anchor: bg };
   }
   function extra() {
