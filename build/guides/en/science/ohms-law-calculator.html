@@ -1,0 +1,49 @@
+<section class="hl-guide" id="guide" style="--g:#b45309;--g2:#fff5e5" aria-labelledby="g-h">
+<p class="g-kick">Ohm’s law in practice</p>
+<h2 id="g-h">Ohm’s law made simple – V = I × R, the power formulas, and real examples from LEDs to kettles</h2>
+<div class="g-ans"><b>The rule:</b> voltage equals current times resistance, <b>V = I × R</b>. Rearranged, <b>I = V ÷ R</b> and <b>R = V ÷ I</b>. A 12 V supply across a 4 Ω resistor drives <b>3 A</b>, and that resistor turns 12 × 3 = <b>36 W</b> into heat.</div>
+
+<p>Ohm’s law is the first formula most people learn in electronics, and it stays useful forever: choosing a resistor for an LED, checking whether a wire will get warm, or working out why a fuse blew. Knowing any two of voltage, current and resistance gives you the third – and with power (P = V × I) you can find all four.</p>
+
+<figure>
+<svg viewBox="0 0 360 200" role="img" aria-labelledby="g-f1t g-f1d" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<title id="g-f1t">The Ohm’s law triangle</title>
+<desc id="g-f1d">V at the top, I and R at the bottom. Cover the value you want: V equals I times R, I equals V over R, R equals V over I.</desc>
+<path d="M90 20 L170 170 L10 170 Z" fill="#fff5e5" stroke="#b45309" stroke-width="3"/>
+<line x1="44" y1="105" x2="136" y2="105" stroke="#b45309" stroke-width="3"/><line x1="90" y1="105" x2="90" y2="170" stroke="#b45309" stroke-width="3"/>
+<text x="90" y="88" font-size="26" font-weight="800" text-anchor="middle" fill="#7c2d12">V</text>
+<text x="58" y="152" font-size="24" font-weight="800" text-anchor="middle" fill="#7c2d12">I</text>
+<text x="122" y="152" font-size="24" font-weight="800" text-anchor="middle" fill="#7c2d12">R</text>
+<text x="200" y="60" font-size="15" font-weight="700" fill="#111827">V = I × R</text>
+<text x="200" y="100" font-size="15" font-weight="700" fill="#111827">I = V ÷ R</text>
+<text x="200" y="140" font-size="15" font-weight="700" fill="#111827">R = V ÷ I</text>
+<text x="200" y="178" font-size="12" fill="#4b5563">Cover the one you want.</text>
+</svg>
+<figcaption>Cover the letter you’re looking for: what’s left shows how to work it out.</figcaption>
+</figure>
+
+<h3>The power formulas</h3>
+<table class="g-cards"><thead><tr><th>Know</th><th>Power P</th><th>Example</th></tr></thead><tbody>
+<tr><td data-l="Know">V and I</td><td data-l="Power">P = V × I</td><td data-l="Example">230 V × 10 A = 2,300 W</td></tr>
+<tr><td data-l="Know">I and R</td><td data-l="Power">P = I² × R</td><td data-l="Example">2 A through 10 Ω = 40 W</td></tr>
+<tr><td data-l="Know">V and R</td><td data-l="Power">P = V² ÷ R</td><td data-l="Example">12 V across 24 Ω = 6 W</td></tr>
+</tbody></table>
+
+<h3>Real-world examples</h3>
+<ul>
+<li><b>LED resistor:</b> a red LED drops about 2 V and wants 20 mA. From a 5 V supply: R = (5 − 2) ÷ 0.02 = <b>150 Ω</b>. Use the next standard value up (150 Ω exists; otherwise 180 Ω).</li>
+<li><b>Kettle:</b> a 2,300 W kettle on 230 V mains draws 2,300 ÷ 230 = <b>10 A</b> – fine on a 13 A UK plug fuse. On 120 V in the US, a 1,500 W kettle draws 12.5 A.</li>
+<li><b>Resistor rating:</b> 9 V across 100 Ω gives 90 mA and 0.81 W – too much for a common ¼ W resistor; pick a 1 W part.</li>
+<li><b>Phone charger:</b> 5 V at 2 A is 10 W; a 20 W USB-C charger usually supplies 9 V at about 2.2 A.</li>
+</ul>
+<div class="g-note">Mains electricity (120 V / 230 V) can kill. Use these formulas for understanding and low-voltage projects; leave work on household wiring to a qualified electrician.</div>
+
+<h3>Questions people ask about Ohm’s law</h3>
+<details class="g-q"><summary>Does Ohm’s law always apply?</summary><div>It holds well for ordinary resistors and wires at a steady temperature. Components like LEDs, diodes, light bulbs (whose resistance rises when hot) and transistors are “non-ohmic” – their current doesn’t rise in a straight line with voltage.</div></details>
+<details class="g-q"><summary>What happens if I double the voltage?</summary><div>With the same resistance, the current doubles and the power quadruples (P = V² ÷ R). That’s why a component rated for 5 V can burn out quickly on 10 V.</div></details>
+<details class="g-q"><summary>How do I calculate resistance from voltage and current?</summary><div>Divide voltage by current: R = V ÷ I. If a heater draws 4 A at 120 V, its resistance is 30 Ω.</div></details>
+<details class="g-q"><summary>What are the units?</summary><div>Voltage in volts (V), current in amperes (A), resistance in ohms (Ω) and power in watts (W). Remember to convert milliamps to amps (20 mA = 0.02 A) before using the formula.</div></details>
+<details class="g-q"><summary>Is Ohm’s law the same for AC?</summary><div>For purely resistive loads like heaters, yes, using RMS values. Motors and electronics add reactance, so engineers use impedance (Z) instead of plain resistance.</div></details>
+
+<div class="g-src">Formulas: Ohm’s law and Joule’s law of heating, standard SI definitions (BIPM SI Brochure). Examples calculated by Hong Life Calculators, checked 28 Nov 2026.</div>
+</section>
