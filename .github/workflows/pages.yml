@@ -83,6 +83,8 @@ jobs:
         run: python3 build/patch_sitemap.py _site
       - name: Spread related links evenly (nearest siblings ring)
         run: python3 build/patch_related.py _site
+      - name: 언어 버튼은 '그 나라 언어 | 영어'만
+        run: python3 build/patch_lang_switch.py _site
       - name: 계산기 아래 나라별 자세한 안내 글 붙이기 (build/guides)
         run: python3 build/patch_guide.py _site
       - name: 공통 제목·그래프 설명을 페이지 주제별로 (유사도 낮추기)
