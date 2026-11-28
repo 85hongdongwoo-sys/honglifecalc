@@ -7,7 +7,12 @@ N = int(sys.argv[1]) if len(sys.argv) > 1 else 100
 R = json.load(open('build/kw/release.json', encoding='utf-8'))
 L = open('build/noindex_list.txt', encoding='utf-8').read().split('\n')
 cur = {x.strip() for x in L}
-todo = [u for u in R if u in cur][:N]
+# 자세한 안내 글(build/guides)이 붙은 페이지를 먼저 올린다
+G = []
+for dp, dn, fn in os.walk('build/guides'):
+    G += ['/' + os.path.relpath(os.path.join(dp, f), 'build/guides').replace(os.sep, '/') for f in fn if f.endswith('.html')]
+order = [u for u in sorted(G) if u in cur] + [u for u in R if u in cur and u not in set(G)]
+todo = order[:N]
 if not todo:
     print('nothing left'); sys.exit(0)
 ts = set(todo)
