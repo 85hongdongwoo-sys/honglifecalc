@@ -93,11 +93,13 @@ for folder, members in groups.items():
             items.append((q.rsplit('/', 1)[-1], t, d))
         lis = ''.join(f'<li><a class="hl-rel-a" href="{html.escape(h)}"><b>{html.escape(t)}</b>'
                       + (f'<span>{html.escape(d)}</span>' if d else '') + '</a></li>' for h, t, d in items)
-        block = (f'<!--hl:related--><section class="hl-rel" data-hl-ring="1" aria-labelledby="hl-rel-t">'
-                 f'<h2 class="hl-rel-t" id="hl-rel-t">{head}</h2><ul class="hl-rel-l">{lis}</ul></section>')
+        block = (f'<!--hl:related--><nav class="hl-rel" data-hl-ring="1" aria-labelledby="hl-rel-t">'
+                 f'<h2 class="hl-rel-t" id="hl-rel-t">{head}</h2><ul class="hl-rel-l">{lis}</ul></nav>')   # 2026-11-28: 링크 묶음은 nav(본문 유사도에서 빠짐)
         if '<!--hl:related-->' in s:
             a = s.index('<!--hl:related-->')
-            b = s.index('</section>', a) + len('</section>')
+            ends = [(s.find(e, a), e) for e in ('</section>', '</nav>') if s.find(e, a) > 0]
+            i, e = min(ends)
+            b = i + len(e)
             s2 = s[:a] + block + s[b:]
         elif '</main>' in s:
             s2 = s.replace('</main>', '</main>' + block, 1)
