@@ -238,5 +238,11 @@
   "hub": "/en/health/index.html",
   "after": "tdee-calculator.html",
   "label": "Mounjaro Dose Calculator (tirzepatide schedule & weight loss)"
+ },
+ {
+  "url": "/uk/mounjaro-dose-calculator.html",
+  "hub": "/uk/index.html",
+  "after": "/uk/take-home-pay-calculator.html",
+  "label": "Mounjaro Dose Calculator UK (KwikPen, NHS & cost)"
  }
 ]
