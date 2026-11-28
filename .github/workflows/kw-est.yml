@@ -1,0 +1,32 @@
+name: 한국어 검색어 인기도 추정 (구글 자동완성)
+on:
+  workflow_dispatch:
+    inputs:
+      max:
+        description: '최대 후보 검색어 수'
+        default: '6000'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  est:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - name: 지금 배포된 사이트 받기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          id=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=github-pages&per_page=30" --jq '[.artifacts[]|select(.expired|not)]|sort_by(.created_at)|last|.id')
+          gh api "repos/${{ github.repository }}/actions/artifacts/$id/zip" > a.zip
+          unzip -q a.zip && mkdir -p _site && tar -xf artifact.tar -C _site && rm -f a.zip artifact.tar
+      - run: python3 build/kw/google_est.py _site est-out ${{ github.event.inputs.max }}
+      - name: data-kwest 브랜치에 저장
+        if: always()
+        run: |
+          cd est-out
+          git init -q && git checkout -q -b data-kwest
+          git config user.name "github-actions" && git config user.email "actions@github.com"
+          git add -A && git commit -qm "kw est $(date -u +%F)"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data-kwest
