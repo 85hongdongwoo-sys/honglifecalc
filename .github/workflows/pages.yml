@@ -76,6 +76,8 @@ jobs:
         run: python3 build/patch_deep.py _site
       - name: Add hreflang cluster for country hubs
         run: python3 build/patch_hreflang.py _site
+      - name: 나라 폴더 영어 쌍둥이 페이지의 기본 언어를 그 나라 언어로
+        run: python3 build/patch_xdefault.py _site
       # Re-enabled 2026-11-27 with a list rebuilt from per-folder Search Console data (no row cap) + quality rules.
       - name: Noindex low-value pages (build/noindex_list.txt)
         run: python3 build/patch_noindex.py _site
