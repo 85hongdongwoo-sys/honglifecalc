@@ -7,8 +7,8 @@ HOST = "honglifecalc.com"
 KEY = [os.path.basename(p)[:-4] for p in glob.glob('overlay/*.txt') if re.fullmatch(r'[0-9a-f]{32}\.txt', os.path.basename(p))][0]
 ENDPOINTS = ['https://searchadvisor.naver.com/indexnow', 'https://api.indexnow.org/indexnow']
 
-def live_sitemap():
-    req = urllib.request.Request(f'https://{HOST}/sitemap.xml', headers={'User-Agent': 'Mozilla/5.0 indexnow-ping'})
+def live_sitemap(name='sitemap.xml'):
+    req = urllib.request.Request(f'https://{HOST}/{name}', headers={'User-Agent': 'Mozilla/5.0 indexnow-ping'})
     xml = urllib.request.urlopen(req, timeout=60).read().decode('utf-8')
     return re.findall(r'<loc>\s*([^<\s]+)\s*</loc>', xml)
 
@@ -30,7 +30,7 @@ if extra:
     urls = [u if u.startswith('http') else f'https://{HOST}/' + u.lstrip('/') for u in extra]
     mode = 'urls'
 else:
-    urls = live_sitemap() if mode == 'all' else changed()
+    urls = live_sitemap() if mode == 'all' else live_sitemap('sitemap-naver.xml') if mode == 'naver' else changed()
 urls = list(dict.fromkeys(u for u in urls if u.startswith(f'https://{HOST}/')))
 print('mode', mode, 'urls', len(urls))
 for ep in ENDPOINTS:

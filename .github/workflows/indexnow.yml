@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "all = every URL in the live sitemap, changed = pages changed in the last commit"
+        description: "all = every URL in the live sitemap, naver = every Korean page (sitemap-naver.xml), changed = pages changed in the last commit"
         default: changed
       urls:
         description: "space-separated paths or full URLs to send (overrides mode), e.g. /a.html /b.html"
