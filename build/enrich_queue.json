@@ -1,46 +1,6 @@
 {
  "queue": [
   {
-   "path": "/de/teilzeit-rechner.html",
-   "chars": 507,
-   "impr28": 12
-  },
-  {
-   "path": "/ru/usn-ip.html",
-   "chars": 812,
-   "impr28": 12
-  },
-  {
-   "path": "/ru/transportnyj-nalog.html",
-   "chars": 744,
-   "impr28": 11
-  },
-  {
-   "path": "/ru/bmi-calculator.html",
-   "chars": 684,
-   "impr28": 10
-  },
-  {
-   "path": "/tw/labor-pension/labor-insurance-pension-formula.html",
-   "chars": 1431,
-   "impr28": 10
-  },
-  {
-   "path": "/uk/pay-rise-calculator.html",
-   "chars": 605,
-   "impr28": 10
-  },
-  {
-   "path": "/jp/nisa-simulator.html",
-   "chars": 403,
-   "impr28": 9
-  },
-  {
-   "path": "/au/super-guarantee-calculator.html",
-   "chars": 954,
-   "impr28": 9
-  },
-  {
    "path": "/de/festgeld-rechner.html",
    "chars": 610,
    "impr28": 9
@@ -457,6 +417,14 @@
   "/en/money/tax-equivalent-yield-calculator.html",
   "/en/money/fha-loan-calculator.html",
   "/en/money/illinois-tax-calculator.html",
-  "/en/money/california-tax-calculator.html"
+  "/en/money/california-tax-calculator.html",
+  "/de/teilzeit-rechner.html",
+  "/ru/usn-ip.html",
+  "/ru/transportnyj-nalog.html",
+  "/ru/bmi-calculator.html",
+  "/tw/labor-pension/labor-insurance-pension-formula.html",
+  "/uk/pay-rise-calculator.html",
+  "/jp/nisa-simulator.html",
+  "/au/super-guarantee-calculator.html"
  ]
 }

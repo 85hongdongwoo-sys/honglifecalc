@@ -12,3 +12,5 @@ script, move it back to build/pages/, run it, check rendering, then follow the r
 - tw_liformula.py: 勞工保險條例 / 勞工退休金條例, MOL 2026 wage and grade tables
 
 2026-11-27: au_atar, us_lifeline, us_section8, us_wic, ca_selfemployed, it_giorni_date, tw_lump15, de_abiturnote verified and moved to build/pages/.
+
+2026-11-28: de_teilzeit, ru_usn_ip, ru_transport_tax, ru_bmi, tw_liformula verified and moved to build/pages/.
