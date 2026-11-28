@@ -25,11 +25,11 @@ EN = {
     'How this result is calculated': ['How this {t} result was worked out', 'Behind this {t} result'],
 }
 KO = {
-    '계산 방법': ['{t} 계산 방법', '{t}은 이렇게 계산해요', '{t} 공식 풀이'],
+    '계산 방법': ['{t} 계산 방법', '{t} 계산 공식', '{t} 공식 풀이'],
     '결과 해석': ['{t} 결과 읽는 법', '{t} 결과가 뜻하는 것', '내 {t} 결과 해석'],
     '흔한 실수': ['{t}에서 자주 하는 실수', '{t} 계산 시 주의할 점', '{t} 실수 줄이기'],
     '예제 풀이': ['{t} 예제로 풀어보기', '숫자로 보는 {t} 예시', '{t} 계산 예시'],
-    '자주 묻는 질문': ['{t} 자주 묻는 질문', '{t} 궁금한 점', '{t} Q&A'],
+    '자주 묻는 질문': ['{t} 자주 묻는 질문', '{t}, 많이 묻는 질문', '{t} 궁금한 점 정리'],
     '입력한 값': ['내가 넣은 {t} 값', '{t} 입력값'],
     '단계별 계산': ['{t} 단계별 풀이', '{t} 한 단계씩 보기'],
     '계산 과정': ['이 {t} 결과가 나온 과정', '{t} 계산 과정 보기'],
@@ -55,7 +55,7 @@ Sıkça sorulan sorular|Sık yapılan hatalar|Çözümlü örnek|İlke|Nasıl he
 Ofte stilte spørsmål|Vanlige feil|Regneeksempel|Slik tolker du resultatet|Prinsippet|Slik beregnes det
 Ofte stillede spørgsmål|Almindelige fejl|Sådan læser du resultatet|Princippet|Sådan beregnes det|Trin for trin'''.replace('\n', '|').split('|'))
 
-HEAD = re.compile(r'<(h2|h3)([^>]*)>([^<]{2,60})</\1>')
+HEAD = re.compile(r'<(h2|h3)([^>]*)>([^<]{2,120})</\1>')
 CAP = re.compile(r'(<figcaption>)([^<]{40,400})(</figcaption></figure>\s*<table><tr><th>)([^<]{1,80})</th><th>([^<]{1,80})</th>')
 DLINK = re.compile(r'((?:<a class="hl-dlink"[^>]*>.*?</a>\s*){2,})', re.S)
 
@@ -65,12 +65,15 @@ def topic(s, lang):
     if not m:
         return None, None
     t = html.unescape(re.sub(r'<[^>]+>', '', m.group(1)))
-    t = re.sub(r'\s*[\(（][^)）]*[\)）]\s*', ' ', t)
-    t = re.split(r'\s[–—|:]\s|:\s', t)[0].strip()
+    for _ in range(3):   # 띄어쓰기 뒤 괄호 설명만 뺌 — 401(k) 같은 이름은 살림
+        t = re.sub(r'\s+[\(（][^()（）]*[\)）]', ' ', t)
+    t = re.sub(r'\s+[\(（].*$', '', t).strip()
+    t = re.split(r'\s[–—|:·]\s|:\s', t)[0].strip()
     t = re.sub(r'\b20\d\d(?:[-/–]\d{2,4})?\b', '', t).strip(' -–')
     if not t or len(t) > 70:
         return None, None
     if lang == 'en':
+        t = re.sub(r'\s+(calculator|calc|converter|estimator|checker|tool)s?$', '', t, flags=re.I).strip() or t
         T = t
         low = ' '.join(w if (w.isupper() and len(w) > 1) or re.search(r'[A-Z].*[A-Z]', w) else w.lower() for w in t.split())
         return low, T[:1].upper() + T[1:]
@@ -97,7 +100,11 @@ def vary(s, url, lang):
             key = html.unescape(txt).strip()
             if key in seen:
                 return m.group(0)
-            if table is not None and key in table:
+            if lang == 'en' and key.startswith('Understanding the') and key.endswith('concept and principle'):
+                new = pick(['What the {t} measures', 'About the {t}', 'The {t}, explained'], url + 'cp').format(t=t, T=T)
+            elif lang == 'ko' and key.endswith('개념과 원리'):
+                new = pick(['{t} 한눈에 이해하기', '{t}의 뜻과 원리'], url + 'cp').format(t=t, T=T)
+            elif table is not None and key in table:
                 new = pick(table[key], url + key).format(t=t, T=T)
             elif table is None and key in OTHER:
                 new = f'{key} – {t}'
@@ -105,21 +112,29 @@ def vary(s, url, lang):
                 return m.group(0)
             seen.add(key); n += 1
             return f'<{tag}{attrs}>{html.escape(new, quote=False)}</{tag}>'
-        s = HEAD.sub(rep, s)
+        # 스크립트 안의 문자열은 건드리지 않음
+        parts = re.split(r'(<script\b[\s\S]*?</script>)', s)
+        s = ''.join(x if x.startswith('<script') else HEAD.sub(rep, x) for x in parts)
 
     def cap(m):
         nonlocal n
         n += 1
         x, y = m.group(4).strip(), m.group(5).strip()
         return f'{m.group(1)}{x} → {y}{m.group(3)}{m.group(4)}</th><th>{m.group(5)}</th>'
-    s = CAP.sub(cap, s)
+    parts = re.split(r'(<script\b[\s\S]*?</script>)', s)
+    s = ''.join(x if x.startswith('<script') else CAP.sub(cap, x) for x in parts)
 
     def nav(m):
         nonlocal n
         n += 1
         return '<nav class="hl-dnav" style="display:block">' + m.group(1) + '</nav>'
     if '<nav class="hl-dnav"' not in s:
-        s = DLINK.sub(nav, s, count=1)
+        parts = re.split(r'(<script\b[\s\S]*?</script>)', s)
+        done = False
+        for i, x in enumerate(parts):
+            if not done and not x.startswith('<script') and DLINK.search(x):
+                parts[i] = DLINK.sub(nav, x, count=1); done = True
+        s = ''.join(parts)
     return s, n
 
 
