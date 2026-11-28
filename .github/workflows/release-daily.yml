@@ -4,7 +4,7 @@ on:
     inputs:
       n:
         description: '오늘 올릴 개수'
-        default: '100'
+        default: '200'
   schedule:
     - cron: '37 21 * * *'   # 매일 오전 6시 37분(한국)
 permissions:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: 다음 묶음 빼기
-        run: python3 build/kw/release_next.py ${{ github.event.inputs.n || '100' }}
+        run: python3 build/kw/release_next.py ${{ github.event.inputs.n || '200' }}
       - name: 저장 후 배포
         env:
           GH_TOKEN: ${{ github.token }}
