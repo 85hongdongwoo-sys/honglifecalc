@@ -92,3 +92,12 @@ html:not(#hlpro) body .hlh-fortune{background:linear-gradient(135deg,#1E1B4B 0%,
 html:not(#hlpro) body .hlh-fortune,html:not(#hlpro) body .hlh-fortune *{color:#fff!important}
 html:not(#hlpro) body .hlh-fortune b{color:#FDE68A!important}
 html:not(#hlpro) body .big{padding:14px 18px!important;box-sizing:border-box}
+
+/* 2026-11-28: 상단 막대 안 언어 목록(.langs)이 여러 줄로 쌓여 화면을 가리던 문제 — 한 줄 가로 스크롤로 */
+html:not(#hlpro) body .brandbar .langs{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:4px!important;max-width:100%;padding:2px 0!important;margin:0!important}
+html:not(#hlpro) body .brandbar .langs::-webkit-scrollbar{display:none}
+html:not(#hlpro) body .brandbar .langs a{flex:0 0 auto;font-size:13px!important;font-weight:600!important;padding:4px 9px!important;border-radius:999px;background:rgba(15,23,42,.05);text-decoration:none!important;white-space:nowrap;min-height:0!important;height:auto!important}
+html:not(#hlpro) body .brandbar>.in{flex-wrap:nowrap!important;gap:10px!important;min-width:0}
+html:not(#hlpro) body .brandbar>.in>*{flex:0 0 auto}
+html:not(#hlpro) body .brandbar>.in>.langs{flex:1 1 auto!important;min-width:0!important;justify-content:flex-start!important}
+@media (max-width:520px){html:not(#hlpro) body .brandbar>.in>a.logo{font-size:0!important;gap:0!important}html:not(#hlpro) body .brandbar>.in>a.logo img{font-size:16px}}

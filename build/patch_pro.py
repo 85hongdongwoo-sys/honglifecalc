@@ -6,7 +6,7 @@ import os, re, sys
 root = sys.argv[1] if len(sys.argv) > 1 else '_site'
 TAG = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">'
-       '<link rel="stylesheet" href="/assets/hl-pro.css?v=3" id="hl-pro">')
+       '<link rel="stylesheet" href="/assets/hl-pro.css?v=4" id="hl-pro">')
 MOTION = '<script src="/assets/hl-motion.js?v=2" defer></script>'  # 메인(첫 화면)만
 SKIP_TOP = {'assets', 'embed'}   # 2026-11-28: 한국어(/ko/)도 같은 디자인
 LANG = re.compile(r'<html[^>]*\blang="([^"]*)"', re.I)
