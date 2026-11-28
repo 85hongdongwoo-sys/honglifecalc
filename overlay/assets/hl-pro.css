@@ -5,6 +5,9 @@
   --pro-bg:#F8FAFC;--pro-acc:#4F46E5;--pro-acc2:#7C3AED;--pro-acc-soft:#EEF2FF;--pro-card:#FFFFFF;--pro-r:20px;
   --pro-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px -12px rgba(15,23,42,.10);
   --pro-font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif}
+html[lang^="ko"]{--pro-font:"Pretendard Variable",Pretendard,"Inter",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}
+html[lang^="ko"]:not(#hlpro) body h1,html[lang^="ko"]:not(#hlpro) body .hm-h{word-break:keep-all;letter-spacing:-.03em!important}
+html[lang^="ko"]:not(#hlpro) body main p,html[lang^="ko"]:not(#hlpro) body main li{word-break:keep-all}
 html:not(#hlpro) body{background:var(--pro-bg)!important;background-image:radial-gradient(1200px 420px at 50% -120px,rgba(99,102,241,.10),transparent 70%)!important;background-repeat:no-repeat!important;color:var(--pro-ink)!important;font-family:var(--pro-font)!important;-webkit-font-smoothing:antialiased}
 html:not(#hlpro) body *{font-family:inherit}
 html:not(#hlpro) body code,html:not(#hlpro) body pre,html:not(#hlpro) body .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace!important}
@@ -36,7 +39,7 @@ html:not(#hlpro) body main .card,html:not(#hlpro) body .wrap>.card{border-top-co
 html:not(#hlpro) body h2{color:var(--pro-ink)!important;font-weight:750!important;letter-spacing:-.02em!important}
 html:not(#hlpro) body h3{color:var(--pro-ink)!important;font-weight:700!important;letter-spacing:-.01em!important}
 html:not(#hlpro) body main p,html:not(#hlpro) body main li{color:#334155}
-html:not(#hlpro) body a{color:var(--pro-acc);text-underline-offset:3px}
+html:not(#hlpro) body main p a,html:not(#hlpro) body main li a,html:not(#hlpro) body article p a,html:not(#hlpro) body article li a{color:var(--pro-acc);text-underline-offset:3px}
 
 /* 입력칸: 흰 바탕, 얇은 테두리, 포커스 링 */
 html:not(#hlpro) body #form label.f>span{color:var(--pro-sub)!important;font-weight:600!important;font-size:13.5px!important;letter-spacing:.01em}
@@ -80,3 +83,12 @@ html:not(#hlpro) body .hlh-pop a,html:not(#hlpro) body .hlh-fortune{background:#
 html:not(#hlpro) body .hlh-pop a:hover{transform:translateY(-2px);border-color:rgba(79,70,229,.35)!important;box-shadow:0 10px 24px -14px rgba(79,70,229,.45)!important}
 html:not(#hlpro) body .hlh-pop em{color:var(--pro-acc)!important;font-style:normal;font-weight:800}
 html:not(#hlpro) body #out.card{box-shadow:var(--pro-shadow)!important;border-top:1px solid var(--pro-line)!important}
+
+/* 한국어 페이지 보정 (2026-11-28): 큰 흰 판 → 떠 있는 카드, 어두운 띠 위 글자 대비, 도장(stamp)·메타 글씨 */
+html:not(#hlpro) body>div.wrap{background:transparent!important;border:0!important;box-shadow:none!important}
+html:not(#hlpro) body header.top .stamp,html:not(#hlpro) body .stamp{background:var(--pro-acc-soft)!important;color:var(--pro-acc)!important;border:1px solid rgba(79,70,229,.15)!important;border-radius:999px!important;font-weight:600!important}
+html:not(#hlpro) body .brand .meta,html:not(#hlpro) body .brandbar .meta{color:var(--pro-mute)!important}
+html:not(#hlpro) body .hlh-fortune{background:linear-gradient(135deg,#1E1B4B 0%,#4338CA 60%,#7C3AED 100%)!important;border:0!important}
+html:not(#hlpro) body .hlh-fortune,html:not(#hlpro) body .hlh-fortune *{color:#fff!important}
+html:not(#hlpro) body .hlh-fortune b{color:#FDE68A!important}
+html:not(#hlpro) body .big{padding:14px 18px!important;box-sizing:border-box}
