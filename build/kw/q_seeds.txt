@@ -1,31 +1,201 @@
-# 페이지|주제어 — 사람들이 묻는 질문 모으기 (questions.py)
-/uk/income-tax-calculator.html|income tax
-/uk/take-home-pay-calculator.html|take home pay
-/mx/calculadora-isr.html|isr
-/uk/stamp-duty-calculator.html|stamp duty
-/uk/state-pension-calculator.html|state pension
-/uk/capital-gains-tax-calculator.html|capital gains tax
-/uk/dividend-tax-calculator.html|dividend tax
-/uk/statutory-sick-pay-calculator.html|statutory sick pay
-/uk/maternity-pay-calculator.html|maternity pay
-/uk/carers-allowance-calculator.html|carers allowance
-/uk/mortgage-calculator.html|mortgage
-/us/roth-ira-calculator.html|roth ira
-/us/hsa-calculator.html|hsa
-/us/fica-tax-calculator.html|fica
-/us/gift-tax-calculator.html|gift tax
-/us/estate-tax-calculator.html|estate tax
-/us/eitc-calculator.html|earned income credit
-/us/overtime-pay-calculator.html|overtime pay
-/us/benefits/social-security-cola-2027.html|social security cola
-/us/benefits/pell-grant.html|pell grant
-/tr/brutten-nete-maas-hesaplama.html|brütten nete maaş
-/tr/kidem-tazminati-hesaplama.html|kıdem tazminatı
-/vn/thue-thu-nhap-ca-nhan.html|thuế thu nhập cá nhân
-/pl/kalkulator-vat.html|vat
-/nl/bijtelling-auto-2026.html|bijtelling
-/fr/allocation-rentree-scolaire.html|allocation rentrée scolaire
-/pt/simulador-irs-jovem.html|irs jovem
-/se/foraldrapenning-kalkylator.html|föräldrapenning
-/no/lonn-etter-skatt-kalkulator.html|lønn etter skatt
-/ru/zarplata-na-ruki.html|зарплата на руки
+# 200개 묶음 1 (2026-11-28)
+/en/biz/debt-to-asset-ratio-calculator.html|debt-to-asset ratio
+/en/biz/debt-to-capital-ratio-calculator.html|debt-to-capital ratio
+/en/biz/ebit-calculator.html|ebit
+/en/biz/fixed-asset-turnover-ratio-calculator.html|fixed asset turnover ratio
+/en/biz/income-elasticity-of-demand-calculator.html|income elasticity of demand
+/en/biz/irr-calculator.html|internal rate of return
+/en/biz/net-profit-margin-calculator.html|net profit margin
+/en/biz/npv-calculator.html|net present value
+/en/biz/price-elasticity-of-demand-calculator.html|price elasticity of demand
+/en/biz/profitability-index-calculator.html|profitability index
+/en/biz/receivables-turnover-ratio-calculator.html|receivables turnover ratio
+/en/biz/roas-calculator.html|roas
+/en/biz/total-asset-turnover-calculator.html|total asset turnover
+/en/biz/units-of-production-depreciation-calculator.html|units-of-production depreciation
+/en/calculator.html|calculator
+/en/convert/cooking-measurement-converter.html|cooking measurement converter
+/en/convert/current-converter.html|current converter
+/en/convert/energy-converter.html|energy converter
+/en/convert/field-of-view-calculator.html|field of view
+/en/convert/force-converter.html|force converter
+/en/convert/kinematic-viscosity-converter.html|kinematic viscosity converter
+/en/convert/length-converter.html|length converter
+/en/convert/power-converter.html|power converter
+/en/convert/torque-converter.html|torque converter
+/en/convert/volume-converter.html|volume converter
+/en/convert/weight-converter.html|weight converter
+/en/health/absolute-eosinophil-count-calculator.html|absolute eosinophil count
+/en/health/absolute-lymphocyte-count-calculator.html|absolute lymphocyte count
+/en/health/alcohol-spending-calculator.html|alcohol spending
+/en/health/anc-calculator.html|anc
+/en/health/baby-percentile-calculator.html|baby growth percentile
+/en/health/bmr-calculator-all-formulas.html|bmr
+/en/health/body-fat-navy-calculator.html|body fat
+/en/health/cardiac-index-calculator.html|cardiac index
+/en/health/cardiac-output-calculator.html|cardiac output
+/en/health/egfr-calculator.html|egfr
+/en/health/ejection-fraction-calculator.html|ejection fraction
+/en/health/fagerstrom-test-for-nicotine-dependence-calculator.html|fagerström test for nicotine dependence
+/en/health/free-testosterone-calculator.html|free testosterone
+/en/health/ideal-weight-calculator.html|ideal body weight
+/en/health/inr-calculator.html|inr
+/en/health/kt-v-daugirdas-calculator.html|kt/v
+/en/health/macro-calculator.html|macro
+/en/health/pediatric-blood-pressure-calculator.html|pediatric blood pressure
+/en/health/pregnancy-test-calculator.html|pregnancy test
+/en/health/protein-creatinine-ratio-calculator.html|protein creatinine ratio
+/en/health/protein-intake-calculator.html|protein intake
+/en/health/race-time-predictor.html|race time predictor
+/en/health/running-pace-calculator.html|running pace
+/en/health/stroke-volume-calculator.html|stroke volume
+/en/health/sunscreen-calculator.html|sunscreen
+/en/health/tdee-calculator.html|tdee
+/en/health/water-intake-calculator.html|daily water intake
+/en/home/air-conditioner-running-cost-calculator.html|air conditioner running cost
+/en/home/bakers-percentage-calculator.html|baker’s percentage
+/en/home/cat-pregnancy-calculator.html|cat pregnancy
+/en/home/dough-temperature-calculator.html|desired dough temperature
+/en/home/gematria-calculator.html|gematria
+/en/home/goat-gestation-calculator.html|goat gestation
+/en/home/grade-calculator.html|grade
+/en/home/greek-gematria-calculator.html|greek gematria
+/en/home/horse-gestation-calculator.html|horse gestation
+/en/home/lumber-calculator.html|lumber
+/en/home/miracle-calculator.html|miracle
+/en/home/paint-calculator.html|paint
+/en/home/pig-gestation-calculator.html|pig gestation
+/en/home/rabbit-gestation-calculator.html|rabbit gestation
+/en/home/recipe-scaler.html|recipe scaler
+/en/home/sheep-gestation-calculator.html|sheep gestation
+/en/home/standby-power-cost-calculator.html|standby
+/en/home/subscription-cost-calculator.html|subscription cost
+/en/home/thanksgiving-calculator.html|thanksgiving
+/en/home/transmission-calculator.html|transmission gear
+/en/home/turkey-size-calculator.html|turkey size
+/en/home/yes-or-no-generator.html|yes or no generator
+/en/iq/average-iq-by-age.html|average iq by age
+/en/iq/average-iq-by-occupation.html|average iq by occupation
+/en/iq/iq-percentile-chart.html|iq percentile chart
+/en/korean-name-generator.html|korean name generator
+/en/korean-saju-calculator.html|korean saju
+/en/loan-calculator.html|loan
+/en/math/average-calculator.html|average
+/en/math/chi-square-distribution-calculator.html|chi-square distribution
+/en/math/chi-square-test-calculator.html|chi-square test of independence
+/en/math/circle-calculator.html|circle
+/en/math/cofactor-matrix-calculator.html|cofactor matrix
+/en/math/cramers-rule-calculator.html|cramer’s rule
+/en/math/cubic-regression-calculator.html|cubic regression
+/en/math/degrees-of-freedom-calculator.html|degrees of freedom
+/en/math/digit-sum-calculator.html|digit sum
+/en/math/expanded-form-calculator.html|expanded form
+/en/math/exponential-regression-calculator.html|exponential regression
+/en/math/f-distribution-calculator.html|f distribution
+/en/math/linear-combination-calculator.html|linear combination
+/en/math/linear-independence-calculator.html|linear independence
+/en/math/long-subtraction-calculator.html|long subtraction
+/en/math/multiplying-polynomials-calculator.html|multiplying polynomials
+/en/math/normal-approximation-binomial-calculator.html|normal approximation to the binomial
+/en/math/paired-t-test-calculator.html|paired t-test
+/en/math/percent-error-calculator.html|percent error
+/en/math/perfect-square-calculator.html|perfect square
+/en/math/place-value-calculator.html|place value
+/en/math/poisson-distribution-calculator.html|poisson distribution
+/en/math/polynomial-regression-calculator.html|polynomial regression
+/en/math/pooled-standard-deviation-calculator.html|pooled standard deviation
+/en/math/quadratic-equation-solver.html|quadratic equation solver
+/en/math/random-number-generator.html|random number generator
+/en/math/rational-zeros-calculator.html|rational zeros
+/en/math/sample-size-calculator.html|sample size
+/en/math/standard-deviation-calculator.html|standard deviation
+/en/math/svd-calculator.html|svd
+/en/math/system-of-equations-2x2-solver.html|system of equations solver
+/en/math/volume-calculator.html|volume
+/en/money/apr-calculator.html|apr
+/en/money/biweekly-mortgage-calculator.html|biweekly mortgage payment
+/en/money/black-scholes-calculator.html|black-scholes
+/en/money/coast-fire-calculator.html|coast fire
+/en/money/compound-interest-loan-calculator.html|compound interest loan
+/en/money/daily-savings-growth-calculator.html|daily savings
+/en/money/fire-number-calculator.html|fire number
+/en/money/interest-only-loan-calculator.html|interest-only loan
+/en/money/lottery-annuity-calculator.html|lottery annuity
+/en/money/money-multiplier-calculator.html|money multiplier
+/en/money/mortgage-recast-calculator.html|mortgage recast
+/en/money/mpc-calculator.html|mpc
+/en/money/mps-calculator.html|mps
+/en/money/paycheck-split-calculator.html|paycheck split
+/en/money/principal-equal-loan-calculator.html|equal principal repayment
+/en/money/reserve-ratio-calculator.html|reserve ratio
+/en/money/retirement-savings-depletion-calculator.html|how long will my retirement savings last
+/en/money/salary-inflation-calculator.html|salary inflation
+/en/money/salary-per-second-calculator.html|salary per second
+/en/money/savings-rate-calculator.html|savings rate
+/en/money/simple-interest-loan-calculator.html|simple interest loan
+/en/money/what-if-i-had-invested-calculator.html|what if i had invested
+/en/ovulation-calculator.html|ovulation
+/en/percentage-calculator.html|percentage
+/en/personality-test.html|free 16 personality types test
+/en/pregnancy-due-date-calculator.html|pregnancy due date
+/en/science/absolute-humidity-calculator.html|absolute humidity
+/en/science/ac-power-calculator.html|ac power
+/en/science/angular-acceleration-calculator.html|angular acceleration
+/en/science/angular-displacement-calculator.html|angular displacement
+/en/science/boost-converter-calculator.html|boost converter
+/en/science/brayton-cycle-calculator.html|brayton cycle
+/en/science/buck-converter-calculator.html|buck converter
+/en/science/combined-gas-law-calculator.html|combined gas law
+/en/science/concentration-converter.html|concentration converter
+/en/science/current-divider-calculator.html|current divider
+/en/science/daltons-law-partial-pressure-calculator.html|partial pressure
+/en/science/dew-point-calculator.html|dew point & relative humidity
+/en/science/diffusion-calculator.html|diffusion
+/en/science/distance-to-horizon-calculator.html|distance to horizon
+/en/science/earth-curvature-calculator.html|earth curvature
+/en/science/earth-pressure-calculator.html|lateral earth pressure
+/en/science/electron-configuration-calculator.html|electron configuration
+/en/science/empirical-formula-calculator.html|empirical formula
+/en/science/flyback-converter-calculator.html|flyback converter
+/en/science/fuel-injector-calculator.html|fuel injector size
+/en/science/fuel-pump-calculator.html|fuel pump
+/en/science/gas-density-calculator.html|gas density
+/en/science/gravitational-force-calculator.html|gravitational force
+/en/science/haversine-distance-calculator.html|great-circle distance
+/en/science/ideal-gas-law-calculator.html|ideal gas law
+/en/science/kepler-third-law-calculator.html|kepler’s third law
+/en/science/latent-heat-calculator.html|latent heat
+/en/science/ldo-regulator-heat-calculator.html|linear regulator
+/en/science/material-removal-rate-calculator.html|material removal rate
+/en/science/mixing-temperature-calculator.html|mixing temperature
+/en/science/molar-mass-calculator.html|molar mass
+/en/science/oblique-shock-calculator.html|oblique shock
+/en/science/ohms-law-calculator.html|ohm’s law
+/en/science/pendulum-calculator.html|pendulum period
+/en/science/poissons-ratio-calculator.html|poisson's ratio
+/en/science/psychrometric-calculator.html|psychrometric
+/en/science/relative-humidity-from-dew-point-calculator.html|relative humidity from dew point
+/en/science/resistors-series-parallel-calculator.html|resistors in series & parallel
+/en/science/shaft-torsion-calculator.html|shaft torsion
+/en/science/specific-heat-calculator.html|heat energy
+/en/science/terzaghi-bearing-capacity-calculator.html|bearing capacity
+/en/science/three-phase-power-calculator.html|three-phase power
+/en/science/voltage-drop-calculator.html|voltage drop
+/en/science/weld-strength-calculator.html|fillet weld strength
+/en/scientific-calculator.html|scientific
+/en/sports/elo-rating-calculator.html|elo rating
+/en/sports/mouse-sensitivity-edpi-calculator.html|mouse sensitivity
+/en/sports/sensitivity-converter-games.html|game sensitivity converter
+/en/tech/base64-encoder-decoder.html|base64 encoder & decoder
+/en/tech/bit-count-calculator.html|bit count
+/en/tech/bitwise-calculator.html|bitwise
+/en/tech/subnet-calculator.html|ipv4 subnet
+/en/zodiac/2027-year-of-the-goat.html|year of the goat
+/en/zodiac/chinese-zodiac-compatibility-chart.html|chinese zodiac compatibility chart
+/es/calculator.html|calculadora
+/es/pregnancy-due-date-calculator.html|de fecha probable de parto
+/es/scientific-calculator.html|científica
+/fr/age-calculator.html|de l’âge
+/fr/allocation-rentree-scolaire.html|allocation de rentrée scolaire
+/fr/bmi-calculator.html|imc
+/fr/calcul-moyenne-bac.html|moyenne bac
