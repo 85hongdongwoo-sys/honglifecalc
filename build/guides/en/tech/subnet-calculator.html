@@ -1,0 +1,38 @@
+<section class="hl-guide" id="guide" style="--g:#0e7490;--g2:#e7f5f9" aria-labelledby="g-h">
+<p class="g-kick">IPv4 subnetting cheat sheet</p>
+<h2 id="g-h">IPv4 subnetting made simple – CIDR to subnet mask table, usable hosts, and a step-by-step example</h2>
+<div class="g-ans"><b>Quick reference:</b> a <b>/24</b> is mask <b>255.255.255.0</b> with <b>256 addresses and 254 usable hosts</b>. Each extra bit halves it: /25 = 126 hosts, /26 = 62, /27 = 30, /28 = 14, /29 = 6, /30 = 2. Usable hosts = 2<sup>(32 − prefix)</sup> − 2.</div>
+
+<p>Subnetting splits one IP range into smaller networks – for an office floor, a guest Wi-Fi, a lab or a cloud VPC. It looks intimidating because of the binary, but day to day you mostly need the table below and one rule: the prefix length (/24, /26…) says how many bits belong to the network, and the rest are for hosts.</p>
+
+<h3>CIDR to subnet mask</h3>
+<table class="g-cards"><thead><tr><th>Prefix</th><th>Subnet mask</th><th class="n">Addresses</th><th class="n">Usable hosts</th></tr></thead><tbody>
+<tr><td data-l="Prefix">/8</td><td data-l="Mask">255.0.0.0</td><td class="n" data-l="Addresses">16,777,216</td><td class="n" data-l="Hosts">16,777,214</td></tr>
+<tr><td data-l="Prefix">/16</td><td data-l="Mask">255.255.0.0</td><td class="n" data-l="Addresses">65,536</td><td class="n" data-l="Hosts">65,534</td></tr>
+<tr><td data-l="Prefix">/24</td><td data-l="Mask">255.255.255.0</td><td class="n" data-l="Addresses">256</td><td class="n" data-l="Hosts">254</td></tr>
+<tr><td data-l="Prefix">/25</td><td data-l="Mask">255.255.255.128</td><td class="n" data-l="Addresses">128</td><td class="n" data-l="Hosts">126</td></tr>
+<tr><td data-l="Prefix">/26</td><td data-l="Mask">255.255.255.192</td><td class="n" data-l="Addresses">64</td><td class="n" data-l="Hosts">62</td></tr>
+<tr><td data-l="Prefix">/27</td><td data-l="Mask">255.255.255.224</td><td class="n" data-l="Addresses">32</td><td class="n" data-l="Hosts">30</td></tr>
+<tr><td data-l="Prefix">/28</td><td data-l="Mask">255.255.255.240</td><td class="n" data-l="Addresses">16</td><td class="n" data-l="Hosts">14</td></tr>
+<tr><td data-l="Prefix">/29</td><td data-l="Mask">255.255.255.248</td><td class="n" data-l="Addresses">8</td><td class="n" data-l="Hosts">6</td></tr>
+<tr><td data-l="Prefix">/30</td><td data-l="Mask">255.255.255.252</td><td class="n" data-l="Addresses">4</td><td class="n" data-l="Hosts">2</td></tr>
+</tbody></table>
+<p class="g-cap">Two addresses in each subnet are reserved: the network address and the broadcast address. /31 (point-to-point links) and /32 (single host) are special cases.</p>
+
+<h3>Example: split 192.168.10.0/24 into four subnets</h3>
+<ol class="g-steps">
+<li>Four subnets need 2 extra network bits (2² = 4), so the new prefix is <b>/26</b> (mask 255.255.255.192).</li>
+<li>Each /26 has 64 addresses, so the blocks start every 64: <b>.0, .64, .128, .192</b>.</li>
+<li>First subnet: network 192.168.10.0, usable .1 to .62, broadcast .63.</li>
+<li>Second: .64 network, .65–.126 usable, .127 broadcast – and so on for .128 and .192.</li>
+</ol>
+
+<h3>Questions people ask about IPv4 subnets</h3>
+<details class="g-q"><summary>What is an IPv4 subnet mask?</summary><div>A 32-bit number that marks which part of an IP address is the network and which part identifies the device. 255.255.255.0 means the first three numbers are the network and the last one is the host.</div></details>
+<details class="g-q"><summary>How do I find my subnet mask?</summary><div>On Windows, run <code>ipconfig</code> in Command Prompt; on macOS, open System Settings → Network → Details; on Linux, run <code>ip addr</code>. Home routers almost always use 255.255.255.0 (/24).</div></details>
+<details class="g-q"><summary>What subnet mask do I need for 50 hosts?</summary><div>You need at least 50 usable addresses, so /26 (62 hosts, mask 255.255.255.192). A /27 only gives 30.</div></details>
+<details class="g-q"><summary>What are IPv4 address classes?</summary><div>An older system: Class A (/8 by default), Class B (/16) and Class C (/24). Modern networks use CIDR instead, which allows any prefix length, but the class names are still used in exams and conversation.</div></details>
+<details class="g-q"><summary>Which IP ranges are private?</summary><div>10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16 are reserved for private networks (RFC 1918) and aren’t routed on the public internet.</div></details>
+
+<div class="g-src"><b>Sources</b> (checked 28 Nov 2026): IETF <a href="https://www.rfc-editor.org/rfc/rfc4632" rel="nofollow noopener">RFC 4632 (CIDR)</a> and <a href="https://www.rfc-editor.org/rfc/rfc1918" rel="nofollow noopener">RFC 1918 (private address space)</a>. Table calculated by Hong Life Calculators.</div>
+</section>
