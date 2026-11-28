@@ -182,6 +182,133 @@ PAGES['mx'] = dict(
 """,
 )
 
+# ---------------- 프랑스 (fr) · 일본 (ja) · 한국 (ko) — 2026-11-28 ----------------
+T['fr'] = {
+  'f_head': 'Votre traitement', 'first': 'Date de la première injection', 'dose': 'Dose hebdomadaire actuelle', 'since': 'Date de début de cette dose',
+  'last': 'Date de la dernière injection', 'unit': 'Unité de poids', 'w0': 'Poids au départ', 'w1': 'Poids aujourd’hui', 'ht': 'Taille (cm, pour l’IMC)',
+  'prod': 'Votre stylo', 'p_kwik': 'Stylo KwikPen (4 doses par stylo)', 'p_pen': 'Stylo unidose',
+  'lab_mg': '', 'lab_ml': '', 'conc_hint': '', 'r_over': '',
+  'r_step': 'Palier de dose', 'of6': 'sur 6', 'r_weeks': 'Semaines à cette dose', 'r_next': 'Date la plus proche pour passer au palier suivant (RCP)',
+  'r_max': 'Vous êtes à la dose maximale (15 mg).', 'r_fast': 'Cette dose a été atteinte plus vite que ne le prévoit le RCP (au moins 4 semaines par palier). Parlez-en à votre médecin.',
+  'r_ok': 'Votre palier correspond au schéma du RCP.', 'r_due': 'Prochaine injection', 'r_late': 'jours de retard',
+  'r_take': 'Dose oubliée : 4 jours (96 heures) ou moins – faites l’injection dès que possible.',
+  'r_skip': 'Dose oubliée : plus de 4 jours – ne la faites pas et reprenez le jour habituel',
+  'r_you': 'Vous êtes traité(e) depuis', 'r_lost': 'Poids perdu', 'r_pct': 'Évolution depuis le début', 'r_bmi': 'IMC aujourd’hui',
+  'r_trial': 'Moyenne de l’étude SURMOUNT-1 à 72 semaines à cette dose', 'r_vol': '', 'r_units': '', 'units': '',
+  'r_pen': 'Rien à mesurer : le stylo délivre la dose complète. Ne prélevez jamais de médicament dans un stylo avec une seringue.',
+  'r_kwik': 'Le KwikPen délivre toujours 0,6 ml par dose. Ne réglez pas une autre quantité et ne prélevez pas de dose supplémentaire ; le reste de solution est jeté avec le stylo.',
+  'sched': 'Vos 6 prochaines injections', 'chart': 'Votre évolution de poids comparée à l’étude (72 semaines)',
+  'you': 'Vous', 'placebo': 'Placebo', 'fill': 'Indiquez les dates et la dose', 'na': '—',
+  'warn': '<b>Important :</b> cet outil compare vos données au RCP ; il ne décide pas de votre dose. Ne modifiez jamais votre dose seul(e). Mounjaro est un médicament sur ordonnance.',
+  'wk': 'semaines', 'days': 'jours', 'kg': 'kg', 'lb': 'lb',
+  'r_cost': 'Prix public de votre dosage', 'r_pen1': 'par stylo (4 semaines)', 'r_year': 'Environ un an (13 stylos)',
+  'cost_note': 'Prix publics indiqués par VIDAL (2026). Remboursement à 65 % seulement si les conditions sont remplies ; sinon, le prix est entièrement à votre charge.',
+  'r_bmi0': 'IMC au départ', 'rb_h': 'Conditions de remboursement (contrôle du poids)', 'rb_cm': 'J’ai au moins une comorbidité reconnue (diabète de type 2, hypertension, apnée du sommeil, maladie cardiovasculaire…)',
+  'rb_fail': 'Une prise en charge nutritionnelle bien conduite pendant 6 mois a fait perdre moins de 5 % du poids',
+  'rb_yes': 'Vous semblez remplir les critères de remboursement à 65 % (IMC ≥ 40, ou ≥ 35 avec une comorbidité, après échec de la prise en charge nutritionnelle). La première prescription doit venir d’un spécialiste de l’obésité.',
+  'rb_no': 'Vous ne semblez pas remplir les critères de remboursement pour le contrôle du poids ; le traitement peut être prescrit mais reste à votre charge.',
+}
+PAGES['fr'] = dict(
+  tpl=sys.argv[1].replace('/en/health/tdee-calculator.html','/fr/bmi-calculator.html'), lang='fr', t='fr',
+  path='/fr/calcul-dose-mounjaro.html', hub='/fr/', products=['kwik'], ht='168',
+  title='Calcul dose Mounjaro – Paliers, dose oubliée, perte de poids, prix et remboursement (tirzépatide)',
+  desc='Mounjaro (tirzépatide) KwikPen : vérifiez votre palier (2,5 mg pendant 4 semaines puis +2,5 mg toutes les 4 semaines jusqu’à 15 mg), vos dates d’injection, la conduite en cas d’oubli, votre perte de poids face à SURMOUNT-1, le prix (176,10 € à 433,80 €) et les conditions de remboursement à 65 %.',
+  h1='Calcul de <b>dose Mounjaro</b> (paliers, poids, prix &amp; remboursement)',
+  kicker='🇫🇷 Santé', lead='Pour les personnes à qui Mounjaro a déjà été prescrit. Les résultats se mettent à jour en direct.',
+  brand='Hong Life Calculators', hubname='Calculateurs France',
+  foot='À titre informatif uniquement – ni diagnostic ni avis médical. Suivez toujours la dose indiquée par votre médecin et votre pharmacien.',
+  foot_links='<a href="/">Calculateurs par pays</a> · <a href="/privacy.html">Confidentialité</a> · <a href="/report-error.html">Signaler une erreur</a>',
+  reviewed='Dernière vérification : novembre 2026',
+  xdata={'price': {'2.5': 176.10, '5': 237.68, '7.5': 335.95, '10': 335.95, '12.5': 433.80, '15': 433.80}},
+  extra_js=r"""
+ { const ht=v('ht'),w0=v('w0'),u=$('u').value; if(isFinite(ht)&&ht>0&&isFinite(w0)){ const kg0=u==='lb'?w0*0.45359237:w0,b0=kg0/Math.pow(ht/100,2),cm=$('rbcm').checked,fl=$('rbfail').checked;
+   o+='<div class="mj-sec">'+T.rb_h+'</div>'+kv([[T.r_bmi0,nf(b0)]]); o+=((b0>=40||(b0>=35&&cm))&&fl)?'<p class="mj-ok">'+T.rb_yes+'</p>':'<p class="mj-info">'+T.rb_no+'</p>'; }
+   const pr=X.price[String(dose)]; if(pr){ o+='<div class="mj-sec">'+T.r_cost+'</div>'+kv([[T.r_cost,pr.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' € '+T.r_pen1],[T.r_year,nf(pr*13,0)+' €']])+'<p class="mj-info">'+T.cost_note+'</p>'; } }
+""",
+)
+PAGES['fr']['extra_form'] = '<div class="mj-sec">' + T['fr']['rb_h'] + '</div><label class="chk"><input type="checkbox" id="rbcm"> ' + T['fr']['rb_cm'] + '</label><label class="chk"><input type="checkbox" id="rbfail"> ' + T['fr']['rb_fail'] + '</label>'
+
+T['ja'] = {
+  'f_head': '治療の状況', 'first': '初回注射日', 'dose': '現在の週1回の用量', 'since': 'この用量を始めた日',
+  'last': '前回の注射日', 'unit': '体重の単位', 'w0': '開始時の体重', 'w1': '今日の体重', 'ht': '身長（cm、BMI用）',
+  'prod': '製剤', 'p_pen': 'アテオス（単回使用オートインジェクター）', 'p_kwik': 'クイックペン（4回分）',
+  'lab_mg': '', 'lab_ml': '', 'conc_hint': '', 'r_over': '',
+  'r_step': '用量の段階', 'of6': '/ 6', 'r_weeks': 'この用量での週数', 'r_next': '添付文書上、次に増量できる最も早い日',
+  'r_max': '最大用量（15mg）です。', 'r_fast': '添付文書の「4週間以上の間隔」より早くこの用量に達しています。処方医に確認してください。',
+  'r_ok': '用量の段階は添付文書の増量方法に合っています。', 'r_due': '次回の注射予定日', 'r_late': '日経過',
+  'r_take': '打ち忘れ：4日（96時間）以内です。気づいた時点でできるだけ早く注射してください。',
+  'r_skip': '打ち忘れ：4日を超えています。その回は打たず、次の予定日から再開してください',
+  'r_you': '治療期間', 'r_lost': '減った体重', 'r_pct': '開始時からの変化', 'r_bmi': '現在のBMI',
+  'r_trial': 'SURMOUNT-1試験（72週）のこの用量での平均', 'r_vol': '', 'r_units': '', 'units': '',
+  'r_pen': '測る必要はありません。アテオスは1本で1回分を全量注射します。注射器で薬液を抜き取らないでください。',
+  'r_kwik': 'クイックペンは1回0.6mLの固定量です。量を変えたり、追加の回数分を取り出したりしないでください。',
+  'sched': '次の6回の注射日', 'chart': '体重変化と臨床試験の平均（72週）', 'you': 'あなた', 'placebo': 'プラセボ', 'fill': '日付と用量を入力してください', 'na': '—',
+  'warn': '<b>大切なこと：</b>このツールは入力内容を添付文書と照らし合わせるだけで、用量を決めるものではありません。自己判断で用量を変えないでください。チルゼパチドは処方薬です。',
+  'wk': '週', 'days': '日', 'kg': 'kg', 'lb': 'lb',
+  'r_cost': '薬価（1キット＝1週分）', 'r_pen1': '/週', 'r_month': '4週分（10割）', 'r_3w': '4週分の自己負担（3割）',
+  'cost_note': 'ゼップバウンドの薬価（2025年3月の収載時）。薬価は改定されることがあります。診察料・指導料などは含みません。',
+  'r_bmi0': '開始時のBMI', 'ins_h': '保険適用の目安（ゼップバウンド・肥満症）', 'ins_dis': '高血圧・脂質異常症・2型糖尿病のいずれかがある',
+  'ins_two': '肥満に関連する健康障害が2つ以上ある', 'ins_diet': '実施施設で6か月以上、食事療法・運動療法を行っても効果が不十分',
+  'ins_yes': '最適使用推進ガイドラインの患者要件に当てはまる可能性があります（BMI35以上、またはBMI27以上で健康障害2つ以上）。要件を満たす施設・医師のもとで、最長72週間の投与となります。',
+  'ins_no': '現時点では保険適用の要件に当てはまらない可能性があります。条件や対象施設は主治医に確認してください。',
+}
+PAGES['jp'] = dict(
+  tpl=sys.argv[1].replace('/en/health/tdee-calculator.html','/jp/denkidai-keisan.html'), lang='ja', t='ja',
+  path='/jp/zepbound-mounjaro-yoryo.html', hub='/jp/', products=['pen'], ht='165',
+  title='ゼップバウンド・マンジャロ用量計算ツール｜増量スケジュール・打ち忘れ・体重変化・薬価と保険適用（チルゼパチド）',
+  desc='ゼップバウンド（肥満症）・マンジャロ（2型糖尿病）の用量段階（2.5mgから4週間ごとに2.5mgずつ増量）、注射日、打ち忘れの対応、SURMOUNT-1との体重変化の比較、薬価（2.5mg 3,067円〜15mg 11,242円）と3割負担、保険適用の要件を確認できます。',
+  h1='ゼップバウンド・<b>マンジャロ用量</b>計算（チルゼパチド）',
+  kicker='🇯🇵 健康', lead='すでにチルゼパチドを処方されている方向けです。入力するとすぐ結果が変わります。',
+  brand='Hong Life Calculators', hubname='日本の計算ツール',
+  foot='情報提供のみを目的としており、診断や医学的助言ではありません。用量は必ず医師・薬剤師の指示に従ってください。',
+  foot_links='<a href="/">国別の計算ツール</a> · <a href="/privacy.html">プライバシー</a> · <a href="/report-error.html">誤りを報告</a>',
+  reviewed='最終確認：2026年11月',
+  xdata={'price': {'2.5': 3067, '5': 5797, '7.5': 7721, '10': 8999, '12.5': 10180, '15': 11242}},
+  extra_js=r"""
+ { const ht=v('ht'),w0=v('w0'),u=$('u').value; if(isFinite(ht)&&ht>0&&isFinite(w0)){ const kg0=u==='lb'?w0*0.45359237:w0,b0=kg0/Math.pow(ht/100,2),dis=$('insdis').checked,two=$('instwo').checked,diet=$('insdiet').checked;
+   o+='<div class="mj-sec">'+T.ins_h+'</div>'+kv([[T.r_bmi0,nf(b0)]]); o+=(dis&&diet&&(b0>=35||(b0>=27&&two)))?'<p class="mj-ok">'+T.ins_yes+'</p>':'<p class="mj-info">'+T.ins_no+'</p>'; }
+   const pr=X.price[String(dose)]; if(pr){ o+='<div class="mj-sec">'+T.r_cost+'</div>'+kv([[T.r_cost,nf(pr,0)+'円'+T.r_pen1],[T.r_month,nf(pr*4,0)+'円'],[T.r_3w,nf(Math.round(pr*4*0.3),0)+'円']])+'<p class="mj-info">'+T.cost_note+'</p>'; } }
+""",
+)
+PAGES['jp']['extra_form'] = '<div class="mj-sec">' + T['ja']['ins_h'] + '</div>' + ''.join(f'<label class="chk"><input type="checkbox" id="{i}"> {T["ja"][k]}</label>' for i, k in (('insdis', 'ins_dis'), ('instwo', 'ins_two'), ('insdiet', 'ins_diet')))
+
+T['ko'] = {
+  'f_head': '나의 투약 정보', 'first': '첫 주사 날짜', 'dose': '현재 주 1회 용량', 'since': '이 용량을 시작한 날짜',
+  'last': '마지막 주사 날짜', 'unit': '체중 단위', 'w0': '시작할 때 체중', 'w1': '오늘 체중', 'ht': '키(cm, 체질량지수 계산용)',
+  'prod': '제품', 'p_pen': '프리필드펜(1회용, 1개 1회분)', 'p_kwik': '퀵펜(1개 4회분)',
+  'lab_mg': '', 'lab_ml': '', 'conc_hint': '', 'r_over': '',
+  'r_step': '용량 단계', 'of6': '/ 6단계', 'r_weeks': '이 용량으로 맞은 기간', 'r_next': '허가사항상 다음 단계로 올릴 수 있는 가장 빠른 날',
+  'r_max': '최대 용량(15mg)이에요.', 'r_fast': '허가사항(한 단계에 최소 4주)보다 빨리 이 용량에 도달했어요. 처방한 의사와 꼭 확인하세요.',
+  'r_ok': '지금 용량 단계는 허가된 증량 방법에 맞아요.', 'r_due': '다음 주사 예정일', 'r_late': '일 지남',
+  'r_take': '놓친 주사: 4일(96시간) 이내예요. 생각난 즉시 맞으세요.',
+  'r_skip': '놓친 주사: 4일이 지났어요. 이번 회차는 건너뛰고 원래 요일에 다음 주사를 맞으세요',
+  'r_you': '투약 기간', 'r_lost': '감량한 체중', 'r_pct': '시작 대비 변화', 'r_bmi': '현재 체질량지수',
+  'r_trial': '임상시험(SURMOUNT-1) 72주 평균, 이 용량 기준', 'r_vol': '', 'r_units': '', 'units': '',
+  'r_pen': '양을 잴 필요가 없어요. 프리필드펜은 1개로 1회분을 모두 주사해요. 주사기로 약을 빼내지 마세요.',
+  'r_kwik': '퀵펜은 1회 0.6mL로 고정돼 있어요. 양을 바꾸거나 남은 약으로 추가 회차를 만들지 마세요. 4회 후 남은 약은 펜과 함께 버려요.',
+  'sched': '앞으로 6번의 주사 날짜', 'chart': '내 체중 변화와 임상시험 평균 비교(72주)', 'you': '나', 'placebo': '위약', 'fill': '날짜와 용량을 넣어 주세요', 'na': '—',
+  'warn': '<b>꼭 읽어 주세요:</b> 이 도구는 입력한 내용을 허가사항과 비교해 줄 뿐, 용량을 정하지 않아요. 스스로 용량을 바꾸지 마세요. 마운자로는 전문의약품이에요.',
+  'wk': '주', 'days': '일', 'kg': 'kg', 'lb': 'lb',
+  'r_bmi0': '시작할 때 체질량지수', 'lab_ok': '허가사항상 체중 관리 목적은 체질량지수 30 이상, 또는 27 이상이면서 고혈압·이상지질혈증·2형 당뇨병·수면무호흡·심혈관질환 같은 동반질환이 있을 때예요.',
+  'cost_note': '비만 치료 목적은 건강보험이 적용되지 않는 비급여라 병원·약국마다 가격이 달라요. 출시 당시(2025년 8월) 2.5mg 4주분이 약국에서 약 29만~35만 원 수준이었어요.',
+}
+PAGES['ko'] = dict(
+  tpl=sys.argv[1].replace('/en/health/tdee-calculator.html','/ko/health/tdee-calculator.html'), lang='ko', t='ko',
+  path='/ko/health/mounjaro-dose-calculator.html', hub='/ko/health/', products=['pen', 'kwik'], ht='165',
+  title='마운자로 용량 계산기 – 증량 단계, 주사 놓쳤을 때, 체중 감소율, 비용 (터제파타이드)',
+  desc='마운자로(터제파타이드) 용량 단계(2.5mg로 4주 시작, 4주 이상 간격으로 2.5mg씩 증량, 최대 15mg) 확인, 주사 일정, 주사를 놓쳤을 때(4일 기준), 임상시험과 체중 감소율 비교, 프리필드펜·퀵펜 사용 주의를 한 번에 확인하세요.',
+  h1='마운자로 <b>용량 계산기</b>(증량 단계·체중 감소)',
+  kicker='💪 건강', lead='이미 마운자로를 처방받은 분을 위한 도구예요. 입력하면 바로 결과가 바뀌어요.',
+  brand='홍라이프 계산기', hubname='건강·운동 계산기',
+  foot='참고용 정보이며 진단이나 의학적 조언이 아니에요. 용량은 반드시 처방한 의사와 약사의 안내를 따르세요.',
+  foot_links='<a href="/ko/">전체 계산기</a> · <a href="/privacy.html">개인정보처리방침</a> · <a href="/ko/report-error.html">오류 신고</a>',
+  reviewed='마지막 검토: 2026년 11월',
+  extra_js=r"""
+ { const ht=v('ht'),w0=v('w0'),u=$('u').value; if(isFinite(ht)&&ht>0&&isFinite(w0)){ const kg0=u==='lb'?w0*0.45359237:w0; o+=kv([[T.r_bmi0,nf(kg0/Math.pow(ht/100,2))]])+'<p class="mj-info">'+T.lab_ok+'</p>'; }
+   o+='<p class="mj-info">'+T.cost_note+'</p>'; }
+""",
+)
+
 TRIAL = {5: 15.0, 10: 19.5, 15: 20.9}   # SURMOUNT-1, 72주 평균 체중 변화율(%) — 2.5·7.5·12.5mg는 유지 용량으로 시험되지 않음
 PLACEBO = 3.1
 

@@ -262,5 +262,23 @@
   "hub": "/mx/index.html",
   "after": "/mx/calculadora-horas-extra.html",
   "label": "Calculadora de dosis de Mounjaro"
+ },
+ {
+  "url": "/fr/calcul-dose-mounjaro.html",
+  "hub": "/fr/index.html",
+  "after": "/fr/heures-supplementaires.html",
+  "label": "Calcul de dose Mounjaro"
+ },
+ {
+  "url": "/jp/zepbound-mounjaro-yoryo.html",
+  "hub": "/jp/index.html",
+  "after": "/jp/gekkyu-tedori.html",
+  "label": "ゼップバウンド・マンジャロ用量計算"
+ },
+ {
+  "url": "/ko/health/mounjaro-dose-calculator.html",
+  "hub": "/ko/health/index.html",
+  "after": "tdee-calculator.html",
+  "label": "마운자로 용량 계산기"
  }
 ]
