@@ -1,0 +1,30 @@
+<section class="hl-guide" id="guide" style="--g:#7c2d12;--g2:#fbf0ea" aria-labelledby="g-h">
+<p class="g-kick">Internal rate of return (IRR)</p>
+<h2 id="g-h">IRR explained simply – what the number means, a worked example, what counts as a good IRR, and when not to trust it</h2>
+<div class="g-ans"><b>Short answer:</b> IRR is the yearly return that makes a project’s net present value exactly zero. Invest <b>$10,000</b> today and get back $3,000, $4,000, $4,000 and $3,000 over four years, and the <b>IRR is about 14.9%</b>. If your required return (cost of capital) is lower than that – say 8% – the project is worth doing.</div>
+
+<p>IRR answers a very natural question: “what rate of return is this investment really giving me?” It works for business projects, rental properties, private loans and anything else with money going out and coming back in at different times.</p>
+
+<h3>Reading the IRR</h3>
+<table class="g-cards"><thead><tr><th>Compared with your hurdle rate</th><th>What it means</th></tr></thead><tbody>
+<tr><td data-l="IRR vs hurdle">IRR above the hurdle</td><td data-l="Meaning">The investment beats your minimum required return – NPV is positive.</td></tr>
+<tr><td data-l="IRR vs hurdle">IRR equal to the hurdle</td><td data-l="Meaning">It just meets your required return – NPV is zero.</td></tr>
+<tr><td data-l="IRR vs hurdle">IRR below the hurdle</td><td data-l="Meaning">You could do better elsewhere at similar risk – NPV is negative.</td></tr>
+</tbody></table>
+
+<h3>When IRR can mislead</h3>
+<ul>
+<li><b>Comparing projects of different sizes:</b> a 40% IRR on $1,000 adds less value than 15% on $1 million. Use <a href="/en/biz/npv-calculator.html">NPV</a> to pick between them.</li>
+<li><b>Cash flows that change sign more than once</b> (money out, in, then out again) can produce more than one IRR – or none.</li>
+<li><b>Reinvestment assumption:</b> IRR implicitly assumes interim cash can be reinvested at the same rate. Modified IRR (MIRR) fixes this with a realistic reinvestment rate.</li>
+</ul>
+
+<h3>Questions people ask about IRR</h3>
+<details class="g-q"><summary>What is a good IRR?</summary><div>One that clearly beats your cost of capital plus a margin for risk. Many companies set hurdle rates around 10–15% for ordinary projects and higher for riskier ones; property investors often compare against mortgage rates and stock market returns.</div></details>
+<details class="g-q"><summary>How do I calculate IRR in Excel?</summary><div>Put the cash flows in a column, starting with the negative investment, and use =IRR(range). For irregular dates, use =XIRR(values, dates).</div></details>
+<details class="g-q"><summary>Is IRR annualised?</summary><div>Yes, when the cash flows are yearly. With monthly cash flows, the result is a monthly rate – convert it with (1 + monthly IRR)<sup>12</sup> − 1.</div></details>
+<details class="g-q"><summary>Can IRR be negative?</summary><div>Yes – if you get back less money in total than you put in, the IRR is negative.</div></details>
+<details class="g-q"><summary>Is a higher IRR always better?</summary><div>Not always. It ignores the size and length of the investment. A short, small deal can show a dazzling IRR while adding little value. Look at NPV and total profit too.</div></details>
+
+<div class="g-src">Example calculated by Hong Life Calculators (IRR solved numerically), checked 28 Nov 2026. Excel functions per Microsoft documentation. For education — not investment advice.</div>
+</section>
