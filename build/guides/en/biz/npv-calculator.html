@@ -1,0 +1,35 @@
+<section class="hl-guide" id="guide" style="--g:#1d4ed8;--g2:#ebf1fe" aria-labelledby="g-h">
+<p class="g-kick">Net present value, in plain English</p>
+<h2 id="g-h">How to calculate NPV – a worked project example, what a positive or negative result means, and the Excel trap to avoid</h2>
+<div class="g-ans"><b>Short answer:</b> NPV adds up a project’s future cash flows in today’s money and subtracts what you invest. Spend <b>$10,000</b> today to earn $3,000, $4,000, $4,000 and $3,000 over four years: at an 8% discount rate the <b>NPV is about +$1,588</b>, so the project adds value. At 15% it’s about −$21 – just below break-even.</div>
+
+<p>A dollar next year is worth less than a dollar today, because today’s dollar could be invested in the meantime. Net present value turns every future cash flow into its value today using a discount rate – usually your cost of capital or the return you could get elsewhere – and then compares the total with the upfront cost.</p>
+
+<h3>The worked example, year by year (8%)</h3>
+<table class="g-cards"><thead><tr><th>Year</th><th class="n">Cash flow</th><th class="n">Discount factor</th><th class="n">Present value</th></tr></thead><tbody>
+<tr><td data-l="Year">0</td><td class="n" data-l="Cash flow">−$10,000</td><td class="n" data-l="Factor">1.000</td><td class="n" data-l="PV">−$10,000</td></tr>
+<tr><td data-l="Year">1</td><td class="n" data-l="Cash flow">$3,000</td><td class="n" data-l="Factor">0.926</td><td class="n" data-l="PV">$2,778</td></tr>
+<tr><td data-l="Year">2</td><td class="n" data-l="Cash flow">$4,000</td><td class="n" data-l="Factor">0.857</td><td class="n" data-l="PV">$3,429</td></tr>
+<tr><td data-l="Year">3</td><td class="n" data-l="Cash flow">$4,000</td><td class="n" data-l="Factor">0.794</td><td class="n" data-l="PV">$3,175</td></tr>
+<tr><td data-l="Year">4</td><td class="n" data-l="Cash flow">$3,000</td><td class="n" data-l="Factor">0.735</td><td class="n" data-l="PV">$2,205</td></tr>
+<tr><td data-l="Year">Total</td><td class="n" data-l="Cash flow">$4,000</td><td class="n" data-l="Factor">—</td><td class="n" data-l="NPV"><b>+$1,588</b></td></tr>
+</tbody></table>
+<p class="g-cap">Discount factor = 1 ÷ (1 + 0.08)<sup>year</sup>. The project’s internal rate of return – the rate at which NPV is exactly zero – is about 14.9%.</p>
+
+<h3>Reading the result</h3>
+<ul>
+<li><b>NPV above zero:</b> the project earns more than your required return – it creates value.</li>
+<li><b>NPV of zero:</b> it earns exactly your required return.</li>
+<li><b>NPV below zero:</b> you’d do better putting the money elsewhere at your discount rate.</li>
+<li>When comparing projects of different sizes, the <a href="/en/biz/profitability-index-calculator.html">profitability index</a> (PV of inflows ÷ investment) shows value per dollar invested.</li>
+</ul>
+
+<h3>Questions people ask about NPV</h3>
+<details class="g-q"><summary>How do I calculate NPV in Excel?</summary><div>Excel’s =NPV(rate, values) assumes the first value arrives one period from now. So enter the future cash flows in NPV and add the year-0 investment separately: =NPV(8%, B2:B5) + B1, where B1 is −10,000. Forgetting this is the most common NPV error in spreadsheets.</div></details>
+<details class="g-q"><summary>Does NPV include the initial investment?</summary><div>Yes. Net present value is the present value of all inflows minus the initial outlay. Without subtracting the investment you only have “present value”.</div></details>
+<details class="g-q"><summary>Can NPV be negative?</summary><div>Yes – it means the project’s returns don’t cover your required rate of return. A negative NPV doesn’t always mean the project loses money in plain cash terms; in the example above, it still returns $4,000 more than it costs at 15%, but not enough to beat a 15% hurdle.</div></details>
+<details class="g-q"><summary>What discount rate should I use?</summary><div>Businesses usually use their weighted average cost of capital (WACC) or a hurdle rate set by management, sometimes higher for riskier projects. For personal decisions, use the return you could reasonably earn elsewhere at similar risk.</div></details>
+<details class="g-q"><summary>Does NPV include depreciation?</summary><div>Not directly – NPV uses cash flows, and depreciation isn’t a cash payment. It matters only through its effect on taxes, which are a real cash flow.</div></details>
+
+<div class="g-src">Example calculated by Hong Life Calculators, checked 28 Nov 2026. Excel function behaviour per Microsoft’s NPV and XNPV documentation. For education — not investment advice.</div>
+</section>
