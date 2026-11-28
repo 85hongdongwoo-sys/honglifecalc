@@ -1,0 +1,44 @@
+<section class="hl-guide" id="guide" style="--g:#0f766e;--g2:#e8f6f4" aria-labelledby="g-h">
+<p class="g-kick">Lens angle of view</p>
+<h2 id="g-h">Field of view: the formula, focal length cheat sheet, crop factor, and how FOV works for eyes, microscopes and games</h2>
+<div class="g-ans"><b>Short answer:</b> angle of view = <b>2 × arctan(sensor size ÷ (2 × focal length))</b>. A 50 mm lens on a full-frame camera (36 mm wide sensor) sees <b>39.6°</b> across, 27.0° up and down and 46.8° diagonally. A shorter focal length or a bigger sensor gives a wider view.</div>
+
+<p>Photographers think in focal lengths, but what you actually care about is how much of the scene fits in the frame. The calculator above turns focal length and sensor size into angles, and also gives the full-frame equivalent so you can compare lenses across camera systems.</p>
+
+<figure>
+<svg viewBox="0 0 340 220" role="img" aria-labelledby="g-f1t g-f1d" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<title id="g-f1t">How focal length sets the angle of view</title>
+<desc id="g-f1d">Drawn to scale: with a 24 mm focal length on a full-frame sensor the angle is 73.7 degrees; with 50 mm it narrows to 39.6 degrees.</desc>
+<path d="M28 110 L168 5 L168 215 Z" fill="#99f6e4" opacity=".45"/>
+<path d="M28 110 L168 59.6 L168 160.4 Z" fill="#0d9488" opacity=".7"/>
+<rect x="14" y="86" width="10" height="48" fill="#134e4a"/>
+<text x="19" y="152" font-size="13" text-anchor="middle" fill="#134e4a">camera</text>
+<text x="180" y="40" font-size="17" font-weight="800" fill="#115e59">24 mm → 73.7°</text>
+<text x="180" y="114" font-size="17" font-weight="800" fill="#0f766e">50 mm → 39.6°</text>
+<text x="180" y="190" font-size="14" fill="#4b5563">full-frame, horizontal</text>
+</svg>
+<figcaption>Doubling the focal length roughly halves the angle of view (exactly so for narrow angles).</figcaption>
+</figure>
+
+<h3>Full-frame focal lengths at a glance</h3>
+<table class="g-cards"><thead><tr><th class="n">Focal length</th><th class="n">Horizontal</th><th class="n">Diagonal</th><th>Typical use</th></tr></thead><tbody>
+<tr><td class="n" data-l="Lens">16 mm</td><td class="n" data-l="Horiz.">96.7°</td><td class="n" data-l="Diag.">107.0°</td><td data-l="Use">Interiors, big landscapes</td></tr>
+<tr><td class="n" data-l="Lens">24 mm</td><td class="n" data-l="Horiz.">73.7°</td><td class="n" data-l="Diag.">84.1°</td><td data-l="Use">Landscape, travel</td></tr>
+<tr><td class="n" data-l="Lens">35 mm</td><td class="n" data-l="Horiz.">54.4°</td><td class="n" data-l="Diag.">63.4°</td><td data-l="Use">Street, everyday</td></tr>
+<tr><td class="n" data-l="Lens">50 mm</td><td class="n" data-l="Horiz.">39.6°</td><td class="n" data-l="Diag.">46.8°</td><td data-l="Use">“Normal” view</td></tr>
+<tr><td class="n" data-l="Lens">85 mm</td><td class="n" data-l="Horiz.">23.9°</td><td class="n" data-l="Diag.">28.6°</td><td data-l="Use">Portraits</td></tr>
+<tr><td class="n" data-l="Lens">200 mm</td><td class="n" data-l="Horiz.">10.3°</td><td class="n" data-l="Diag.">12.3°</td><td data-l="Use">Sport, wildlife</td></tr>
+</tbody></table>
+<p class="g-cap">Lens focused at infinity. Focusing close narrows the view slightly (“focus breathing”).</p>
+
+<h3>Crop factor in one line</h3>
+<p>Smaller sensors see a narrower slice through the same lens. Multiply the focal length by the crop factor to get the full-frame equivalent: about <b>1.53</b> for Sony, Nikon and Fujifilm APS-C, <b>1.61</b> for Canon APS-C and <b>2.0</b> for Micro Four Thirds. A 50 mm lens on a Sony APS-C body frames like a 77 mm lens on full frame (26.4° across).</p>
+
+<h3>Questions people ask</h3>
+<details class="g-q"><summary>How wide is the human field of view?</summary><div>With both eyes, roughly 200–220° horizontally, of which about 120° is seen by both eyes at once. Sharp, detailed vision covers only a few degrees at the centre – which is one reason a 40–50° lens is called “normal”.</div></details>
+<details class="g-q"><summary>How do I calculate field of view on a microscope?</summary><div>Divide the eyepiece’s field number (printed on it, often 18–22) by the objective’s magnification. A field number of 20 with a 40× objective gives a field of view of 0.5 mm across.</div></details>
+<details class="g-q"><summary>How do horizontal and vertical FOV relate in games?</summary><div>Games may quote either. On a 16:9 screen, horizontal = 2 × arctan(tan(vertical ÷ 2) × 16/9). A vertical FOV of 59° equals about 90° horizontal; 103° horizontal is about 70.5° vertical. Higher FOV shows more but makes distant objects smaller.</div></details>
+<details class="g-q"><summary>Does field of view decrease as magnification increases?</summary><div>Yes – in cameras, binoculars and microscopes alike. Longer focal lengths and higher magnifications show a smaller area, enlarged.</div></details>
+
+<div class="g-src">Rectilinear lens formula; sensor dimensions as listed in the calculator. Angles calculated by Hong Life Calculators, checked 28 Nov 2026. Human visual field: standard ophthalmology references.</div>
+</section>

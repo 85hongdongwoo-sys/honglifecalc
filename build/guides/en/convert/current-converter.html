@@ -1,0 +1,31 @@
+<section class="hl-guide" id="guide" style="--g:#1d4ed8;--g2:#eaf1fe" aria-labelledby="g-h">
+<p class="g-kick">Amps, milliamps and watts</p>
+<h2 id="g-h">Electric current units: amps to milliamps, and how to get current from power and voltage</h2>
+<div class="g-ans"><b>Short answer:</b> 1 A = 1,000 mA = 1,000,000 µA, and 1 biot (abampere) = 10 A. To find current from power, divide by voltage: <b>I = P ÷ V</b>. A 60 W bulb draws 0.5 A on a 120 V supply and about 0.26 A on 230 V.</div>
+
+<p>Amperes measure how much electric charge flows each second. Phone chargers, batteries and sensors are usually rated in milliamps, household circuits in amps and power grids in kiloamps. The converter switches between those scales; the notes below cover the question that usually comes next – how much current a device actually draws.</p>
+
+<h3>From watts to amps (and back)</h3>
+<table class="g-cards"><thead><tr><th>Device</th><th class="n">Power</th><th class="n">At 120 V</th><th class="n">At 230 V</th></tr></thead><tbody>
+<tr><td data-l="Device">LED bulb</td><td class="n" data-l="Power">10 W</td><td class="n" data-l="120 V">0.08 A</td><td class="n" data-l="230 V">0.04 A</td></tr>
+<tr><td data-l="Device">Laptop charger</td><td class="n" data-l="Power">65 W</td><td class="n" data-l="120 V">0.54 A</td><td class="n" data-l="230 V">0.28 A</td></tr>
+<tr><td data-l="Device">Microwave</td><td class="n" data-l="Power">1,200 W</td><td class="n" data-l="120 V">10 A</td><td class="n" data-l="230 V">5.2 A</td></tr>
+<tr><td data-l="Device">Kettle</td><td class="n" data-l="Power">2,000 W</td><td class="n" data-l="120 V">16.7 A</td><td class="n" data-l="230 V">8.7 A</td></tr>
+</tbody></table>
+<p class="g-cap">Resistive loads only; motors and chargers can briefly draw more when they start.</p>
+
+<h3>Why the numbers matter</h3>
+<ul>
+<li><b>Circuit breakers</b> are rated in amps. A US 15 A, 120 V circuit carries up to 1,800 W, and electrical codes advise keeping continuous loads to 80% (1,440 W).</li>
+<li><b>Battery life:</b> a 3,000 mAh battery powering a 150 mA device lasts roughly 3,000 ÷ 150 = 20 hours, less in practice.</li>
+<li><b>USB:</b> a standard USB 2.0 port supplies 500 mA and USB 3.0 supplies 900 mA; fast-charging standards negotiate more.</li>
+</ul>
+
+<h3>Questions people ask</h3>
+<details class="g-q"><summary>How do I convert power to current?</summary><div>Divide watts by volts. For three-phase supplies use I = P ÷ (√3 × V × power factor). This page converts between current units; use the <a href="/en/science/ohms-law-calculator.html">Ohm’s law calculator</a> when resistance is involved.</div></details>
+<details class="g-q"><summary>How many milliamps are in an amp?</summary><div>1,000. So 0.25 A is 250 mA, and 2,400 mA is 2.4 A.</div></details>
+<details class="g-q"><summary>What is a biot?</summary><div>The biot, also called the abampere, is the current unit of the old CGS electromagnetic system. One biot equals exactly 10 amperes. You’ll mostly meet it in older physics textbooks.</div></details>
+<details class="g-q"><summary>Is a higher-amp charger safe for my phone?</summary><div>Yes. A device only draws the current it needs, so a charger rated for more amps doesn’t force extra current into it. The voltage must match, though.</div></details>
+
+<div class="g-src">SI definitions (BIPM); USB current limits per USB 2.0/3.0 specifications; breaker loading per NEC 80% continuous-load rule. Examples calculated by Hong Life Calculators, checked 28 Nov 2026.</div>
+</section>
