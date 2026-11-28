@@ -1,0 +1,37 @@
+<section class="hl-guide" id="guide" style="--g:#be185d;--g2:#fdeef6" aria-labelledby="g-h">
+<p class="g-kick">Quadratic equations, step by step</p>
+<h2 id="g-h">How to solve a quadratic equation – factoring, the quadratic formula and the discriminant, with fully worked examples</h2>
+<div class="g-ans"><b>The formula:</b> for <b>ax² + bx + c = 0</b>, the solutions are <b>x = (−b ± √(b² − 4ac)) ÷ 2a</b>. For x² − 5x + 6 = 0: x = (5 ± √(25 − 24)) ÷ 2 = (5 ± 1) ÷ 2, so <b>x = 3 or x = 2</b>.</div>
+
+<p>Quadratics turn up in maths class, physics (anything thrown in the air), business (profit curves) and engineering. There are three main ways to solve them, and knowing when to use each saves a lot of time. The solver above shows the steps; here’s the reasoning behind them.</p>
+
+<h3>Method 1: factoring (fastest when it works)</h3>
+<p>Look for two numbers that multiply to <i>c</i> and add to <i>b</i>. For x² + 7x + 12 = 0: 3 × 4 = 12 and 3 + 4 = 7, so (x + 3)(x + 4) = 0 and <b>x = −3 or x = −4</b>. If you can’t spot the pair within a few seconds, move on to the formula.</p>
+
+<h3>Method 2: the quadratic formula (always works)</h3>
+<ol class="g-steps">
+<li>Write the equation as ax² + bx + c = 0 and read off a, b and c. For 2x² + 3x − 2 = 0: a = 2, b = 3, c = −2.</li>
+<li>Work out the discriminant: b² − 4ac = 9 − 4(2)(−2) = 9 + 16 = 25.</li>
+<li>Take the square root: √25 = 5.</li>
+<li>Plug in: x = (−3 ± 5) ÷ 4, so <b>x = 0.5 or x = −2</b>.</li>
+</ol>
+
+<h3>Method 3: completing the square</h3>
+<p>Useful for finding the vertex of a parabola. x² + 6x + 5 = 0 becomes (x + 3)² − 4 = 0, so x + 3 = ±2 and x = −1 or −5. The vertex is at (−3, −4).</p>
+
+<h3>What the discriminant tells you</h3>
+<table class="g-cards"><thead><tr><th>b² − 4ac</th><th>Solutions</th><th>Graph</th></tr></thead><tbody>
+<tr><td data-l="Discriminant">Positive</td><td data-l="Solutions">Two different real solutions</td><td data-l="Graph">Crosses the x-axis twice</td></tr>
+<tr><td data-l="Discriminant">Zero</td><td data-l="Solutions">One repeated solution</td><td data-l="Graph">Touches the x-axis once</td></tr>
+<tr><td data-l="Discriminant">Negative</td><td data-l="Solutions">Two complex solutions (no real ones)</td><td data-l="Graph">Never touches the x-axis</td></tr>
+</tbody></table>
+
+<h3>Questions people ask about quadratic equations</h3>
+<details class="g-q"><summary>How do I solve a quadratic equation on a calculator?</summary><div>Many scientific calculators have an equation mode (often under MODE → EQN). Otherwise, calculate the discriminant first, take its square root, then work out (−b + root) ÷ 2a and (−b − root) ÷ 2a separately – brackets matter.</div></details>
+<details class="g-q"><summary>What does a quadratic equation solve for?</summary><div>The values of x that make the expression equal zero – the “roots”. On a graph, they’re where the parabola crosses the x-axis.</div></details>
+<details class="g-q"><summary>What if a is zero?</summary><div>Then it isn’t a quadratic – it’s a linear equation (bx + c = 0) with the single solution x = −c ÷ b.</div></details>
+<details class="g-q"><summary>Can Excel solve quadratic equations?</summary><div>Yes. With a, b and c in A1, B1 and C1: =(-B1+SQRT(B1^2-4*A1*C1))/(2*A1) and =(-B1-SQRT(B1^2-4*A1*C1))/(2*A1). Goal Seek also works for finding a root numerically.</div></details>
+<details class="g-q"><summary>How do I check my answer?</summary><div>Substitute each solution back into the original equation. For x = 3 in x² − 5x + 6: 9 − 15 + 6 = 0. ✓ The sum of the roots should also equal −b ÷ a, and their product c ÷ a.</div></details>
+
+<div class="g-src">Worked examples checked by Hong Life Calculators on 28 Nov 2026.</div>
+</section>
