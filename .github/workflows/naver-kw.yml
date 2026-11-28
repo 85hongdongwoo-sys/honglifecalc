@@ -1,0 +1,32 @@
+name: 네이버 검색수 조사 (월 2,000~5,000 키워드)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  kw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: 지금 배포된 사이트 받기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          id=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=github-pages&per_page=30" --jq '[.artifacts[]|select(.expired|not)]|sort_by(.created_at)|last|.id')
+          gh api "repos/${{ github.repository }}/actions/artifacts/$id/zip" > a.zip
+          unzip -q a.zip && mkdir -p _site && tar -xf artifact.tar -C _site && rm -f a.zip artifact.tar
+      - name: 키워드 도구 조회
+        env:
+          NAVER_AD_CUSTOMER_ID: ${{ secrets.NAVER_AD_CUSTOMER_ID }}
+          NAVER_AD_ACCESS_LICENSE: ${{ secrets.NAVER_AD_ACCESS_LICENSE }}
+          NAVER_AD_SECRET_KEY: ${{ secrets.NAVER_AD_SECRET_KEY }}
+        run: python3 build/kw/naver_volume.py _site nkw-out
+      - name: data-nkw 브랜치에 저장
+        run: |
+          cd nkw-out
+          git init -q && git checkout -q -b data-nkw
+          git config user.name "github-actions" && git config user.email "actions@github.com"
+          git add -A && git commit -qm "naver kw $(date -u +%F)"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data-nkw
