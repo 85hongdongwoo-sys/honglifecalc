@@ -1,0 +1,24 @@
+{
+ "stats": {
+  "pages": 23190,
+  "indexable": 1421
+ },
+ "counts": {
+  "title_long": 3799,
+  "no_desc": 4,
+  "hangul_on_foreign": 424,
+  "old_year_title": 214,
+  "broken_links": 1,
+  "thin_text": 7,
+  "h1_0": 4,
+  "bad_text": 1
+ },
+ "dup_titles": 0,
+ "dup_title_pages": 0,
+ "broken_targets_top": [
+  [
+   "/es/edad/antonio-grimau.html",
+   1
+  ]
+ ]
+}
