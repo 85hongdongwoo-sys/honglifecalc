@@ -85,6 +85,9 @@ jobs:
         run: python3 build/patch_sitemap.py _site
       - name: Spread related links evenly (nearest siblings ring)
         run: python3 build/patch_related.py _site
+      - name: 계산 결과 바로 아래 같은 주제 다음 계산 2~3개
+        continue-on-error: true
+        run: python3 build/patch_next.py _site
       - name: 언어 버튼은 '그 나라 언어 | 영어'만
         run: python3 build/patch_lang_switch.py _site
       - name: 계산기 아래 나라별 자세한 안내 글 붙이기 (build/guides)
