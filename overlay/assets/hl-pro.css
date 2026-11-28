@@ -182,3 +182,11 @@ html:not(#hlpro) body nav.tabs > a{background:#fff!important;color:#334155!impor
 html:not(#hlpro) body nav.tabs > a:hover{border-color:#A5B4FC!important;color:#4338CA!important}
 html:not(#hlpro) body nav.tabs > a[aria-current],html:not(#hlpro) body nav.tabs > a.on{background:linear-gradient(135deg,#4F46E5,#7C3AED)!important;color:#fff!important;border-color:transparent!important}
 html:not(#hlpro) body .seg label:has(input:checked){background:#fff!important;color:#4338CA!important;box-shadow:0 1px 3px rgba(15,23,42,.12),inset 0 0 0 1.5px #A5B4FC!important}
+/* 휴대폰에서 입력 상자가 화면 밖으로 나가는 긴 꼬리 페이지(2026-11-28 검수 30곳) */
+html:not(#hlpro) body section.app,html:not(#hlpro) body form#form.card,html:not(#hlpro) body section#out.card{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+html:not(#hlpro) body form.card h2,html:not(#hlpro) body form.card h3,html:not(#hlpro) body label.f>span{overflow-wrap:anywhere;word-break:break-word}
+html:not(#hlpro) body label.f,html:not(#hlpro) body div.two>*{min-width:0!important}
+html:not(#hlpro) body div.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr))!important}
+html:not(#hlpro) body label.f input,html:not(#hlpro) body label.f select,html:not(#hlpro) body div.money{max-width:100%!important;min-width:0!important;box-sizing:border-box}
+html:not(#hlpro),html:not(#hlpro) body{overflow-x:clip}
+html:not(#hlpro) body label.f>div.money{flex:0 0 auto!important;height:auto!important;align-self:start!important;width:100%}

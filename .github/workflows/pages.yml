@@ -100,6 +100,8 @@ jobs:
         run: python3 build/patch_pwa.py _site
       - name: Freshness (sitemap lastmod + dateModified)
         run: python3 build/patch_datemod.py _site https://honglifecalc.com
+      - name: 구조화 데이터 문법 오류 고치기
+        run: python3 build/patch_jsonld_fix.py _site
       - name: 네이버용 (한국어 noindex는 구글만, sitemap-naver.xml, rss.xml)
         run: python3 build/patch_naver.py _site
       - name: 유사도 5% 미만 페이지만 검색에 남기기 (data-sim keep 목록)
