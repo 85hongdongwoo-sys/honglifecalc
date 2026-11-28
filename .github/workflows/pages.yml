@@ -95,6 +95,8 @@ jobs:
         run: python3 build/patch_pwa.py _site
       - name: Freshness (sitemap lastmod + dateModified)
         run: python3 build/patch_datemod.py _site https://honglifecalc.com
+      - name: 네이버용 (한국어 noindex는 구글만, sitemap-naver.xml, rss.xml)
+        run: python3 build/patch_naver.py _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
