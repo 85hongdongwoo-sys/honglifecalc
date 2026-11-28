@@ -232,5 +232,11 @@
   "hub": "/pt/index.html",
   "after": "/pt/calculadora-consumo-eletrico.html",
   "label": "Salário mínimo 2027: 970 €"
+ },
+ {
+  "url": "/en/health/mounjaro-dose-calculator.html",
+  "hub": "/en/health/index.html",
+  "after": "tdee-calculator.html",
+  "label": "Mounjaro Dose Calculator (tirzepatide schedule & weight loss)"
  }
 ]
