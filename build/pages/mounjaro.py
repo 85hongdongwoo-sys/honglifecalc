@@ -80,6 +80,48 @@ PAGES['uk']['extra_js'] = r"""
    const pr=X.price[String(dose)]; if(pr){ o+='<div class="mj-sec">'+T.r_cost+'</div>'+kv([[T.r_cost,'£'+nf(pr,0)+' '+T.r_pen],[T.r_year,'£'+nf(pr*13,0)]])+'<p class="mj-info">'+T.cost_note+'</p>'; } }
 """
 
+# ---------------- 독일 (de) — 2026-11-28 ----------------
+T['de'] = {
+  'f_head': 'Ihre Behandlung', 'first': 'Datum der ersten Spritze', 'dose': 'Aktuelle Wochendosis', 'since': 'Seit wann diese Dosis',
+  'last': 'Datum der letzten Spritze', 'unit': 'Gewichtseinheit', 'w0': 'Gewicht zu Beginn', 'w1': 'Gewicht heute', 'ht': 'Größe (cm, für den BMI)',
+  'prod': 'Ihr Präparat', 'p_kwik': 'KwikPen (4 Dosen pro Pen)', 'p_pen': 'Einzeldosis-Fertigpen (ältere Packung)',
+  'lab_mg': 'Etikett: mg', 'lab_ml': 'Etikett: ml', 'conc_hint': '', 'r_over': '',
+  'r_step': 'Dosisstufe', 'of6': 'von 6', 'r_weeks': 'Wochen auf dieser Dosis', 'r_next': 'Frühester Termin für die nächste Stufe laut Fachinformation',
+  'r_max': 'Sie sind auf der Höchstdosis (15 mg).', 'r_fast': 'Diese Dosis wurde schneller erreicht, als die Fachinformation erlaubt (mindestens 4 Wochen pro Stufe). Bitte mit der verordnenden Ärztin bzw. dem Arzt klären.',
+  'r_ok': 'Ihre Dosisstufe passt zum Schema der Fachinformation.', 'r_due': 'Nächste Spritze fällig', 'r_late': 'Tage nach Fälligkeit',
+  'r_take': 'Vergessene Dosis: Es sind höchstens 4 Tage (96 Stunden) vergangen – spritzen Sie so bald wie möglich.',
+  'r_skip': 'Vergessene Dosis: Mehr als 4 Tage vergangen – auslassen und am gewohnten Wochentag weitermachen',
+  'r_you': 'Sie sind in Behandlung seit', 'r_lost': 'Abgenommen', 'r_pct': 'Veränderung seit Beginn', 'r_bmi': 'BMI heute',
+  'r_trial': 'Durchschnitt in der Studie SURMOUNT-1 nach 72 Wochen auf dieser Dosis',
+  'r_vol': 'Volumen', 'r_units': 'Einheiten', 'units': 'Einheiten',
+  'r_pen': 'Nichts abzumessen: Der Pen gibt die volle Dosis ab. Ziehen Sie kein Arzneimittel mit einer Spritze aus einem Pen.',
+  'r_kwik': 'Der KwikPen gibt pro Anwendung fest 0,6 ml ab. Keine andere Menge einstellen und keine zusätzlichen Dosen entnehmen – Restflüssigkeit wird mit dem Pen entsorgt.',
+  'sched': 'Ihre nächsten 6 Spritztermine', 'chart': 'Ihre Gewichtsveränderung im Vergleich zur Studie (72 Wochen)',
+  'you': 'Sie', 'placebo': 'Placebo', 'fill': 'Bitte Daten und Dosis eintragen', 'na': '—',
+  'warn': '<b>Wichtig:</b> Dieser Rechner gleicht Ihre Angaben mit der Fachinformation ab – er legt keine Dosis fest. Ändern Sie Ihre Dosis nie eigenmächtig. Mounjaro ist verschreibungspflichtig.',
+  'wk': 'Wochen', 'days': 'Tage', 'kg': 'kg', 'lb': 'lb',
+  'r_cost': 'Apothekenpreis für Ihre Stärke', 'r_pen1': 'pro KwikPen (4 Wochen)', 'r_year': 'Etwa ein Jahr (13 Pens)',
+  'cost_note': 'Preise einer Versandapotheke, Stand November 2026. Zur Gewichtsreduktion zahlen gesetzliche Krankenkassen in der Regel nicht (§ 34 SGB V); bei Typ-2-Diabetes ist Mounjaro erstattungsfähig.',
+  'r_bmi0': 'BMI zu Beginn', 'lab_ok': 'Laut EU-Zulassung kommt eine Behandlung zur Gewichtsreduktion ab BMI 30 in Frage, oder ab 27 mit einer gewichtsbedingten Begleiterkrankung.',
+}
+PAGES['de'] = dict(
+  tpl=sys.argv[1].replace('/en/health/tdee-calculator.html','/de/zinseszins-rechner.html'), lang='de', t='de',
+  path='/de/mounjaro-dosis-rechner.html', hub='/de/', products=['kwik', 'pen'], ht='175',
+  title='Mounjaro Dosis-Rechner – Dosierungsschema, vergessene Dosis, Abnehmen & Kosten (Tirzepatid)',
+  desc='Mounjaro (Tirzepatid) KwikPen: Dosisstufe prüfen (2,5 mg für 4 Wochen, dann alle 4 Wochen +2,5 mg bis 15 mg), Spritztermine planen, vergessene Dosis, Gewichtsabnahme mit SURMOUNT-1 vergleichen und Apothekenpreise von 206,80 € bis 490,01 € pro Pen.',
+  h1='Mounjaro <b>Dosis-Rechner</b> (Tirzepatid: Schema, Abnehmen &amp; Kosten)',
+  kicker='🇩🇪 Gesundheit', lead='Für Menschen, denen Mounjaro bereits verordnet wurde. Ergebnisse aktualisieren sich beim Tippen.',
+  brand='Hong Life Rechner', hubname='Rechner für Deutschland',
+  foot='Nur zur Information – keine Diagnose und keine ärztliche Beratung. Halten Sie sich immer an die Dosis, die Ihre Ärztin, Ihr Arzt oder Ihre Apotheke vorgibt.',
+  foot_links='<a href="/">Rechner nach Ländern</a> · <a href="/privacy.html">Datenschutz</a> · <a href="/report-error.html">Fehler melden</a>',
+  reviewed='Zuletzt geprüft: November 2026',
+  xdata={'price': {'2.5': 206.80, '5': 277.60, '7.5': 383.80, '10': 383.80, '12.5': 490.01, '15': 490.01}},
+  extra_js=r"""
+ { const ht=v('ht'),w0=v('w0'),u=$('u').value; if(isFinite(ht)&&ht>0&&isFinite(w0)){ const kg0=u==='lb'?w0*0.45359237:w0; o+=kv([[T.r_bmi0,nf(kg0/Math.pow(ht/100,2))]])+'<p class="mj-info">'+T.lab_ok+'</p>'; }
+   const pr=X.price[String(dose)]; if(pr){ o+='<div class="mj-sec">'+T.r_cost+'</div>'+kv([[T.r_cost,pr.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' € '+T.r_pen1],[T.r_year,nf(pr*13,0)+' €']])+'<p class="mj-info">'+T.cost_note+'</p>'; } }
+""",
+)
+
 TRIAL = {5: 15.0, 10: 19.5, 15: 20.9}   # SURMOUNT-1, 72주 평균 체중 변화율(%) — 2.5·7.5·12.5mg는 유지 용량으로 시험되지 않음
 PLACEBO = 3.1
 

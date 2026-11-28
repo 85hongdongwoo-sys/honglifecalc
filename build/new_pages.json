@@ -244,5 +244,11 @@
   "hub": "/uk/index.html",
   "after": "/uk/take-home-pay-calculator.html",
   "label": "Mounjaro Dose Calculator UK (KwikPen, NHS & cost)"
+ },
+ {
+  "url": "/de/mounjaro-dosis-rechner.html",
+  "hub": "/de/index.html",
+  "after": "/de/zinseszins-rechner.html",
+  "label": "Mounjaro Dosis-Rechner (Tirzepatid)"
  }
 ]
