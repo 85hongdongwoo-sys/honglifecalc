@@ -45,6 +45,15 @@ for sm in ['sitemap.xml'] + [f for f in os.listdir(SITE) if f.startswith('sitema
 NL = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'noindex_list.txt')
 if os.path.isfile(NL):
     locs += [BASE + l.strip() for l in open(NL, encoding='utf-8') if l.startswith('/')]
+# 유사도 문턱 때문에 검색 제외해 둔 페이지(hl-sim-hold 표시)도 다시 재서, 좋아지면 풀리게 한다
+for d, _, fs in os.walk(SITE):
+    for f in fs:
+        if f.endswith('.html'):
+            fp = os.path.join(d, f)
+            with open(fp, encoding='utf-8', errors='ignore') as fh:
+                if 'name="hl-sim-hold"' in fh.read(6000):
+                    rel = '/' + os.path.relpath(fp, SITE).replace(os.sep, '/')
+                    locs.append(BASE + (rel[:-10] if rel.endswith('/index.html') else rel))
 locs = [u for u in dict.fromkeys(locs) if u.startswith(BASE) and not u.endswith('.xml')]
 pages = []
 for u in locs:
@@ -103,9 +112,32 @@ for s in range(0, N, CH):
 for i, x in enumerate(info):
     x['sim'] = round(float(best[i]) * 100); x['to'] = info[bestj[i]]['u'] if bestj[i] >= 0 else None
 pairs.sort(key=lambda p: -p[2])
+
+# 5) 검색에 남길 페이지 고르기: 이미 남긴 페이지 모두와 5% 미만으로만 겹치는 페이지만 남긴다 (우선순위 순)
+LIMIT = 0.05
+GUIDES = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'guides')
+def tier(u):
+    if u == '/' or re.fullmatch(r'/[a-z]{2,3}(-[a-z]+)?/', u): return 0
+    if os.path.isfile(os.path.join(GUIDES, u.lstrip('/'))): return 1
+    if u.startswith(('/en/', '/us/', '/uk/')): return 2
+    if u.startswith('/ko/'): return 3
+    return 4
+order = sorted(range(N), key=lambda i: (tier(info[i]['u']), -info[i]['own'], info[i]['u']))
+kept_sig = np.empty((N, K), dtype=np.uint64); nk = 0
+keep, drop = [], []
+for i in order:
+    if empty[i] or info[i]['own'] < 30:
+        drop.append(info[i]['u']); continue
+    m = float((kept_sig[:nk] == sig[i]).mean(axis=1).max()) if nk else 0.0
+    if m < LIMIT:
+        kept_sig[nk] = sig[i]; nk += 1; keep.append(info[i]['u']); info[i]['kept_max'] = round(m * 100, 1)
+    else:
+        drop.append(info[i]['u'])
+print('keep', len(keep), 'drop', len(drop))
 os.makedirs(OUT, exist_ok=True)
 json.dump({'built': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'site': BASE, 'n': N,
            'method': '본문(메뉴·머리말·바닥글 제외)에서 사이트 공통 문구를 빼고, 단어 3개 묶음이 겹치는 비율(MinHash 256 추정)',
+           'limit': LIMIT, 'keep': keep, 'drop': drop,
            'pages': info, 'pairs': [[info[i]['u'], info[j]['u'], v] for i, j, v in pairs[:20000]], 'npairs': len(pairs)},
           open(os.path.join(OUT, 'sim.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 print('done pairs>=50%', len(pairs))

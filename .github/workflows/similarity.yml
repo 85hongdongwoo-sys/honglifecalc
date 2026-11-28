@@ -2,10 +2,10 @@ name: 페이지 유사도 검사
 on:
   workflow_dispatch:
   schedule:
-    - cron: '41 19 * * 0'   # 매주 월요일 오전 4시 41분(한국)
+    - cron: '41 19 * * *'   # 매일 오전 4시 41분(한국) — 고친 페이지가 5% 미만이 되면 다음 배포에 풀림
 permissions:
   contents: write
-  actions: read
+  actions: write
 jobs:
   sim:
     runs-on: ubuntu-latest
@@ -29,3 +29,7 @@ jobs:
           git config user.name "github-actions" && git config user.email "actions@github.com"
           git add sim.json && git commit -qm "similarity $(date -u +%F)"
           git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data-sim
+      - name: 새 결과로 다시 배포 (5% 문턱 적용)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --repo ${{ github.repository }} --ref main

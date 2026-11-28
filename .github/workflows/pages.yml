@@ -102,6 +102,10 @@ jobs:
         run: python3 build/patch_datemod.py _site https://honglifecalc.com
       - name: 네이버용 (한국어 noindex는 구글만, sitemap-naver.xml, rss.xml)
         run: python3 build/patch_naver.py _site
+      - name: 유사도 5% 미만 페이지만 검색에 남기기 (data-sim keep 목록)
+        run: |
+          git fetch -q --depth 1 origin data-sim && git show FETCH_HEAD:sim.json > /tmp/sim.json || echo "no sim data"
+          python3 build/patch_simgate.py _site /tmp/sim.json
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
