@@ -1,0 +1,46 @@
+<section class="hl-guide" id="guide" style="--g:#4338ca;--g2:#eef0ff" aria-labelledby="g-h">
+<p class="g-kick">Standard deviation, explained plainly</p>
+<h2 id="g-h">What standard deviation tells you, sample vs population, and how to work it out by hand</h2>
+<div class="g-ans"><b>In one line:</b> standard deviation is the typical distance of your numbers from their average. For the data 4, 8, 6, 5, 3, 7 the mean is 5.5 and the <b>sample</b> standard deviation is about <b>1.87</b> (the population version is about 1.71). A small value means the numbers are bunched together; a large one means they’re spread out.</div>
+
+<p>Two classes can have the same average score of 75 and still feel completely different: in one, everyone scored between 70 and 80; in the other, scores ran from 40 to 100. The average can’t tell them apart – the standard deviation can. That’s why it shows up in exam results, quality control, investment risk and almost every science report.</p>
+
+<h3>Working it out by hand</h3>
+<ol class="g-steps">
+<li><b>Find the mean.</b> 4 + 8 + 6 + 5 + 3 + 7 = 33, and 33 ÷ 6 = 5.5.</li>
+<li><b>Subtract the mean from each value and square it:</b> 2.25, 6.25, 0.25, 0.25, 6.25, 2.25.</li>
+<li><b>Add the squares:</b> 17.5.</li>
+<li><b>Divide</b> by n − 1 = 5 for a sample (3.5), or by n = 6 for a whole population (2.92). This is the variance.</li>
+<li><b>Take the square root:</b> √3.5 ≈ 1.87 (sample) or √2.92 ≈ 1.71 (population).</li>
+</ol>
+
+<h3>Sample or population – which one?</h3>
+<table class="g-cards"><thead><tr><th>Use</th><th>When your data is…</th><th>Divide by</th></tr></thead><tbody>
+<tr><td data-l="Use">Sample (s)</td><td data-l="When">a part of a bigger group – a survey, a batch you tested, last month’s prices</td><td data-l="Divide by">n − 1</td></tr>
+<tr><td data-l="Use">Population (σ)</td><td data-l="When">every single member you care about – all 30 students in this class</td><td data-l="Divide by">n</td></tr>
+</tbody></table>
+<p>If you’re not sure, use the sample version. Dividing by n − 1 (Bessel’s correction) makes up for the fact that a sample tends to look a little less spread out than the full group. With large data sets the two numbers become almost identical.</p>
+
+<figure>
+<svg viewBox="0 0 360 210" role="img" aria-labelledby="g-f1t g-f1d" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+<title id="g-f1t">The 68–95–99.7 rule for a normal distribution</title>
+<desc id="g-f1d">About 68% of values fall within one standard deviation of the mean, 95% within two and 99.7% within three.</desc>
+<path d="M10 130 C 90 130, 120 28, 180 28 C 240 28, 270 130, 350 130" fill="none" stroke="#4338ca" stroke-width="3"/>
+<line x1="180" y1="22" x2="180" y2="136" stroke="#4338ca" stroke-dasharray="4 3"/>
+<text x="180" y="16" font-size="12" text-anchor="middle" fill="#111827">mean</text>
+<text x="0" y="163" font-size="13" fill="#111827">±1 SD ≈ 68%</text><rect x="215" y="153" width="70" height="12" rx="6" fill="#4338ca"/>
+<text x="0" y="183" font-size="13" fill="#111827">±2 SD ≈ 95%</text><rect x="180" y="173" width="140" height="12" rx="6" fill="#8b8ff0"/>
+<text x="0" y="203" font-size="13" fill="#111827">±3 SD ≈ 99.7%</text><rect x="145" y="193" width="210" height="12" rx="6" fill="#c7c9fb"/>
+</svg>
+<figcaption>For roughly bell-shaped data, about two-thirds of values sit within one standard deviation of the mean.</figcaption>
+</figure>
+
+<h3>Questions people ask about standard deviation</h3>
+<details class="g-q"><summary>What is a “good” standard deviation?</summary><div>There’s no universal good or bad – it depends on the scale. A standard deviation of 5 is huge for shoe sizes and tiny for house prices. Compare it with the mean: the coefficient of variation (SD ÷ mean) puts different data sets on the same footing.</div></details>
+<details class="g-q"><summary>What’s the difference between variance and standard deviation?</summary><div>Variance is the average squared distance from the mean; standard deviation is its square root. Standard deviation is easier to interpret because it’s in the same units as your data – points, kilograms, dollars.</div></details>
+<details class="g-q"><summary>Can standard deviation be negative or zero?</summary><div>It can never be negative, because it comes from squared distances. It’s zero only when every value is identical.</div></details>
+<details class="g-q"><summary>How do I calculate it in Excel or Google Sheets?</summary><div>Use =STDEV.S(range) for a sample and =STDEV.P(range) for a population. The older =STDEV() is the sample version.</div></details>
+<details class="g-q"><summary>What does one standard deviation above the mean mean for a test score?</summary><div>If the mean is 80 and the SD is 11, a score of 91 is one SD above average – roughly better than 84% of test-takers if scores are bell-shaped.</div></details>
+
+<div class="g-src">Examples calculated by Hong Life Calculators (checked 28 Nov 2026). Spreadsheet function names from Microsoft Excel and Google Sheets documentation.</div>
+</section>

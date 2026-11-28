@@ -8,7 +8,7 @@ import html, json, os, re, sys
 
 root = sys.argv[1] if len(sys.argv) > 1 else '_site'
 GDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'guides')
-CSS = '<link rel="stylesheet" href="/assets/hl-guide.css?v=1" id="hl-guide-css">'
+CSS = '<link rel="stylesheet" href="/assets/hl-guide.css?v=2" id="hl-guide-css">'
 MARK = '<!--hl:guide-->'
 Q = re.compile(r'<details class="g-q"><summary>(.*?)</summary><div>(.*?)</div></details>', re.S)
 LD = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
