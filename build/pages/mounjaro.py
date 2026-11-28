@@ -122,6 +122,66 @@ PAGES['de'] = dict(
 """,
 )
 
+# ---------------- 스페인어 (es: 스페인, es-MX: 멕시코) — 2026-11-28 ----------------
+T['es'] = {
+  'f_head': 'Tu tratamiento', 'first': 'Fecha de tu primera inyección', 'dose': 'Dosis semanal actual', 'since': 'Fecha en que empezaste esta dosis',
+  'last': 'Fecha de tu última inyección', 'unit': 'Unidad de peso', 'w0': 'Peso al empezar', 'w1': 'Peso hoy', 'ht': 'Estatura (cm, para el IMC)',
+  'prod': 'Tu presentación', 'p_kwik': 'Pluma KwikPen (4 dosis por pluma)', 'p_pen': 'Pluma de dosis única', 'p_vial': 'Vial / frasco (con jeringa)',
+  'lab_mg': 'Etiqueta del vial: mg', 'lab_ml': 'Etiqueta del vial: ml', 'conc_hint': 'Copia los dos números de la etiqueta, por ejemplo «2,5 mg/0,5 ml».',
+  'r_over': 'Es más líquido del que contiene el vial: revisa la etiqueta y la dosis que te recetaron.',
+  'r_step': 'Escalón de dosis', 'of6': 'de 6', 'r_weeks': 'Semanas con esta dosis', 'r_next': 'Fecha más temprana para subir según la ficha técnica',
+  'r_max': 'Estás en la dosis máxima (15 mg).', 'r_fast': 'Llegaste a esta dosis más rápido de lo que indica la ficha técnica (mínimo 4 semanas por escalón). Consúltalo con tu médico.',
+  'r_ok': 'Tu escalón de dosis coincide con la pauta de la ficha técnica.', 'r_due': 'Próxima inyección', 'r_late': 'días de retraso',
+  'r_take': 'Dosis olvidada: han pasado 4 días (96 horas) o menos – inyéctala en cuanto puedas.',
+  'r_skip': 'Dosis olvidada: han pasado más de 4 días – sáltala y ponte la siguiente en tu día habitual',
+  'r_you': 'Llevas en tratamiento', 'r_lost': 'Peso perdido', 'r_pct': 'Cambio desde el inicio', 'r_bmi': 'IMC hoy',
+  'r_trial': 'Media del ensayo SURMOUNT-1 a las 72 semanas con esta dosis',
+  'r_vol': 'Volumen a inyectar', 'r_units': 'En una jeringa de insulina U-100', 'units': 'unidades',
+  'r_pen': 'No hace falta medir: la pluma administra la dosis completa. No extraigas medicamento de una pluma con jeringa.',
+  'r_kwik': 'La KwikPen administra siempre 0,6 ml por dosis. No intentes marcar otra cantidad ni sacar dosis extra; el líquido sobrante se desecha con la pluma.',
+  'sched': 'Tus próximas 6 inyecciones', 'chart': 'Tu cambio de peso frente a las medias del ensayo (72 semanas)',
+  'you': 'Tú', 'placebo': 'Placebo', 'fill': 'Completa las fechas y la dosis', 'na': '—',
+  'warn': '<b>Importante:</b> esta herramienta compara tus datos con la ficha técnica; no decide tu dosis. Nunca cambies la dosis por tu cuenta. Mounjaro es un medicamento con receta.',
+  'wk': 'semanas', 'days': 'días', 'kg': 'kg', 'lb': 'lb',
+  'r_cost': 'Precio aproximado en farmacia', 'r_pen1': 'por pluma (4 semanas)', 'r_year': 'Aproximadamente un año (13 plumas)',
+  'cost_note': 'Precios orientativos publicados por la OCU (julio de 2025). Para adelgazar no está financiado por la sanidad pública; confirma el precio en tu farmacia.',
+  'r_bmi0': 'IMC al empezar', 'lab_ok': 'Según la autorización europea, el tratamiento para controlar el peso se plantea a partir de IMC 30, o 27 con una enfermedad relacionada con el peso.',
+  'mx_note': 'En México hay pluma KwikPen y viales de dosis única (0.5 ml). Si usas vial, la calculadora convierte tu dosis a mililitros y unidades de jeringa. Compra solo en farmacias establecidas y con receta.',
+}
+PAGES['es'] = dict(
+  tpl=sys.argv[1].replace('/en/health/tdee-calculator.html','/es/pregnancy-due-date-calculator.html'), lang='es', t='es',
+  path='/es/calculadora-dosis-mounjaro.html', hub='/es/', products=['kwik'], ht='168',
+  title='Calculadora de dosis de Mounjaro – Pauta, dosis olvidada, pérdida de peso y precio en España (tirzepatida)',
+  desc='Mounjaro (tirzepatida) KwikPen: comprueba tu escalón de dosis (2,5 mg 4 semanas, luego +2,5 mg cada 4 semanas hasta 15 mg), planifica tus inyecciones, qué hacer si olvidas una dosis, tu pérdida de peso frente al ensayo SURMOUNT-1 y el precio por pluma en España.',
+  h1='Calculadora de <b>dosis de Mounjaro</b> (pauta, peso y precio)',
+  kicker='🇪🇸 Salud', lead='Para personas a las que ya les han recetado Mounjaro. Los resultados se actualizan al escribir.',
+  brand='Hong Life Calculators', hubname='Calculadoras de España',
+  foot='Solo informativo: no es un diagnóstico ni consejo médico. Sigue siempre la dosis que te indiquen tu médico y tu farmacéutico.',
+  foot_links='<a href="/">Calculadoras por país</a> · <a href="/privacy.html">Privacidad</a> · <a href="/report-error.html">Informar de un error</a>',
+  reviewed='Última revisión: noviembre de 2026',
+  xdata={'price': {'2.5': 207.91, '5': 271.35, '7.5': 358.71, '10': 358.71, '12.5': 446.07, '15': 446.07}},
+  extra_js=r"""
+ { const ht=v('ht'),w0=v('w0'),u=$('u').value; if(isFinite(ht)&&ht>0&&isFinite(w0)){ const kg0=u==='lb'?w0*0.45359237:w0; o+=kv([[T.r_bmi0,nf(kg0/Math.pow(ht/100,2))]])+'<p class="mj-info">'+T.lab_ok+'</p>'; }
+   const pr=X.price[String(dose)]; if(pr){ o+='<div class="mj-sec">'+T.r_cost+'</div>'+kv([[T.r_cost,pr.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' € '+T.r_pen1],[T.r_year,nf(pr*13,0)+' €']])+'<p class="mj-info">'+T.cost_note+'</p>'; } }
+""",
+)
+PAGES['mx'] = dict(
+  tpl=sys.argv[1].replace('/en/health/tdee-calculator.html','/mx/calculadora-isr.html'), lang='es-MX', t='es',
+  path='/mx/calculadora-dosis-mounjaro.html', hub='/mx/', products=['kwik', 'vial'], ht='165',
+  title='Calculadora de dosis de Mounjaro México – Pauta, dosis olvidada, vial a ml y unidades, y pérdida de peso',
+  desc='Mounjaro (tirzepatida) en México: revisa tu escalón de dosis (2.5 mg 4 semanas y luego +2.5 mg cada 4 semanas hasta 15 mg), calendario de inyecciones, dosis olvidada, conversión del vial de mg a ml y unidades de jeringa, y tu pérdida de peso frente al estudio SURMOUNT-1.',
+  h1='Calculadora de <b>dosis de Mounjaro</b> México (pluma y vial)',
+  kicker='🇲🇽 Salud', lead='Para personas a las que ya les recetaron Mounjaro. Los resultados se actualizan al escribir.',
+  brand='Hong Life Calculators', hubname='Calculadoras México',
+  foot='Solo informativo: no es un diagnóstico ni consejo médico. Sigue siempre la dosis que te indiquen tu médico y tu farmacéutico.',
+  foot_links='<a href="/">Calculadoras por país</a> · <a href="/privacy.html">Privacidad</a> · <a href="/report-error.html">Informar de un error</a>',
+  reviewed='Última revisión: noviembre de 2026',
+  extra_js=r"""
+ { const ht=v('ht'),w0=v('w0'),u=$('u').value; if(isFinite(ht)&&ht>0&&isFinite(w0)){ const kg0=u==='lb'?w0*0.45359237:w0; o+=kv([[T.r_bmi0,nf(kg0/Math.pow(ht/100,2))]]); }
+   o+='<p class="mj-info">'+T.mx_note+'</p>'; }
+""",
+)
+
 TRIAL = {5: 15.0, 10: 19.5, 15: 20.9}   # SURMOUNT-1, 72주 평균 체중 변화율(%) — 2.5·7.5·12.5mg는 유지 용량으로 시험되지 않음
 PLACEBO = 3.1
 

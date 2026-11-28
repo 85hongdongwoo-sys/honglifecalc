@@ -250,5 +250,17 @@
   "hub": "/de/index.html",
   "after": "/de/zinseszins-rechner.html",
   "label": "Mounjaro Dosis-Rechner (Tirzepatid)"
+ },
+ {
+  "url": "/es/calculadora-dosis-mounjaro.html",
+  "hub": "/es/index.html",
+  "after": "/es/calculadora-neto-a-bruto.html",
+  "label": "Calculadora de dosis de Mounjaro"
+ },
+ {
+  "url": "/mx/calculadora-dosis-mounjaro.html",
+  "hub": "/mx/index.html",
+  "after": "/mx/calculadora-horas-extra.html",
+  "label": "Calculadora de dosis de Mounjaro"
  }
 ]
