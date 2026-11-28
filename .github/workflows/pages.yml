@@ -25,6 +25,8 @@ jobs:
           if ls ogpkg/og.tar.gz.part* >/dev/null 2>&1; then cat ogpkg/og.tar.gz.part* | tar -xzf - -C _site; fi
           echo "files: $(find _site -type f | wc -l)"
           if [ -d overlay ]; then cp -r overlay/. _site/; echo "overlay: $(find overlay -type f | wc -l)"; fi
+      - name: 대만 勞退 등급표 1~24등급 채우기
+        run: python3 build/patch_tw_pg.py _site
       - name: EV charger data (data-ev branch)
         continue-on-error: true
         run: |
