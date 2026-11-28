@@ -1,0 +1,41 @@
+/* 계산기 아래 '자세한 안내' 글 (build/guides/*) — 2026-11-28
+   페이지마다 --g(강조색)와 --g2(옅은 바탕)를 바꿔 쓴다. */
+html:not(#hlg) .hl-guide{--g:#3b4fd8;--g2:#eef0ff;max-width:860px;margin:28px auto;padding:28px clamp(18px,4vw,40px);background:#fff;border-radius:20px;box-shadow:0 1px 2px rgba(16,24,40,.05),0 10px 30px rgba(16,24,40,.06);color:#1d2433;font-size:17px;line-height:1.7;box-sizing:border-box;overflow-wrap:anywhere}
+html:not(#hlg) .hl-guide *{box-sizing:border-box}
+html:not(#hlg) .hl-guide .g-kick{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--g);background:var(--g2);padding:4px 10px;border-radius:999px;margin:0 0 10px}
+html:not(#hlg) .hl-guide h2{font-size:clamp(22px,3.2vw,28px);line-height:1.25;margin:4px 0 14px;color:#111827;letter-spacing:-.01em}
+html:not(#hlg) .hl-guide h3{font-size:clamp(19px,2.6vw,22px);line-height:1.3;margin:30px 0 10px;color:#111827;padding-left:12px;border-left:4px solid var(--g)}
+html:not(#hlg) .hl-guide p{margin:0 0 14px}
+html:not(#hlg) .hl-guide ul,html:not(#hlg) .hl-guide ol{margin:0 0 16px;padding-left:22px}
+html:not(#hlg) .hl-guide li{margin:4px 0}
+html:not(#hlg) .hl-guide a{color:var(--g);text-decoration:underline;text-underline-offset:2px}
+html:not(#hlg) .hl-guide .g-ans{background:var(--g2);border-radius:14px;padding:16px 18px;margin:0 0 18px;font-size:17px}
+html:not(#hlg) .hl-guide .g-ans b{color:#111827}
+html:not(#hlg) .hl-guide .g-toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;padding:0;list-style:none}
+html:not(#hlg) .hl-guide .g-toc a{display:inline-block;font-size:14px;padding:6px 12px;border-radius:999px;border:1px solid #d9dde8;text-decoration:none;color:#374151;background:#fafbfd}
+html:not(#hlg) .hl-guide table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:15.5px}
+html:not(#hlg) .hl-guide th,html:not(#hlg) .hl-guide td{padding:10px 12px;border-bottom:1px solid #e7e9f0;text-align:left;vertical-align:top}
+html:not(#hlg) .hl-guide th{background:#f6f7fb;font-weight:700;color:#111827}
+html:not(#hlg) .hl-guide td.n,html:not(#hlg) .hl-guide th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+html:not(#hlg) .hl-guide .g-cap{font-size:13.5px;color:#6b7280;margin:-10px 0 18px}
+html:not(#hlg) .hl-guide figure{margin:10px 0 20px;padding:16px;border:1px solid #e7e9f0;border-radius:16px;background:#fcfcfe}
+html:not(#hlg) .hl-guide figure svg{display:block;width:100%;max-width:520px;height:auto;margin:0 auto}
+html:not(#hlg) .hl-guide figcaption{font-size:14px;color:#4b5563;margin-top:8px}
+html:not(#hlg) .hl-guide .g-steps{counter-reset:s;list-style:none;padding:0}
+html:not(#hlg) .hl-guide .g-steps li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;margin:8px 0;background:#f8f9fc;border-radius:12px}
+html:not(#hlg) .hl-guide .g-steps li:before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--g);color:#fff;font-weight:700;font-size:14px;line-height:26px;text-align:center}
+html:not(#hlg) .hl-guide .g-note{border:1px solid #f1d9a6;background:#fff9ec;border-radius:12px;padding:12px 14px;font-size:15px;margin:0 0 16px}
+html:not(#hlg) .hl-guide details{border:1px solid #e7e9f0;border-radius:12px;margin:8px 0;background:#fff}
+html:not(#hlg) .hl-guide summary{cursor:pointer;padding:12px 14px;font-weight:700;color:#111827;list-style-position:inside}
+html:not(#hlg) .hl-guide details>div{padding:0 14px 12px}
+html:not(#hlg) .hl-guide .g-src{font-size:14px;color:#4b5563;border-top:1px solid #e7e9f0;margin-top:22px;padding-top:12px}
+html:not(#hlg) .hl-guide .g-src li{margin:3px 0}
+@media (max-width:640px){
+  html:not(#hlg) .hl-guide{padding:20px 16px;border-radius:16px;font-size:16px;margin:18px 0}
+  html:not(#hlg) .hl-guide table.g-cards thead{display:none}
+  html:not(#hlg) .hl-guide table.g-cards,html:not(#hlg) .hl-guide table.g-cards tbody,html:not(#hlg) .hl-guide table.g-cards tr,html:not(#hlg) .hl-guide table.g-cards td{display:block;width:100%}
+  html:not(#hlg) .hl-guide table.g-cards tr{border:1px solid #e7e9f0;border-radius:12px;margin:0 0 10px;padding:6px 0;background:#fff}
+  html:not(#hlg) .hl-guide table.g-cards td{border:0;padding:5px 12px;text-align:right;display:flex;justify-content:space-between;gap:12px}
+  html:not(#hlg) .hl-guide table.g-cards td:before{content:attr(data-l);font-weight:600;color:#6b7280;text-align:left}
+}
+@media (prefers-color-scheme:dark){html:not(#hlg) .hl-guide{color-scheme:light}}
